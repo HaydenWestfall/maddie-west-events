@@ -1,0 +1,624 @@
+// .section {
+//   position: relative;
+//   width: 100vw;
+//   height: 50vw;
+// }
+
+// .object-in-3d1 {
+//   margin-left: 45vw;
+//   width: 10vw;
+//   height: 10vw;
+//   background-color: #41ebf4;
+// }
+
+// .object-in-3d2 {
+//   margin-left: 50vw;
+//   width: 10vw;
+//   height: 20vw;
+//   background-color: #41f474;
+// }
+
+// .object-in-3d3 {
+//   margin-left: 75vw;
+//   width: 10vw;
+//   height: 25vw;
+//   background-color: #a041f4;
+// }
+
+// .float-center {
+//   position: absolute;
+//   top: 50%;
+// }
+
+// #red {
+//   background-color: #f44141;
+// }
+
+// #yellow {
+//   background-color: #f48342;
+// }
+
+// #green {
+//   background-color: #f4dc41;
+// }
+
+// #floater {}
+
+// .test {
+//   font-family: FreightDisp Pro Light Italic, serif;
+//   font-style: normal;
+//   font-weight: 300;
+// }
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Monsterrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-style: regular
+}
+
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+nav {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  padding: 0 2rem
+}
+
+#maddie-text {
+  font-family: Montserrat;
+  font-style: regular;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-decoration: none;
+  color: black;
+}
+
+#nav-options {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: black;
+  text-decoration: none;
+  font-family: Montserrat;
+  font-style: regular;
+  font-size: 0.8rem;
+}
+
+.primary-button {
+  background-color: black;
+  font-size: 0.85rem;
+  font-family: Montserrat;
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.55s ease;
+  border: none;
+
+  cursor: pointer;
+
+  &.small {
+    padding: 0.6rem 2rem;
+  }
+
+  &.large {
+    padding: 1rem 3.5rem;
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0);
+    color: black;
+  }
+}
+
+
+.main-page {
+  position: relative;
+  height: 120vh;
+  width: 100%;
+  background-color: rgb(233, 233, 233);
+  overflow-x: hidden;
+
+  .text-wrapper {
+    position: absolute;
+    display: inline-flex;
+    top: 40%;
+    height: fit-content;
+    width: inherit;
+    white-space: nowrap;
+
+    .moving-text {
+      font-size: 12rem;
+      color: white;
+      display: inline-block;
+      text-wrap: nowrap;
+      animation: marquee 30s linear infinite;
+      white-space: pre;
+    }
+
+    .moving-text2 {
+      font-size: 12rem;
+      color: white;
+      display: inline-block;
+      text-wrap: nowrap;
+      animation: marquee 30s linear infinite;
+      white-space: pre;
+    }
+  }
+}
+
+.about-me {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(232, 224, 211);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0) translateZ(0);
+  }
+
+  to {
+    transform: translateX(-100%) translateZ(0);
+  }
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+
+  .sub-header {
+    font-family: Monsterrat;
+    font-style: regular;
+    color: black;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+  }
+
+  .header {
+    font-family: Abhaya Libre, serif;
+    font-size: 3rem;
+    max-width: 38rem;
+    text-align: center;
+  }
+
+  .description {
+    font-family: Monsterrat;
+    font-style: regular;
+    color: black;
+    font-size: 1.1rem;
+    max-width: 52%;
+    text-align: center;
+    margin-top: 2rem;
+  }
+}
+
+.about-me {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  height: 120vh;
+  width: 100%;
+}
+
+.journal-section {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  padding: 10rem 0;
+
+  .journal-carousel {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    margin-top: 10rem;
+
+    .carousel-image {
+      position: relative;
+      width: calc(20% - 1rem);
+      height: 25rem;
+      background-color: rgb(182, 182, 182);
+    }
+
+    .focused {
+      width: calc(30% - 1rem);
+      height: 34rem;
+    }
+  }
+}
+
+.vendor-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4rem 6rem;
+
+  .vendor-label {
+    font-family: Monsterrat;
+    font-style: regular;
+    letter-spacing: 4px;
+    font-size: 1.1rem;
+  }
+
+  .vendor-images {
+    display: flex;
+    gap: 2rem;
+
+    .vendor {
+      width: 11rem;
+      height: 5rem;
+      background-color: rgb(230, 230, 230);
+    }
+  }
+}
+
+.testimonies-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 8rem 0;
+
+  .testimonies-wrapper {
+    width: 100%;
+    height: 52vh;
+    max-width: 85vw;
+    background-color: #F1F0F0;
+    border-radius: 15px;
+    display: flex;
+    padding: 1.25rem;
+    gap: 1.5rem;
+
+    .timer {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      font-family: Abhaya Libre, serif;
+      font-size: 0.65rem;
+      width: 12rem;
+
+      .progress-bar {
+        height: 30%;
+        width: 1px;
+        background-color: black;
+      }
+    }
+
+    .testimony-wrapper {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 0;
+
+      .testimony-title {
+        font-family: Abhaya Libre, serif;
+        font-size: 2.5rem;
+      }
+
+      .testimony-date {
+        font-family: Monsterrat;
+        font-style: regular;
+        color: black;
+        letter-spacing: 3px;
+        font-size: 0.8rem;
+      }
+
+      .testimony {
+        margin-top: 1.5rem;
+        font-family: Monsterrat;
+        font-style: regular;
+        color: black;
+        font-size: 1.25rem;
+        line-height: 2.5rem;
+      }
+    }
+
+    .image {
+      height: 100%;
+      aspect-ratio: 1;
+      background-color: rgb(227, 227, 227);
+      border-radius: 8px;
+    }
+  }
+}
+
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 6rem;
+  height: 100vh;
+
+  .sub-header {
+    font-family: Monsterrat;
+    font-style: regular;
+    color: black;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+  }
+
+  .header {
+    font-size: 10rem;
+    max-width: 80vw;
+  }
+}
+
+.footer {
+  position: relative;
+  border-top: 1px solid gray;
+  padding-top: 15rem;
+
+  .copyright-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3rem 6rem;
+
+    .copyright {
+      display: flex;
+      justify-content: space-between;
+      z-index: 1;
+
+      .copyright-text {
+        display: flex;
+        white-space: pre;
+        font-size: 0.725rem;
+        color: gray;
+        line-height: 1rem;
+      }
+    }
+
+    .back-to-top {
+      display: flex;
+      gap: 0.5rem;
+      letter-spacing: 2px;
+      cursor: pointer;
+
+      svg {
+        height: 1.25rem;
+      }
+    }
+  }
+
+  .watermark {
+    position: absolute;
+    right: 0;
+    bottom: -1rem;
+    color: #f2f2f2;
+    height: clamp(1rem, 16vw, 16rem);
+  }
+}
+
+.about-page {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(104, 104, 104);
+
+  .text-wrapper {
+    position: absolute;
+    left: 5rem;
+    top: 50%;
+    transform: translateY(-50%);
+
+    .header {
+      font-family: Abhaya Libre, serif;
+      font-size: 3rem;
+    }
+
+    .sub-header {
+      font-family: Monsterrat;
+      font-style: regular;
+      color: black;
+      letter-spacing: 4px;
+      font-size: 0.8rem;
+    }
+
+    .description {
+      margin-top: 2.5rem;
+      font-family: Monsterrat;
+      font-style: regular;
+      color: black;
+      letter-spacing: 3px;
+      font-size: 1.25rem;
+      max-width: 44%;
+      line-height: 2rem;
+    }
+  }
+}
+
+.client-quote {
+  position: relative;
+  width: 100%;
+  margin: 5rem 0 17rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+
+  .quote {
+    font-family: Abhaya Libre, serif;
+    font-style: regular;
+    color: black;
+    letter-spacing: 3px;
+    font-size: 2.2rem;
+    max-width: 60%;
+    line-height: 2.75rem;
+    text-align: center;
+  }
+
+  .client {
+    font-family: Monsterrat;
+    font-style: regular;
+    color: black;
+    letter-spacing: 4px;
+    font-size: 0.8rem;
+  }
+}
+
+.about-maddie {
+  position: relative;
+  background-color: #F1F0F0;
+  height: 125vh;
+  padding: 4rem 8.5rem;
+
+  .image {
+    position: absolute;
+    top: -8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 50rem;
+    width: 30rem;
+    background-color: rgb(255, 224, 229);
+  }
+
+  .about-text-block-1 {
+    display: block;
+    font-family: Abhaya Libre, serif;
+    font-size: 2.2rem;
+    max-width: 29rem;
+    z-index: 1;
+  }
+
+  .about-text-block-2 {
+    position: absolute;
+    display: block;
+    font-family: Monsterrat;
+    font-size: 1.75rem;
+    max-width: 40rem;
+    line-height: 2.5rem;
+    bottom: 8.5rem;
+    right: 4rem;
+  }
+}
+
+.more-section {
+  position: relative;
+  background-color: black;
+  display: flex;
+  padding-bottom: 6rem;
+
+  .image {
+    position: relative;
+    width: 50%;
+    height: 110vh;
+    background-color: rgb(233, 228, 207);
+    margin-top: -4rem;
+    flex-shrink: 0;
+  }
+
+  .more-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 3.5rem 2.5rem;
+    gap: 2rem;
+
+    .header {
+      font-family: Abhaya Libre, serif;
+      font-size: 3.25rem;
+      color: white;
+      width: 36rem;
+    }
+
+    .sub-header {
+      font-family: Montserrat;
+      font-style: regular;
+      color: black;
+      letter-spacing: 4px;
+      font-size: 1rem;
+      color: white;
+    }
+
+    .description {
+      font-family: Montserrat;
+      font-style: regular;
+      color: black;
+      font-size: 1.4rem;
+      line-height: 2.25rem;
+      color: white;
+      width: 35rem;
+    }
+  }
+}
+
+
+
+.packages-section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin: 9rem 0;
+
+  .sub-header {
+    font-family: Monsterrat;
+    font-style: regular;
+    color: black;
+    letter-spacing: 3px;
+    font-size: 1rem;
+  }
+
+  .header {
+    font-family: Abhaya Libre, serif;
+    font-size: 4rem;
+    max-width: 70rem;
+    text-align: center;
+  }
+}
+
+.testimonies-page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .image-wrapper {
+    position: relative;
+    height: 65vh;
+    width: 80%;
+    background-color: rgb(218, 218, 218);
+
+    .header {
+      font-family: Abhaya Libre, serif;
+      font-size: 6rem;
+      max-width: 70rem;
+      text-align: center;
+    }
+
+    .top-left {
+      position: absolute;
+      top: -3rem;
+      left: -5rem
+    }
+
+    .bottom-right {
+      position: absolute;
+      bottom: -3rem;
+      right: -5rem;
+    }
+  }
+}
