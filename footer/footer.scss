@@ -1,0 +1,40 @@
+.footer {
+    position: relative;
+    border-top: 1px solid gray;
+    padding-top: 15rem;
+
+    .copyright-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 3rem 6rem;
+
+        .copyright {
+            display: flex;
+            justify-content: space-between;
+            z-index: 1;
+
+            .copyright-text {
+                display: flex;
+                white-space: pre;
+                font-size: 0.725rem;
+                color: gray;
+                line-height: 1rem;
+            }
+        }
+
+        .back-to-top {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+
+            svg {
+                height: 1.25rem;
+            }
+        }
+    }
+}

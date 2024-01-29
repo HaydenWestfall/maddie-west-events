@@ -1,0 +1,24 @@
+.primary-button {
+    background-color: black;
+    font-size: 0.85rem;
+    font-family: Montserrat;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.55s ease;
+    border: none;
+
+    cursor: pointer;
+
+    &.small {
+        padding: 0.6rem 2rem;
+    }
+
+    &.large {
+        padding: 1rem 3.5rem;
+    }
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0);
+        color: black;
+    }
+}

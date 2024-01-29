@@ -1,21 +1,6 @@
 
-import { gsap } from "gsap";
+// import { gsap } from "gsap";
 
-function parallax() {
-    applyParallax(document.getElementById("floater1"));
-    applyParallax(document.getElementById("floater2"));
-    applyParallax(document.getElementById("floater3"));
-}
-
-function applyParallax(element) {
-    let scrollSpeed = Number.parseFloat(element.getAttribute('data-scroll-speed'))
-    let yPos = 0 - window.pageYOffset / scrollSpeed;
-    element.style.top = 30 + yPos + "%";
-}
-
-window.addEventListener("scroll", function () {
-    parallax();
-});
 
 function navigateTo(page) {
     window.location.href = page;
