@@ -1,0 +1,52 @@
+.contact-section {
+    display: flex;
+    margin: 5rem 0;
+    height: 60vh;
+    width: 100%;
+
+    .header-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        gap: 1rem;
+        width: 50%;
+
+        .sub-header {
+            font-family: Montserrat;
+            font-style: regular;
+            color: black;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+        }
+
+        .header {
+            font-family: didot;
+            font-size: 6rem;
+            text-align: center;
+        }
+    }
+
+    .contact-info-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 4rem;
+        flex-shrink: 0;
+        flex-grow: 1;
+        padding: 6rem;
+        width: calc(50% - 12rem);
+
+        .contact-info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            .contact-link {
+                display: flex;
+                gap: 0.5rem;
+            }
+        }
+    }
+}

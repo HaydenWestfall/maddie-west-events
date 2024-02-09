@@ -3,9 +3,9 @@ const footerStyles = document.createElement("link");
 footerStyles.setAttribute("rel", "stylesheet");
 footerStyles.setAttribute("href", "footer/footer.scss");
 
-const sharedStyles = document.createElement("link");
-sharedStyles.setAttribute("rel", "stylesheet");
-sharedStyles.setAttribute("href", "shared-styles.scss");
+const footerSharedStyles = document.createElement("link");
+footerSharedStyles.setAttribute("rel", "stylesheet");
+footerSharedStyles.setAttribute("href", "shared-styles.scss");
 
 class Footer extends HTMLElement {
     constructor() {
@@ -21,7 +21,7 @@ class Footer extends HTMLElement {
                 this.shadowRoot.innerHTML = html;
 
                 this.shadowRoot.appendChild(footerStyles);
-                this.shadowRoot.appendChild(sharedStyles);
+                this.shadowRoot.appendChild(footerSharedStyles);
             });
     }
 }

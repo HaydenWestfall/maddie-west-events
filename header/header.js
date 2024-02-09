@@ -1,9 +1,9 @@
 const headerStyles = document.createElement("link");
 headerStyles.setAttribute("rel", "stylesheet");
 headerStyles.setAttribute("href", "header/header.scss");
-const gloablStyles = document.createElement("link");
-gloablStyles.setAttribute("rel", "stylesheet");
-gloablStyles.setAttribute("href", "shared-styles.scss");
+const headerSharedStyles = document.createElement("link");
+headerSharedStyles.setAttribute("rel", "stylesheet");
+headerSharedStyles.setAttribute("href", "shared-styles.scss");
 
 class Header extends HTMLElement {
   constructor() {
@@ -18,7 +18,7 @@ class Header extends HTMLElement {
       .then(html => {
         this.shadowRoot.innerHTML = html;
         this.shadowRoot.appendChild(headerStyles);
-        this.shadowRoot.appendChild(gloablStyles);
+        this.shadowRoot.appendChild(headerSharedStyles);
       });
   }
 }

@@ -22,3 +22,17 @@
         color: black;
     }
 }
+
+.text-button {
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: black;
+    text-decoration: underline;
+    letter-spacing: 7px;
+    cursor: pointer;
+
+    &:hover {
+        color: rgb(107, 107, 107);
+    }
+}
