@@ -196,7 +196,7 @@
   }
 }
 
-.testimony-wrapper {
+.main-testimony-wrapper {
   display: flex;
   position: relative;
   margin: 5rem 5rem;
@@ -399,49 +399,49 @@
       }
     }
 
-    .testimony-container {
-      position: relative;
-      height: 100%;
-      flex-grow: 1;
-      padding: 2rem 0;
-      overflow: hidden;
+    // .testimony-container {
+    //   position: relative;
+    //   height: 100%;
+    //   flex-grow: 1;
+    //   padding: 2rem 0;
+    //   overflow: hidden;
 
-      .testimony-wrapper {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        padding: 2rem 0;
-        height: 100%;
-        top: 0;
-        width: 100%;
+    //   .testimony-wrapper {
+    //     position: absolute;
+    //     display: flex;
+    //     flex-direction: column;
+    //     padding: 2rem 0;
+    //     height: 100%;
+    //     top: 0;
+    //     width: 100%;
 
-        .testimony-title {
-          font-family: Abhaya Libre, serif;
-          font-size: 2.5rem;
-        }
+    //     .testimony-title {
+    //       font-family: Abhaya Libre, serif;
+    //       font-size: 2.5rem;
+    //     }
 
-        .testimony-date {
-          font-family: Montserrat;
-          font-style: regular;
-          color: black;
-          letter-spacing: 3px;
-          font-size: 0.8rem;
-        }
+    //     .testimony-date {
+    //       font-family: Montserrat;
+    //       font-style: regular;
+    //       color: black;
+    //       letter-spacing: 3px;
+    //       font-size: 0.8rem;
+    //     }
 
-        .testimony {
-          margin-top: 1.5rem;
-          font-family: Montserrat;
-          font-style: regular;
-          color: black;
-          font-size: 1.25rem;
-          line-height: 2.5rem;
-        }
-      }
+    //     .testimony {
+    //       margin-top: 1.5rem;
+    //       font-family: Montserrat;
+    //       font-style: regular;
+    //       color: black;
+    //       font-size: 1.25rem;
+    //       line-height: 2.5rem;
+    //     }
+    //   }
 
-      .animate-scroll {
-        transition: top 1s ease-in-out;
-      }
-    }
+    //   .animate-scroll {
+    //     transition: top 1s ease-in-out;
+    //   }
+    // }
 
     .image {
       height: 100%;
@@ -671,15 +671,20 @@
 }
 
 
+/*
+-------------------------------------------------------------------
+---  PACKAGES PAGE
+-------------------------------------------------------------------
+*/
 
-.packages-section {
+.packages-header {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 1.75rem;
-  margin: 9rem 0;
+  margin: 10rem 0 18rem;
 
   .sub-header {
     font-family: Montserrat;
@@ -697,18 +702,112 @@
   }
 }
 
+.package-wrapper {
+  display: flex;
+  margin-bottom: 20rem;
+
+  .package-image {
+    width: 50%;
+
+    img {
+      height: 100vh;
+      width: 80%;
+      object-fit: cover;
+      float: right;
+    }
+  }
+
+  .package-info-wrapper {
+    display: flex;
+    width: 50%;
+
+    .package-info {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+
+      .package-header {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid black;
+        font-size: 1.5rem;
+        font-family: Montserrat;
+        letter-spacing: 3px;
+        padding: 2rem 2rem 1rem 3rem;
+        color: #868686;
+      }
+
+      .description {
+        font-size: 1.5rem;
+        line-height: 2.75rem;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 300;
+        padding: 1rem 2rem 3rem 3rem;
+      }
+
+      .includes-text {
+        font-size: 1.35rem;
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 3px;
+        text-decoration: underline;
+        padding: 1rem 2rem 1.5rem 3rem;
+      }
+
+      ul {
+        padding: 0rem 2rem 3rem 4.5rem;
+        list-style: none;
+
+        li {
+          padding-bottom: 1.5rem;
+          font-size: 1.35rem;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 300;
+
+          &::before {
+            content: "\2022";
+            color: black;
+            font-size: 24px;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+          }
+        }
+      }
+
+      button {
+        margin-left: 3rem;
+      }
+    }
+  }
+}
+
+
+
+/*
+-------------------------------------------------------------------
+---  TESTIMONY PAGE
+-------------------------------------------------------------------
+*/
+
 .testimonies-page {
   height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 
   .image-wrapper {
     position: relative;
     height: 65vh;
     width: 80%;
     background-color: rgb(218, 218, 218);
+
+    .focused-image {
+      width: 100%;
+      height: 100%;
+      object-fit: none;
+    }
 
     .header {
       font-family: Abhaya Libre, serif;
@@ -725,11 +824,370 @@
 
     .bottom-right {
       position: absolute;
-      bottom: -3rem;
+      bottom: -3.5rem;
       right: -5rem;
     }
   }
 }
+
+.testimony {
+  .testimony-wrapper {
+    display: flex;
+    height: 120vh;
+    width: 100%;
+
+    .client-images {
+      position: relative;
+      width: 55%;
+      height: 100%;
+      flex-shrink: 0;
+
+      .testimony-img-1 {
+        position: absolute;
+        right: 10%;
+        top: 10%;
+        object-fit: cover;
+        height: 80vh;
+      }
+
+      .testimony-img-2 {
+        object-fit: cover;
+        position: absolute;
+        left: 20%;
+        bottom: 5%;
+        height: 60vh;
+        width: 30rem;
+      }
+    }
+
+    .client-testimony-wrapper {
+      display: flex;
+      height: 100%;
+      width: 45%;
+      align-items: center;
+
+      .client-testimony {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+        z-index: 5;
+        width: 80%;
+
+        .client-text {
+          font-family: Montserrat;
+          font-style: regular;
+          color: black;
+          letter-spacing: 3px;
+          font-size: 1rem;
+          z-index: 5;
+        }
+
+        .testimony {
+          font-size: 1.8rem;
+          font-family: Abhaya Libre;
+          line-height: 3rem;
+          padding-left: 3rem;
+          z-index: 5;
+        }
+
+        .client-name {
+          font-family: Montserrat;
+          font-style: regular;
+          color: black;
+          letter-spacing: 2px;
+          font-size: 1rem;
+          z-index: 5;
+          padding-left: 1rem;
+        }
+
+        .quote-accent {
+          position: absolute;
+          height: 15rem;
+          width: 15rem;
+          color: #FCF8EE;
+        }
+
+        .top {
+          top: 0rem;
+          left: 0rem;
+          transform: rotate(180deg);
+        }
+
+        .bottom {
+          bottom: 0rem;
+          right: 6.5rem;
+        }
+      }
+    }
+  }
+}
+
+
+/*
+-------------------------------------------------------------------
+---  CONTACT PAGE
+-------------------------------------------------------------------
+*/
+
+.contact-header {
+  position: relative;
+  height: 120vh;
+  width: 100%;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .maddie-west-accent {
+    position: absolute;
+    transform: rotate(270deg) translateX(50%);
+    left: -9.5rem;
+    bottom: 3rem;
+  }
+
+  .contact-header-text {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    width: 75rem;
+    text-align: center;
+    transform: translateX(-50%);
+    font-size: 7rem;
+    font-family: 'Cormorant Garamond', sans-serif;
+    font-weight: 200;
+
+    .emphasized {
+      font-family: 'didot', sans-serif;
+    }
+  }
+}
+
+.contact-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10rem 0;
+  height: fit-content;
+
+  .contact-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    max-width: 50rem;
+
+    p {
+      text-align: center;
+      font-size: 1.25rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      letter-spacing: 3px;
+      line-height: 1.7rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 4rem;
+      align-items: center;
+
+      .input-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        .input-label {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 300;
+          font-size: 0.9rem;
+
+          span {
+            color: red;
+          }
+        }
+
+        input {
+          border: none;
+          border-bottom: 1px solid black;
+          padding: 0.75rem 1rem;
+          font-size: 1.15rem;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+
+          &:focus {
+            outline: none
+          }
+
+          &::placeholder {
+            color: #e7e7e7;
+            font-weight: 300;
+          }
+        }
+
+        textarea {
+          resize: none;
+          border: none;
+          border-bottom: 1px solid black;
+          padding: 0.75rem 1rem;
+          font-size: 1.15rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          height: 12rem;
+
+          &:focus {
+            outline: none
+          }
+
+          &::placeholder {
+            color: #e7e7e7;
+            font-weight: 300;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*
+-------------------------------------------------------------------
+---  JOURNAL PAGE
+-------------------------------------------------------------------
+*/
+
+.journal-header {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+
+  span {
+    font-family: 'didot', 'sans-serif';
+    font-size: 12rem;
+    color: white;
+
+    &:first-child {
+      padding-left: 6rem;
+    }
+
+    &:last-child {
+      padding-left: 12rem;
+    }
+  }
+
+  .journal-image {
+    position: absolute;
+    height: 25rem;
+    aspect-ratio: 1/1.5;
+    z-index: 0;
+
+    &.image-1 {
+      transform: scale(1) rotate(3deg);
+      right: 40%;
+      top: 10%
+    }
+
+    &.image-2 {
+      transform: scale(0.85) rotate(6deg);
+      right: calc(40% - 18rem);
+      top: calc(10% + 3.5rem);
+    }
+
+    &.image-3 {
+      transform: scale(0.7) rotate(10deg);
+      right: calc(40% - 33rem);
+      top: calc(10% + 7.5rem);
+    }
+
+    &.image-4 {
+      transform: scale(0.65) rotate(15deg);
+      right: calc(40% - 46.5rem);
+      top: calc(10% + 11rem);
+    }
+
+    &.image-5 {
+      transform: scale(0.5) rotate(21deg);
+      right: calc(40% - 58rem);
+      top: calc(10% + 16.5rem);
+    }
+  }
+
+  .scroll-accent {
+    border-radius: 20rem;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    height: 4rem;
+    width: 2rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10%
+  }
+}
+
+.journal-entry-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  padding: 10rem 0;
+
+  .journal-entry-wrapper {
+    max-width: 45rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    color: white;
+
+    .couple-name {
+      font-family: 'didot', 'sans-serif';
+      font-size: 2.5rem;
+      font-weight: 400;
+    }
+
+    .wedding-description {
+      font-family: 'Abhaya Libre', 'sans-serif';
+      font-weight: 400;
+      font-size: 1.5rem;
+      line-height: 2.75rem;
+
+      .first-letter {
+        height: 5rem;
+        float: left;
+        font-family: 'Abhaya Libre', 'sans-serif';
+        font-weight: 400;
+        font-size: 6.6rem;
+        line-height: 5.9rem;
+        margin-right: 0.5rem;
+      }
+    }
+
+    .images {
+      display: flex;
+      gap: 4.5rem;
+
+      img {
+        width: calc(33% - 3rem);
+        aspect-ratio: 1/1.5;
+      }
+    }
+  }
+}
+
+
+
+
 
 @keyframes loading {
   0% {
