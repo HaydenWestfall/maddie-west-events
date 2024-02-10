@@ -17,6 +17,21 @@ document.getElementById('test')?.addEventListener('click', () => {
 
 
 
+/////////////////////////////////////////////////////////////////////////////
+//  SCROLLBAR TOGGLE VISIBILITY ON SCROLL
+/////////////////////////////////////////////////////////////////////////////
+let lastScrollTop = 0;
+const navbar = document.getElementsByTagName('maddie-west-header')[0] as HTMLElement;
+const shadowElement = navbar.shadowRoot!;
+window.addEventListener('scroll', function () {
+    let scrollTop = window.scrollY || this.document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop) {
+        shadowElement.querySelector('header')!.style.top = '-80px';
+    } else {
+        shadowElement!.querySelector('header')!.style.top = '0';
+    }
+    lastScrollTop = scrollTop - 20;
+});
 
 
 
@@ -49,17 +64,11 @@ const column = Math.floor(cardWrapper.offsetWidth / (widthToScroll + 24));
 
 const cardWidth = (cardWrapper.children[0] as HTMLElement).offsetWidth;
 
-console.log((cardWrapper.children[2] as HTMLElement).offsetWidth);
-console.log((cardWrapper.children[2] as HTMLElement).offsetLeft);
-console.log(document.documentElement.clientWidth);
 // cardWrapper.style.left = '-264px';
 
 
 let myIndex = 1;
 export function test() {
-
-    console.log(myIndex)
-
     if (myIndex === 11) {
         myIndex = 1;
         cardWrapper.classList.remove('test-scroll');
@@ -86,7 +95,6 @@ export function test() {
         const leftPos = middle - targetElemOffsetLeft;
         cardWrapper.style.left = 'calc(' + leftPos + 'px - ' + (targetElemWidth / 2) + 'px)';
         // cardWrapper.style.left = leftPos + 'px';
-        console.log(cardWrapper.style.left)
 
         const childToGrow = cardWrapper.children[myIndex];
         childToGrow.classList.add('grow');
