@@ -18,10 +18,9 @@ class Footer extends HTMLElement {
         fetch('footer/footer.html')
             .then(response => response.text())
             .then(html => {
-                this.shadowRoot.innerHTML = html;
-
-                this.shadowRoot.appendChild(footerStyles);
-                this.shadowRoot.appendChild(footerSharedStyles);
+                this.shadowRoot!.innerHTML = html;
+                this.shadowRoot!.appendChild(footerStyles);
+                this.shadowRoot!.appendChild(footerSharedStyles);
             });
     }
 }

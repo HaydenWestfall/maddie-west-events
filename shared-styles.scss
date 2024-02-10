@@ -1,5 +1,4 @@
 .primary-button {
-    background-color: black;
     font-size: 0.85rem;
     font-family: Montserrat;
     text-decoration: none;
@@ -18,9 +17,24 @@
         padding: 1rem 3.5rem;
     }
 
-    &:hover {
-        background-color: rgb(240, 240, 240);
+    &.light {
+        background-color: black;
+        color: white;
+
+        &:hover {
+            background-color: rgb(240, 240, 240);
+            color: black;
+        }
+    }
+
+    &.dark {
+        background-color: white;
         color: black;
+
+        &:hover {
+            background-color: rgb(29, 29, 29);
+            color: rgb(255, 255, 255);
+        }
     }
 }
 
