@@ -1,0 +1,285 @@
+/*
+-------------------------------------------------------------------
+---  TESTIMONY PAGE
+-------------------------------------------------------------------
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-style: regular;
+}
+
+.testimonies-page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  .image-wrapper {
+    position: relative;
+    height: 65vh;
+    width: 80%;
+    background-color: rgb(218, 218, 218);
+
+    .focused-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .header {
+      font-family: didot-italic;
+      font-size: 6rem;
+      max-width: 70rem;
+      text-align: center;
+    }
+
+    .top-left {
+      position: absolute;
+      top: -3rem;
+      left: -5rem
+    }
+
+    .bottom-right {
+      position: absolute;
+      bottom: -3.5rem;
+      right: -5rem;
+    }
+  }
+}
+
+.testimony {
+  margin-top: 20rem;
+
+  .testimony-wrapper {
+    display: flex;
+    height: 205vh;
+    width: 100%;
+
+    .client-images {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 55%;
+      height: 100%;
+      flex-shrink: 0;
+
+      .image-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+
+        img {
+          width: 60%;
+          object-fit: cover;
+          height: 50vw;
+          max-height: 75vh;
+        }
+      }
+    }
+
+    .client-testimony-wrapper {
+      height: fit-content;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+
+      .client-testimony {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        gap: 2vw;
+        padding: 2rem;
+        z-index: 5;
+        width: 80%;
+
+        .client-text {
+          font-family: Montserrat;
+          font-style: regular;
+          color: black;
+          letter-spacing: 2px;
+          font-size: clamp(0.7rem, 1.25vw, 1rem);
+        }
+
+        .testimony-quote {
+          font-family: Abhaya Libre;
+          font-weight: 600;
+          font-size: clamp(0.9rem, 1.8vw, 1.8rem);
+          line-height: clamp(1.5rem, 2.5vw, 3rem);
+          padding-left: 3rem;
+        }
+
+        .client-name {
+          font-family: Montserrat;
+          font-style: regular;
+          color: black;
+          letter-spacing: 2px;
+          font-size: clamp(0.7rem, 1.25vw, 1rem);
+          z-index: 5;
+          padding-left: 1rem;
+        }
+      }
+
+      .middle {
+        justify-content: flex-end;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .testimonies-page {
+    .image-wrapper {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+
+      .focused-image {
+        object-fit: cover;
+      }
+
+      .header {
+        font-size: 11vw;
+        white-space: nowrap;
+      }
+
+      .top-left {
+        position: absolute;
+        bottom: 5rem;
+        top: unset;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .bottom-right {
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  .testimony {
+    margin-top: 8rem;
+
+    .testimony-wrapper {
+      display: flex;
+      flex-direction: column;
+      height: fit-content;
+      width: 100%;
+
+      .client-images {
+        position: relative;
+        height: fit-content;
+        width: calc(100% - 4rem);
+        margin: 2rem;
+        margin-bottom: 16rem;
+
+        .image-wrapper {
+          position: unset;
+          display: unset;
+          height: fit-content;
+
+          img {
+            object-fit: cover;
+            height: 27rem;
+            max-width: 70%;
+            width: fit-content;
+
+          }
+
+          #testimony-1-image-1 {}
+
+          #testimony-1-image-2 {
+            position: absolute;
+            right: 1rem;
+            top: 23rem;
+            height: 15rem;
+            width: fit-content;
+            z-index: 5;
+          }
+
+          #testimony-2-image-1 {
+            height: 29rem;
+            width: 70%;
+            align-self: flex-end;
+            width: fit-content;
+            z-index: 5;
+            display: block;
+            float: right;
+          }
+
+          #testimony-2-image-2 {
+            position: absolute;
+            left: 1rem;
+            top: 23rem;
+            height: 15rem;
+            width: fit-content;
+            z-index: 5;
+          }
+        }
+      }
+
+      .client-testimony-wrapper {
+        position: relative;
+        height: fit-content;
+        justify-content: center;
+
+        .client-testimony {
+          display: flex;
+          position: relative;
+          flex-direction: column;
+          gap: 2vw;
+          padding: unset;
+          z-index: 5;
+          align-items: center;
+          width: 80%;
+
+          .client-text {
+            font-family: Montserrat;
+            font-style: regular;
+            color: black;
+            letter-spacing: 2px;
+            font-size: clamp(0.7rem, 1.25vw, 1rem);
+          }
+
+          .testimony-quote {
+            font-family: Abhaya Libre;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 1.8vw, 1.8rem);
+            line-height: clamp(1.5rem, 2.5vw, 3rem);
+            padding-left: 0;
+            text-align: center;
+          }
+
+          .client-name {
+            font-family: Montserrat;
+            font-style: regular;
+            color: black;
+            letter-spacing: 2px;
+            font-size: clamp(0.7rem, 1.25vw, 1rem);
+            z-index: 5;
+            padding-left: 1rem;
+          }
+        }
+      }
+
+      .middle {
+        justify-content: center;
+      }
+    }
+
+    .middle {
+      flex-direction: column-reverse;
+    }
+  }
+}

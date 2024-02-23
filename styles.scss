@@ -1,26 +1,18 @@
-@font-face {
-  font-family: 'didot';
-  src: url(/\ assets/fonts/didot-regular.ttf);
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: 'didot';
-  src: url(/\ assets/fonts/didot-bold.ttf);
-  font-weight: 600;
-}
-
-@font-face {
-  font-family: 'didot-italic';
-  src: url(/\ assets/fonts/didot-italic.ttf);
-  font-weight: 500;
-}
-
 * {
   margin: 0;
   padding: 0;
   font-family: Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-style: regular;
+
+  font-size: 1.25vw;
+  line-height: 1.15;
+}
+
+@media only screen and (max-width: 768px) {
+  * {
+    font-size: 4.266666666667vw;
+    line-height: 1.65;
+  }
 }
 
 .main-page {
@@ -37,42 +29,53 @@
     height: fit-content;
     width: inherit;
     white-space: nowrap;
-
-    .moving-text {
-      font-size: 12rem;
-      color: white;
-      display: inline-block;
-      text-wrap: nowrap;
-      animation: marquee 30s linear infinite;
-      white-space: pre;
-    }
-
-    .moving-text2 {
-      font-size: 12rem;
-      color: white;
-      display: inline-block;
-      text-wrap: nowrap;
-      animation: marquee 30s linear infinite;
-      white-space: pre;
-    }
   }
 }
 
 .about-me {
+  position: relative;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 215vh;
   width: 100%;
-  background-color: rgb(232, 224, 211);
-}
+  padding-top: 30vh;
+  padding-bottom: 40vh;
+  font-family: didot-italic;
 
-@keyframes marquee {
-  from {
-    transform: translateX(0) translateZ(0);
+  .about-text {
+    position: sticky;
+    top: 10em;
+    z-index: 2;
+
+    p {
+      margin-bottom: 5rem;
+    }
+
   }
 
-  to {
-    transform: translateX(-100%) translateZ(0);
+  img {
+    position: absolute;
+    left: 0;
+    height: 40rem;
+    aspect-ratio: 1/1.5;
+  }
+
+  #image-1 {
+    top: 180vh;
+    left: calc(50% - 38rem);
+    z-index: 5;
+  }
+
+  #image-2 {
+    top: 100vh;
+    left: calc(50% - 5rem);
+    z-index: 1;
+  }
+
+  #image-3 {
+    top: 170vh;
+    z-index: 5;
+    left: calc(50% + 15rem);
   }
 }
 
@@ -87,42 +90,28 @@
     font-family: Montserrat;
     font-style: regular;
     color: black;
-    letter-spacing: 3px;
+    letter-spacing: 5px;
     font-size: 0.8rem;
   }
 
   .header {
-    font-family: Abhaya Libre, serif;
+    font-family: didot-italic;
     font-size: 3rem;
     max-width: 38rem;
     text-align: center;
   }
 
   .description {
-    font-family: Montserrat;
+    font-family: 'Montserrat', 'sans-serif';
     font-style: regular;
     color: black;
     font-size: 1.1rem;
     max-width: 52%;
     text-align: center;
     margin-top: 2rem;
+    text-align: justify;
   }
 }
-
-.about-me {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
-  height: 120vh;
-  width: 100%;
-}
-
-
-
-
-
-
 
 
 .grow {
@@ -138,7 +127,7 @@
   display: flex;
   flex-direction: column;
   background-color: black;
-  padding: 10rem 0 0 0;
+  padding: 10rem 0 17rem 0;
   width: 100%;
 
   .test-wrapper {
@@ -196,50 +185,61 @@
   }
 }
 
-.main-testimony-wrapper {
-  display: flex;
+.testimony-section {
   position: relative;
-  margin: 5rem 5rem;
+  margin: 0 0 0 5rem;
   gap: 5rem;
+  height: 35rem;
 
-  .testimony {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 2rem;
-
-    .client-name {
-      font-family: Montserrat;
-      color: black;
-      letter-spacing: 3px;
-      font-size: 0.8rem;
-    }
-
-    .quote-italic {
-      font-family: didot-italic;
-      font-style: regular;
-      color: black;
-      letter-spacing: 3px;
-      font-size: 1.8rem;
-    }
-
-    .quote-regular {
-      font-family: Montserrat;
-      font-style: regular;
-      color: black;
-      letter-spacing: 3px;
-      font-size: 1rem;
-    }
-
-    .button {
-      align-self: flex-end;
-      margin-top: 2rem;
-    }
+  .client-name {
+    font-family: Montserrat;
+    color: black;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
   }
 
-  img {
-    width: 30%;
-    flex-shrink: 0;
+  .testimony-wrapper {
+    display: flex;
+    width: 100%;
+
+    .testimony {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 2rem;
+      width: 55%;
+
+      .quote-italic {
+        font-family: didot-italic;
+        font-style: regular;
+        color: black;
+        letter-spacing: 3px;
+        font-size: 1.3rem;
+        width: fit-content;
+      }
+
+      .quote-regular {
+        font-family: 'Montserrat', 'sans-serif';
+        color: black;
+        line-height: 1.4rem;
+        font-size: 0.9rem;
+        color: rgb(100, 100, 100);
+      }
+
+      .button {
+        align-self: flex-end;
+        margin-top: 2rem;
+      }
+    }
+
+    img {
+      width: 38%;
+      aspect-ratio: 1 / 1.4;
+      flex-shrink: 0;
+      position: absolute;
+      top: -15rem;
+      right: 0;
+    }
   }
 }
 
@@ -271,40 +271,52 @@
 .asthetic-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 10rem;
+  gap: 4rem;
   position: relative;
-  padding: 5rem 0;
+  padding: 4rem 0 5rem;
   margin: 15rem 0;
 
   .relative-image {
     position: relative;
     align-self: center;
-    height: 90vh;
+    height: 82vh;
     width: fit-content;
+    aspect-ratio: 1 / 1.4;
     z-index: 1;
     margin-right: 5rem;
+    opacity: 0;
   }
 
   .absolute-image-1 {
     position: absolute;
     top: 0;
     left: 0;
-    height: 70vh;
+    height: 50vh;
+    opacity: 0;
   }
 
   .absolute-image-2 {
     position: absolute;
-    top: 40%;
+    top: 15rem;
     right: 0;
-    transform: translateY(-50%);
-    height: 75vh;
+    height: 50vh;
+    opacity: 0;
   }
 
   .absolute-image-3 {
     position: absolute;
-    bottom: 10rem;
-    right: 65%;
-    height: 80vh;
+    top: calc(2rem + 75vh);
+    left: calc(50% - 30rem);
+    height: 40vh;
+    opacity: 0;
+  }
+
+  #asthetic-image-5 {
+    display: none;
+  }
+
+  #asthetic-image-6 {
+    display: none;
   }
 
   .asthetic-description {
@@ -319,19 +331,19 @@
       font-style: regular;
       color: black;
       letter-spacing: 3px;
-      font-size: 0.8rem;
+      font-size: 0.7rem;
     }
 
     .header {
       font-family: didot;
-      font-size: 3rem;
+      font-size: 2.7rem;
     }
 
     .paragraph {
       font-family: Montserrat;
       color: black;
-      font-size: 1.3rem;
-      line-height: 2.25rem;
+      font-size: 0.9rem;
+      line-height: 1.75rem;
       margin-top: 2rem;
     }
   }
@@ -341,116 +353,376 @@
 
 .booking-now {
   font-family: didot;
-  font-size: 15rem;
+  font-size: 12rem;
   white-space: nowrap;
-  width: 100%;
   overflow: hidden;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
+  margin-left: -200rem;
+  width: fit-content;
+  transition: transform 0.45s ease-out;
+  max-width: 100vw;
 }
 
+@media only screen and (max-width: 768px) {
+  .main-page {
+    position: relative;
+    height: 100vh;
+    max-width: 100vw;
+    overflow: hidden;
 
+    .text-wrapper {
+      display: none;
+    }
+  }
 
+  .about-me {
+    height: fit-content;
+    width: calc(100% - 30px);
+    overflow: hidden;
+    padding: 10rem 15px 7rem;
 
+    .about-text {
 
-.testimonies-section {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 8rem 0;
-  background-color: black;
+      #desktop-button {
+        display: none;
+      }
 
-  .testimonies-wrapper {
-    width: 100%;
-    height: 52vh;
-    max-width: 85vw;
-    background-color: #F1F0F0;
-    border-radius: 15px;
-    display: flex;
-    padding: 1.25rem;
-    gap: 1.5rem;
-
-    .timer {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      font-family: Abhaya Libre, serif;
-      font-size: 0.65rem;
-      width: 2rem;
-      flex-shrink: 0;
-
-      .progress-bar-wrapper {
-        position: relative;
-        height: 30%;
-        width: 1px;
-        background-color: rgb(212, 212, 212);
-
-        .progress-bar {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 1px;
-          background-color: black;
-          animation: loading 15s linear infinite;
-        }
+      #mobile-button {
+        display: unset;
       }
     }
 
-    // .testimony-container {
-    //   position: relative;
-    //   height: 100%;
-    //   flex-grow: 1;
-    //   padding: 2rem 0;
-    //   overflow: hidden;
+    img {}
 
-    //   .testimony-wrapper {
-    //     position: absolute;
-    //     display: flex;
-    //     flex-direction: column;
-    //     padding: 2rem 0;
-    //     height: 100%;
-    //     top: 0;
-    //     width: 100%;
+    #image-1 {
+      display: none;
+    }
 
-    //     .testimony-title {
-    //       font-family: Abhaya Libre, serif;
-    //       font-size: 2.5rem;
-    //     }
+    #image-2 {
+      display: none;
+    }
 
-    //     .testimony-date {
-    //       font-family: Montserrat;
-    //       font-style: regular;
-    //       color: black;
-    //       letter-spacing: 3px;
-    //       font-size: 0.8rem;
-    //     }
-
-    //     .testimony {
-    //       margin-top: 1.5rem;
-    //       font-family: Montserrat;
-    //       font-style: regular;
-    //       color: black;
-    //       font-size: 1.25rem;
-    //       line-height: 2.5rem;
-    //     }
-    //   }
-
-    //   .animate-scroll {
-    //     transition: top 1s ease-in-out;
-    //   }
-    // }
-
-    .image {
-      height: 100%;
-      aspect-ratio: 1;
-      background-color: rgb(227, 227, 227);
-      border-radius: 8px;
+    #image-3 {
+      display: none;
     }
   }
+
+  .section-header {
+
+    .sub-header {
+      font-weight: 500;
+      font-size: 0.7rem;
+    }
+
+    .header {
+      font-size: 2.2rem;
+    }
+
+    .description {
+      max-width: 90%;
+      font-size: 0.85rem;
+      font-weight: 300;
+    }
+  }
+
+  .journal-section {
+    width: calc(100% - 30px);
+    padding: 7rem 15px;
+
+    .test-wrapper {
+
+      .journal-carousel {
+
+        &::-webkit-scrollbar {}
+
+        .carousel-image {
+
+          .image {}
+        }
+
+        .focused {}
+      }
+    }
+
+    .journal-button {
+      margin-bottom: 0;
+    }
+  }
+
+  .testimony-section {
+    width: calc(100% - 30px);
+    padding: 2.5rem 15px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    height: fit-content;
+
+    .client-name {
+      font-family: Montserrat;
+      color: black;
+      letter-spacing: 3px;
+      font-size: 0.8rem;
+    }
+
+    .testimony-wrapper {
+      flex-direction: column-reverse;
+      align-items: center;
+
+      gap: 2.58rem;
+
+      .testimony {
+        width: 100%;
+
+        .quote-italic {
+          text-align: center;
+        }
+
+        .quote-regular {}
+
+        .button {
+          align-self: center;
+        }
+      }
+
+      img {
+        position: relative;
+        object-fit: cover;
+        width: 70%;
+        aspect-ratio: unset;
+        top: unset;
+        right: unset;
+      }
+    }
+  }
+
+  .vendor-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 30px);
+    padding: 4rem 15px;
+    margin: 0;
+    overflow: hidden;
+    background-color: #ececec;
+    gap: 4rem;
+
+    .vendor-label {
+      font-family: Montserrat;
+      font-style: regular;
+      color: black;
+      letter-spacing: 5px;
+      font-size: 0.8rem;
+    }
+
+    .vendor-images {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 2rem;
+
+      .vendor {
+        max-width: 100%;
+        height: auto;
+        justify-self: center;
+        align-self: center;
+      }
+    }
+  }
+
+
+  .asthetic-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    position: relative;
+    padding: 7rem 0 5rem;
+    margin: 0;
+    max-width: 100vw;
+    overflow: hidden;
+
+    .relative-image {
+      display: none;
+    }
+
+    .absolute-image-1 {
+      display: none;
+    }
+
+    .absolute-image-2 {
+      display: none;
+    }
+
+    .absolute-image-3 {
+      display: none;
+    }
+
+    #asthetic-image-5 {
+      display: unset;
+      width: 80%;
+      z-index: 2;
+    }
+
+    #asthetic-image-6 {
+      display: unset;
+      width: 50%;
+      aspect-ratio: 1/1.15;
+      object-fit: cover;
+      margin-top: -7rem;
+      align-self: flex-end;
+    }
+
+    .asthetic-description {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: calc(100% - 30px);
+      margin-left: 0;
+      padding: 0 15px;
+      margin-top: -4rem;
+
+      .sub-header {
+        font-family: Montserrat;
+        font-style: regular;
+        color: black;
+        letter-spacing: 3px;
+        font-size: 0.7rem;
+      }
+
+      br {
+        display: none;
+      }
+
+      .header {
+        font-family: didot-italic;
+        font-size: 2rem;
+      }
+
+      .paragraph {
+        font-size: 0.8rem;
+        line-height: unset;
+        margin-top: 2rem;
+        text-align: justify;
+      }
+    }
+  }
+
+
+
+  .booking-now {
+    font-family: didot;
+    font-size: 1rem;
+    white-space: nowrap;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    transition: transform 0.45s ease-out;
+    width: 100%;
+    max-width: unset;
+  }
 }
+
+
+
+// .testimonies-section {
+//   display: flex;
+//   justify-content: center;
+//   width: 100%;
+//   margin: 8rem 0;
+//   background-color: black;
+
+//   .testimonies-wrapper {
+//     width: 100%;
+//     height: 52vh;
+//     max-width: 85vw;
+//     background-color: #F1F0F0;
+//     border-radius: 15px;
+//     display: flex;
+//     padding: 1.25rem;
+//     gap: 1.5rem;
+
+//     .timer {
+//       height: 100%;
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       justify-content: center;
+//       gap: 1rem;
+//       font-family: Abhaya Libre, serif;
+//       font-size: 0.65rem;
+//       width: 2rem;
+//       flex-shrink: 0;
+
+//       .progress-bar-wrapper {
+//         position: relative;
+//         height: 30%;
+//         width: 1px;
+//         background-color: rgb(212, 212, 212);
+
+//         .progress-bar {
+//           position: absolute;
+//           top: 0;
+//           left: 0;
+//           width: 1px;
+//           background-color: black;
+//           animation: loading 15s linear infinite;
+//         }
+//       }
+//     }
+
+// .testimony-container {
+//   position: relative;
+//   height: 100%;
+//   flex-grow: 1;
+//   padding: 2rem 0;
+//   overflow: hidden;
+
+//   .testimony-wrapper {
+//     position: absolute;
+//     display: flex;
+//     flex-direction: column;
+//     padding: 2rem 0;
+//     height: 100%;
+//     top: 0;
+//     width: 100%;
+
+//     .testimony-title {
+//       font-family: Abhaya Libre, serif;
+//       font-size: 2.5rem;
+//     }
+
+//     .testimony-date {
+//       font-family: Montserrat;
+//       font-style: regular;
+//       color: black;
+//       letter-spacing: 3px;
+//       font-size: 0.8rem;
+//     }
+
+//     .testimony {
+//       margin-top: 1.5rem;
+//       font-family: Montserrat;
+//       font-style: regular;
+//       color: black;
+//       font-size: 1.25rem;
+//       line-height: 2.5rem;
+//     }
+//   }
+
+//   .animate-scroll {
+//     transition: top 1s ease-in-out;
+//   }
+// }
+
+//     .image {
+//       height: 100%;
+//       aspect-ratio: 1;
+//       background-color: rgb(227, 227, 227);
+//       border-radius: 8px;
+//     }
+//   }
+// }
 
 .contact-section {
   display: flex;
@@ -505,170 +777,12 @@
   }
 }
 
-.about-page {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  background-color: rgb(104, 104, 104);
 
-  img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: 50% 20%;
-  }
 
-  .text-wrapper {
-    position: absolute;
-    left: 5rem;
-    top: 50%;
-    transform: translateY(-50%);
 
-    .header {
-      font-family: didot;
-      font-size: 4rem;
-    }
 
-    .sub-header {
-      font-family: Montserrat;
-      color: black;
-      letter-spacing: 6px;
-      font-size: 1rem;
-    }
 
-    .description {
-      margin-top: 2.5rem;
-      font-family: Montserrat;
-      font-style: regular;
-      color: black;
-      font-size: 1rem;
-      max-width: 35%;
-      line-height: 2rem;
-    }
-  }
-}
 
-.client-quote {
-  position: relative;
-  width: 100%;
-  margin: 10rem 0 17rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
-
-  .quote {
-    font-family: 'cormorant garamond';
-    font-style: regular;
-    color: black;
-    font-size: 3rem;
-    max-width: 60%;
-    line-height: 4rem;
-    text-align: center;
-  }
-
-  .emphasize {
-    font-family: didot-italic;
-    font-size: 2.8rem;
-  }
-
-  .client {
-    font-family: Montserrat;
-    font-style: regular;
-    color: black;
-    letter-spacing: 4px;
-    font-size: 0.8rem;
-  }
-}
-
-.about-maddie {
-  position: relative;
-  background-color: #F1F0F0;
-  height: 125vh;
-  padding: 7rem 8.5rem;
-
-  .image {
-    position: absolute;
-    top: -8rem;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 50rem;
-    width: 30rem;
-    background-color: rgb(255, 224, 229);
-    z-index: 1;
-  }
-
-  .about-text-block-1 {
-    position: relative;
-    display: block;
-    font-family: 'cormorant garamond';
-    font-size: 2.3rem;
-    max-width: 43%;
-    z-index: 5;
-    line-height: 3.5rem;
-  }
-
-  .about-text-block-2 {
-    position: absolute;
-    display: block;
-    font-family: Montserrat;
-    font-size: 1.25rem;
-    max-width: 40%;
-    line-height: 2.5rem;
-    bottom: 15rem;
-    right: 4rem;
-  }
-}
-
-.more-section {
-  position: relative;
-  background-color: black;
-  display: flex;
-  padding-bottom: 6rem;
-
-  .image {
-    position: relative;
-    width: 50%;
-    height: 110vh;
-    background-color: rgb(233, 228, 207);
-    margin-top: -8rem;
-    flex-shrink: 0;
-  }
-
-  .more-text-wrapper {
-    display: flex;
-    flex-direction: column;
-    padding: 4.5rem 4.5rem;
-    gap: 2rem;
-
-    .header {
-      font-family: didot;
-      font-size: 3.25rem;
-      color: white;
-      width: 36rem;
-    }
-
-    .sub-header {
-      font-family: Montserrat;
-      font-style: regular;
-      color: black;
-      letter-spacing: 4px;
-      font-size: 1rem;
-      color: white;
-    }
-
-    .description {
-      font-family: Montserrat;
-      font-style: regular;
-      color: black;
-      font-size: 1.25rem;
-      line-height: 3.25rem;
-      color: white;
-      width: 35rem;
-    }
-  }
-}
 
 
 /*
@@ -781,277 +895,6 @@
   }
 }
 
-
-
-/*
--------------------------------------------------------------------
----  TESTIMONY PAGE
--------------------------------------------------------------------
-*/
-
-.testimonies-page {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-
-  .image-wrapper {
-    position: relative;
-    height: 65vh;
-    width: 80%;
-    background-color: rgb(218, 218, 218);
-
-    .focused-image {
-      width: 100%;
-      height: 100%;
-      object-fit: none;
-    }
-
-    .header {
-      font-family: Abhaya Libre, serif;
-      font-size: 6rem;
-      max-width: 70rem;
-      text-align: center;
-    }
-
-    .top-left {
-      position: absolute;
-      top: -3rem;
-      left: -5rem
-    }
-
-    .bottom-right {
-      position: absolute;
-      bottom: -3.5rem;
-      right: -5rem;
-    }
-  }
-}
-
-.testimony {
-  .testimony-wrapper {
-    display: flex;
-    height: 120vh;
-    width: 100%;
-
-    .client-images {
-      position: relative;
-      width: 55%;
-      height: 100%;
-      flex-shrink: 0;
-
-      .testimony-img-1 {
-        position: absolute;
-        right: 10%;
-        top: 10%;
-        object-fit: cover;
-        height: 80vh;
-      }
-
-      .testimony-img-2 {
-        object-fit: cover;
-        position: absolute;
-        left: 20%;
-        bottom: 5%;
-        height: 60vh;
-        width: 30rem;
-      }
-    }
-
-    .client-testimony-wrapper {
-      display: flex;
-      height: 100%;
-      width: 45%;
-      align-items: center;
-
-      .client-testimony {
-        display: flex;
-        position: relative;
-        flex-direction: column;
-        gap: 2rem;
-        padding: 2rem;
-        z-index: 5;
-        width: 80%;
-
-        .client-text {
-          font-family: Montserrat;
-          font-style: regular;
-          color: black;
-          letter-spacing: 3px;
-          font-size: 1rem;
-          z-index: 5;
-        }
-
-        .testimony {
-          font-size: 1.8rem;
-          font-family: Abhaya Libre;
-          line-height: 3rem;
-          padding-left: 3rem;
-          z-index: 5;
-        }
-
-        .client-name {
-          font-family: Montserrat;
-          font-style: regular;
-          color: black;
-          letter-spacing: 2px;
-          font-size: 1rem;
-          z-index: 5;
-          padding-left: 1rem;
-        }
-
-        .quote-accent {
-          position: absolute;
-          height: 15rem;
-          width: 15rem;
-          color: #FCF8EE;
-        }
-
-        .top {
-          top: 0rem;
-          left: 0rem;
-          transform: rotate(180deg);
-        }
-
-        .bottom {
-          bottom: 0rem;
-          right: 6.5rem;
-        }
-      }
-    }
-  }
-}
-
-
-/*
--------------------------------------------------------------------
----  CONTACT PAGE
--------------------------------------------------------------------
-*/
-
-.contact-header {
-  position: relative;
-  height: 120vh;
-  width: 100%;
-
-  img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
-
-  .maddie-west-accent {
-    position: absolute;
-    transform: rotate(270deg) translateX(50%);
-    left: -9.5rem;
-    bottom: 3rem;
-  }
-
-  .contact-header-text {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    width: 75rem;
-    text-align: center;
-    transform: translateX(-50%);
-    font-size: 7rem;
-    font-family: 'Cormorant Garamond', sans-serif;
-    font-weight: 200;
-
-    .emphasized {
-      font-family: 'didot', sans-serif;
-    }
-  }
-}
-
-.contact-section {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin: 10rem 0;
-  height: fit-content;
-
-  .contact-form-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 5rem;
-    max-width: 50rem;
-
-    p {
-      text-align: center;
-      font-size: 1.25rem;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 400;
-      letter-spacing: 3px;
-      line-height: 1.7rem;
-    }
-
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      gap: 4rem;
-      align-items: center;
-
-      .input-wrapper {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-
-        .input-label {
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 300;
-          font-size: 0.9rem;
-
-          span {
-            color: red;
-          }
-        }
-
-        input {
-          border: none;
-          border-bottom: 1px solid black;
-          padding: 0.75rem 1rem;
-          font-size: 1.15rem;
-          text-transform: uppercase;
-          letter-spacing: 2px;
-
-          &:focus {
-            outline: none
-          }
-
-          &::placeholder {
-            color: #e7e7e7;
-            font-weight: 300;
-          }
-        }
-
-        textarea {
-          resize: none;
-          border: none;
-          border-bottom: 1px solid black;
-          padding: 0.75rem 1rem;
-          font-size: 1.15rem;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          height: 12rem;
-
-          &:focus {
-            outline: none
-          }
-
-          &::placeholder {
-            color: #e7e7e7;
-            font-weight: 300;
-          }
-        }
-      }
-    }
-  }
-}
 
 /*
 -------------------------------------------------------------------

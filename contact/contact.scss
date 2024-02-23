@@ -3,6 +3,7 @@
     margin: 5rem 0;
     height: 60vh;
     width: 100%;
+    overflow: hidden;
 
     .header-wrapper {
         display: flex;
@@ -22,8 +23,8 @@
         }
 
         .header {
-            font-family: didot;
-            font-size: 6rem;
+            font-family: "Cormorant Garamond";
+            font-size: 4rem;
             text-align: center;
         }
     }

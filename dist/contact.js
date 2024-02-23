@@ -1,4 +1,3 @@
-"use strict";
 const contactStyles = document.createElement("link");
 contactStyles.setAttribute("rel", "stylesheet");
 contactStyles.setAttribute("href", "contact/contact.scss");
@@ -21,3 +20,5 @@ class Contact extends HTMLElement {
     }
 }
 customElements.define("maddie-west-contact", Contact);
+export {};
+//# sourceMappingURL=contact.js.map

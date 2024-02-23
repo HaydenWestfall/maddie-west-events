@@ -1,4 +1,3 @@
-"use strict";
 const footerStyles = document.createElement("link");
 footerStyles.setAttribute("rel", "stylesheet");
 footerStyles.setAttribute("href", "footer/footer.scss");
@@ -21,3 +20,5 @@ class Footer extends HTMLElement {
     }
 }
 customElements.define("maddie-west-footer", Footer);
+export {};
+//# sourceMappingURL=footer.js.map

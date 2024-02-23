@@ -1,16 +1,4 @@
-var _a, _b, _c;
-const images = document.querySelectorAll('div.carousel-image');
-console.log(images);
-let index = 0;
-(_a = document.getElementById('left')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
-    rotate('prev');
-});
-(_b = document.getElementById('right')) === null || _b === void 0 ? void 0 : _b.addEventListener('click', () => {
-    rotate('next');
-});
-(_c = document.getElementById('test')) === null || _c === void 0 ? void 0 : _c.addEventListener('click', () => {
-    test();
-});
+
 /////////////////////////////////////////////////////////////////////////////
 //  SCROLLBAR TOGGLE VISIBILITY ON SCROLL
 /////////////////////////////////////////////////////////////////////////////
@@ -20,12 +8,12 @@ const shadowElement = navbar.shadowRoot;
 window.addEventListener('scroll', function () {
     let scrollTop = window.scrollY || this.document.documentElement.scrollTop;
     if (scrollTop > lastScrollTop) {
-        shadowElement.querySelector('header').style.top = '-80px';
+        shadowElement.querySelector('header').style.top = '-50px';
     }
     else {
         shadowElement.querySelector('header').style.top = '0';
     }
-    lastScrollTop = scrollTop - 20;
+    lastScrollTop = scrollTop;
 });
 /////////////////////////////////////////////////////////////////////////////
 //  Journal Section
@@ -93,7 +81,7 @@ export function rotateReview() {
     const container2 = document.getElementById('2');
     let topContainer;
     let bottomContainer;
-    if ((container1 === null || container1 === void 0 ? void 0 : container1.style.top) !== '100%') {
+    if (container1?.style.top !== '100%') {
         topContainer = container1;
         bottomContainer = container2;
     }
@@ -118,7 +106,7 @@ export function rotateReview() {
     }, 1000);
 }
 // Call the function every 2 seconds (2000 milliseconds)
-const intervalId = setInterval(() => { test(); }, 2000);
+// const intervalId = setInterval(() => { test() }, 2000);
 // setTimeout(() => {
 //     test()
 // }, 100);
@@ -131,3 +119,4 @@ const intervalId = setInterval(() => { test(); }, 2000);
 //         // cardWrapper.style.left = '-588.5px'
 //     }, 2000);
 // }, 2500);
+//# sourceMappingURL=index.js.map

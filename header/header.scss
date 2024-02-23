@@ -5,10 +5,11 @@ header {
     width: 100%;
     z-index: 1000;
     transition: top 0.25s ease-in-out;
+    height: 50px;
 
     nav {
-        height: 50px;
         display: flex;
+        height: 100%;
         align-items: center;
         justify-content: space-between;
         padding: 0 2rem;
@@ -36,6 +37,12 @@ header {
                 color: inherit;
             }
         }
+
+        #nav-icon {
+            display: none;
+            border: none;
+            background-color: unset;
+        }
     }
 
     .light {
@@ -46,5 +53,89 @@ header {
     .dark {
         background-color: black;
         color: rgb(255, 255, 255);
+    }
+}
+
+.mobile-menu-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    z-index: 1002;
+    top: -20vh;
+    opacity: 0;
+    display: none;
+    transition: opacity 0.5s ease, top 0.5s ease;
+
+    .mobile-menu {
+        height: calc(100% - 3rem);
+        width: calc(100% - 3rem);
+        position: relative;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        #close-icon {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            border: none;
+            background-color: unset;
+        }
+
+        img {
+            width: 45%;
+            aspect-ratio: 1/1.5;
+            margin-bottom: 2rem;
+        }
+
+        #link-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            #link {
+                font-family: "Cormorant Garamond", serif;
+                font-weight: 300;
+                font-style: italic;
+                font-size: 2.5rem;
+            }
+
+            #instagram {
+                font-family: 'Montserrat', 'sans-serif';
+                font-size: 0.9rem;
+                letter-spacing: 2px;
+                font-weight: 500;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}
+
+.hide {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    header {
+        height: 70px;
+
+        nav {
+            padding: 0 0.75rem;
+
+            #maddie-text {
+                font-size: 0.8rem;
+            }
+
+            #nav-options {
+                display: none;
+            }
+
+            #nav-icon {
+                display: unset;
+            }
+        }
     }
 }

@@ -1,9 +1,43 @@
+/*
+-------------------------------------------------------------------
+---  FORMATTING
+-------------------------------------------------------------------
+*/
+
+@font-face {
+    font-family: 'didot';
+    src: url(/\ assets/fonts/didot-regular.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'didot';
+    src: url(/\ assets/fonts/didot-bold.ttf);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'didot-italic';
+    src: url(/\ assets/fonts/didot-italic.ttf);
+    font-weight: 500;
+}
+
+
+
+
+/*
+-------------------------------------------------------------------
+---  PRIMARY BUTTONS
+-------------------------------------------------------------------
+*/
+
 .primary-button {
-    font-size: 0.85rem;
+    font-size: 0.675rem;
     font-family: Montserrat;
     text-decoration: none;
     color: white;
-    transition: background-color 0.55s ease;
+    transition: background-color 0.4s ease;
+    letter-spacing: 2px;
     border: none;
     width: fit-content;
 
