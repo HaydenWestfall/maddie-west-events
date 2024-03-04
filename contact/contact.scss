@@ -1,31 +1,58 @@
 .contact-section {
     display: flex;
-    margin: 5rem 0;
-    height: 60vh;
+    padding: 10rem 0;
     width: 100%;
     overflow: hidden;
+    background-color: white;
 
     .header-wrapper {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
         flex-shrink: 0;
-        gap: 1rem;
-        width: 50%;
+        padding-right: 3rem;
+        width: calc(50% - 3rem);
 
-        .sub-header {
-            font-family: Montserrat;
-            font-style: regular;
-            color: black;
-            letter-spacing: 3px;
-            font-size: 0.8rem;
+        .image-wrapper {
+            position: relative;
+            display: flex;
+            flex-shrink: 0;
+            height: 28rem;
+
+            span {
+                font-family: Montserrat;
+                font-weight: 200;
+                font-size: 0.6rem;
+                position: absolute;
+                left: 0;
+                top: 21.75rem;
+                width: 11rem;
+
+                a {
+                    font-size: 0.6rem;
+                    font-weight: 500;
+                    cursor: pointer;
+                    text-decoration: none;
+                    color: black;
+                }
+
+                strong {}
+            }
         }
 
-        .header {
-            font-family: "Cormorant Garamond";
-            font-size: 4rem;
-            text-align: center;
+        #image-1 {
+            height: 21rem;
+            object-fit: cover;
+            aspect-ratio: 1 /1.5;
+        }
+
+        #image-2 {
+            width: 14rem;
+            height: fit-content;
+            object-fit: cover;
+            aspect-ratio: 1 /1.5;
+            align-self: flex-end;
+            margin-left: -3rem;
         }
     }
 
@@ -33,20 +60,107 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         gap: 4rem;
         flex-shrink: 0;
         flex-grow: 1;
-        padding: 6rem;
+        padding-right: 6rem;
         width: calc(50% - 12rem);
+        max-width: 58rem;
 
-        .contact-info-section {
+        .client-quote {
+            position: relative;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
 
-            .contact-link {
-                display: flex;
-                gap: 0.5rem;
+            .quote {
+                position: relative;
+                font-family: "Cormorant Garamond", serif;
+                font-weight: 300;
+                font-style: italic;
+                color: black;
+                font-size: 2rem;
+                line-height: 3rem;
+                max-width: fit-content;
+                text-align: center;
+            }
+
+            .emphasize {
+                font-family: didot-italic;
+                color: black;
+                font-size: 2rem;
+                font-weight: 400;
+            }
+
+            .client {
+                font-family: Montserrat;
+                font-style: regular;
+                color: black;
+                letter-spacing: 4px;
+                font-size: 0.5rem;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .contact-section {
+        flex-direction: column;
+        width: calc(100% - 30px);
+        padding: 3.5rem 15px;
+        gap: 6rem;
+
+        .header-wrapper {
+            display: block;
+            width: 100%;
+            overflow: hidden;
+            padding: 0;
+            height: fit-content;
+
+            .image-wrapper {
+                display: block;
+                width: 100%;
+
+                span {
+                    font-weight: 300;
+
+                    a {}
+
+                    strong {}
+                }
+            }
+
+            #image-1 {
+                width: 70%;
+            }
+
+            #image-2 {
+                position: absolute;
+                right: 0;
+                width: 50%;
+                bottom: 0;
+            }
+        }
+
+        .contact-info-wrapper {
+            width: 100%;
+
+            .client-quote {
+
+                .quote {
+                    font-size: 1.3rem;
+                    line-height: unset;
+                }
+
+                .emphasize {
+                    font-size: 1.2rem;
+                }
+
+                .client {}
             }
         }
     }

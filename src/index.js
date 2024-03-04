@@ -172,6 +172,171 @@ export function test() {
     }, 500);
 }
 
+export function test2() {
+
+    let offsetLeftString = cardWrapper.style.left;
+    offsetLeftString = offsetLeftString.substring(0, offsetLeftString.length - 2)
+    const cardWrapperOffsetLeft = (!isNaN(offsetLeftString) && offsetLeftString != '') ? Number.parseInt(offsetLeftString) : 0;
+
+    const imageWidth = (cardWrapper.children[0]).offsetWidth;
+    const middleOfViewPort = document.documentElement.clientWidth / 2;
+    const leftPos = middleOfViewPort - cardWrapperOffsetLeft;
+    const target = leftPos - (imageWidth / 2);
+    const test3 = document.documentElement.clientWidth * .08;
+    let newIndex = Math.ceil(target / Math.ceil(imageWidth + test3));
+
+    console.log(newIndex);
+
+    if (newIndex === 11) {
+        newIndex = 1;
+        cardWrapper.style.left = '0';
+        const childToShrink = cardWrapper.children[11];
+        childToShrink.style.transform = 'scale(1) !important';
+
+        const childToGrow = cardWrapper.children[1];
+        childToGrow.style.transform = 'scale(1.25) !important';
+        return;
+    }
+
+    const childToShrink = cardWrapper.children[newIndex];
+    const childToShrinkId = childToShrink.getAttribute('id');
+
+    console.log("#" + childToShrinkId)
+    gsap.to("#" + childToShrinkId, { scale: 1, duration: 0.75, ease: 'power1.out' });
+
+    newIndex++;
+
+    console.log(target * -1)
+    gsap.to("#card-wrapper", { left: (target * -1) + 'px', duration: 0.75, ease: 'none' });
+
+    // cardWrapper.style.left = leftPos + 'px';
+
+    const childToGrow = cardWrapper.children[newIndex];
+    const childToGrowId = childToGrow.getAttribute('id');
+    gsap.to("#" + childToGrowId, { scale: 1.25, duration: 0.75, ease: 'power1.in' });
+
+
+    setTimeout(() => {
+        test2();
+    }, 2000);
+}
+
+export function test3() {
+
+    var container2 = document.getElementById('card-wrapper');
+    var current = container2.querySelectorAll('[current="' + true + '"]');
+    var next = container2.querySelectorAll('[next="' + true + '"]');
+    var curIndex = Number.parseInt(next[0].getAttribute('index'));
+
+    let offScreenLeft = container2.querySelectorAll('[index="' + (curIndex - 2) + '"]');
+    let newOnScreenRight = container2.querySelectorAll('[index="' + (curIndex + 1) + '"]');
+
+    console.log(curIndex)
+
+    if (curIndex == 13) {
+        container2.scrollLeft = 0;
+
+        let wrap1 = container2.querySelectorAll('[index="11"]');
+        let wrap2 = container2.querySelectorAll('[index="12"]');
+        let wrap3 = container2.querySelectorAll('[index="13"]');
+        wrap1[0].style.opacity = 0;
+        wrap2[0].style.opacity = 0;
+        wrap3[0].style.opacity = 0;
+
+        wrap1 = container2.querySelectorAll('[index="1"]');
+        wrap2 = container2.querySelectorAll('[index="2"]');
+        wrap3 = container2.querySelectorAll('[index="3"]');
+        wrap1[0].style.opacity = 1;
+        wrap2[0].style.opacity = 1;
+        wrap3[0].style.opacity = 1;
+
+        next[0].setAttribute('current', false);
+        next[0].setAttribute('next', false);
+        current[0].setAttribute('current', false);
+        current[0].setAttribute('next', false);
+        gsap.to(current[0], { scale: 1, duration: 0, ease: 'none' });
+
+        current = container2.querySelectorAll('[index="' + 2 + '"]');
+        next = container2.querySelectorAll('[index="' + 3 + '"]');
+
+        gsap.to(current[0], { scale: 1.25, duration: 0, ease: 'none' });
+
+        next[0].setAttribute('current', false);
+        next[0].setAttribute('next', true);
+        current[0].setAttribute('current', true);
+        current[0].setAttribute('next', false);
+
+        test3();
+        return;
+    }
+
+    var elementRect = next[0].getBoundingClientRect();
+    var scrollAmount = container2.scrollLeft + elementRect.width + 92.64;
+    var windowWidth = document.documentElement.clientWidth;
+    var middleWidth = windowWidth / 2;
+    var leftElem = elementRect.left + (elementRect.width / 2);
+    scrollAmount = container2.scrollLeft - (middleWidth - leftElem);
+
+    // Animate the scroll using GSAP
+    gsap.to(container2, { scrollLeft: scrollAmount, duration: 0.75, ease: "none" });
+    gsap.to(current[0], { scale: 1, duration: 0.75, ease: 'none' });
+    gsap.to(next[0], { scale: 1.25, duration: 0.75, ease: 'none' });
+    gsap.to(offScreenLeft[0], { opacity: 0, duration: 0.75, ease: 'none' });
+    gsap.to(newOnScreenRight[0], { opacity: 1, duration: 0.75, ease: 'none' });
+
+    setTimeout(() => {
+        const newNext = container2.querySelectorAll('[index="' + (curIndex + 1) + '"]');
+
+        current[0].setAttribute('current', false);
+        next[0].setAttribute('current', true);
+        next[0].setAttribute('next', false);
+        newNext[0].setAttribute('next', true);
+    }, 750);
+}
+
+export function test3Small() {
+    var container = document.getElementById('card-wrapper');
+    var currentImage = container.querySelectorAll('[current="' + true + '"]');
+    var nextImage = container.querySelectorAll('[next="' + true + '"]');
+
+    gsap.to(currentImage[0], { opacity: 0, ease: 'none', duration: 0.75 });
+    gsap.to(nextImage[0], { opacity: 1, ease: 'none', duration: 0.75 });
+
+    setTimeout(() => {
+        const newNextIndex = Number.parseInt(nextImage[0].getAttribute('index')) + 1;
+        const newNext = (newNextIndex < 11)
+            ? container.querySelectorAll('[index="' + newNextIndex + '"]')
+            : container.querySelectorAll('[index="1"]');
+        currentImage[0].setAttribute('current', false);
+        nextImage[0].setAttribute('current', true);
+        nextImage[0].setAttribute('next', false);
+        newNext[0].setAttribute('next', true);
+    }, 750);
+}
+
+
+if (document.documentElement.clientWidth > 768) {
+    var first = document.getElementById('card-wrapper').querySelectorAll('[index="' + 1 + '"]');
+    var second = document.getElementById('card-wrapper').querySelectorAll('[index="' + 2 + '"]');
+    var third = document.getElementById('card-wrapper').querySelectorAll('[index="' + 3 + '"]');
+    first[0].style.opacity = 1;
+    second[0].style.opacity = 1;
+    third[0].style.opacity = 1;
+    gsap.to(second[0], { scale: 1.25, duration: 0, ease: 'none' });
+}
+
+// document.getElementById('test').addEventListener('click', function () {
+//     test3();
+// })
+
+const intervalId = setInterval(() => {
+    if (document.documentElement.clientWidth > 768) {
+        test3();
+    } else {
+        test3Small();
+    }
+}, 3000);
+
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -218,9 +383,11 @@ export function rotateReview() {
     }, 1000);
 }
 
+// test2();
+
 
 // Call the function every 2 seconds (2000 milliseconds)
-const intervalId = setInterval(() => { test() }, 2000);
+// const intervalId = setInterval(() => { test2() }, 3000);
 
 // setTimeout(() => {
 //     test()

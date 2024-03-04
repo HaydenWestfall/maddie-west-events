@@ -2,18 +2,7 @@
 /////////////////////////////////////////////////////////////////////////////
 //  SCROLLBAR TOGGLE VISIBILITY ON SCROLL
 /////////////////////////////////////////////////////////////////////////////
-let lastScrollTop = 0;
-const navbar = document.getElementsByTagName('maddie-west-header')[0];
-const shadowElement = navbar.shadowRoot;
-window.addEventListener('scroll', function () {
-  let scrollTop = window.scrollY || this.document.documentElement.scrollTop;
-  if (scrollTop > lastScrollTop) {
-    shadowElement.querySelector('header').style.top = '-50px';
-  } else {
-    shadowElement.querySelector('header').style.top = '0';
-  }
-  lastScrollTop = scrollTop;
-});
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,17 +22,6 @@ gsap.to("#about-maddie-image", {
     trigger: "#about-maddie-image",
     start: "top bottom", // Change according to your needs
     end: "top 80%", // Change according to your needs
-    scrub: true
-  }
-});
-
-gsap.to("#about-text-block-1", {
-  translateY: -100,
-  opacity: 1,
-  scrollTrigger: {
-    trigger: "#about-text-block-1",
-    start: "top 80%", // Change according to your needs
-    end: "top center", // Change according to your needs
     scrub: true
   }
 });
@@ -116,4 +94,17 @@ gsap.to("#more-section-description", {
     scrub: true
   }
 });
+
+
+function switchImage() {
+  const image = document.getElementById('about-cover-photo');
+  if (document.documentElement.clientWidth > 768) {
+    image.src = "/ assets/about/cover.png";
+  } else {
+    image.src = "/ assets/about/cover_2.png";
+  }
+}
+
+switchImage();
+window.addEventListener('resize', switchImage);
 

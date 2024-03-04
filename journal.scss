@@ -1,0 +1,226 @@
+.journal-header-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+
+  .journal-images {
+    background-color: black;
+    height: 65vh;
+    min-height: 28rem;
+    display: flex;
+    gap: 0;
+
+    img {
+      width: 20%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .journal-header {
+    background-color: black;
+    position: relative;
+    height: 30vh;
+    padding-bottom: 15rem;
+
+    .header-text {
+      position: absolute;
+      top: -5rem;
+      left: 3rem;
+      color: white;
+      z-index: 10;
+
+      span {
+        font-family: didot-italic;
+        font-size: 9rem;
+
+        &:last-child {
+          padding-left: 8rem;
+        }
+      }
+    }
+  }
+
+  .scroll-accent {
+    border-radius: 20rem;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    height: 4rem;
+    width: 2rem;
+    position: absolute;
+    right: 7rem;
+    transform: translateX(-50%);
+    bottom: 30%;
+  }
+}
+
+
+.journal-entry-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  padding: 10rem 0;
+
+  .journal-entry-wrapper {
+    max-width: 45rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    color: rgb(218, 218, 218);
+
+    .couple-name {
+      font-family: 'didot', 'sans-serif';
+      font-size: 2.5rem;
+      font-weight: 400;
+    }
+
+    .wedding-description {
+      font-family: 'Abhaya Libre', 'sans-serif';
+      font-weight: 400;
+      font-size: 1.5rem;
+      line-height: 2.75rem;
+
+      .first-letter {
+        height: 5rem;
+        float: left;
+        font-family: 'Abhaya Libre', 'sans-serif';
+        font-weight: 400;
+        font-size: 6.6rem;
+        line-height: 5.9rem;
+        margin-right: 0.5rem;
+      }
+    }
+
+    .images {
+      display: flex;
+      gap: 3rem;
+
+      img {
+        width: calc(33% - 2rem);
+        aspect-ratio: 1/1.5;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .journal-header-wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+
+    .journal-images {
+      position: relative;
+      height: 15rem;
+      display: flex;
+
+      .journal-image {
+        position: absolute;
+        height: 12rem;
+
+        &.image-1 {
+          top: 2rem;
+          left: 61%;
+          transform: rotate(22deg) translateX(-50%);
+          transform-origin: bottom;
+          z-index: 3;
+        }
+
+        &.image-2 {
+          top: 3rem;
+          left: 54%;
+          transform: rotate(10deg) translateX(-50%);
+          transform-origin: bottom;
+          z-index: 2;
+        }
+
+        &.image-3 {
+          top: 4rem;
+          left: 47%;
+          transform: rotate(-2deg) translateX(-50%);
+          transform-origin: bottom;
+          z-index: 1;
+        }
+
+        &.image-4 {
+          top: 5rem;
+          left: 40%;
+          transform: rotate(-14deg) translateX(-50%);
+          transform-origin: bottom;
+          z-index: 0;
+        }
+
+        &.image-5 {
+          display: none;
+        }
+      }
+    }
+
+    .journal-header {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 0;
+      padding-top: 5rem;
+      margin-top: 30px;
+
+      .header-text {
+        width: 100%;
+        height: fit-content;
+        text-align: center;
+        position: relative;
+        top: 0;
+        left: 0;
+
+        span {
+          font-size: 3rem;
+
+          &:last-child {
+            padding: 0;
+          }
+        }
+      }
+
+      .scroll-accent {
+        display: none;
+      }
+    }
+  }
+
+  .journal-entry-section {
+    padding: 10rem 0 0;
+
+    .journal-entry-wrapper {
+      width: calc(100% - 30px);
+      padding: 0 30px 5rem;
+
+      .couple-name {
+        font-size: 2rem;
+      }
+
+      .wedding-description {
+        font-size: 1rem;
+        line-height: unset;
+        font-family: Montserrat;
+        text-align: justify;
+
+        .first-letter {
+          height: 4rem;
+          font-size: 6.6rem;
+          line-height: 5.5rem;
+        }
+      }
+
+      .images {
+        gap: 12px;
+
+        img {
+          width: calc(33% - 8px);
+        }
+      }
+    }
+  }
+}

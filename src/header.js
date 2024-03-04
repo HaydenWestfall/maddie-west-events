@@ -65,3 +65,16 @@ class Header extends HTMLElement {
 }
 
 customElements.define("maddie-west-header", Header);
+
+let lastScrollTop = 0;
+const maddieWestHeader = document.getElementsByTagName('maddie-west-header')[0].shadowRoot;
+
+window.addEventListener('scroll', function () {
+  const scrollTop = window.scrollY || this.document.documentElement.scrollTop;
+  const navbarHeight = maddieWestHeader.querySelector('header').offsetHeight;
+  maddieWestHeader.querySelector('header').style.top = (scrollTop > lastScrollTop && document.documentElement.clientWidth > 768)
+    ? `-${navbarHeight + 1}px`
+    : '0';
+  lastScrollTop = scrollTop;
+});
+

@@ -1,0 +1,216 @@
+.packages-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin: 10rem 0 18rem;
+
+  .sub-header {
+    font-family: Montserrat;
+    font-style: regular;
+    color: black;
+    letter-spacing: 3px;
+    font-size: 1rem;
+  }
+
+  .header {
+    font-family: Abhaya Libre, serif;
+    font-size: 4rem;
+    max-width: 70rem;
+    text-align: center;
+  }
+}
+
+.packages-body {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 15rem;
+
+  .package-wrapper {
+    display: flex;
+
+    .package-image {
+      width: 50%;
+
+      img {
+        height: 100vh;
+        width: 80%;
+        object-fit: cover;
+        float: right;
+      }
+    }
+
+    .package-info-wrapper {
+      display: flex;
+      width: 50%;
+
+      .package-info {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+
+        .package-header {
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px solid black;
+          padding: 2rem 2rem 1rem 3rem;
+        }
+
+        .description {
+          font-size: 1.2rem;
+          line-height: 2.25rem;
+          font-weight: 300;
+          padding: 1rem 2rem 3rem 3rem;
+          text-align: justify;
+        }
+
+        .includes-text {
+          font-size: 1.2rem;
+          letter-spacing: 3px;
+          text-decoration: underline;
+          padding: 1rem 2rem 1.5rem 3rem;
+        }
+
+        ul {
+          padding: 0rem 2rem 3rem 4.5rem;
+          list-style: none;
+
+          li {
+            padding-bottom: 1rem;
+            font-size: 1.2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+
+            &::before {
+              content: "\2022";
+              color: black;
+              font-size: 24px;
+              display: inline-block;
+              width: 1em;
+              margin-left: -1em;
+            }
+          }
+        }
+
+        button {
+          margin-left: 3rem;
+        }
+      }
+    }
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+  .packages-header {
+    width: calc(100% - 30px);
+    margin: 8rem 0 10rem;
+    padding: 0 15px;
+
+    .header {
+      font-family: didot;
+      font-size: 1.5rem;
+      max-width: unset;
+      text-align: center;
+    }
+
+    .sub-header {
+      font-size: 0.6rem;
+    }
+  }
+
+  .packages-body {
+    .package-wrapper {
+      display: flex;
+      margin-bottom: 0;
+      max-width: 100%;
+      overflow: hidden;
+      flex-direction: column;
+      max-width: unset;
+      width: calc(100% - 30px);
+      padding: 0 15px;
+
+      .package-image {
+        width: 100%;
+
+        img {
+          width: 100%;
+          object-fit: cover;
+          float: unset;
+          height: 30rem;
+        }
+      }
+
+      .package-info-wrapper {
+        width: 100%;
+
+        .package-info {
+          width: 100%;
+          padding: 5rem 0;
+
+          .package-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid black;
+            font-size: 1.5rem;
+            font-family: Montserrat;
+            letter-spacing: 3px;
+            color: #868686;
+            padding: 1rem 15px;
+          }
+
+          .description {
+            font-size: 1rem;
+            line-height: unset;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            padding: 15px;
+          }
+
+          .includes-text {
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 3px;
+            text-decoration: underline;
+            padding: 1rem 15px;
+          }
+
+          ul {
+            padding: 0 15px;
+            list-style: none;
+
+            li {
+              padding-bottom: 0.5rem;
+              font-size: 1rem;
+              font-family: 'Montserrat', sans-serif;
+              font-weight: 300;
+
+              &::before {
+                content: "\2022";
+                color: black;
+                font-size: 24px;
+                display: inline-block;
+                width: 1em;
+                margin-left: 0em;
+              }
+            }
+          }
+
+          button {
+            margin-left: unset;
+            margin-top: 4rem;
+            align-self: center;
+          }
+        }
+      }
+    }
+
+    .second {
+      flex-direction: column-reverse;
+    }
+  }
+}

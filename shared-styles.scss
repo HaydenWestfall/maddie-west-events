@@ -1,3 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: regular;
+
+    font-size: clamp(0.8rem, 1.25vw, 1rem);
+    line-height: 1.15;
+}
+
+@media only screen and (max-width: 768px) {
+    * {
+        font-size: 4.266666666667vw;
+        line-height: 1.65;
+    }
+}
+
 /*
 -------------------------------------------------------------------
 ---  FORMATTING
@@ -22,8 +39,106 @@
     font-weight: 500;
 }
 
+h1 {
+    font-size: 4rem;
+    max-width: 80rem;
+    font-family: didot-italic;
+    text-align: center;
+}
 
+h2 {
+    font-size: 3rem;
+    max-width: 38rem;
+    font-family: didot-italic;
+    text-align: center;
+}
 
+h3 {
+    font-size: 1.8rem;
+    max-width: 38rem;
+    letter-spacing: 3px;
+    font-family: didot-italic;
+    text-align: center;
+}
+
+h4 {
+    font-size: 1.3rem;
+    max-width: 38rem;
+    letter-spacing: 3px;
+    font-family: didot-italic;
+    text-align: center;
+}
+
+h5 {
+    font-size: 1.2rem;
+    font-family: 'Montserrat', 'serif';
+    letter-spacing: 3px;
+    color: #868686;
+    font-weight: 300;
+}
+
+h6 {
+    font-family: 'Montserrat', 'serif';
+    font-style: regular;
+    color: #393939;
+    letter-spacing: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    &.small {
+        color: black;
+        letter-spacing: 4px;
+        font-size: 0.8rem;
+    }
+}
+
+.section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.quote {
+    position: relative;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 300;
+    font-style: italic;
+    color: black;
+    max-width: fit-content;
+    text-align: center;
+}
+
+.emphasize {
+    font-family: didot-italic;
+    color: black;
+    font-weight: 400;
+}
+
+.description {
+    font-family: 'Montserrat', 'sans-serif';
+    font-style: regular;
+    color: #393939;
+    font-size: 1.1rem;
+    text-align: center;
+
+    &.centered {
+        max-width: 52%;
+    }
+
+    &.justify {
+        max-width: 45rem !important;
+        line-height: 1.75rem;
+        font-size: 0.9rem;
+        text-align: justify;
+    }
+
+    &.light {
+        font-weight: 300;
+        line-height: 1.4rem;
+    }
+}
 
 /*
 -------------------------------------------------------------------
@@ -32,7 +147,6 @@
 */
 
 .primary-button {
-    font-size: 0.675rem;
     font-family: Montserrat;
     text-decoration: none;
     color: white;
@@ -40,20 +154,21 @@
     letter-spacing: 2px;
     border: none;
     width: fit-content;
-
     cursor: pointer;
 
     &.small {
         padding: 0.6rem 2rem;
+        font-size: 0.675rem;
     }
 
     &.large {
         padding: 1rem 3.5rem;
+        font-size: 0.85rem;
     }
 
     &.light {
         background-color: black;
-        color: white;
+        color: rgb(208, 208, 208);
 
         &:hover {
             background-color: rgb(240, 240, 240);
@@ -83,5 +198,60 @@
 
     &:hover {
         color: rgb(107, 107, 107);
+    }
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    h1 {
+        font-size: 2.2rem;
+        max-width: 80rem;
+        font-family: didot-italic;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        max-width: 38rem;
+        font-family: didot-italic;
+        text-align: center;
+    }
+
+    h4 {
+        font-size: 1.67rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    h6 {
+        font-size: 0.65rem;
+        letter-spacing: 0.3rem;
+        font-weight: 500;
+
+        &.small {
+            font-size: 0.65rem;
+            letter-spacing: 0.3rem;
+        }
+    }
+
+    .description {
+        font-size: 0.8rem;
+        line-height: inherit;
+        font-weight: 400;
+
+        &.centered {}
+
+        &.justify {}
+
+        &.light {}
+    }
+
+
+    .text-button {
+        font-size: 0.6rem;
+        letter-spacing: 0.3rem;
     }
 }

@@ -1,25 +1,8 @@
-* {
-  margin: 0;
-  padding: 0;
-  font-family: Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-style: regular;
-
-  font-size: 1.25vw;
-  line-height: 1.15;
-}
-
-@media only screen and (max-width: 768px) {
-  * {
-    font-size: 4.266666666667vw;
-    line-height: 1.65;
-  }
-}
-
 .main-page {
   position: relative;
   height: 120vh;
   width: 100%;
-  background-color: rgb(233, 233, 233);
+  background-color: rgb(255, 255, 255);
   overflow-x: hidden;
 
   .text-wrapper {
@@ -41,16 +24,12 @@
   padding-top: 30vh;
   padding-bottom: 40vh;
   font-family: didot-italic;
+  border-top: 1px solid black;
 
   .about-text {
     position: sticky;
     top: 10em;
     z-index: 2;
-
-    p {
-      margin-bottom: 5rem;
-    }
-
   }
 
   img {
@@ -79,49 +58,6 @@
   }
 }
 
-.section-header {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  justify-content: center;
-  align-items: center;
-
-  .sub-header {
-    font-family: Montserrat;
-    font-style: regular;
-    color: black;
-    letter-spacing: 5px;
-    font-size: 0.8rem;
-  }
-
-  .header {
-    font-family: didot-italic;
-    font-size: 3rem;
-    max-width: 38rem;
-    text-align: center;
-  }
-
-  .description {
-    font-family: 'Montserrat', 'sans-serif';
-    font-style: regular;
-    color: black;
-    font-size: 1.1rem;
-    max-width: 52%;
-    text-align: center;
-    margin-top: 2rem;
-    text-align: justify;
-  }
-}
-
-
-.grow {
-  transform: scale(1.25) !important;
-}
-
-.animate-grow {
-  transition: all 1s;
-}
-
 
 .journal-section {
   display: flex;
@@ -133,47 +69,49 @@
   .test-wrapper {
     position: relative;
     width: 100%;
-    margin-top: 12rem;
+    margin-top: 5rem;
     overflow: hidden;
     height: 56vw;
 
-    .journal-carousel {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: calc(16% / 2);
-      height: 100%;
 
-      &::-webkit-scrollbar {
-        display: none;
-        /* Safari and Chrome */
-      }
+  }
 
-      .carousel-image {
-        position: relative;
-        width: 28%;
-        aspect-ratio: 1/1.5;
-        flex-shrink: 0;
+  .journal-carousel {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: clamp(0.1rem, 8vw, 6.65rem);
+    height: 100%;
+    padding: 16% 0 5%;
+    overflow: auto;
 
-        .image {
-          object-fit: cover;
-          height: 100%;
-          width: 100%;
-        }
-      }
+    &::-webkit-scrollbar {
+      display: none;
+      /* Safari and Chrome */
+    }
 
-      .focused {
-        background: rgb(255, 232, 236);
-        width: calc(39.9% - 2rem);
+    .carousel-image {
+      position: relative;
+      width: 28%;
+      max-width: 23rem;
+      aspect-ratio: 1/1.5;
+      flex-shrink: 0;
+      opacity: 0;
+
+      .image {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        max-width: 23rem;
       }
     }
 
-    .test-scroll {
-      transition: left 1s;
-      color: red;
+    .focused {
+      background: rgb(255, 232, 236);
+      width: calc(39.9% - 2rem);
     }
   }
 
@@ -187,48 +125,26 @@
 
 .testimony-section {
   position: relative;
-  margin: 0 0 0 5rem;
   gap: 5rem;
   height: 35rem;
-
-  .client-name {
-    font-family: Montserrat;
-    color: black;
-    letter-spacing: 3px;
-    font-size: 0.8rem;
-  }
+  padding: 3rem 0 0 6rem;
 
   .testimony-wrapper {
     display: flex;
     width: 100%;
+    padding-top: 1rem;
 
     .testimony {
       display: flex;
       justify-content: center;
       flex-direction: column;
       gap: 2rem;
-      width: 55%;
+      width: 50%;
+      max-width: 38rem;
 
       .quote-italic {
-        font-family: didot-italic;
-        font-style: regular;
-        color: black;
-        letter-spacing: 3px;
-        font-size: 1.3rem;
         width: fit-content;
-      }
-
-      .quote-regular {
-        font-family: 'Montserrat', 'sans-serif';
-        color: black;
-        line-height: 1.4rem;
-        font-size: 0.9rem;
-        color: rgb(100, 100, 100);
-      }
-
-      .button {
-        align-self: flex-end;
-        margin-top: 2rem;
+        text-align: start;
       }
     }
 
@@ -320,36 +236,16 @@
   }
 
   .asthetic-description {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
     width: 50%;
     margin-left: 40%;
+    align-items: flex-start;
 
-    .sub-header {
-      font-family: Montserrat;
-      font-style: regular;
-      color: black;
-      letter-spacing: 3px;
-      font-size: 0.7rem;
-    }
-
-    .header {
-      font-family: didot;
-      font-size: 2.7rem;
-    }
-
-    .paragraph {
-      font-family: Montserrat;
-      color: black;
-      font-size: 0.9rem;
-      line-height: 1.75rem;
-      margin-top: 2rem;
+    h3 {
+      text-align: unset;
+      top: 1rem
     }
   }
 }
-
-
 
 .booking-now {
   font-family: didot;
@@ -380,7 +276,7 @@
     height: fit-content;
     width: calc(100% - 30px);
     overflow: hidden;
-    padding: 10rem 15px 7rem;
+    padding: 3.5rem 15px 3.5rem;
 
     .about-text {
 
@@ -409,7 +305,6 @@
   }
 
   .section-header {
-
     .sub-header {
       font-weight: 500;
       font-size: 0.7rem;
@@ -428,15 +323,30 @@
 
   .journal-section {
     width: calc(100% - 30px);
-    padding: 7rem 15px;
+    padding: 3.5rem 15px;
 
     .test-wrapper {
+      min-height: 80vh;
 
       .journal-carousel {
+        position: relative;
+        height: inherit;
+        width: inherit;
 
         &::-webkit-scrollbar {}
 
         .carousel-image {
+          width: 100%;
+          min-width: 100%;
+          max-width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0;
+
+          &:nth-child(2) {
+            opacity: 1;
+          }
 
           .image {}
         }
@@ -447,12 +357,13 @@
 
     .journal-button {
       margin-bottom: 0;
+      margin-top: 4rem;
     }
   }
 
   .testimony-section {
     width: calc(100% - 30px);
-    padding: 2.5rem 15px;
+    padding: 3.5rem 15px;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -470,20 +381,19 @@
     .testimony-wrapper {
       flex-direction: column-reverse;
       align-items: center;
-
-      gap: 2.58rem;
+      gap: 2.5rem;
+      padding-top: 0;
 
       .testimony {
         width: 100%;
 
         .quote-italic {
           text-align: center;
+          font-size: 1.25rem;
         }
 
-        .quote-regular {}
-
-        .button {
-          align-self: center;
+        a {
+          align-self: center !important;
         }
       }
 
@@ -583,28 +493,16 @@
       padding: 0 15px;
       margin-top: -4rem;
 
-      .sub-header {
-        font-family: Montserrat;
-        font-style: regular;
-        color: black;
-        letter-spacing: 3px;
-        font-size: 0.7rem;
-      }
-
       br {
         display: none;
       }
 
-      .header {
-        font-family: didot-italic;
-        font-size: 2rem;
+      h6 {
+        letter-spacing: 0.15rem;
       }
 
-      .paragraph {
-        font-size: 0.8rem;
-        line-height: unset;
-        margin-top: 2rem;
-        text-align: justify;
+      h3 {
+        font-size: 1.67rem;
       }
     }
   }
@@ -622,107 +520,6 @@
     max-width: unset;
   }
 }
-
-
-
-// .testimonies-section {
-//   display: flex;
-//   justify-content: center;
-//   width: 100%;
-//   margin: 8rem 0;
-//   background-color: black;
-
-//   .testimonies-wrapper {
-//     width: 100%;
-//     height: 52vh;
-//     max-width: 85vw;
-//     background-color: #F1F0F0;
-//     border-radius: 15px;
-//     display: flex;
-//     padding: 1.25rem;
-//     gap: 1.5rem;
-
-//     .timer {
-//       height: 100%;
-//       display: flex;
-//       flex-direction: column;
-//       align-items: center;
-//       justify-content: center;
-//       gap: 1rem;
-//       font-family: Abhaya Libre, serif;
-//       font-size: 0.65rem;
-//       width: 2rem;
-//       flex-shrink: 0;
-
-//       .progress-bar-wrapper {
-//         position: relative;
-//         height: 30%;
-//         width: 1px;
-//         background-color: rgb(212, 212, 212);
-
-//         .progress-bar {
-//           position: absolute;
-//           top: 0;
-//           left: 0;
-//           width: 1px;
-//           background-color: black;
-//           animation: loading 15s linear infinite;
-//         }
-//       }
-//     }
-
-// .testimony-container {
-//   position: relative;
-//   height: 100%;
-//   flex-grow: 1;
-//   padding: 2rem 0;
-//   overflow: hidden;
-
-//   .testimony-wrapper {
-//     position: absolute;
-//     display: flex;
-//     flex-direction: column;
-//     padding: 2rem 0;
-//     height: 100%;
-//     top: 0;
-//     width: 100%;
-
-//     .testimony-title {
-//       font-family: Abhaya Libre, serif;
-//       font-size: 2.5rem;
-//     }
-
-//     .testimony-date {
-//       font-family: Montserrat;
-//       font-style: regular;
-//       color: black;
-//       letter-spacing: 3px;
-//       font-size: 0.8rem;
-//     }
-
-//     .testimony {
-//       margin-top: 1.5rem;
-//       font-family: Montserrat;
-//       font-style: regular;
-//       color: black;
-//       font-size: 1.25rem;
-//       line-height: 2.5rem;
-//     }
-//   }
-
-//   .animate-scroll {
-//     transition: top 1s ease-in-out;
-//   }
-// }
-
-//     .image {
-//       height: 100%;
-//       aspect-ratio: 1;
-//       background-color: rgb(227, 227, 227);
-//       border-radius: 8px;
-//     }
-//   }
-// }
 
 .contact-section {
   display: flex;
@@ -776,258 +573,6 @@
     }
   }
 }
-
-
-
-
-
-
-
-
-
-/*
--------------------------------------------------------------------
----  PACKAGES PAGE
--------------------------------------------------------------------
-*/
-
-.packages-header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 1.75rem;
-  margin: 10rem 0 18rem;
-
-  .sub-header {
-    font-family: Montserrat;
-    font-style: regular;
-    color: black;
-    letter-spacing: 3px;
-    font-size: 1rem;
-  }
-
-  .header {
-    font-family: Abhaya Libre, serif;
-    font-size: 4rem;
-    max-width: 70rem;
-    text-align: center;
-  }
-}
-
-.package-wrapper {
-  display: flex;
-  margin-bottom: 20rem;
-
-  .package-image {
-    width: 50%;
-
-    img {
-      height: 100vh;
-      width: 80%;
-      object-fit: cover;
-      float: right;
-    }
-  }
-
-  .package-info-wrapper {
-    display: flex;
-    width: 50%;
-
-    .package-info {
-      display: flex;
-      flex-direction: column;
-      width: 80%;
-
-      .package-header {
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 1px solid black;
-        font-size: 1.5rem;
-        font-family: Montserrat;
-        letter-spacing: 3px;
-        padding: 2rem 2rem 1rem 3rem;
-        color: #868686;
-      }
-
-      .description {
-        font-size: 1.5rem;
-        line-height: 2.75rem;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 300;
-        padding: 1rem 2rem 3rem 3rem;
-      }
-
-      .includes-text {
-        font-size: 1.35rem;
-        font-family: 'Montserrat', sans-serif;
-        letter-spacing: 3px;
-        text-decoration: underline;
-        padding: 1rem 2rem 1.5rem 3rem;
-      }
-
-      ul {
-        padding: 0rem 2rem 3rem 4.5rem;
-        list-style: none;
-
-        li {
-          padding-bottom: 1.5rem;
-          font-size: 1.35rem;
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 300;
-
-          &::before {
-            content: "\2022";
-            color: black;
-            font-size: 24px;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
-          }
-        }
-      }
-
-      button {
-        margin-left: 3rem;
-      }
-    }
-  }
-}
-
-
-/*
--------------------------------------------------------------------
----  JOURNAL PAGE
--------------------------------------------------------------------
-*/
-
-.journal-header {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  background-color: black;
-  display: flex;
-  align-items: center;
-  overflow-x: hidden;
-
-  span {
-    font-family: 'didot', 'sans-serif';
-    font-size: 12rem;
-    color: white;
-
-    &:first-child {
-      padding-left: 6rem;
-    }
-
-    &:last-child {
-      padding-left: 12rem;
-    }
-  }
-
-  .journal-image {
-    position: absolute;
-    height: 25rem;
-    aspect-ratio: 1/1.5;
-    z-index: 0;
-
-    &.image-1 {
-      transform: scale(1) rotate(3deg);
-      right: 40%;
-      top: 10%
-    }
-
-    &.image-2 {
-      transform: scale(0.85) rotate(6deg);
-      right: calc(40% - 18rem);
-      top: calc(10% + 3.5rem);
-    }
-
-    &.image-3 {
-      transform: scale(0.7) rotate(10deg);
-      right: calc(40% - 33rem);
-      top: calc(10% + 7.5rem);
-    }
-
-    &.image-4 {
-      transform: scale(0.65) rotate(15deg);
-      right: calc(40% - 46.5rem);
-      top: calc(10% + 11rem);
-    }
-
-    &.image-5 {
-      transform: scale(0.5) rotate(21deg);
-      right: calc(40% - 58rem);
-      top: calc(10% + 16.5rem);
-    }
-  }
-
-  .scroll-accent {
-    border-radius: 20rem;
-    border: 1px solid white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    height: 4rem;
-    width: 2rem;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 10%
-  }
-}
-
-.journal-entry-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
-  padding: 10rem 0;
-
-  .journal-entry-wrapper {
-    max-width: 45rem;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    align-items: center;
-    color: white;
-
-    .couple-name {
-      font-family: 'didot', 'sans-serif';
-      font-size: 2.5rem;
-      font-weight: 400;
-    }
-
-    .wedding-description {
-      font-family: 'Abhaya Libre', 'sans-serif';
-      font-weight: 400;
-      font-size: 1.5rem;
-      line-height: 2.75rem;
-
-      .first-letter {
-        height: 5rem;
-        float: left;
-        font-family: 'Abhaya Libre', 'sans-serif';
-        font-weight: 400;
-        font-size: 6.6rem;
-        line-height: 5.9rem;
-        margin-right: 0.5rem;
-      }
-    }
-
-    .images {
-      display: flex;
-      gap: 4.5rem;
-
-      img {
-        width: calc(33% - 3rem);
-        aspect-ratio: 1/1.5;
-      }
-    }
-  }
-}
-
 
 
 

@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Journal</title>
-    <link rel="stylesheet" href="styles.scss">
-    <link rel="stylesheet" href="shared-styles.scss">
+    <link rel="stylesheet" href="./journal.scss">
+    <link rel="stylesheet" href="./shared-styles.scss">
     <script src="./src/header.js" type="text/javascript" defer></script>
     <script src="./src/contact.js" type="text/javascript" defer></script>
     <script src="./src/footer.js" type="text/javascript" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -23,25 +25,30 @@
 </head>
 
 <body>
-    <maddie-west-header theme="dark"></maddie-west-header>
+    <maddie-west-header theme="light"></maddie-west-header>
 
-    <div class="journal-header">
-        <div style="z-index: 5;">
-            <span>ITS ALL IN</span><br />
-            <span>THE DETAILS</span>
+    <div class="journal-header-wrapper">
+        <div class="journal-images">
+            <img id="journal-1" class="journal-image image-1" src="/ assets/testimony/testimony-1-1.png" />
+            <img id="journal-2" class="journal-image image-2" src="/ assets/journal-section/image_2.JPG" />
+            <img id="journal-3" class="journal-image image-3" src="/ assets/testimony/testimony-2-1.png" />
+            <img id="journal-4" class="journal-image image-4" src="/ assets/journal-section/image_8.JPG" />
+            <img id="journal-5" class="journal-image image-5" src="/ assets/testimony/testimony-3-1.png" />
         </div>
-        <img class="journal-image image-1" src="/ assets/journal-section/image_1.JPG" />
-        <img class="journal-image image-2" src="/ assets/journal-section/image_2.JPG" />
-        <img class="journal-image image-3" src="/ assets/journal-section/image_3.JPG" />
-        <img class="journal-image image-4" src="/ assets/journal-section/image_4.JPG" />
-        <img class="journal-image image-5" src="/ assets/journal-section/image_5.JPG" />
-        <div class="scroll-accent">
-            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M3.44935 8.10586C3.49288 8.06227 3.54458 8.0277 3.60149 8.00411C3.65839 7.98052 3.71939 7.96838 3.78099 7.96838C3.84259 7.96838 3.90359 7.98052 3.96049 8.00411C4.0174 8.0277 4.0691 8.06227 4.11263 8.10586L7.53099 11.5248L7.53099 2.34375C7.53099 2.21943 7.58037 2.1002 7.66828 2.01229C7.75619 1.92438 7.87542 1.875 7.99974 1.875C8.12406 1.875 8.24329 1.92438 8.3312 2.01229C8.4191 2.1002 8.46849 2.21943 8.46849 2.34375V11.5248L11.8868 8.10586C11.9748 8.0179 12.0941 7.96849 12.2185 7.96849C12.3429 7.96849 12.4622 8.0179 12.5501 8.10586C12.6381 8.19381 12.6875 8.31311 12.6875 8.4375C12.6875 8.56189 12.6381 8.68118 12.5501 8.76914L8.33138 12.9879C8.28785 13.0315 8.23615 13.066 8.17924 13.0896C8.12234 13.1132 8.06134 13.1254 7.99974 13.1254C7.93814 13.1254 7.87714 13.1132 7.82024 13.0896C7.76333 13.066 7.71163 13.0315 7.6681 12.9879L3.44935 8.76914C3.40577 8.7256 3.37119 8.67391 3.3476 8.617C3.32401 8.56009 3.31187 8.4991 3.31187 8.4375C3.31187 8.3759 3.32401 8.3149 3.3476 8.25799C3.37119 8.20109 3.40577 8.14939 3.44935 8.10586Z"
-                    fill="currentColor" />
-            </svg>
 
+        <div class="journal-header">
+            <div class="header-text">
+                <span>ITS ALL IN</span><br />
+                <span>THE DETAILS</span>
+            </div>
+
+            <div class="scroll-accent">
+                <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M3.44935 8.10586C3.49288 8.06227 3.54458 8.0277 3.60149 8.00411C3.65839 7.98052 3.71939 7.96838 3.78099 7.96838C3.84259 7.96838 3.90359 7.98052 3.96049 8.00411C4.0174 8.0277 4.0691 8.06227 4.11263 8.10586L7.53099 11.5248L7.53099 2.34375C7.53099 2.21943 7.58037 2.1002 7.66828 2.01229C7.75619 1.92438 7.87542 1.875 7.99974 1.875C8.12406 1.875 8.24329 1.92438 8.3312 2.01229C8.4191 2.1002 8.46849 2.21943 8.46849 2.34375V11.5248L11.8868 8.10586C11.9748 8.0179 12.0941 7.96849 12.2185 7.96849C12.3429 7.96849 12.4622 8.0179 12.5501 8.10586C12.6381 8.19381 12.6875 8.31311 12.6875 8.4375C12.6875 8.56189 12.6381 8.68118 12.5501 8.76914L8.33138 12.9879C8.28785 13.0315 8.23615 13.066 8.17924 13.0896C8.12234 13.1132 8.06134 13.1254 7.99974 13.1254C7.93814 13.1254 7.87714 13.1132 7.82024 13.0896C7.76333 13.066 7.71163 13.0315 7.6681 12.9879L3.44935 8.76914C3.40577 8.7256 3.37119 8.67391 3.3476 8.617C3.32401 8.56009 3.31187 8.4991 3.31187 8.4375C3.31187 8.3759 3.32401 8.3149 3.3476 8.25799C3.37119 8.20109 3.40577 8.14939 3.44935 8.10586Z"
+                        fill="currentColor" />
+                </svg>
+            </div>
         </div>
     </div>
 
@@ -66,9 +73,9 @@
                 sentance.
             </p>
             <div class="images">
-                <img src="/ assets/journal-section/image_1.JPG">
-                <img src="/ assets/journal-section/image_2.JPG">
-                <img src="/ assets/journal-section/image_3.JPG">
+                <img id="journal-entry-1-1" src="/ assets/journal-section/image_1.JPG">
+                <img id="journal-entry-1-2" src="/ assets/journal-section/image_2.JPG">
+                <img id="journal-entry-1-3" src="/ assets/journal-section/image_3.JPG">
             </div>
         </div>
     </div>
@@ -95,9 +102,9 @@
                 sentance.
             </p>
             <div class="images">
-                <img src="/ assets/journal-section/image_1.JPG">
-                <img src="/ assets/journal-section/image_2.JPG">
-                <img src="/ assets/journal-section/image_3.JPG">
+                <img id="journal-entry-2-1" src="/ assets/journal-section/image_1.JPG">
+                <img id="journal-entry-2-2" src="/ assets/journal-section/image_2.JPG">
+                <img id="journal-entry-2-3" src="/ assets/journal-section/image_3.JPG">
             </div>
         </div>
     </div>
@@ -123,15 +130,17 @@
                 sentance.
             </p>
             <div class="images">
-                <img src="/ assets/journal-section/image_1.JPG">
-                <img src="/ assets/journal-section/image_2.JPG">
-                <img src="/ assets/journal-section/image_3.JPG">
+                <img id="journal-entry-3-1" src="/ assets/journal-section/image_1.JPG">
+                <img id="journal-entry-3-2" src="/ assets/journal-section/image_2.JPG">
+                <img id="journal-entry-3-3" src="/ assets/journal-section/image_3.JPG">
             </div>
         </div>
     </div>
 
     <maddie-west-contact></maddie-west-contact>
     <maddie-west-footer></maddie-west-footer>
+
+    <script type="module" src="./src/journal.js"></script>
 </body>
 
 </html>
