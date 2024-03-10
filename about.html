@@ -3,118 +3,193 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About</title>
-  <link rel="stylesheet" href="shared-styles.scss">
-  <link rel="stylesheet" href="about.scss">
-  <script src="./src/header.js" type="text/javascript" defer></script>
-  <script src="./src/contact.js" type="text/javascript" defer></script>
-  <script src="./src/footer.js" type="text/javascript" defer></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abhaya+Libre">
+  <title>About Maddie West Events | Wedding And Event Planner in Dayton Ohio</title>
+  <meta name="description" content="Anna Roussos is a destination wedding photographer
+  in Greece. She photographs weddings in Greece, Italy, France and beyond.">
+
+  <!-- Scripts -->
+  <script type="module" src="./src/barba.js"></script>
   <script type="module" src="./src/about.js"></script>
+  <script src="./src/contact-component.js" type="text/javascript" defer></script>
+  <script src="./src/header.js" type="text/javascript" defer></script>
+  <script src="./src/footer.js" type="text/javascript" defer></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="about.scss">
+  <link rel="stylesheet" href="./header/header.scss">
+  <link rel="stylesheet" href="shared-styles.scss">
+
+  <!-- Deps -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-    rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abhaya+Libre">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;
+    0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;
+    1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;
+    1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 </head>
 
-<body>
-  <maddie-west-header></maddie-west-header>
+<body data-barba="wrapper">
 
-  <div class="about-page">
-    <img id="about-cover-photo" src="/ assets/about/cover.png" alt="Maddie West Headshot Cover Photo">
-    <div class="text-wrapper">
-      <div class="header">Madison Westfall</div>
-      <div class="sub-header">WEDDING COORDINATOR & DAY OF PLANNER</div>
-      <div class="description">This is a longer description about your life and how awesome you are as a person. It will
-        be so awesome that when people
-        read it they have no choice but to get in touch with you and hire you. Okay needed one more sentence to make it
-        look
-        full. <br /> <br />
+  <header>
+    <nav id="maddie-west-header" class="light">
+      <a id="maddie-text" tag="index" href="./index.html">Maddie West Events</a>
+      <div id="nav-options">
+        <a class="nav-link" tag="about" href="./about.html">About</a>
+        <a class="nav-link" tag="testimonies" href="./testimonies.html">Testimonies</a>
+        <a class="nav-link" tag="packages" href="./packages.html">Packages</a>
+        <a class="nav-link" tag="journal" href="./journal.html">Journal</a>
+        <a class="primary-button large light" tag="contact" href="../contact.html" id="call-to-action">Contact</a>
+      </div>
+      <button id="nav-icon">
+        <svg width="40" height="40" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M3.33337 14.3917V13.5584H16.6667V14.3917H3.33337ZM3.33337 10.4167V9.5834H16.6667V10.4167H3.33337ZM3.33337 6.44173V5.6084H16.6667V6.44173H3.33337Z"
+            fill="currentColor" />
+        </svg>
+      </button>
+    </nav>
+  </header>
 
-        This paragraph just kind of looks nice since we had the line gap between the two. And now I need one more
-        sentence to
-        make them look symmetrical. Actually I need another sentance. This is a longer description about your life and
-        how awesome you are as a person. It will
-        be so awesome that when people
-        read it they have no choice but to get in touch with you and hire you. Okay needed one more sentence to make it
-        look
-        full.</div>
+  <main data-barba="container" data-barba-namespace="about">
+    <div class="about-page" data-barba="container" data-barba-namespace="about">
+      <img id="about-cover-photo" src="/ assets/about/cover.png" alt="Maddie West Headshot Cover Photo">
+      <div class="text-wrapper">
+        <div class="header">Madison Westfall</div>
+        <div class="sub-header">WEDDING COORDINATOR & DAY OF PLANNER</div>
+        <div class="description">This is a longer description about your life and how awesome you are as a person. It
+          will
+          be so awesome that when people
+          read it they have no choice but to get in touch with you and hire you. Okay needed one more sentence to make
+          it
+          look
+          full. <br /> <br />
+
+          This paragraph just kind of looks nice since we had the line gap between the two. And now I need one more
+          sentence to
+          make them look symmetrical. Actually I need another sentance. This is a longer description about your life
+          and
+          how awesome you are as a person. It will
+          be so awesome that when people
+          read it they have no choice but to get in touch with you and hire you. Okay needed one more sentence to make
+          it
+          look
+          full.</div>
+      </div>
+      <div class="accent">WEDDING AND EVENT COORDINATOR IN DAYTON OHIO</div>
     </div>
-    <div class="accent">WEDDING AND EVENT COORDINATOR IN DAYTON OHIO</div>
-  </div>
 
 
-  <div class="client-quote">
-    <div id="client-quote" class="quote about-quote" style="top: 100px;">
-      Maddie's <span class="emphasize about-emphasize">UNPARALLELED EXPERTISE</span> and <br />
-      <span class="emphasize about-emphasize">ATTENTION TO DETAIL</span> made our wedding a <br />
-      dream come true. <span class="emphasize about-emphasize">TRULY IMPRESSED!</span>
-    </div>
-    <h6>OLIVIA STARKMAN | CLIENT</h6>
-  </div>
-
-
-  <div class="about-maddie">
-    <img id="about-maddie-image" class="image" src="/ assets/about/maddie_1.png">
-
-    <div class="about-text-wrapper first">
-      <p id="about-text-block-1" style="top: 100px">
-        In the bustling heart of downtown, there exists a haven where dreams find their perfect orchestration: a wedding
-        coordinating business. With meticulous care and boundless creativity, they weave together every detail, from
-        floral arrangements to seating plans, ensuring each moment shimmers with elegance and joy.
-      </p>
+    <div class="client-quote">
+      <div id="client-quote" class="quote about-quote" style="top: 100px;">
+        Maddie's <span class="emphasize about-emphasize">UNPARALLELED EXPERTISE</span> and <br />
+        <span class="emphasize about-emphasize">ATTENTION TO DETAIL</span> made our wedding a <br />
+        dream come true. <span class="emphasize about-emphasize">TRULY IMPRESSED!</span>
+      </div>
+      <h6>OLIVIA STARKMAN | CLIENT</h6>
     </div>
 
-    <div class="about-text-wrapper second">
-      <p id="about-text-block-2" style="top: 100px">
-        Lorem Ipsum is simply dummy text but also the leap into electronic typesetting, remaining essentially
-        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-        and more
-        recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br /><br />
 
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-        standard
-        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-        specimen
-        book. It has survived not only five centuries,
-      </p>
-    </div>
-  </div>
+    <div class="about-maddie">
+      <img id="about-maddie-image" class="image" src="/ assets/about/maddie_1.png">
 
-  <div class="more-section-wrapper">
-    <div class="more-section">
-      <img id="more-section-image" class="image" src="/ assets/about/decor_1.png" alt="Decor done by Maddie West">
-      <div class="more-text-wrapper">
-        <h6 id="more-section-sub-header" style="color: white; opacity: 0;">MADISON WESTFALL</h6>
-        <h4 id="more-section-header" class="quote">
-          Maddie's <span class="emphasize" style="color: white;">UNPARALLELED EXPERTISE</span> and
-          <span class="emphasize" style="color: white;">ATTENTION TO DETAIL</span> made our wedding a
-          dream <span class="emphasize" style="color: white;">TRULY IMPRESSED!</span>
-        </h4>
-        <p id="more-section-description" class="description justify light">Lorem Ipsum is simply dummy text but also the
-          leap into
-          electronic typesetting, remaining essentially
-          unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-          passages, and more recently with desktop publishing software like Aldus PageMaker including versions of
-          Lorem Ipsum.<br /><br />
-
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-          standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-          make a type specimen book. It has survived not only five centuries,
+      <div class="about-text-wrapper first">
+        <p id="about-text-block-1" style="top: 100px">
+          In the bustling heart of downtown, there exists a haven where dreams find their perfect orchestration: a
+          wedding
+          coordinating business. With meticulous care and boundless creativity, they weave together every detail, from
+          floral arrangements to seating plans, ensuring each moment shimmers with elegance and joy.
         </p>
+      </div>
+
+      <div class="about-text-wrapper second">
+        <p id="about-text-block-2" style="top: 100px">
+          Lorem Ipsum is simply dummy text but also the leap into electronic typesetting, remaining essentially
+          unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+          passages,
+          and more
+          recently with desktop publishing software like Aldus PageMaker including versions of Lorem
+          Ipsum.<br /><br />
+
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+          industry's
+          standard
+          dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+          type
+          specimen
+          book. It has survived not only five centuries,
+        </p>
+      </div>
+    </div>
+
+    <div class="more-section-wrapper">
+      <div class="more-section">
+        <img id="more-section-image" class="image" src="/ assets/about/decor_1.png" alt="Decor done by Maddie West">
+        <div class="more-text-wrapper">
+          <h6 id="more-section-sub-header" style="color: white; opacity: 0;">MADISON WESTFALL</h6>
+          <h4 id="more-section-header" class="quote">
+            Maddie's <span class="emphasize" style="color: white;">UNPARALLELED EXPERTISE</span> and
+            <span class="emphasize" style="color: white;">ATTENTION TO DETAIL</span> made our wedding a
+            dream <span class="emphasize" style="color: white;">TRULY IMPRESSED!</span>
+          </h4>
+          <p id="more-section-description" class="description justify light">Lorem Ipsum is simply dummy text but also
+            the
+            leap into
+            electronic typesetting, remaining essentially
+            unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+            passages, and more recently with desktop publishing software like Aldus PageMaker including versions of
+            Lorem Ipsum.<br /><br />
+
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's
+            standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
+            to
+            make a type specimen book. It has survived not only five centuries,
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <maddie-west-contact></maddie-west-contact>
+
+    <maddie-west-footer></maddie-west-footer>
+  </main>
+
+  <!-- Mobile Nav Bar Overlay -->
+  <div id="mobile-menu-wrapper" class="mobile-menu-wrapper active">
+    <div class="mobile-menu">
+      <button id="close-icon">
+        <svg width="40" height="40" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14.1667 5.8335L5.83337 14.1668M5.83337 5.8335L14.1667 14.1668" stroke="black"
+            stroke-linecap="square" stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <img src="/ assets/journal-section/image_2.jpg" alt="asthetic wedding photo" />
+
+      <div id="link-wrapper">
+        <a id="link" tag="index" href="../index.html">Home</a>
+        <a id="link" tag="about" href="../about.html">About</a>
+        <a id="link" tag="testimonies" href="../testimonies.html">Testimonies</a>
+        <a id="link" tag="packages" href="../packages.html">Packages</a>
+        <a id="link" tag="journal" href="../journal.html">Journal</a>
+        <a id="instagram" tag="instagram" href="https://www.instagram.com/maddiewestevents/"
+          target="_blank">Instagram</a>
+        <a class="primary-button large light" tag="contact" href="../contact.html">Contact</a>
       </div>
     </div>
   </div>
 
-  <maddie-west-contact></maddie-west-contact>
+  <div id="route-page" class="loading-screen">
+    <div>About</div>
+  </div>
 
-  <maddie-west-footer></maddie-west-footer>
+  <script src="https://unpkg.com/@barba/core"></script>
 </body>
 
 </html>

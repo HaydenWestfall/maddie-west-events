@@ -1,59 +1,71 @@
-.journal-header-wrapper {
+.section {
+  background-color: black;
   display: flex;
-  flex-direction: column;
-  background-color: white;
+  justify-content: center;
 
-  .journal-images {
-    background-color: black;
-    height: 65vh;
-    min-height: 28rem;
+  .journal-header-wrapper {
     display: flex;
-    gap: 0;
+    flex-direction: column;
+    background-color: white;
+    max-width: 120rem;
 
-    img {
-      width: 20%;
-      height: 100%;
-      object-fit: cover;
+    .journal-images {
+      background-color: black;
+      height: 65vh;
+      min-height: 28rem;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 0;
+
+      .cell {
+        height: 100%;
+        width: 100%;
+      }
+
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
     }
-  }
 
-  .journal-header {
-    background-color: black;
-    position: relative;
-    height: 30vh;
-    padding-bottom: 15rem;
+    .journal-header {
+      background-color: black;
+      position: relative;
+      height: 30vh;
+      padding-bottom: 15rem;
 
-    .header-text {
-      position: absolute;
-      top: -5rem;
-      left: 3rem;
-      color: white;
-      z-index: 10;
+      .header-text {
+        position: absolute;
+        top: -5rem;
+        left: 3rem;
+        color: white;
+        z-index: 10;
 
-      span {
-        font-family: didot-italic;
-        font-size: 9rem;
+        span {
+          font-family: didot-italic;
+          font-size: 9rem;
 
-        &:last-child {
-          padding-left: 8rem;
+          &:last-child {
+            padding-left: 8rem;
+          }
         }
       }
     }
-  }
 
-  .scroll-accent {
-    border-radius: 20rem;
-    border: 1px solid white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    height: 4rem;
-    width: 2rem;
-    position: absolute;
-    right: 7rem;
-    transform: translateX(-50%);
-    bottom: 30%;
+    .scroll-accent {
+      border-radius: 20rem;
+      border: 1px solid white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      height: 4rem;
+      width: 2rem;
+      position: absolute;
+      right: 7rem;
+      transform: translateX(-50%);
+      bottom: 30%;
+    }
   }
 }
 
@@ -103,6 +115,19 @@
       img {
         width: calc(33% - 2rem);
         aspect-ratio: 1/1.5;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  .journal-header-wrapper {
+
+    .journal-images {
+      grid-template-columns: repeat(4, 1fr);
+
+      .cell:nth-child(5) {
+        display: none;
       }
     }
   }

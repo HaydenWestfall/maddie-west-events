@@ -19,7 +19,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 215vh;
+  height: 190vh;
   width: 100%;
   padding-top: 30vh;
   padding-bottom: 40vh;
@@ -28,7 +28,7 @@
 
   .about-text {
     position: sticky;
-    top: 10em;
+    top: 30%;
     z-index: 2;
   }
 
@@ -52,8 +52,8 @@
   }
 
   #image-3 {
-    top: 170vh;
-    z-index: 5;
+    top: 200vh;
+    z-index: 1;
     left: calc(50% + 15rem);
   }
 }
@@ -72,8 +72,6 @@
     margin-top: 5rem;
     overflow: hidden;
     height: 56vw;
-
-
   }
 
   .journal-carousel {
@@ -123,24 +121,35 @@
   }
 }
 
+section {
+  display: flex;
+  justify-content: center;
+
+  > :first-child {
+    width: 100%;
+    max-width: 100rem;
+  }
+}
+
 .testimony-section {
   position: relative;
   gap: 5rem;
-  height: 35rem;
-  padding: 3rem 0 0 6rem;
+  padding: 3rem 0 8rem 6rem;
 
   .testimony-wrapper {
     display: flex;
+    justify-content: space-between;
     width: 100%;
-    padding-top: 1rem;
+    padding-top: 1.6rem;
 
     .testimony {
       display: flex;
       justify-content: center;
       flex-direction: column;
       gap: 2rem;
-      width: 50%;
-      max-width: 38rem;
+      width: 52%;
+      height: fit-content;
+      max-width: 60rem;
 
       .quote-italic {
         width: fit-content;
@@ -148,13 +157,23 @@
       }
     }
 
-    img {
-      width: 38%;
-      aspect-ratio: 1 / 1.4;
+    .testimony-image {
+      position: relative;
+      height: fit-content;
       flex-shrink: 0;
-      position: absolute;
-      top: -15rem;
-      right: 0;
+      flex-grow: 1;
+      display: flex;
+      justify-content: flex-end;
+
+      img {
+        width: 75%;
+        max-width: 38rem;
+        aspect-ratio: 1 / 1.4;
+        flex-shrink: 0;
+        object-fit: cover;
+        margin-top: -15rem;
+        right: 0;
+      }
     }
   }
 }
@@ -163,21 +182,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 4rem 6rem;
+  margin: 2rem 6rem;
 
   .vendor-label {
     font-family: Montserrat;
     font-style: regular;
     letter-spacing: 3px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   .vendor-images {
     display: flex;
-    gap: 6rem;
+    gap: 4rem;
 
     .vendor {
-      height: 3.5rem;
+      height: 4vw;
+      max-height: 4rem;
       object-fit: cover;
     }
   }
@@ -189,25 +209,27 @@
   flex-direction: column;
   gap: 4rem;
   position: relative;
-  padding: 4rem 0 5rem;
+  padding: 4rem 0 20rem;
   margin: 15rem 0;
 
   .relative-image {
     position: relative;
     align-self: center;
-    height: 82vh;
-    width: fit-content;
-    aspect-ratio: 1 / 1.4;
-    z-index: 1;
-    margin-right: 5rem;
-    opacity: 0;
+    height: 40rem;
+
+    img {
+      width: fit-content;
+      aspect-ratio: 1 / 1.4;
+      z-index: 1;
+      opacity: 0;
+    }
   }
 
   .absolute-image-1 {
     position: absolute;
     top: 0;
     left: 0;
-    height: 50vh;
+    height: 25rem;
     opacity: 0;
   }
 
@@ -215,15 +237,15 @@
     position: absolute;
     top: 15rem;
     right: 0;
-    height: 50vh;
+    height: 25rem;
     opacity: 0;
   }
 
   .absolute-image-3 {
     position: absolute;
-    top: calc(2rem + 75vh);
-    left: calc(50% - 30rem);
-    height: 40vh;
+    top: 37rem;
+    height: 20rem;
+    left: -12rem;
     opacity: 0;
   }
 
@@ -236,9 +258,11 @@
   }
 
   .asthetic-description {
-    width: 50%;
-    margin-left: 40%;
+    width: 125%;
+    margin-left: 20%;
     align-items: flex-start;
+    position: absolute;
+    top: 105%;
 
     h3 {
       text-align: unset;
@@ -571,22 +595,5 @@
         gap: 0.5rem;
       }
     }
-  }
-}
-
-
-
-
-@keyframes loading {
-  0% {
-    height: 0;
-  }
-
-  94% {
-    height: 100%;
-  }
-
-  100% {
-    height: 0;
   }
 }

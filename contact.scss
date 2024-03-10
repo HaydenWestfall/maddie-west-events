@@ -26,40 +26,38 @@
   .accent-wrapper {
     position: absolute;
     left: 1.5rem;
-    bottom: 2rem;
+    bottom: 3rem;
     width: fit-content;
     white-space: nowrap;
 
     .maddie-west-accent {
       position: absolute;
       transform: rotate(270deg);
-      font-size: clamp(0.7rem, 1.5vw, 1rem);
       transform-origin: top left;
+      font-size: 0.75rem;
     }
   }
 
   .contact-header-text {
     position: absolute;
-    top: 57%;
-    left: 50%;
-    width: 70%;
-    max-width: 75rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    top: 70%;
     min-width: 25rem;
     text-align: center;
-    transform: translateX(-50%);
-    font-size: 6.5rem;
-    font-size: clamp(4.5rem, 8vw, 7rem);
-    font-family: "Cormorant Garamond", serif;
-    font-weight: 300;
-    font-style: italic;
-    line-height: clamp(4.5rem, 8vw, 6.5rem);
+
+    span {
+      font-size: 5.2rem;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+    }
 
     .emphasized {
       font-family: didot-italic;
       color: black;
-      font-size: 5.5rem;
-      font-size: clamp(3.5rem, 6vw, 5.5rem);
       font-weight: 400;
+      font-size: 5rem;
     }
   }
 }
@@ -68,7 +66,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin: 10rem 0;
+  margin: 5rem 0 20rem;
   height: fit-content;
   overflow-x: hidden;
 
@@ -76,29 +74,28 @@
     display: flex;
     flex-direction: column;
     gap: 5rem;
-    max-width: 50rem;
+    max-width: 45rem;
     width: 60%;
 
     p {
       text-align: center;
-      font-size: 1.25rem;
-      font-size: clamp(1rem, 2vw, 1.25rem);
       font-family: 'Montserrat', sans-serif;
       font-weight: 400;
       letter-spacing: 3px;
-      line-height: 1.7rem;
+      font-size: 1rem;
+      line-height: 1.75rem;
     }
 
     .contact-form {
       display: flex;
       flex-direction: column;
       width: 100%;
-      gap: 4rem;
+      gap: 3rem;
       align-items: center;
 
       .input-inline {
         display: flex;
-        gap: 2rem;
+        gap: 1.5rem;
         width: 100%;
       }
 
@@ -106,7 +103,7 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 0.75rem;
+        gap: 0.7rem;
 
         .input-label {
           font-family: 'Montserrat', sans-serif;
@@ -122,7 +119,7 @@
           border: none;
           border-bottom: 1px solid black;
           padding: 0.75rem 1rem;
-          font-size: 1.15rem;
+          font-size: 1rem;
           text-transform: uppercase;
           letter-spacing: 2px;
 
@@ -141,10 +138,10 @@
           border: none;
           border-bottom: 1px solid black;
           padding: 0.75rem 1rem;
-          font-size: 1.15rem;
+          font-size: 1rem;
           text-transform: uppercase;
           letter-spacing: 1px;
-          height: 12rem;
+          height: 8rem;
 
           &:focus {
             outline: none
