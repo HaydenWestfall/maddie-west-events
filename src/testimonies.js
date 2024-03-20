@@ -5,8 +5,8 @@ function setAnimations(elements) {
       opacity: 1,
       scrollTrigger: {
         trigger: element,
-        start: "top bottom", // Change according to your needs
-        end: "top 25%", // Change according to your needs
+        start: "top 82%", // Change according to your needs
+        end: "top 50%", // Change according to your needs
         scrub: true
       }
     });
@@ -17,10 +17,14 @@ function initScript() {
   gsap.registerPlugin(ScrollTrigger);
   const timeline = gsap.timeline();
   const journalDelay = "<=.3";
-  timeline.fromTo(".focused-image", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: 'power1.out' });
-  timeline.fromTo(".top-left", { y: '50px', opacity: 0 }, { y: '0', opacity: 1, duration: 0.7, ease: 'power1.out' }, '<=0.5');
-  timeline.fromTo(".bottom-right", { y: '50px', opacity: 0 }, { y: '0', opacity: 1, duration: 0.7, ease: 'power1.out' }, '<=0.5');
-  timeline.delay(0.4);
+  // timeline.fromTo(".focused-image", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: 'power1.out' });
+  // timeline.fromTo(".top-left", { y: '50px', opacity: 0 }, { y: '0', opacity: 1, duration: 0.7, ease: 'power1.out' }, '<=0.5');
+  // timeline.fromTo(".bottom-right", { y: '50px', opacity: 0 }, { y: '0', opacity: 1, duration: 0.7, ease: 'power1.out' }, '<=0.5');
+
+  timeline.fromTo(".focused-image", { y: '80px', opacity: 0 }, { y: '0', opacity: 1, duration: 0.7 });
+  timeline.fromTo(".top-left", { y: '80px', opacity: 0 }, { y: '0', opacity: 1, duration: 0.7 }, "0");
+  timeline.fromTo(".bottom-right", { y: '80px', opacity: 0 }, { y: '0', opacity: 1, duration: 0.7 }, "0");
+  timeline.delay(1.3);
   timeline.play();
 
   const testimonyImgs = document.querySelectorAll('.testimony-img');

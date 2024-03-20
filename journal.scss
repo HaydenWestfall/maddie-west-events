@@ -124,7 +124,7 @@
   .journal-header-wrapper {
 
     .journal-images {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, 1fr) !important;
 
       .cell:nth-child(5) {
         display: none;

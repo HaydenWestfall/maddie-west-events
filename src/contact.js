@@ -3,10 +3,11 @@
  * On Destroy callback anytime barba navigates away from the page.
  */
 function initScript() {
-  gsap.fromTo("#contact-header",
-    { y: '100px', opacity: 0 },
-    { y: '0', opacity: 1, duration: 0.7, delay: 0.3, ease: 'power1.out' }
-  );
+  const timeline = gsap.timeline();
+  timeline.fromTo("#contact-header", { y: '80px', opacity: 0 }, { y: '0', opacity: 1, duration: 0.7 });
+  timeline.delay(1.4);
+  timeline.play();
+
   initialized = true;
 }
 

@@ -18,7 +18,7 @@ header {
             font-family: Montserrat;
             font-style: regular;
             font-size: 1.1rem;
-            letter-spacing: 3px;
+            letter-spacing: 5px;
             font-weight: 400;
             text-decoration: none;
             color: inherit;
@@ -51,9 +51,9 @@ header {
     }
 
     .light {
-        background-color: white;
+        background-color: #faf8f8;
         color: black;
-        border-bottom: 1px solid #f2f2f2;
+        border-bottom: 1px solid #f1f1f1;
 
         #nav-icon {
             color: black;
@@ -82,6 +82,10 @@ header {
     top: -20vh;
     opacity: 0;
     display: none;
+
+    display: flex;
+    top: 0;
+    opacity: 1;
     transition: opacity 0.5s ease, top 0.5s ease;
 
     .mobile-menu {
@@ -110,13 +114,13 @@ header {
         #link-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0;
 
             #link {
-                font-family: didot-italic;
-                font-weight: 300;
-                font-style: italic;
+                font-family: 'didot-italic';
+                font-weight: 200;
                 font-size: 2.5rem;
+                line-height: 3rem;
                 text-decoration: none;
                 color: black;
             }
@@ -139,13 +143,13 @@ header {
 
 @media only screen and (max-width: 768px) {
     header {
-        height: 70px;
+        height: 75px;
 
         nav {
-            padding: 0 0.75rem;
+            padding: 0.6rem 2rem 0 16px;
 
             #maddie-text {
-                font-size: 0.8rem;
+                font-size: 0.875rem;
             }
 
             #nav-options {

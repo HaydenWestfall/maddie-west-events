@@ -228,12 +228,12 @@ h6 {
     }
 
     h3 {
-        font-size: 1.2rem;
+        font-size: 1.65rem;
     }
 
     h6 {
-        font-size: 0.65rem;
-        letter-spacing: 0.3rem;
+        font-size: 0.6rem;
+        letter-spacing: 0.25rem;
         font-weight: 500;
 
         &.small {
@@ -249,7 +249,10 @@ h6 {
 
         &.centered {}
 
-        &.justify {}
+        &.justify {
+            font-size: 0.8rem;
+            line-height: 1.25rem;
+        }
 
         &.light {}
     }
@@ -287,10 +290,10 @@ h6 {
     clip: rect(0, auto, auto, 0);
 
     div {
-        font-family: 'didot-italic';
-        font-size: 2rem;
+        font-family: 'didot';
+        font-size: 3rem;
         font-weight: 500;
-        position: fixed;
+        position: absolute;
         transform: translate(-50%, -50%);
         left: 50%;
         top: 50%;

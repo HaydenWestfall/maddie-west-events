@@ -15,7 +15,7 @@ function initScript() {
   journalTimeline.fromTo("#journal-3", { opacity: 0, width: '15%' }, { opacity: 1, width: imageWidth, duration: imageAnimationDuration }, journalDelay);
   journalTimeline.fromTo("#journal-4", { opacity: 0, width: '15%' }, { opacity: 1, width: imageWidth, duration: imageAnimationDuration }, journalDelay);
   journalTimeline.fromTo("#journal-5", { opacity: 0, width: '15%' }, { opacity: 1, width: imageWidth, duration: imageAnimationDuration }, journalDelay);
-  journalTimeline.delay(0.4);
+  journalTimeline.delay(1.4);
   journalTimeline.play();
 
   function setJournalAnimations() {

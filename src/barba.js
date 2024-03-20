@@ -1,6 +1,7 @@
 
 let targetPage = '';
 const loadingScreen = document.querySelector('.loading-screen');
+const transitionText = loadingScreen.children[0];
 
 // Function to add and remove the page transition screen
 function pageTransitionIn() {
@@ -9,22 +10,44 @@ function pageTransitionIn() {
   // loadingScreen.children[0].innerHTML = route.charAt(0).toUpperCase() + route.slice(1);
 
   document.getElementById('route-page').children[0].innerHTML = targetPage;
-  return gsap.to(loadingScreen, { duration: 0.8, height: '100%', top: 'unset', bottom: 0, ease: 'power1.out' })
+  return gsap
+    .timeline()
+    .add('start')
+    .to(loadingScreen, { duration: 0.7, height: '100%', top: 'unset', bottom: 0, ease: 'power3.in' })
+    .fromTo(transitionText, { y: '40px', opacity: 0 }, { y: 0, opacity: 1, duration: 0.4 })
+
+
+
+  // gsap.to(loadingScreen, { duration: 0.7, height: '100%', top: 'unset', bottom: 0, ease: 'power2.in' })
 }
 // Function to add and remove the page transition screen
 function pageTransitionOut(container) {
   // GSAP methods can be chained and return directly a promise
   return gsap
-    .timeline({ delay: 0 }) // More readable to put it here
+    .timeline({ delay: 0.8 }) // More readable to put it here
     .add('start') // Use a label to sync screen and content animation
     .to(loadingScreen, {
-      duration: 0.5,
+      duration: 0.7,
       bottom: 'unset',
       top: 0,
       height: 0,
-      ease: 'power1.out'
+      ease: 'power3.in'
     }, 'start')
-    .call(contentAnimation, [container], 'start')
+    .fromTo(transitionText, { opacity: 1, y: '0', },
+      { opacity: 0, duration: 0.5 }, 'start')
+    .call(contentAnimation, [container], 'start');
+
+
+
+  const outTimeline = gsap.timeline();
+  outTimeline.delay(5);
+  outTimeline.to(loadingScreen, { duration: 0.5, bottom: 'unset', top: 0, height: 0, ease: 'power1.out' });
+  outTimeline.fromTo(transitionText,
+    { y: '0', opacity: 1 },
+    { y: '-200', opacity: 0, duration: 0.5, ease: 'power1.out' });
+
+
+  return outTimeline.call(contentAnimation, [container], 'start')
 }
 
 // Function to animate the content of each page

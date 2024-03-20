@@ -3,14 +3,13 @@
 function initScript() {
   gsap.registerPlugin(ScrollTrigger);
   const timeline = gsap.timeline();
-  const journalDelay = "<=.3";
-  timeline.fromTo(".header", { y: '80px', opacity: 0 }, { y: '0', opacity: 1, duration: 1.1, ease: 'power1.out' });
-  timeline.fromTo(".sub-header", { y: '80px', opacity: 0 }, { y: '0', opacity: 1, duration: 1.1, ease: 'power1.out' }, "0");
+  timeline.fromTo(".header", { y: '80px', opacity: 0 }, { y: '0', opacity: 1, duration: 0.7 });
+  timeline.fromTo(".sub-header", { y: '80px', opacity: 0 }, { y: '0', opacity: 1, duration: 0.7 }, "0");
 
   const packageElements = document.querySelectorAll('.package-wrapper');
   for (let i = 0; i < packageElements.length; i++) {
     if (i === 0) {
-      timeline.fromTo(packageElements[i], { y: '80px', opacity: 0 }, { y: '0', opacity: 1, duration: 1, ease: 'power1.out' }, "<=0.5");
+      timeline.fromTo(packageElements[i], { y: '80px', opacity: 0 }, { y: '0', opacity: 1, duration: 0.7 }, "<=0");
     } else {
       gsap.fromTo(packageElements[i],
         { y: '200px', opacity: 0 },
@@ -27,7 +26,7 @@ function initScript() {
     }
   }
 
-  timeline.delay(0.3);
+  timeline.delay(1.4);
   timeline.play();
 
   initialized = true;

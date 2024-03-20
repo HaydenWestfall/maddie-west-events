@@ -131,9 +131,9 @@ export function initScript() {
         }
     });
 
-    gsap.to("#asthetic-image-1", {
+    gsap.fromTo("#asthetic-image-1", { translateY: -20, opacity: 0 }, {
         opacity: 1,
-        translateY: -20,
+        translateY: 0,
         scrollTrigger: {
             trigger: "#asthetic-image-1",
             start: "top 80%", // Change according to your needs
