@@ -4,7 +4,7 @@ function switchImage() {
   if (document.documentElement.clientWidth > 768) {
     image.src = "/ assets/about/cover.png";
   } else {
-    // image.src = "/ assets/about/cover_2.png";
+    image.src = "/ assets/about/cover_2.png";
   }
 }
 
@@ -19,7 +19,7 @@ function initScript() {
       trigger: "#client-quote",
       start: "top bottom", // Change according to your needs
       end: "top 80%", // Change according to your needs
-      scrub: true
+      scrub: false
     }
   });
 

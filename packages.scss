@@ -108,8 +108,10 @@
 @media only screen and (max-width: 768px) {
   .packages-header {
     width: calc(100% - 30px);
-    margin: 8rem 0 10rem;
+    margin: 0;
     padding: 0 15px;
+
+    height: 25rem;
 
     .header {
       font-family: didot;

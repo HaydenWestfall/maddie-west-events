@@ -5,13 +5,10 @@
   background-color: rgb(255, 255, 255);
   overflow-x: hidden;
 
-  .text-wrapper {
-    position: absolute;
-    display: inline-flex;
-    top: 40%;
-    height: fit-content;
-    width: inherit;
-    white-space: nowrap;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 }
 
@@ -502,6 +499,7 @@ section {
         height: unset;
         aspect-ratio: 1 /1;
         object-fit: cover;
+        z-index: 10;
       }
 
       .asthetic-description {

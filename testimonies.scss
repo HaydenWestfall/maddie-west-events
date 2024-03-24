@@ -158,15 +158,17 @@
         position: absolute;
         bottom: 5rem;
         top: unset;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0;
+        width: 100%;
+        text-align: center;
       }
 
       .bottom-right {
         position: absolute;
         bottom: 1rem;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0;
+        width: 100%;
+        text-align: center;
       }
     }
   }

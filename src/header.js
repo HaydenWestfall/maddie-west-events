@@ -1,63 +1,4 @@
 
-// const headerStyles = document.createElement("link");
-// headerStyles.setAttribute("rel", "stylesheet");
-// headerStyles.setAttribute("href", "header/header.scss");
-// const headerSharedStyles = document.createElement("link");
-// headerSharedStyles.setAttribute("rel", "stylesheet");
-// headerSharedStyles.setAttribute("href", "shared-styles.scss");
-
-// class Header extends HTMLElement {
-//   theme = 'light';
-
-//   constructor() {
-//     super();
-//     this.theme = 'light';
-//   }
-
-//   connectedCallback() {
-//     this.attachShadow({ mode: "open" });
-
-//     if (this.getAttribute('theme') === 'dark') {
-//       this.theme = 'dark';
-//     }
-
-//     fetch('header/header.html')
-//       .then(response => response.text())
-//       .then(html => {
-//         this.shadowRoot.innerHTML = html;
-//         this.shadowRoot.appendChild(headerStyles);
-//         this.shadowRoot.appendChild(headerSharedStyles);
-//         this.setTheme();
-
-//         const navIcon = this.shadowRoot.getElementById('nav-icon');
-//         const closeIcon = this.shadowRoot.getElementById('close-icon');
-//         const menu = this.shadowRoot.getElementById('mobile-menu-wrapper');
-
-
-
-//         this.shadowRoot.querySelectorAll('a').forEach(anchor => {
-//           anchor.addEventListener('click', event => {
-//             const tag = anchor.getAttribute('tag');
-//             const customEvent = new CustomEvent('pageChange', {
-//               bubbles: true, composed: true, detail: tag
-//             });
-//             this.dispatchEvent(customEvent);
-//           });
-//         });
-//       });
-//   }
-
-//   setTheme() {
-//     this.shadowRoot.getElementById('maddie-west-header').classList.add(this.theme);
-//     this.shadowRoot.getElementById('call-to-action').classList.add(this.theme);
-//   }
-// }
-
-// customElements.define("maddie-west-header", Header);
-
-// 
-// const maddieWestHeader = document.getElementsByTagName('maddie-west-header')[0].shadowRoot;
-
 let lastScrollTop = 0;
 window.addEventListener('scroll', function () {
   const scrollTop = window.scrollY || this.document.documentElement.scrollTop;
@@ -69,26 +10,52 @@ window.addEventListener('scroll', function () {
   lastScrollTop = scrollTop;
 });
 
-
+const body = document.getElementsByTagName('body')[0];
 const menu = document.getElementById('mobile-menu-wrapper');
-document.getElementById('close-icon').addEventListener('click', function () {
-  menu.style.top = '-20vh';
-  menu.style.opacity = '0';
+const menuButton = document.getElementById('nav-icon');
+const anchors = document.getElementById('mobile-menu').querySelectorAll('a');
 
+menuButton.addEventListener('click', function () {
+  const currentState = menuButton.getAttribute("data-state");
+
+  if (!currentState || currentState === "closed") {
+    menuButton.setAttribute("data-state", "opened");
+    menuButton.setAttribute("aria-expanded", "true");
+    // body.style.overflow = 'hidden';
+    menu.style.display = 'flex';
+
+
+    // var themeColorMeta = document.querySelector('meta[name="theme-color"]');
+    // themeColorMeta.setAttribute('content', '#1a1a1a');
+
+    setTimeout(() => {
+      menu.style.top = '0';
+      menu.style.opacity = '1';
+    }, 10);
+  } else {
+    closeMenu();
+  }
+});
+
+anchors.forEach(anchor => {
+  anchor.addEventListener('click', function () {
+    setTimeout(() => {
+      closeMenu();
+    }, 700);
+  });
+});
+
+function closeMenu() {
+  menuButton.setAttribute("data-state", "closed");
+  menuButton.setAttribute("aria-expanded", "false");
+  // body.style.overflow = 'auto';
+  menu.style.top = '-10vh';
+  menu.style.opacity = '0';
 
   setTimeout(() => {
     menu.style.display = 'none';
   }, 500);
-});
-
-document.getElementById('nav-icon').addEventListener('click', function () {
-  menu.style.display = 'flex';
-
-  setTimeout(() => {
-    menu.style.top = '0';
-    menu.style.opacity = '1';
-  }, 10);
-});
+}
 
 
 

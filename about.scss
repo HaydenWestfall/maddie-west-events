@@ -4,6 +4,7 @@
   width: 100%;
   background-color: rgb(104, 104, 104);
   border-bottom: 1px solid rgb(231, 231, 231);
+  overflow: hidden;
 
   img {
     height: 100%;
@@ -211,7 +212,7 @@
 
     .accent {
       position: absolute;
-      bottom: 1.25rem;
+      bottom: 4.75rem;
       left: 1.25rem;
       max-width: 55%;
       font-size: 0.7rem;

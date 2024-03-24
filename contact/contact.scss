@@ -4,6 +4,7 @@
     width: 100%;
     overflow: hidden;
     background-color: white;
+    position: relative;
 
     .header-wrapper {
         display: flex;
@@ -90,7 +91,6 @@
 
             .emphasize {
                 font-family: didot-italic;
-                color: black;
                 font-size: 2rem;
                 font-weight: 400;
             }
@@ -98,7 +98,6 @@
             .client {
                 font-family: Montserrat;
                 font-style: regular;
-                color: black;
                 letter-spacing: 4px;
                 font-size: 0.5rem;
                 font-weight: 600;
@@ -109,10 +108,10 @@
 
 @media only screen and (max-width: 768px) {
     .contact-section {
-        flex-direction: column;
+        flex-direction: column-reverse;
         width: calc(100% - 30px);
-        padding: 3.5rem 15px;
-        gap: 6rem;
+        padding: 5rem 15px 18rem;
+        gap: 8rem;
 
         .header-wrapper {
             display: block;
@@ -127,6 +126,7 @@
 
                 span {
                     font-weight: 300;
+                    width: 10.5rem;
 
                     a {}
 
@@ -150,17 +150,28 @@
             width: 100%;
 
             .client-quote {
+                gap: 2rem;
 
                 .quote {
-                    font-size: 1.3rem;
-                    line-height: unset;
+                    font-size: 1.6rem;
+                    line-height: 1.9rem;
+                    color: rgb(68, 68, 68);
                 }
 
                 .emphasize {
-                    font-size: 1.2rem;
+                    font-size: 1.6rem;
+                    line-height: 1.9rem;
+                    color: rgb(68, 68, 68);
                 }
 
-                .client {}
+                .client {
+                    font-size: 0.6rem;
+                }
+            }
+
+            #desktop-button {
+                position: absolute;
+                bottom: 10rem;
             }
         }
     }

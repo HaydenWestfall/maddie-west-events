@@ -10,11 +10,17 @@ function pageTransitionIn() {
   // loadingScreen.children[0].innerHTML = route.charAt(0).toUpperCase() + route.slice(1);
 
   document.getElementById('route-page').children[0].innerHTML = targetPage;
+
+  // var themeColorMeta = document.querySelector('meta[name="theme-color"]');
+  // setTimeout(() => {
+  //   themeColorMeta.setAttribute('content', '#1a1a1a');
+  // }, 700);
+
   return gsap
     .timeline()
     .add('start')
     .to(loadingScreen, { duration: 0.7, height: '100%', top: 'unset', bottom: 0, ease: 'power3.in' })
-    .fromTo(transitionText, { y: '40px', opacity: 0 }, { y: 0, opacity: 1, duration: 0.4 })
+    .fromTo(transitionText, { paddingTop: '40px', opacity: 0 }, { paddingTop: 0, opacity: 1, duration: 0.4 })
 
 
 
@@ -23,6 +29,15 @@ function pageTransitionIn() {
 // Function to add and remove the page transition screen
 function pageTransitionOut(container) {
   // GSAP methods can be chained and return directly a promise
+
+
+  // console.log('hitting')
+  // setTimeout(() => {
+  //   console.log('running')
+  //   var themeColorMeta = document.querySelector('meta[name="theme-color"]');
+  //   themeColorMeta.setAttribute('content', '#fafafa');
+  // }, 1495);
+
   return gsap
     .timeline({ delay: 0.8 }) // More readable to put it here
     .add('start') // Use a label to sync screen and content animation
@@ -33,7 +48,7 @@ function pageTransitionOut(container) {
       height: 0,
       ease: 'power3.in'
     }, 'start')
-    .fromTo(transitionText, { opacity: 1, y: '0', },
+    .fromTo(transitionText, { opacity: 1, paddingTop: '0', },
       { opacity: 0, duration: 0.5 }, 'start')
     .call(contentAnimation, [container], 'start');
 
@@ -91,9 +106,11 @@ barba.init({
     },
 
     async enter(data) {
+      document.getElementsByTagName('main')[0].style.overflow = 'hidden';
       window.scrollTo(0, 0);
       selectAnchors();
       await pageTransitionOut(data.next.container);
+      document.getElementsByTagName('main')[0].style.overflow = 'auto';
     },
 
     async once(data) {
