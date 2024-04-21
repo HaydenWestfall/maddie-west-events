@@ -1,13 +1,4 @@
 
-function switchImage() {
-  const image = document.getElementById('about-cover-photo');
-  if (document.documentElement.clientWidth > 768) {
-    image.src = "/ assets/about/cover.png";
-  } else {
-    image.src = "/ assets/about/cover_2.png";
-  }
-}
-
 /**
  * On Destroy callback anytime barba navigates away from the page.
  */
@@ -56,8 +47,11 @@ function initScript() {
   });
 
 
-  gsap.to("#more-section-image", {
-    translateY: -100,
+  gsap.fromTo("#more-section-image", {
+    y: 50,
+    opacity: 0,
+  }, {
+    translateY: 0,
     opacity: 1,
     scrollTrigger: {
       trigger: "#more-section-image",
@@ -67,8 +61,11 @@ function initScript() {
     }
   });
 
-  gsap.to("#more-section-sub-header", {
-    translateY: -100,
+  gsap.fromTo("#more-section-sub-header", {
+    y: 50,
+    opacity: 0,
+  }, {
+    y: 0,
     opacity: 1,
     scrollTrigger: {
       trigger: "#more-section-sub-header",
@@ -79,8 +76,11 @@ function initScript() {
   });
 
 
-  gsap.to("#more-section-header", {
-    translateY: -100,
+  gsap.fromTo("#more-section-header", {
+    y: 50,
+    opacity: 0,
+  }, {
+    y: 0,
     opacity: 1,
     scrollTrigger: {
       trigger: "#more-section-header",
@@ -91,8 +91,11 @@ function initScript() {
   });
 
 
-  gsap.to("#more-section-description", {
-    translateY: -100,
+  gsap.fromTo("#more-section-description", {
+    y: 50,
+    opacity: 0,
+  }, {
+    y: 0,
     opacity: 1,
     scrollTrigger: {
       trigger: "#more-section-description",
@@ -102,8 +105,6 @@ function initScript() {
     }
   });
 
-  switchImage();
-  window.addEventListener('resize', switchImage);
   initialized = true;
 }
 

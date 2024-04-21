@@ -22,8 +22,8 @@
 
   .image-wrapper {
     position: relative;
-    height: 72vh;
-    width: 80%;
+    height: 80vh;
+    width: 88%;
 
     .focused-image {
       width: 100%;
@@ -33,22 +33,23 @@
 
     .header {
       font-family: didot-italic;
-      font-size: 6rem;
+      font-size: 5rem;
       max-width: 70rem;
       text-align: center;
       z-index: 1;
+      color: white;
     }
 
     .top-left {
       position: absolute;
-      top: -3rem;
-      left: -5rem
+      top: 0.75rem;
+      left: 1rem;
     }
 
     .bottom-right {
       position: absolute;
-      bottom: -3.5rem;
-      right: -5rem;
+      bottom: 0.75rem;
+      right: 1rem;
     }
   }
 }
@@ -81,7 +82,6 @@
           object-fit: cover;
           height: 50vw;
           max-height: 75vh;
-          opacity: 0;
         }
       }
     }
@@ -101,33 +101,34 @@
         gap: 2vw;
         padding: 2rem;
         z-index: 5;
-        width: 80%;
-        opacity: 0;
+        width: 85%;
 
         .client-text {
-          font-family: Montserrat;
+          font-family: didot;
           font-style: regular;
           color: black;
           letter-spacing: 2px;
-          font-size: clamp(0.7rem, 1.25vw, 1rem);
+          font-size: 1.75rem;
         }
 
         .testimony-quote {
-          font-family: Abhaya Libre;
-          font-weight: 600;
-          font-size: clamp(0.9rem, 1.8vw, 1.8rem);
-          line-height: clamp(1.5rem, 2.5vw, 3rem);
-          padding-left: 3rem;
+          font-family: 'Montserrat', 'sans-serif';
+          font-style: regular;
+          color: #393939;
+          font-size: 0.8rem;
+          line-height: 1.4rem;
+          font-weight: 400;
+          text-align: justify;
         }
 
         .client-name {
-          font-family: Montserrat;
+          font-family: 'Abhaya Libre', 'sans-serif';
           font-style: regular;
           color: black;
           letter-spacing: 2px;
           font-size: clamp(0.7rem, 1.25vw, 1rem);
           z-index: 5;
-          padding-left: 1rem;
+          // padding-left: 1rem;
         }
       }
 

@@ -13,10 +13,11 @@ header {
         align-items: center;
         justify-content: space-between;
         padding: 0 2rem;
+        transition: background-color 250ms ease-in-out;
 
         #maddie-text {
             font-style: regular;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             letter-spacing: 5px;
             font-weight: 400;
             text-decoration: none;
@@ -26,19 +27,30 @@ header {
         #nav-options {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 1rem;
             color: inherit;
 
             .nav-link {
                 text-decoration: none;
                 font-family: Montserrat;
                 font-style: regular;
-                font-size: 0.8rem;
+                font-weight: 400;
+                font-size: 0.7rem;
                 color: inherit;
+                padding: 0.25rem 0.3rem;
+
+                &:hover {
+                    background-color: rgb(243, 243, 243);
+                    border-radius: 4px;
+                }
+
+                &:active {
+                    background-color: rgb(233, 233, 233);
+                }
             }
 
             a:last-child {
-                margin-left: 1rem;
+                margin-left: 0.5rem;
             }
         }
 
@@ -79,8 +91,18 @@ header {
         }
     }
 
+    .transparent {
+        background-color: transparent;
+        color: white;
+        border-bottom: none;
+
+        #nav-icon {
+            color: black;
+        }
+    }
+
     .light {
-        background-color: #faf8f8;
+        background-color: white;
         color: black;
         border-bottom: 1px solid #f1f1f1;
 

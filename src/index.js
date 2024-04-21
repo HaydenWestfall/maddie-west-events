@@ -93,14 +93,95 @@ export function fadeImages() {
 }
 
 
-
-
-
 /**
  * On script load init the file
  */
 export function initScript() {
     gsap.registerPlugin(ScrollTrigger);
+    gsap.fromTo("#about-maddie-subheader", {
+        y: 30,
+        opacity: 0
+    }, {
+        y: 0,
+        opacity: 1,
+        scrollTrigger: {
+            trigger: "#about-maddie-subheader",
+            start: "top 70%", // Change according to your needs
+            end: "top 50%", // Change according to your needs
+            scrub: true
+        }
+    });
+
+    gsap.fromTo("#about-maddie-header", {
+        y: 30,
+        opacity: 0
+    }, {
+        y: 0,
+        opacity: 1,
+        scrollTrigger: {
+            trigger: "#about-maddie-header",
+            start: "top 70%", // Change according to your needs
+            end: "top 50%", // Change according to your needs
+            scrub: true
+        }
+    });
+
+    gsap.fromTo("#about-maddie-description", {
+        y: 30,
+        opacity: 0
+    }, {
+        y: 0,
+        opacity: 1,
+        scrollTrigger: {
+            trigger: "#about-maddie-description",
+            start: "top 70%", // Change according to your needs
+            end: "top 50%", // Change according to your needs
+            scrub: true
+        }
+    });
+
+    gsap.fromTo("#journal-subheader", {
+        y: 30,
+        opacity: 0
+    }, {
+        y: 0,
+        opacity: 1,
+        scrollTrigger: {
+            trigger: "#journal-subheader",
+            start: "top 70%", // Change according to your needs
+            end: "top 50%", // Change according to your needs
+            scrub: true
+        }
+    });
+
+    gsap.fromTo("#journal-header", {
+        y: 30,
+        opacity: 0
+    }, {
+        y: 0,
+        opacity: 1,
+        scrollTrigger: {
+            trigger: "#journal-header",
+            start: "top 70%", // Change according to your needs
+            end: "top 50%", // Change according to your needs
+            scrub: true
+        }
+    });
+
+    gsap.fromTo("#journal-description", {
+        y: 30,
+        opacity: 0
+    }, {
+        y: 0,
+        opacity: 1,
+        scrollTrigger: {
+            trigger: "#journal-description",
+            start: "top 70%", // Change according to your needs
+            end: "top 50%", // Change according to your needs
+            scrub: true
+        }
+    });
+
     gsap.to("#image-1", {
         translateY: -1200,
         scrollTrigger: {
@@ -131,9 +212,12 @@ export function initScript() {
         }
     });
 
-    gsap.fromTo("#asthetic-image-1", { translateY: -20, opacity: 0 }, {
+    gsap.fromTo("#asthetic-image-1", {
+        y: 50,
+        opacity: 0
+    }, {
+        y: 0,
         opacity: 1,
-        translateY: 0,
         scrollTrigger: {
             trigger: "#asthetic-image-1",
             start: "top 80%", // Change according to your needs
@@ -143,9 +227,12 @@ export function initScript() {
     });
 
 
-    gsap.to("#asthetic-image-2", {
+    gsap.fromTo("#asthetic-image-2", {
+        y: 50,
+        opacity: 0
+    }, {
+        y: 0,
         opacity: 1,
-        translateY: -20,
         scrollTrigger: {
             trigger: "#asthetic-image-2",
             start: "top 80%", // Change according to your needs
@@ -155,9 +242,12 @@ export function initScript() {
     });
 
 
-    gsap.to("#asthetic-image-3", {
+    gsap.fromTo("#asthetic-image-3", {
+        y: 50,
+        opacity: 0
+    }, {
         opacity: 1,
-        translateY: -20,
+        y: 0,
         scrollTrigger: {
             trigger: "#asthetic-image-3",
             start: "top 80%", // Change according to your needs
@@ -166,13 +256,83 @@ export function initScript() {
         }
     });
 
-    gsap.to("#asthetic-image-4", {
+    gsap.fromTo("#asthetic-image-4", {
+        y: 50,
+        opacity: 0
+    }, {
         opacity: 1,
-        translateY: -20,
+        y: 0,
         scrollTrigger: {
             trigger: "#asthetic-image-4",
             start: "top 80%", // Change according to your needs
             end: "top center", // Change according to your needs
+            scrub: true
+        }
+    });
+
+    gsap.fromTo("#asthetic-subheader", {
+        y: 30,
+        opacity: 0
+    }, {
+        y: 0,
+        opacity: 1,
+        scrollTrigger: {
+            trigger: "#asthetic-subheader",
+            start: "top 70%", // Change according to your needs
+            end: "top 50%", // Change according to your needs
+            scrub: true
+        }
+    });
+
+    gsap.fromTo("#asthetic-header", {
+        y: 30,
+        opacity: 0
+    }, {
+        y: 0,
+        opacity: 1,
+        scrollTrigger: {
+            trigger: "#asthetic-header",
+            start: "top 70%", // Change according to your needs
+            end: "top 50%", // Change according to your needs
+            scrub: true
+        }
+    });
+
+    gsap.fromTo("#asthetic-description", {
+        y: 30,
+        opacity: 0
+    }, {
+        y: 0,
+        opacity: 1,
+        scrollTrigger: {
+            trigger: "#asthetic-description",
+            start: "top 70%", // Change according to your needs
+            end: "top 50%", // Change according to your needs
+            scrub: true
+        }
+    });
+
+    // gsap.fromTo("#maddie-flowers-video", {
+    //     y: -250
+    // }, {
+    //     y: 0,
+    //     scrollTrigger: {
+    //         trigger: "#maddie-flowers-video",
+    //         start: "top bottom", // Change according to your needs
+    //         end: "bottom top", // Change according to your needs
+    //         scrub: true,
+    //         markers: true
+    //     }
+    // });
+
+    gsap.fromTo("#maddie-flowers-header", {
+        opacity: 0
+    }, {
+        opacity: 1,
+        scrollTrigger: {
+            trigger: "#maddie-flowers-header",
+            start: "top 85%", // Change according to your needs
+            end: "top 50%", // Change according to your needs
             scrub: true
         }
     });

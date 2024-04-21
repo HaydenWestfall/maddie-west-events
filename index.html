@@ -37,14 +37,14 @@
 
 <body data-barba="wrapper">
     <header>
-        <nav id="maddie-west-header" class="light">
+        <nav id="transparent-header" class="transparent">
             <a id="maddie-text" tag="index" href="./index.html">MADDIE WEST</a>
             <div id="nav-options">
                 <a class="nav-link" tag="about" href="./about.html">About</a>
                 <a class="nav-link" tag="testimonies" href="./testimonies.html">Testimonies</a>
                 <a class="nav-link" tag="packages" href="./packages.html">Packages</a>
                 <a class="nav-link" tag="journal" href="./journal.html">Journal</a>
-                <a class="primary-button large light" tag="contact" href="../contact.html"
+                <a class="primary-button medium dark" tag="contact" href="../contact.html"
                     id="call-to-action">Contact</a>
             </div>
             <button id="nav-icon" class="more-btn" aria-controls="primary-navigation" aria-expanded="false">
@@ -75,107 +75,147 @@
 
     <main data-barba="container" data-barba-namespace="index">
         <div class="main-page">
-            <img src="/ assets/about/cover_2.png" />
+            <video autoplay loop muted src="/ assets/home/maddie_main_6.mp4"></video>
+            <div>
+                <h6 id="main-subheader">WEDDING AND EVENT COORDINATOR</h6>
+                <h1 id="main-header">EVERY detail adds DEPTH to the<br />NARRATIVE of CELEBRATION</h1>
+            </div>
         </div>
 
         <div class="about-me">
-            <div class="section-header about-text">
-                <h6>ABOUT MADDIE</h6>
-                <h2>"I BELIEVE ITS ALL IN THE DETAILS"</h2>
-                <p class="description justify centered">
-                    I’m Maddie, owner and lead coordinator of Maddie West Events. This May marks one full year
-                    of doing this little side hustle that I am so passionate about. This is a long paragraph
-                    that will contain more information about Madison and her business.
-                </p>
-                <a id="mobile-button" class="text-button large light" href="about.html" style="margin-top: 5rem;"
-                    tag="about">READ MORE</a>
+            <div id="column1" class="section-header about-text" style="gap: 1rem">
+
+                <!-- <h3 id="about-maddie-header">"THE SUCCESS OF AN EVENT LIES WITHIN THE CAREFUL CONSIDERATION OF ITS
+                    DETAILS"</h3> -->
+                <h3 id="about-maddie-header">"The Success of an Event Lies Within the Careful Consideration of its
+                    Details"</h3>
+                <h6 id="about-maddie-subheader">ABOUT MADDIE</h6>
             </div>
-            <img src="/ assets/journal-section/image_1.JPG" id="image-1">
-            <img src="/ assets/journal-section/image_3.JPG" id="image-2">
-            <img src="/ assets/journal-section/image_2.JPG" id="image-3">
+            <div id="column2">
+                <p id="about-maddie-description" class="description justify">
+                    My passion for detail and execution allows me to bring to fruition a
+                    day that allows the couple, the families, the bridal party, and all the guests to temporarily set
+                    aside everything else in life, and instead, indulge in the goodness surrounding them in that moment.
+                    <br /><br />
+                    I want your wedding day to be full of memorable moments that you, your family and friends with
+                    remember for years to come.
+                    <br /><br />
+                    If you’re already thinking about the look and feel of your wedding or
+                    event - I have a feeling you love the details just as much as I do! If you decide to book with me,
+                    you're investing in an experience that allows you to be fully present while I’m taking care
+                    of all of the details. 
+                </p>
+            </div>
         </div>
 
         <div class="journal-section">
             <div class="section-header">
-                <h6 style="color: white">JOURNAL</h6>
-                <h1 class="journal-header" style="color: white">A NEW TAKE on WEDDING COORDINATING</h1>
-                <p class="description justify centered" style="color: rgb(195, 195, 195)">This is a longer
-                    description about your life and how awesome you are as a person. It will be so awesome that when
-                    people read it they have no choice but to get in touch with you and hire you. Okay needed one
-                    more sentence to make it look full. This is another sentence<br /><br />
-
-                    This is a longer description about your life and how awesome you are as a person. It will be so
-                    awesome that when people read it they have no choice but to get in touch with you and hire you.
-                    Okay needed one more sentence to make it look full. And antoher sentence that is a little bit
-                    longer than the other.
+                <h6 id="journal-subheader" style="color: white">JOURNAL</h6>
+                <h2 id="journal-header" class="journal-header" style="color: white">
+                    timely EXECUTION through<br />conscious COORDINATION
+                </h2>
+                <p id="journal-description" class="description justify centered" style="color: rgb(175, 175, 175)">
+                    I leave each wedding feeling so impacted by each of my couples and their families, most of whom are
+                    a true testimony of
+                    what marriage really is. In our ever changing and unpredictable world, I am extremely grateful that
+                    I chose a profession
+                    where love is not just celebrated but meticulously curated.<br /><br /> It's a career that demands
+                    creativity,
+                    empathy, and a keen eye for detail, but the reward lies in
+                    being part of one of
+                    the most significant days in people's lives, where happiness reigns supreme, and love knows no
+                    bounds.
+                    <!-- It's about more
+                    than just executing ceremonies and receptions; it's about incorporating the countless emotions,
+                    traditions, and
+                    aspirations to create a day full of unforgettable joy. From the coordinators who work alongside the
+                    couple to
+                    meticulously craft every detail, to florists who transform the space into captivating landscapes,
+                    each professional
+                    plays a vital role in shaping the moments that couples will adore for a lifetime. -->
                 </p>
             </div>
 
-            <!-- <button id="test">test</button> -->
-
-            <div id="card-wrapper" class="journal-carousel test-scroll">
-                <div class="carousel-image animate-grow" id="first" index="1" current="false" next="false">
-                    <img src="/ assets/journal-section/image_1.JPG" class="image" />
-                </div>
-                <div class="carousel-image animate-grow grow" id="second" index="2" current="true" next="false">
-                    <img src="/ assets/journal-section/image_2.JPG" class="image" />
-                </div>
-                <div class="carousel-image animate-grow" id="third" index="3" current="false" next="true">
-                    <img src="/ assets/journal-section/image_3.JPG" class="image" />
-                </div>
-                <div class="carousel-image animate-grow" id="fourth" index="4" current="false" next="false">
-                    <img src="/ assets/journal-section/image_4.JPG" class="image" />
-                </div>
-                <div class="carousel-image animate-grow" id="fifth" index="5" current="false" next="false">
-                    <img src="/ assets/journal-section/image_5.JPG" class="image" />
-                </div>
-                <div class="carousel-image animate-grow" id="sixth" index="6" current="false" next="false">
-                    <img src="/ assets/journal-section/image_6.JPG" class="image" />
-                </div>
-                <div class="carousel-image animate-grow" id="seventh" index="7" current="false" next="false">
-                    <img src="/ assets/journal-section/image_7.JPG" class="image" />
-                </div>
-                <div class="carousel-image animate-grow" id="eigth" index="8" current="false" next="false">
-                    <img src="/ assets/journal-section/image_8.JPG" class="image" />
-                </div>
-                <div class="carousel-image animate-grow" id="nine" index="9" current="false" next="false">
-                    <img src="/ assets/journal-section/image_9.JPG" class="image" />
-                </div>
-                <div class="carousel-image animate-grow" id="tenth" index="10" current="false" next="false">
-                    <img src="/ assets/journal-section/image_10.JPG" class="image" />
-                </div>
-                <div class="carousel-image animate-grow" id="eleventh" index="11" current="false" next="false">
-                    <img src="/ assets/journal-section/image_1.JPG" class="image" />
-                </div>
-                <div class="carousel-image animate-grow" id="twelvth" index="12" current="false" next="false">
-                    <img src="/ assets/journal-section/image_2.JPG" class="image" />
-                </div>
-                <div class="carousel-image animate-grow" id="thirteenth" index="13" current="false" next="false">
-                    <img src="/ assets/journal-section/image_3.JPG" class="image" />
+            <div class="marquee-wrapper">
+                <div class="journal-marquee">
+                    <img src="/ assets/journal-section/journal_1.JPG" class="image" />
+                    <img src="/ assets/journal-section/journal_2.JPG" class="image" />
+                    <img src="/ assets/journal-section/journal_3.JPG" class="image" />
+                    <img src="/ assets/journal-section/journal_4.JPG" class="image" />
+                    <img src="/ assets/journal-section/journal_5.JPG" class="image" />
+                    <img src="/ assets/journal-section/journal_6.JPG" class="image" />
+                    <img src="/ assets/journal-section/journal_7.JPG" class="image" />
+                    <img src="/ assets/journal-section/journal_8.JPG" class="image" />
+                    <img src="/ assets/journal-section/journal_9.JPG" class="image" />
+                    <img src="/ assets/journal-section/journal_1.JPG" class="image" />
+                    <img src="/ assets/journal-section/journal_2.JPG" class="image" />
+                    <img src="/ assets/journal-section/journal_3.JPG" class="image" />
                 </div>
             </div>
+
+            <!-- <div class="scroll-blocker"></div>
+            <div id="card-wrapper" class="journal-carousel test-scroll">
+                <div class="carousel-image animate-grow" id="first" index="1" current="false" next="false">
+                    <img src="/ assets/journal-section/journal_1.JPG" class="image" />
+                </div>
+                <div class="carousel-image animate-grow grow" id="second" index="2" current="true" next="false">
+                    <img src="/ assets/journal-section/journal_2.JPG" class="image" />
+                </div>
+                <div class="carousel-image animate-grow" id="third" index="3" current="false" next="true">
+                    <img src="/ assets/journal-section/journal_3.JPG" class="image" />
+                </div>
+                <div class="carousel-image animate-grow" id="fourth" index="4" current="false" next="false">
+                    <img src="/ assets/journal-section/journal_4.JPG" class="image" />
+                </div>
+                <div class="carousel-image animate-grow" id="fifth" index="5" current="false" next="false">
+                    <img src="/ assets/journal-section/journal_5.JPG" class="image" />
+                </div>
+                <div class="carousel-image animate-grow" id="sixth" index="6" current="false" next="false">
+                    <img src="/ assets/journal-section/journal_6.JPG" class="image" />
+                </div>
+                <div class="carousel-image animate-grow" id="seventh" index="7" current="false" next="false">
+                    <img src="/ assets/journal-section/journal_7.JPG" class="image" />
+                </div>
+                <div class="carousel-image animate-grow" id="seventh" index="8" current="false" next="false">
+                    <img src="/ assets/journal-section/journal_8.JPG" class="image" />
+                </div>
+                <div class="carousel-image animate-grow" id="seventh" index="9" current="false" next="false">
+                    <img src="/ assets/journal-section/journal_9.JPG" class="image" />
+                </div>
+                <div class="carousel-image animate-grow" id="eigth" index="10" current="false" next="false">
+                    <img src="/ assets/journal-section/journal_1.JPG" class="image" />
+                </div>
+                <div class="carousel-image animate-grow" id="nine" index="11" current="false" next="false">
+                    <img src="/ assets/journal-section/journal_2.JPG" class="image" />
+                </div>
+                <div class="carousel-image animate-grow" id="tenth" index="12" current="false" next="false">
+                    <img src="/ assets/journal-section/journal_3.JPG" class="image" />
+                </div>
+            </div> -->
             <a tag="journal" href="../journal.html" class="text-button journal-button">EXPLORE JOURNAL</a>
         </div>
 
         <section>
             <div class="testimony-section">
-                <h6 class="small">CLIENT TESTIMONY</h6>
                 <div class="testimony-wrapper">
                     <div class="testimony">
-                        <h4 class="quote-italic">
-                            “MADDIE LITERALLY SAVED THE DAY FOR OUR WEDDING! THIS GIRL DID EVERYTHING...
-                        </h4>
-                        <p class="description justify light">
-                            ... and more for us! We hired Maddie as our day-of coordinator only a couple months
-                            before our day, after we realized how insane planning a wedding was! She allowed me
-                            to feel relaxed knowing she was running the show!
-                        </p>
-                        <a tag="testimonies" href="./testimonies.html" class="text-button"
-                            style="align-self: flex-end; margin-top: 2.5rem;" tag="testimonies">
-                            READ MORE</a>
+                        <div class="text-wrapper">
+                            <h6 class="small">CLIENT TESTIMONY</h6>
+                            <h4 class="quote-italic">
+                                "Maddie literally SAVED THE DAY for our wedding! This girl did EVERYTHING...
+                            </h4>
+                            <p class="description justify light" style="font-size: 0.8rem;">
+                                ... and more for us! We hired Maddie as our day-of coordinator only a couple months
+                                before our day, after we realized how insane planning a wedding was! She allowed me
+                                to feel relaxed knowing she was running the show!"
+                            </p>
+                            <a tag="testimonies" href="./testimonies.html" class="text-button"
+                                style="align-self: flex-end; margin-top: 2.5rem;" tag="testimonies">
+                                READ MORE</a>
+                        </div>
                     </div>
                     <div class="testimony-image">
-                        <img src="/ assets/maddie/maddie_1.jpg" alt="Maddie West">
+                        <img src="/ assets/home/about_maddie_section3.jpg" alt="Maddie West">
                     </div>
                 </div>
             </div>
@@ -196,29 +236,43 @@
         <section>
             <div class="asthetic-wrapper">
                 <div class="primary-asthetic-wrapper">
-                    <img src="/ assets/journal-section/image_5.jpg" class="relative-image" id="asthetic-image-1">
-                    <img src="/ assets/journal-section/image_8.jpg" class="absolute-image-1" id="asthetic-image-4">
+                    <img src="/ assets/asthetic/asthetic_1.JPG" class="relative-image" id="asthetic-image-1">
+                    <img src="/ assets/asthetic/asthetic_2.JPG" class="absolute-image-1" id="asthetic-image-4">
                     <div class="section-header asthetic-description">
-                        <h6>THE ASTHETIC</h6>
-                        <h3>TIMELESS, MINIMALISTIC,<br /> AND SIMPLE DESIGN</h3>
-                        <p class="description justify">
-                            This is a longer description about your life and how awesome you are as a person. It will be
-                            so awesome that when people read it they have no choice but to get in touch with you and
-                            hire you. Okay needed one more sentence to make it look full. This is a longer description
-                            about your life and how awesome you are as a person.<br /><br />
+                        <h6 id="asthetic-subheader">THE ASTHETIC</h6>
+                        <h3 id="asthetic-header">TIMELESS, MODERN, AND REFINED</h3>
+                        <p id="asthetic-description" class="description justify" style="max-width: 40rem !important;">
+                            The aesthetic of a wedding is what sets the tone for the entire celebration, blending
+                            personal style with timeless
+                            elegance. From the delicacy of a whimsical garden affair to the sleek sophistication of a
+                            modern metropolitan affair,
+                            every wedding aesthetic tells a unique story of love and commitment. It's about creating a
+                            cohesive visual narrative
+                            that reflects the couple's personalities and aspirations.<br /><br />
 
-                            This is a longer description about your life and how awesome you are as a person. It will be
-                            so awesome that when people read it they have no choice but to get in touch with you and
-                            hire you. Okay needed one more sentence to make it look full. This is a longer description
-                            about your life and how awesome you are as a person. Super cool last sentence.
+                            Whether it's a lavish hall adorned with cascading florals or an intimate backyard gathering
+                            illuminated by string
+                            lighting, the beauty lies in the thoughtful curation of every element, from the invitations
+                            to the tablescapes.
+                            Ultimately, wedding aesthetics are a celebration of individuality and unity, where every
+                            detail whispers of the couple's
+                            journey and their aspirations for the future together.
                         </p>
                     </div>
                 </div>
-                <img src="/ assets/journal-section/image_4.jpg" class="absolute-image-3" id="asthetic-image-2">
-                <img src="/ assets/journal-section/image_2.jpg" class="absolute-image-2" id="asthetic-image-3">
-
+                <img src="/ assets/asthetic/asthetic_3.JPG" class="absolute-image-3" id="asthetic-image-3">
+                <img src="/ assets/asthetic/asthetic_4.JPG" class="absolute-image-2" id="asthetic-image-2">
             </div>
         </section>
+
+
+        <div class="maddie-flowers-section">
+            <video id="maddie-flowers-video" autoplay muted loop src="/ assets/home/maddie_main_5.mp4"></video>
+            <div>
+                <h1 id="maddie-flowers-header">the asthetic consists of<br />CAREFULLY CURATED DETAILS
+                </h1>
+            </div>
+        </div>
 
         <maddie-west-contact></maddie-west-contact>
 

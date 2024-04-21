@@ -4,7 +4,8 @@
     font-family: Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: regular;
 
-    font-size: clamp(0.1rem, 1.25vw, 1rem);
+    // font-size: clamp(0.1rem, 1.25vw, 1rem);
+    font-size: 1.25vw;
     line-height: 1.15;
 }
 
@@ -45,17 +46,19 @@ body {
 }
 
 h1 {
-    font-size: 4rem;
-    max-width: 80rem;
+    font-size: 4.5rem;
+    max-width: 90rem;
     font-family: didot-italic;
     text-align: center;
+    font-weight: 300;
 }
 
 h2 {
-    font-size: 3rem;
-    max-width: 38rem;
+    font-size: 3.5rem;
     font-family: didot-italic;
     text-align: center;
+    font-weight: 200;
+    line-height: 4.4rem;
 }
 
 h3 {
@@ -87,7 +90,7 @@ h6 {
     font-style: regular;
     color: #393939;
     letter-spacing: 6px;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     font-weight: 400;
 
     &.small {
@@ -134,14 +137,14 @@ h6 {
     }
 
     &.justify {
-        max-width: 45rem !important;
+        max-width: 37rem !important;
         line-height: 1.75rem;
         font-size: 0.9rem;
         text-align: justify;
     }
 
     &.light {
-        font-weight: 300;
+        color: rgb(105, 105, 105);
         line-height: 1.4rem;
     }
 }
@@ -180,6 +183,7 @@ h6 {
     &.light {
         background-color: black;
         color: #bababa;
+        border: none;
 
         &:hover {
             background-color: rgb(240, 240, 240);
@@ -190,6 +194,7 @@ h6 {
     &.dark {
         background-color: white;
         color: black;
+        border: none;
 
         &:hover {
             background-color: rgb(29, 29, 29);

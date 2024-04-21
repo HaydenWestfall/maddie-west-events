@@ -4,22 +4,24 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 1.75rem;
-  height: 40rem;
+  gap: 1rem;
+  height: 26rem;
 
   .sub-header {
     font-family: Montserrat;
     font-style: regular;
     color: black;
     letter-spacing: 3px;
-    font-size: 1rem;
+    font-size: 0.65rem;
+    font-weight: 600;
   }
 
   .header {
-    font-family: Abhaya Libre, serif;
-    font-size: 4rem;
+    font-family: Didot, serif;
+    font-size: 4.5rem;
     max-width: 70rem;
     text-align: center;
+    line-height: 5.5rem;
   }
 }
 
@@ -34,11 +36,11 @@
     display: flex;
 
     .package-image {
-      width: 50%;
+      width: 49%;
 
       img {
-        height: 100vh;
-        width: 80%;
+        aspect-ratio: 1 / 1.5;
+        width: 100%;
         object-fit: cover;
         float: right;
       }
@@ -46,58 +48,96 @@
 
     .package-info-wrapper {
       display: flex;
-      width: 50%;
+      width: 51%;
 
       .package-info {
         display: flex;
         flex-direction: column;
-        width: 80%;
+        width: 72%;
 
-        .package-header {
+        .package-info-container {
           display: flex;
-          justify-content: space-between;
-          border-bottom: 1px solid black;
-          padding: 2rem 2rem 1rem 3rem;
-        }
+          flex-direction: column;
 
-        .description {
-          font-size: 1.2rem;
-          line-height: 2.25rem;
-          font-weight: 300;
-          padding: 1rem 2rem 3rem 3rem;
-          text-align: justify;
-        }
+          .package-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgb(76, 76, 76);
+            padding: 2.8rem 0.5rem 1rem 4.6rem;
 
-        .includes-text {
-          font-size: 1.2rem;
-          letter-spacing: 3px;
-          text-decoration: underline;
-          padding: 1rem 2rem 1.5rem 3rem;
-        }
-
-        ul {
-          padding: 0rem 2rem 3rem 4.5rem;
-          list-style: none;
-
-          li {
-            padding-bottom: 1rem;
-            font-size: 1.2rem;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
-
-            &::before {
-              content: "\2022";
-              color: black;
-              font-size: 24px;
-              display: inline-block;
-              width: 1em;
-              margin-left: -1em;
+            span {
+              font-weight: 500;
+              font-size: 0.6rem;
+              letter-spacing: 4px;
+              color: #8c8c8c;
             }
           }
-        }
 
-        button {
-          margin-left: 3rem;
+          .align-left {
+            padding: 2.8rem 4.6rem 1rem 0.5rem !important;
+          }
+
+          .divider {
+            height: 0px;
+            width: 100%;
+            background-color: rgb(101, 101, 101);
+          }
+
+          .details {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem 0.5rem 1rem 4.6rem;
+            gap: 1.4rem;
+
+            .info-price-wrapper {
+              display: flex;
+              justify-content: space-between;
+
+              p {
+                width: 60%;
+                font-size: 0.7rem;
+                line-height: 1.1rem;
+              }
+
+              span {
+                font-family: didot-italic;
+
+              }
+            }
+
+            .description {
+              font-size: 0.7rem;
+              line-height: 1.1rem;
+              font-weight: 400;
+              text-align: justify;
+            }
+
+            .includes-text {
+              font-size: 0.7rem;
+              line-height: 1.1rem;
+              letter-spacing: 3px;
+              text-decoration: underline;
+              margin-bottom: -1rem;
+            }
+
+            ul {
+              list-style-type: none;
+              margin-left: 1.15rem;
+
+              li {
+                font-size: 0.8rem;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 300;
+                padding-bottom: 0.5rem;
+
+                &::before {
+                  content: '\2013';
+                  position: absolute;
+                  margin-left: -15px;
+                }
+              }
+            }
+          }
         }
       }
     }

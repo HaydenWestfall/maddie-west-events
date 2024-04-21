@@ -110,7 +110,7 @@ barba.init({
       window.scrollTo(0, 0);
       selectAnchors();
       await pageTransitionOut(data.next.container);
-      document.getElementsByTagName('main')[0].style.overflow = 'auto';
+      document.getElementsByTagName('main')[0].style.overflow = 'unset';
     },
 
     async once(data) {

@@ -1,55 +1,28 @@
 .about-page {
   position: relative;
-  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110vh;
   width: 100%;
   background-color: rgb(104, 104, 104);
   border-bottom: 1px solid rgb(231, 231, 231);
   overflow: hidden;
 
-  img {
+  video {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    object-position: 50% 20%;
   }
 
   .accent {
     position: absolute;
-    bottom: 1.25rem;
-    left: 1.25rem;
+    bottom: 0.5rem;
+    left: 1rem;
     max-width: 55%;
-    font-size: 0.7rem;
-    line-height: 0.8rem;
-  }
-
-  .text-wrapper {
-    position: absolute;
-    left: 5rem;
-    top: 50%;
-    transform: translateY(-50%);
-
-    .header {
-      font-family: didot-italic;
-      font-size: 4rem;
-    }
-
-    .sub-header {
-      font-family: Montserrat;
-      color: black;
-      letter-spacing: 6px;
-      font-size: 1rem;
-    }
-
-    .description {
-      margin-top: 2.5rem;
-      font-family: Montserrat;
-      font-style: regular;
-      color: black;
-      font-size: 1rem;
-      max-width: 33%;
-      line-height: 2rem;
-      text-align: justify;
-    }
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: white;
   }
 }
 
@@ -61,20 +34,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
 
   .about-quote {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     color: rgb(56, 56, 56);
     line-height: 3rem;
 
     .about-emphasize {
-      font-size: 2rem;
+      font-size: 2.4rem;
+      line-height: 3rem
     }
   }
 
   h6 {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     letter-spacing: 2px;
   }
 }
@@ -82,15 +56,15 @@
 .about-maddie {
   position: relative;
   background-color: #F1F0F0;
-  padding: 8rem 0 8rem;
+  padding: 5rem 0 0;
   width: 100%;
 
   .image {
     position: absolute;
-    top: -8rem;
+    top: -5rem;
     left: 39%;
-    height: 60rem;
-    aspect-ratio: 1 /1.7;
+    height: 45rem;
+    aspect-ratio: 1 / 1.8;
     z-index: 1;
     object-fit: cover;
   }
@@ -101,17 +75,17 @@
     position: relative;
 
     &.first {
-      height: 41rem;
+      height: 27.5rem;
 
       p {
         position: absolute;
         display: block;
         font-family: 'didot-italic', 'sans-serif';
-        font-size: 2rem;
+        font-size: 1.6rem;
         width: 40%;
         max-width: 60rem;
         z-index: 5;
-        line-height: 3rem;
+        line-height: 2.1rem;
         font-weight: 200;
         right: 56%;
         top: 100px;
@@ -119,21 +93,23 @@
         text-align: justify;
         height: 41rem;
         padding-bottom: 17rem;
+        color: rgb(49, 49, 49);
       }
     }
 
     &.second {
-      height: 30rem;
+      padding-top: 7rem;
+      padding-bottom: 12rem;
 
       p {
         position: relative;
         justify-content: flex-end;
         display: block;
         font-family: Montserrat;
-        font-size: 1.2rem;
+        font-size: 0.8rem;
         max-width: 60rem;
         width: 47%;
-        line-height: 2.5rem;
+        line-height: 1.5rem;
         align-self: flex-end;
         text-align: justify;
         left: 56%;
@@ -158,41 +134,39 @@
     .image {
       position: relative;
       width: 48%;
-      height: 110vh;
       object-fit: cover;
       background-color: rgb(233, 228, 207);
       margin-top: -6rem;
       flex-shrink: 0;
-      top: 100px
     }
 
     .more-text-wrapper {
       display: flex;
       flex-direction: column;
-      padding: calc(4.5rem + 100px) 4.5rem 0rem 4.5rem;
+      padding: 2.6rem 2.6rem 0rem 2.6rem;
       gap: 2rem;
+      max-width: 35rem;
 
       .quote {
         color: rgb(255, 255, 255);
-        font-size: 3rem;
+        font-size: 2.5rem;
         line-height: 3rem;
         opacity: 0;
-        margin-bottom: 2.5rem;
         text-align: left;
       }
 
       .emphasize {
-        font-size: 3rem;
+        font-size: 2.5rem;
+        line-height: 3.2rem;
       }
 
       .description {
         font-family: Montserrat;
         color: rgb(217, 217, 217);
-        font-size: 1.35rem;
+        font-size: 1rem;
         line-height: 2.5rem;
         text-align: left;
         width: 100%;
-        opacity: 0;
       }
     }
   }
@@ -297,7 +271,6 @@
   }
 
   .more-section-wrapper {
-
     .more-section {
       flex-direction: column;
       padding-bottom: 0;

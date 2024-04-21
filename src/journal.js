@@ -3,7 +3,7 @@
 /**
  * Initilize this script
  */
-function initScript() {
+function initScriptDesktop() {
   const imageAnimationDuration = 0.5;
   let imageWidth = '';
   imageWidth = (document.documentElement.clientWidth > 768) ? '100%' : '7rem';
@@ -18,47 +18,88 @@ function initScript() {
   journalTimeline.delay(1.4);
   journalTimeline.play();
 
-  function setJournalAnimations() {
-    const ids = [
-      "#journal-entry-1-1",
-      "#journal-entry-1-2",
-      "#journal-entry-1-3",
-      "#journal-entry-2-1",
-      "#journal-entry-2-2",
-      "#journal-entry-2-3",
-      "#journal-entry-3-1",
-      "#journal-entry-3-2",
-      "#journal-entry-3-3"
-    ];
-
-    for (let i = 0; i < ids.length; i++) {
-      const indexFactor = i % 3;
-      const start = 100 - (indexFactor * 15);
-      const end = 80 - (indexFactor * 25);
-      gsap.fromTo(ids[i],
-        {
-          opacity: 0,
-          translateY: 40
-        }, {
-        opacity: 1,
-        translateY: 0,
-        scrollTrigger: {
-          trigger: ids[i],
-          start: `top ${start}%`, // Change according to your needs
-          end: `top ${end}%`, // Change according to your needs
-          scrub: true
-        }
-      });
-    }
-  }
-
   setJournalAnimations();
   initialized = true;
 }
 
+let index = 0;
+
+function initScriptMobile() {
+  gsap.registerPlugin(ScrollTrigger);
+  const timeline = gsap.timeline();
+  const journalDelay = "<=.3";
+  // timeline.fromTo(".focused-image", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: 'power1.out' });
+  // timeline.fromTo(".top-left", { y: '50px', opacity: 0 }, { y: '0', opacity: 1, duration: 0.7, ease: 'power1.out' }, '<=0.5');
+  // timeline.fromTo(".bottom-right", { y: '50px', opacity: 0 }, { y: '0', opacity: 1, duration: 0.7, ease: 'power1.out' }, '<=0.5');
+
+  timeline.fromTo(".journal-images", { y: '80px', opacity: 0 }, { y: '0', opacity: 1, duration: 1.2 });
+  timeline.fromTo(".journal-header", { y: '80px', opacity: 0 }, { y: '0', opacity: 1, duration: 1.2 }, "0");
+  timeline.delay(2);
+  timeline.play();
+
+  fadeInterval = setInterval(() => {
+    fadeImages();
+  }, 4000);
+
+  initialized = true;
+}
+
+function fadeImages() {
+  const journalImagesContainer = document.getElementById('journal-images-container');
+  const imageArray = journalImagesContainer.querySelectorAll('div');
+  const currentImage = imageArray[index];
+  const nextImage = imageArray[(index === 4) ? 0 : (index + 1)];
+
+  gsap.to(currentImage, { opacity: 0, ease: 'none', duration: 0.75 });
+  gsap.to(nextImage, { opacity: 1, ease: 'none', duration: 0.75 });
+
+  index = (index === 4) ? 0 : (index + 1);
+  initialized = true;
+}
+
+function setJournalAnimations() {
+  const ids = [
+    "#journal-entry-1-1",
+    "#journal-entry-1-2",
+    "#journal-entry-1-3",
+    "#journal-entry-2-1",
+    "#journal-entry-2-2",
+    "#journal-entry-2-3",
+    "#journal-entry-3-1",
+    "#journal-entry-3-2",
+    "#journal-entry-3-3"
+  ];
+
+  for (let i = 0; i < ids.length; i++) {
+    const indexFactor = i % 3;
+    const start = 100 - (indexFactor * 15);
+    const end = 80 - (indexFactor * 25);
+    gsap.fromTo(ids[i],
+      {
+        opacity: 0,
+        translateY: 40
+      }, {
+      opacity: 1,
+      translateY: 0,
+      scrollTrigger: {
+        trigger: ids[i],
+        start: `top ${start}%`, // Change according to your needs
+        end: `top ${end}%`, // Change according to your needs
+        scrub: true
+      }
+    });
+  }
+}
+
+let fadeInterval;
+
 export function onInit() {
   if (!initialized) {
-    initScript();
+    if (document.documentElement.clientWidth > 768) {
+      initScriptDesktop();
+    } else {
+      initScriptMobile();
+    }
   }
 }
 

@@ -34,7 +34,7 @@ function initScript() {
 
 export function onInit() {
   if (!initialized) {
-    initScript();
+    // initScript();
   }
 }
 

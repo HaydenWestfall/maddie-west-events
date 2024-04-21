@@ -1,13 +1,18 @@
-.section {
+body {
   background-color: black;
+}
+
+.section {
   display: flex;
   justify-content: center;
+  width: 100%;
 
   .journal-header-wrapper {
     display: flex;
     flex-direction: column;
     background-color: white;
     max-width: 120rem;
+    width: 100%;
 
     .journal-images {
       background-color: black;
@@ -43,7 +48,7 @@
 
         span {
           font-family: didot-italic;
-          font-size: 9rem;
+          font-size: 7rem;
 
           &:last-child {
             padding-left: 8rem;
@@ -78,7 +83,7 @@
   padding: 10rem 0;
 
   .journal-entry-wrapper {
-    max-width: 45rem;
+    max-width: 38rem;
     display: flex;
     flex-direction: column;
     gap: 3rem;
@@ -87,23 +92,24 @@
 
     .couple-name {
       font-family: 'didot', 'sans-serif';
-      font-size: 2.5rem;
+      font-size: 2rem;
       font-weight: 400;
     }
 
     .wedding-description {
       font-family: 'Abhaya Libre', 'sans-serif';
       font-weight: 400;
-      font-size: 1.5rem;
-      line-height: 2.75rem;
+      font-size: 1.2rem;
+      line-height: 2rem;
+      text-align: justify;
 
       .first-letter {
-        height: 5rem;
+        height: 3rem;
         float: left;
         font-family: 'Abhaya Libre', 'sans-serif';
         font-weight: 400;
-        font-size: 6.6rem;
-        line-height: 5.9rem;
+        font-size: 4.7rem;
+        line-height: 4.2rem;
         margin-right: 0.5rem;
       }
     }
@@ -134,83 +140,70 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .journal-header-wrapper {
-    display: flex;
-    flex-direction: column-reverse;
+  .section {
 
-    .journal-images {
-      position: relative;
-      height: 15rem;
-      display: flex;
+    .journal-header-wrapper {
+      .journal-images {
+        background-color: black;
+        height: 75vh;
+        position: relative;
+        max-width: 100%;
+        display: unset;
 
-      .journal-image {
-        position: absolute;
-        height: 12rem;
+        .cell {
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          left: 0;
+          top: 0;
+          opacity: 0;
 
-        &.image-1 {
-          top: 2rem;
-          left: 61%;
-          transform: rotate(22deg) translateX(-50%);
-          transform-origin: bottom;
-          z-index: 3;
-        }
+          &:nth-child(5) {
+            display: unset;
+          }
 
-        &.image-2 {
-          top: 3rem;
-          left: 54%;
-          transform: rotate(10deg) translateX(-50%);
-          transform-origin: bottom;
-          z-index: 2;
-        }
-
-        &.image-3 {
-          top: 4rem;
-          left: 47%;
-          transform: rotate(-2deg) translateX(-50%);
-          transform-origin: bottom;
-          z-index: 1;
-        }
-
-        &.image-4 {
-          top: 5rem;
-          left: 40%;
-          transform: rotate(-14deg) translateX(-50%);
-          transform-origin: bottom;
-          z-index: 0;
-        }
-
-        &.image-5 {
-          display: none;
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
         }
       }
-    }
 
-    .journal-header {
-      display: flex;
-      flex-direction: column;
-      padding-bottom: 0;
-      padding-top: 5rem;
-      margin-top: 30px;
-
-      .header-text {
-        width: 100%;
-        height: fit-content;
-        text-align: center;
+      .journal-header {
+        background-color: black;
         position: relative;
-        top: 0;
-        left: 0;
+        height: unset;
+        padding-bottom: 18rem;
 
-        span {
-          font-size: 3rem;
+        .header-text {
+          position: absolute;
+          color: white;
+          left: 0;
+          bottom: 0;
+          top: -2rem;
+          z-index: 10;
+          width: 100%;
+          text-align: center;
+          height: fit-content;
 
-          &:last-child {
-            padding: 0;
+          span {
+            font-family: didot-italic;
+            font-size: 3rem;
+            line-height: 3.5rem;
+
+            &:last-child {
+              padding-left: 0;
+            }
           }
         }
       }
 
       .scroll-accent {
-        display: none;
+        right: unset;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
       }
     }
   }
