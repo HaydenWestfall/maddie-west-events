@@ -10,7 +10,7 @@
         align-items: center;
 
         img {
-            height: 4rem;
+            height: 3rem;
         }
 
         a {
@@ -19,23 +19,34 @@
         }
     }
 
-    .links-wrapper {
+    .footer-wrapper {
         display: flex;
-        gap: 5rem;
-        border-bottom: 1px solid rgb(0, 0, 0);
-        padding: 10rem 0 1rem 0;
+        flex-direction: column;
+        border-top: 1px solid rgb(0, 0, 0);
+        margin: 5rem 0 1rem 0;
 
-        a {
-            font-family: didot;
-            font-size: 1.25rem;
-            color: rgb(0, 0, 0);
-            text-decoration: none;
-            cursor: pointer;
+        .links-wrapper {
+            display: flex;
+            gap: 4rem;
+            padding: 1rem 0 1.5rem;
 
-            &:hover {
+            a {
+                font-family: didot;
+                font-size: 1.25rem;
                 color: rgb(0, 0, 0);
-                text-decoration: underline;
+                text-decoration: none;
+                cursor: pointer;
+
+                &:hover {
+                    color: rgb(0, 0, 0);
+                    text-decoration: underline;
+                }
             }
+        }
+
+        span {
+            font-size: 0.7rem;
+            color: rgb(110, 110, 110);
         }
     }
 
@@ -52,8 +63,7 @@
 
             .copyright-text {
                 display: flex;
-                white-space: pre;
-                font-size: 0.725rem;
+                font-size: 0.6rem;
                 color: rgb(0, 0, 0);
                 line-height: 1rem;
             }
@@ -68,9 +78,10 @@
             cursor: pointer;
             border: none;
             background-color: transparent;
+            font-size: 0.7rem;
 
             svg {
-                height: 1.25rem;
+                height: 1rem;
             }
         }
     }

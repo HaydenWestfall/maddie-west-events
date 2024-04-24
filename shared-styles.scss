@@ -180,6 +180,11 @@ h6 {
         font-size: 0.85rem;
     }
 
+    &.active {
+        background-color: rgb(240, 240, 240);
+        pointer-events: none;
+    }
+
     &.light {
         background-color: black;
         color: #bababa;
@@ -214,6 +219,11 @@ h6 {
     &:hover {
         color: rgb(107, 107, 107);
     }
+
+    &.small {
+        font-size: 0.6rem;
+        letter-spacing: 5px;
+    }
 }
 
 .loading-screen {
@@ -227,14 +237,15 @@ h6 {
     clip: rect(0, auto, auto, 0);
 
     div {
-        font-family: 'didot';
-        font-size: 3rem;
-        font-weight: 500;
+        font-family: 'Montserrat';
+        font-size: 0.9rem;
+        font-weight: 300;
         position: absolute;
         transform: translate(-50%, -50%);
         left: 50%;
         top: 50%;
         color: rgb(255, 255, 255);
+        letter-spacing: 6px;
     }
 }
 

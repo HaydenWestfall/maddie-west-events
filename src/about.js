@@ -114,6 +114,10 @@ function initScript() {
 export function onInit() {
   if (!initialized) {
     initScript();
+
+    // Start video loops on page load
+    const videos = Array.from(document.getElementsByTagName('video'));
+    videos.forEach(video => video.play());
   }
 }
 
@@ -121,7 +125,11 @@ export function onInit() {
  * On Destroy callback anytime barba navigates away from the page.
  */
 export function onDestroy() {
-  window.removeEventListener('resize', switchImage, false);
+  try {
+    window.removeEventListener('resize', switchImage, false);
+  } catch (e) {
+    console.log('About page switchImage listener never registered')
+  }
 
   // Remove Script
   document.querySelectorAll('script').forEach(script => {

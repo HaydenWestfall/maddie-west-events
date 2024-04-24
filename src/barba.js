@@ -51,18 +51,6 @@ function pageTransitionOut(container) {
     .fromTo(transitionText, { opacity: 1, paddingTop: '0', },
       { opacity: 0, duration: 0.5 }, 'start')
     .call(contentAnimation, [container], 'start');
-
-
-
-  const outTimeline = gsap.timeline();
-  outTimeline.delay(5);
-  outTimeline.to(loadingScreen, { duration: 0.5, bottom: 'unset', top: 0, height: 0, ease: 'power1.out' });
-  outTimeline.fromTo(transitionText,
-    { y: '0', opacity: 1 },
-    { y: '-200', opacity: 0, duration: 0.5, ease: 'power1.out' });
-
-
-  return outTimeline.call(contentAnimation, [container], 'start')
 }
 
 // Function to animate the content of each page
@@ -122,7 +110,8 @@ barba.init({
 let anchorListeners = [];
 function selectAnchors() {
   anchorListeners.forEach(elem => document.removeEventListener(elem.event, elem.element, true));
-  anchorListeners = []
+  anchorListeners = [];
+
   document.querySelectorAll('a').forEach(anchor => {
     anchor.addEventListener('click', function () {
       handleClick(anchor);
@@ -133,8 +122,8 @@ function selectAnchors() {
 
 function handleClick(anchor) {
   let tagName = anchor.getAttribute('tag');
-  tagName = (tagName === 'index') ? 'Maddie West Events' : tagName;
-  targetPage = tagName.charAt(0).toUpperCase() + tagName.slice(1);
+  tagName = (tagName === 'index') ? 'MADDDIE WEST EVENTS' : tagName;
+  targetPage = tagName.toUpperCase()
 }
 
 selectAnchors();

@@ -3,73 +3,81 @@
 //  Journal Section
 /////////////////////////////////////////////////////////////////////////////
 export function marqueeJournalImages() {
-    var container2 = document.getElementById('card-wrapper');
-    var current = container2.querySelectorAll('[current="' + true + '"]');
-    var next = container2.querySelectorAll('[next="' + true + '"]');
-    var curIndex = Number.parseInt(next[0].getAttribute('index'));
+    // var container2 = document.getElementById('card-wrapper');
+    // var current = container2.querySelectorAll('[current="' + true + '"]');
+    // var next = container2.querySelectorAll('[next="' + true + '"]');
+    // var curIndex = Number.parseInt(next[0].getAttribute('index'));
 
-    let offScreenLeft = container2.querySelectorAll('[index="' + (curIndex - 2) + '"]');
-    let newOnScreenRight = container2.querySelectorAll('[index="' + (curIndex + 1) + '"]');
+    // let offScreenLeft = container2.querySelectorAll('[index="' + (curIndex - 2) + '"]');
+    // let newOnScreenRight = container2.querySelectorAll('[index="' + (curIndex + 1) + '"]');
 
-    if (curIndex == 13) {
-        container2.scrollLeft = 0;
+    // if (curIndex == 13) {
+    //     container2.scrollLeft = 0;
 
-        let wrap1 = container2.querySelectorAll('[index="11"]');
-        let wrap2 = container2.querySelectorAll('[index="12"]');
-        let wrap3 = container2.querySelectorAll('[index="13"]');
-        wrap1[0].style.opacity = 0;
-        wrap2[0].style.opacity = 0;
-        wrap3[0].style.opacity = 0;
+    //     let wrap1 = container2.querySelectorAll('[index="11"]');
+    //     let wrap2 = container2.querySelectorAll('[index="12"]');
+    //     let wrap3 = container2.querySelectorAll('[index="13"]');
+    //     wrap1[0].style.opacity = 0;
+    //     wrap2[0].style.opacity = 0;
+    //     wrap3[0].style.opacity = 0;
 
-        wrap1 = container2.querySelectorAll('[index="1"]');
-        wrap2 = container2.querySelectorAll('[index="2"]');
-        wrap3 = container2.querySelectorAll('[index="3"]');
-        wrap1[0].style.opacity = 1;
-        wrap2[0].style.opacity = 1;
-        wrap3[0].style.opacity = 1;
+    //     wrap1 = container2.querySelectorAll('[index="1"]');
+    //     wrap2 = container2.querySelectorAll('[index="2"]');
+    //     wrap3 = container2.querySelectorAll('[index="3"]');
+    //     wrap1[0].style.opacity = 1;
+    //     wrap2[0].style.opacity = 1;
+    //     wrap3[0].style.opacity = 1;
 
-        next[0].setAttribute('current', false);
-        next[0].setAttribute('next', false);
-        current[0].setAttribute('current', false);
-        current[0].setAttribute('next', false);
-        gsap.to(current[0], { scale: 1, duration: 0, ease: 'none' });
+    //     next[0].setAttribute('current', false);
+    //     next[0].setAttribute('next', false);
+    //     current[0].setAttribute('current', false);
+    //     current[0].setAttribute('next', false);
+    //     gsap.to(current[0], { scale: 1, duration: 0, ease: 'none' });
 
-        current = container2.querySelectorAll('[index="' + 2 + '"]');
-        next = container2.querySelectorAll('[index="' + 3 + '"]');
+    //     current = container2.querySelectorAll('[index="' + 2 + '"]');
+    //     next = container2.querySelectorAll('[index="' + 3 + '"]');
 
-        gsap.to(current[0], { scale: 1.25, duration: 0, ease: 'none' });
+    //     gsap.to(current[0], { scale: 1.25, duration: 0, ease: 'none' });
 
-        next[0].setAttribute('current', false);
-        next[0].setAttribute('next', true);
-        current[0].setAttribute('current', true);
-        current[0].setAttribute('next', false);
+    //     next[0].setAttribute('current', false);
+    //     next[0].setAttribute('next', true);
+    //     current[0].setAttribute('current', true);
+    //     current[0].setAttribute('next', false);
 
-        marqueeJournalImages();
-        return;
-    }
+    //     marqueeJournalImages();
+    //     return;
+    // }
 
-    var elementRect = next[0].getBoundingClientRect();
-    var scrollAmount = container2.scrollLeft + elementRect.width + 92.64;
-    var windowWidth = document.documentElement.clientWidth;
-    var middleWidth = windowWidth / 2;
-    var leftElem = elementRect.left + (elementRect.width / 2);
-    scrollAmount = container2.scrollLeft - (middleWidth - leftElem);
+    // var elementRect = next[0].getBoundingClientRect();
+    // var scrollAmount = container2.scrollLeft + elementRect.width + 92.64;
+    // var windowWidth = document.documentElement.clientWidth;
+    // var middleWidth = windowWidth / 2;
+    // var leftElem = elementRect.left + (elementRect.width / 2);
+    // scrollAmount = container2.scrollLeft - (middleWidth - leftElem);
 
-    // Animate the scroll using GSAP
-    gsap.to(container2, { scrollLeft: scrollAmount, duration: 0.75, ease: "none" });
-    gsap.to(current[0], { scale: 1, duration: 0.75, ease: 'none' });
-    gsap.to(next[0], { scale: 1.25, duration: 0.75, ease: 'none' });
-    gsap.to(offScreenLeft[0], { opacity: 0, duration: 0.75, ease: 'none' });
-    gsap.to(newOnScreenRight[0], { opacity: 1, duration: 0.75, ease: 'none' });
+    // // Animate the scroll using GSAP
+    // gsap.to(container2, { scrollLeft: scrollAmount, duration: 0.75, ease: "none" });
+    // gsap.to(current[0], { scale: 1, duration: 0.75, ease: 'none' });
+    // gsap.to(next[0], { scale: 1.25, duration: 0.75, ease: 'none' });
+    // gsap.to(offScreenLeft[0], { opacity: 0, duration: 0.75, ease: 'none' });
+    // gsap.to(newOnScreenRight[0], { opacity: 1, duration: 0.75, ease: 'none' });
 
-    setTimeout(() => {
-        const newNext = container2.querySelectorAll('[index="' + (curIndex + 1) + '"]');
+    // setTimeout(() => {
+    //     const newNext = container2.querySelectorAll('[index="' + (curIndex + 1) + '"]');
 
-        current[0].setAttribute('current', false);
-        next[0].setAttribute('current', true);
-        next[0].setAttribute('next', false);
-        newNext[0].setAttribute('next', true);
-    }, 50);
+    //     current[0].setAttribute('current', false);
+    //     next[0].setAttribute('current', true);
+    //     next[0].setAttribute('next', false);
+    //     newNext[0].setAttribute('next', true);
+    // }, 50);
+
+    // gsap.fromTo(".journal-marquee", {
+    //     x: 0
+    // }, {
+    //     x: -50000,
+    //     duration: 1000,
+    //     repeat: true
+    // },);
 }
 
 export function fadeImages() {
@@ -98,42 +106,28 @@ export function fadeImages() {
  */
 export function initScript() {
     gsap.registerPlugin(ScrollTrigger);
-    gsap.fromTo("#about-maddie-subheader", {
+    gsap.fromTo("#column1", {
         y: 30,
         opacity: 0
     }, {
         y: 0,
         opacity: 1,
         scrollTrigger: {
-            trigger: "#about-maddie-subheader",
+            trigger: "#column1",
             start: "top 70%", // Change according to your needs
             end: "top 50%", // Change according to your needs
             scrub: true
         }
     });
 
-    gsap.fromTo("#about-maddie-header", {
+    gsap.fromTo("#column2", {
         y: 30,
         opacity: 0
     }, {
         y: 0,
         opacity: 1,
         scrollTrigger: {
-            trigger: "#about-maddie-header",
-            start: "top 70%", // Change according to your needs
-            end: "top 50%", // Change according to your needs
-            scrub: true
-        }
-    });
-
-    gsap.fromTo("#about-maddie-description", {
-        y: 30,
-        opacity: 0
-    }, {
-        y: 0,
-        opacity: 1,
-        scrollTrigger: {
-            trigger: "#about-maddie-description",
+            trigger: "#column2",
             start: "top 70%", // Change according to your needs
             end: "top 50%", // Change according to your needs
             scrub: true
@@ -182,35 +176,49 @@ export function initScript() {
         }
     });
 
-    gsap.to("#image-1", {
-        translateY: -1200,
+    gsap.fromTo(".vendor-list", {
+        y: 30,
+        opacity: 0
+    }, {
+        y: 0,
+        opacity: 1,
         scrollTrigger: {
-            trigger: "#image-1",
-            start: "top bottom", // Change according to your needs
-            end: "bottom top", // Change according to your needs
+            trigger: ".vendor-list",
+            start: "top 70%", // Change according to your needs
+            end: "top 50%", // Change according to your needs
             scrub: true
         }
     });
 
-    gsap.to("#image-2", {
-        translateY: -200,
-        scrollTrigger: {
-            trigger: "#image-2",
-            start: "top bottom", // Change according to your needs
-            end: "bottom top", // Change according to your needs
-            scrub: true
-        }
-    });
+    // gsap.to("#image-1", {
+    //     translateY: -1200,
+    //     scrollTrigger: {
+    //         trigger: "#image-1",
+    //         start: "top bottom", // Change according to your needs
+    //         end: "bottom top", // Change according to your needs
+    //         scrub: true
+    //     }
+    // });
 
-    gsap.to("#image-3", {
-        translateY: -1500,
-        scrollTrigger: {
-            trigger: "#image-3",
-            start: "top bottom", // Change according to your needs
-            end: "bottom top", // Change according to your needs
-            scrub: true
-        }
-    });
+    // gsap.to("#image-2", {
+    //     translateY: -200,
+    //     scrollTrigger: {
+    //         trigger: "#image-2",
+    //         start: "top bottom", // Change according to your needs
+    //         end: "bottom top", // Change according to your needs
+    //         scrub: true
+    //     }
+    // });
+
+    // gsap.to("#image-3", {
+    //     translateY: -1500,
+    //     scrollTrigger: {
+    //         trigger: "#image-3",
+    //         start: "top bottom", // Change according to your needs
+    //         end: "bottom top", // Change according to your needs
+    //         scrub: true
+    //     }
+    // });
 
     gsap.fromTo("#asthetic-image-1", {
         y: 50,
@@ -226,7 +234,6 @@ export function initScript() {
         }
     });
 
-
     gsap.fromTo("#asthetic-image-2", {
         y: 50,
         opacity: 0
@@ -240,7 +247,6 @@ export function initScript() {
             scrub: true
         }
     });
-
 
     gsap.fromTo("#asthetic-image-3", {
         y: 50,
@@ -312,19 +318,6 @@ export function initScript() {
         }
     });
 
-    // gsap.fromTo("#maddie-flowers-video", {
-    //     y: -250
-    // }, {
-    //     y: 0,
-    //     scrollTrigger: {
-    //         trigger: "#maddie-flowers-video",
-    //         start: "top bottom", // Change according to your needs
-    //         end: "bottom top", // Change according to your needs
-    //         scrub: true,
-    //         markers: true
-    //     }
-    // });
-
     gsap.fromTo("#maddie-flowers-header", {
         opacity: 0
     }, {
@@ -337,15 +330,15 @@ export function initScript() {
         }
     });
 
-    if (document.documentElement.clientWidth > 768) {
-        const first = document.getElementById('card-wrapper').querySelectorAll('[index="' + 1 + '"]')[0];
-        const second = document.getElementById('card-wrapper').querySelectorAll('[index="' + 2 + '"]')[0];
-        const third = document.getElementById('card-wrapper').querySelectorAll('[index="' + 3 + '"]')[0];
-        first.style.opacity = 1;
-        second.style.opacity = 1;
-        third.style.opacity = 1;
-        gsap.to(second, { scale: 1.25, duration: 0, ease: 'none' });
-    }
+    // if (document.documentElement.clientWidth > 768) {
+    //     const first = document.getElementById('card-wrapper').querySelectorAll('[index="' + 1 + '"]')[0];
+    //     const second = document.getElementById('card-wrapper').querySelectorAll('[index="' + 2 + '"]')[0];
+    //     const third = document.getElementById('card-wrapper').querySelectorAll('[index="' + 3 + '"]')[0];
+    //     first.style.opacity = 1;
+    //     second.style.opacity = 1;
+    //     third.style.opacity = 1;
+    //     gsap.to(second, { scale: 1.25, duration: 0, ease: 'none' });
+    // }
 
     marqueeInterval = setInterval(() => {
         if (document.documentElement.clientWidth > 768) {
@@ -366,6 +359,10 @@ export function initScript() {
 export function onInit() {
     if (!initialized) {
         initScript();
+
+        // Start video loops on page load
+        const videos = Array.from(document.getElementsByTagName('video'));
+        videos.forEach(video => video.play());
     }
 }
 
