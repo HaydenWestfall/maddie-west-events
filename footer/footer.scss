@@ -1,6 +1,6 @@
 .footer {
     position: relative;
-    padding: 4rem 4rem 2rem;
+    padding: 40px 40px 30px;
     background-color: #fafafa;
     overflow-x: hidden;
 
@@ -27,15 +27,15 @@
 
         .links-wrapper {
             display: flex;
-            gap: 4rem;
+            gap: 50px;
             padding: 1rem 0 1.5rem;
 
             a {
-                font-family: didot;
-                font-size: 1.25rem;
-                color: rgb(0, 0, 0);
+                font-family: didot-italic;
+                font-size: clamp(0.1rem, 1.4rem, 25px);
                 text-decoration: none;
                 cursor: pointer;
+                color: black;
 
                 &:hover {
                     color: rgb(0, 0, 0);
@@ -44,9 +44,20 @@
             }
         }
 
-        span {
-            font-size: 0.7rem;
-            color: rgb(110, 110, 110);
+        .instagram-link {
+            font-family: Montserrat;
+            font-size: clamp(0.1rem, 0.85rem, 16px);
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            cursor: pointer;
+            width: fit-content;
+            letter-spacing: 2px;
+            font-weight: 500;
+
+            &:hover {
+                color: rgb(0, 0, 0);
+                text-decoration: underline;
+            }
         }
     }
 
@@ -63,7 +74,7 @@
 
             .copyright-text {
                 display: flex;
-                font-size: 0.6rem;
+                font-size: clamp(0.1rem, 0.6rem, 12px);
                 color: rgb(0, 0, 0);
                 line-height: 1rem;
             }
@@ -73,15 +84,15 @@
             color: rgb(0, 0, 0);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 5px;
             letter-spacing: 2px;
             cursor: pointer;
             border: none;
             background-color: transparent;
-            font-size: 0.7rem;
+            font-size: clamp(0.1rem, 0.7rem, 12px);
 
             svg {
-                height: 1rem;
+                height: clamp(0.1rem, 1rem, 15px);
             }
         }
     }
@@ -89,42 +100,34 @@
 
 @media only screen and (max-width: 768px) {
     .footer {
-        padding: 3rem 1rem 2rem;
+        padding: 60px 15px;
 
         .logo-contact {
-            display: flex;
-            flex-direction: column;
-            width: fit-content;
-            gap: 2rem;
+            justify-content: center;
 
             img {
-                height: 2rem;
-            }
-
-            a {
-                display: none;
+                height: unset;
+                width: calc(100% - 30px);
             }
         }
 
-        .links-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+        .footer-wrapper {
+            margin: 2.5rem 0 1rem;
             border-bottom: 1px solid rgb(0, 0, 0);
-            padding: 5rem 0 1rem 0;
+            padding: 2rem 0 2rem 0;
+            gap: 1.75rem;
 
-            a {
-                font-family: didot;
-                font-size: 1.25rem;
-                color: rgb(0, 0, 0);
-                text-decoration: none;
-                cursor: pointer;
+            .links-wrapper {
+                flex-direction: column;
+                padding: 0;
+                gap: 25px;
 
-                &:hover {
-                    color: rgb(0, 0, 0);
-                    text-decoration: underline;
+                a {
+                    font-size: 1.6rem;
                 }
             }
+
+            .instagram-link {}
         }
 
         .copyright-wrapper {

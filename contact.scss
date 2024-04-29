@@ -16,14 +16,6 @@
     object-fit: cover;
   }
 
-  #contact-header {
-    color: white;
-
-    .emphasized {
-      color: white;
-    }
-  }
-
   .accent-wrapper {
     position: absolute;
     left: 0.75rem;
@@ -49,6 +41,7 @@
     top: 60%;
     min-width: 25rem;
     text-align: center;
+    color: white;
 
     span {
       font-size: 5.2rem;
@@ -163,14 +156,11 @@
         padding-top: 2rem;
 
         button {
-          position: relative;
-          width: 17rem;
-          height: 3.5rem;
-          z-index: 10;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 0;
+          min-width: 13rem;
+
+          span {
+            font-size: clamp(0.1rem, 0.85rem, 18px);
+          }
         }
 
         .loader-wrapper {
@@ -207,7 +197,9 @@
   align-items: center;
   z-index: 999;
   display: none;
-  opacity: 0;
+  opacity: 1;
+  pointer-events: auto;
+  overflow-y: auto;
 
   .thank-you-modal {
     display: flex;
@@ -249,54 +241,29 @@
   }
 }
 
-@keyframes loading {
-  0% {
-    left: -100%
-  }
-
-  50% {
-    left: 100%;
-  }
-
-  100% {
-    left: -100%
-  }
-}
-
 @media only screen and (max-width: 768px) {
   .contact-header {
-    height: 105vh;
-
-    img {}
-
     .accent-wrapper {
-      top: 75px;
-      left: 0.2rem;
+      top: calc(65px + 0.6rem);
+      left: 0.4rem;
 
       .maddie-west-accent {
         transform: rotate(270deg) translateX(-100%);
-        font-size: 0.6rem;
+        font-size: 0.55rem;
+        font-weight: 500;
       }
     }
 
     .contact-header-text {
-      align-items: center;
+      top: 65%;
+      padding: 0 15px;
+      width: calc(100% - 30px);
+      font-size: 2.75rem;
+      line-height: 3rem;
       min-width: unset;
-      top: 57%;
 
       br {
         display: none;
-      }
-
-      span {
-        font-size: 3.1rem;
-        line-height: 3.2rem;
-        width: 92%;
-
-        .emphasized {
-          font-size: 3.1rem;
-          line-height: 3.2rem;
-        }
       }
     }
   }
@@ -305,7 +272,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 10rem 0;
+    padding: 5rem 0 10rem;
     height: fit-content;
     overflow-x: hidden;
 
@@ -342,5 +309,34 @@
         }
       }
     }
+  }
+
+  .overlay {
+
+    .thank-you-modal {
+
+      .header {
+
+        span {}
+
+        #fireworks {}
+      }
+
+      .body {}
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    left: -100%
+  }
+
+  50% {
+    left: 100%;
+  }
+
+  100% {
+    left: -100%
   }
 }

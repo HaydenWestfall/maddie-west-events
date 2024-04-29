@@ -38,13 +38,13 @@ function initScriptMobile() {
   timeline.play();
 
   fadeInterval = setInterval(() => {
-    fadeImages();
+    fadeImagesJournal();
   }, 4000);
 
   initialized = true;
 }
 
-function fadeImages() {
+function fadeImagesJournal() {
   const journalImagesContainer = document.getElementById('journal-images-container');
   const imageArray = journalImagesContainer.querySelectorAll('div');
   const currentImage = imageArray[index];

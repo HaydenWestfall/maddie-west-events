@@ -110,6 +110,7 @@
         width: calc(100% - 30px);
         padding: 5rem 15px 18rem;
         gap: 8rem;
+        padding-top: 8rem;
 
         .header-wrapper {
             display: block;
@@ -124,9 +125,12 @@
 
                 span {
                     font-weight: 300;
-                    width: 10.5rem;
+                    width: 8.4rem;
+                    font-size: 0.6rem;
 
-                    a {}
+                    a {
+                        font-size: 0.6rem;
+                    }
 
                     strong {}
                 }
@@ -139,8 +143,9 @@
             #image-2 {
                 position: absolute;
                 right: 0;
-                width: 50%;
+                width: 60%;
                 bottom: 0;
+                object-position: 20% 50%;
             }
         }
 

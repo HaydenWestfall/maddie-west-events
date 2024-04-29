@@ -2,6 +2,14 @@
 let targetPage = '';
 const loadingScreen = document.querySelector('.loading-screen');
 const transitionText = loadingScreen.children[0];
+const headerStyles = {
+  index: 'light',
+  about: 'light',
+  testimonies: 'light',
+  packages: 'light',
+  journal: 'light',
+  contact: 'light'
+}
 
 // Function to add and remove the page transition screen
 function pageTransitionIn() {
@@ -85,6 +93,10 @@ barba.init({
       script.src = './src/' + data.next.namespace + '.js';
       document.getElementsByTagName('head')[0].appendChild(link);
       document.getElementsByTagName('head')[0].appendChild(script);
+
+      console.log(headerStyles[data.next.namespace])
+      //ocument.getElementById('header').classList = headerStyles[data.next.namespace];
+      //ocument.getElementById('header').setAttribute('tag', headerStyles[data.next.namespace]);
 
       import(`./${data.next.namespace}.js`).then(module => {
         module.onInit();

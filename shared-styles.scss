@@ -29,19 +29,19 @@ body {
 
 @font-face {
     font-family: 'didot';
-    src: url(/\ assets/fonts/didot-regular.ttf);
+    src: url(/assets/fonts/didot-regular.ttf);
     font-weight: 500;
 }
 
 @font-face {
     font-family: 'didot';
-    src: url(/\ assets/fonts/didot-bold.ttf);
+    src: url(/assets/fonts/didot-bold.ttf);
     font-weight: 600;
 }
 
 @font-face {
     font-family: 'didot-italic';
-    src: url(/\ assets/fonts/didot-italic.ttf);
+    src: url(/assets/fonts/didot-italic.ttf);
     font-weight: 500;
 }
 
@@ -171,13 +171,25 @@ h6 {
     }
 
     &.medium {
-        padding: 0.75rem 2.5rem;
-        font-size: 0.7rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: clamp(0.1rem, 0.7rem, 12px);
+        width: 10rem;
+        height: 2.5rem;
+        max-height: 45px;
+        max-width: 150px;
+        padding: 0 18px;
     }
 
     &.large {
-        padding: 1rem 3.5rem;
-        font-size: 0.85rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: clamp(0.1rem, 0.85rem, 18px);
+        height: 3.5rem;
+        max-height: 60px;
+        padding: 0 30px;
     }
 
     &.active {
@@ -308,7 +320,7 @@ h6 {
     .loading-screen {
 
         div {
-            font-size: 1.75rem;
+            font-size: 0.7rem;
             white-space: nowrap;
         }
     }
