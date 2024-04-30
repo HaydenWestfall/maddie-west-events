@@ -115,7 +115,7 @@
     }
 
     .marquee-images {
-      animation: journalMarquee 80s linear infinite;
+      animation: journalMarquee 50s linear infinite;
 
       img {
         opacity: 1 !important;
@@ -283,14 +283,14 @@ section {
 }
 
 
-.asthetic-wrapper {
+.aesthetic-wrapper {
   display: flex;
   flex-direction: column;
   gap: 4rem;
   position: relative;
   margin: 10rem 0;
 
-  .primary-asthetic-wrapper {
+  .primary-aesthetic-wrapper {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -322,7 +322,7 @@ section {
       z-index: 0;
     }
 
-    .asthetic-description {
+    .aesthetic-description {
       position: relative;
       padding-top: 4rem;
       margin-left: -26rem;
@@ -629,7 +629,7 @@ section {
   }
 
 
-  .asthetic-wrapper {
+  .aesthetic-wrapper {
     display: flex;
     flex-direction: column;
     gap: 6rem;
@@ -639,7 +639,7 @@ section {
     max-width: 80%;
     overflow: hidden;
 
-    .primary-asthetic-wrapper {
+    .primary-aesthetic-wrapper {
       justify-content: flex-start;
       max-width: 100%;
 
@@ -668,7 +668,7 @@ section {
         z-index: 10;
       }
 
-      .asthetic-description {
+      .aesthetic-description {
         position: relative;
         padding: 7rem 15px 0;
         align-items: flex-start;

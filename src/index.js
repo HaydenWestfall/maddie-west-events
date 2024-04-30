@@ -13,13 +13,13 @@ export function onInit() {
         animateElementIn('#journal-header', true);
         animateElementIn('#journal-description', true);
         animateElementIn('.vendor-list', true);
-        animateElementIn('#asthetic-image-1', true);
-        animateElementIn('#asthetic-image-2', true);
-        animateElementIn('#asthetic-image-3', true);
-        animateElementIn('#asthetic-image-4', true);
-        animateElementIn('#asthetic-subheader', true);
-        animateElementIn('#asthetic-header', true);
-        animateElementIn('#asthetic-description', true);
+        animateElementIn('#aesthetic-image-1', true);
+        animateElementIn('#aesthetic-image-2', true);
+        animateElementIn('#aesthetic-image-3', true);
+        animateElementIn('#aesthetic-image-4', true);
+        animateElementIn('#aesthetic-subheader', true);
+        animateElementIn('#aesthetic-header', true);
+        animateElementIn('#aesthetic-description', true);
         animateElementIn('#maddie-flowers-header', true);
 
         // Start video loops on page load
