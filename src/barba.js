@@ -13,39 +13,16 @@ const headerStyles = {
 
 // Function to add and remove the page transition screen
 function pageTransitionIn() {
-  // GSAP methods can be chained and return directly a promise
-  // but here, a simple tween is enough
-  // loadingScreen.children[0].innerHTML = route.charAt(0).toUpperCase() + route.slice(1);
-
   document.getElementById('route-page').children[0].innerHTML = targetPage;
-
-  // var themeColorMeta = document.querySelector('meta[name="theme-color"]');
-  // setTimeout(() => {
-  //   themeColorMeta.setAttribute('content', '#1a1a1a');
-  // }, 700);
-
   return gsap
     .timeline()
     .add('start')
     .to(loadingScreen, { duration: 0.7, height: '100%', top: 'unset', bottom: 0, ease: 'power3.in' })
     .fromTo(transitionText, { paddingTop: '40px', opacity: 0 }, { paddingTop: 0, opacity: 1, duration: 0.4 })
-
-
-
-  // gsap.to(loadingScreen, { duration: 0.7, height: '100%', top: 'unset', bottom: 0, ease: 'power2.in' })
 }
+
 // Function to add and remove the page transition screen
 function pageTransitionOut(container) {
-  // GSAP methods can be chained and return directly a promise
-
-
-  // console.log('hitting')
-  // setTimeout(() => {
-  //   console.log('running')
-  //   var themeColorMeta = document.querySelector('meta[name="theme-color"]');
-  //   themeColorMeta.setAttribute('content', '#fafafa');
-  // }, 1495);
-
   return gsap
     .timeline({ delay: 0.8 }) // More readable to put it here
     .add('start') // Use a label to sync screen and content animation
@@ -77,32 +54,31 @@ barba.init({
     },
 
     async afterLeave(data) {
-      import(`./${data.current.namespace}.js`).then(module => {
+      console.log(data.current.namespace)
+      import(`./route_${data.current.namespace}/${data.current.namespace}.js`).then(module => {
         module.onDestroy();
+        console.log('destroying')
       }).catch(error => {
         console.error('Error loading the module:', error);
       });
     },
 
     async beforeEnter(data) {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet'
-      link.href = window.location.origin + '/' + data.next.namespace + '.scss';
-      const script = document.createElement('script');
-      script.type = 'module';
-      script.src = './src/' + data.next.namespace + '.js';
-      document.getElementsByTagName('head')[0].appendChild(link);
-      document.getElementsByTagName('head')[0].appendChild(script);
+      // const link = document.createElement('link');
+      // link.rel = 'stylesheet'
+      // link.href = window.location.origin + '/' + data.next.namespace + '.scss';
+      // console.log(link.href)
+      // const script = document.createElement('script');
+      // script.type = 'module';
+      // script.src = './src/' + data.next.namespace + '.js';
+      // document.getElementsByTagName('head')[0].appendChild(link);
+      // document.getElementsByTagName('head')[0].appendChild(script);
 
-      console.log(headerStyles[data.next.namespace])
-      //ocument.getElementById('header').classList = headerStyles[data.next.namespace];
-      //ocument.getElementById('header').setAttribute('tag', headerStyles[data.next.namespace]);
-
-      import(`./${data.next.namespace}.js`).then(module => {
-        module.onInit();
-      }).catch(error => {
-        console.error('Error loading the module:', error);
-      });
+      // import(`./${data.next.namespace}.js`).then(module => {
+      //   module.onInit();
+      // }).catch(error => {
+      //   console.error('Error loading the module:', error);
+      // });
     },
 
     async enter(data) {
