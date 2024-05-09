@@ -1,6 +1,11 @@
 // MAIN VIDEO
 import "../index.js";
-import "./index.scss";
+import "../route_home/index.scss";
+import "../route_about/about.scss";
+import "../route_testimonies/testimonies.scss";
+import "../route_packages/packages.scss";
+import "../route_journal/journal.scss";
+import "../route_contact/contact.scss";
 
 import "../videos/maddie_main_1.mp4";
 
@@ -168,4 +173,5 @@ export function onDestroy() {
 let initialized = false;
 let marqueeInterval;
 
+console.log('initing')
 onInit();

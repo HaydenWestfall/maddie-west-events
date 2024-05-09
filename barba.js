@@ -55,12 +55,12 @@ barba.init({
 
     async afterLeave(data) {
       console.log(data.current.namespace)
-      import(`./route_${data.current.namespace}/${data.current.namespace}.js`).then(module => {
-        module.onDestroy();
-        console.log('destroying')
-      }).catch(error => {
-        console.error('Error loading the module:', error);
-      });
+      // import(`./route_${data.current.namespace}/${data.current.namespace}.js`).then(module => {
+      //   module.onDestroy();
+      //   console.log('destroying')
+      // }).catch(error => {
+      //   console.error('Error loading the module:', error);
+      // });
     },
 
     async beforeEnter(data) {

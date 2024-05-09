@@ -1,6 +1,11 @@
 
 import "../index.js";
-import "./journal.scss";
+import "../route_home/index.scss";
+import "../route_about/about.scss";
+import "../route_testimonies/testimonies.scss";
+import "../route_packages/packages.scss";
+import "../route_journal/journal.scss";
+import "../route_contact/contact.scss";
 
 // MODULE DEPENDENCIES
 import "../assets/journal/journal_header_3.JPG";

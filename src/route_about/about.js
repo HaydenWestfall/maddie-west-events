@@ -1,6 +1,11 @@
 
 import "../index.js";
-import "./about.scss";
+import "../route_home/index.scss";
+import "../route_about/about.scss";
+import "../route_testimonies/testimonies.scss";
+import "../route_packages/packages.scss";
+import "../route_journal/journal.scss";
+import "../route_contact/contact.scss";
 
 // COMPONENT SPECIFIC
 import "../videos/maddie_main_lr.mp4";

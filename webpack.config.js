@@ -13,6 +13,9 @@ const PATHS = {
 
 module.exports = {
   mode: 'production',
+  resolve: {
+    alias: { "barba": path.resolve('node_modules', '@barba/core/dist/barba.js'), }
+  },
   entry: {
     home: path.resolve(__dirname, 'src/route_home/home.js'),
     about: path.resolve(__dirname, 'src/route_about/about.js'),

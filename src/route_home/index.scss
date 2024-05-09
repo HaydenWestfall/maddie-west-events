@@ -1,447 +1,63 @@
-.main-page {
-  position: relative;
-  height: calc(120vh - 65px);
-  width: 100%;
-  overflow-x: hidden;
-  margin-top: 65px;
-
-  video {
-    height: 100%;
-    width: fit-content;
-    object-fit: cover;
-  }
-
-  div {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    width: 100%;
-    top: 50%;
-
-    h6 {
-      color: white;
-    }
-
-    h1 {
-      color: white;
-    }
-  }
-}
-
-.about-me {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4rem;
-  height: 36rem;
-  width: 100%;
-
-  #column1 {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-    flex-grow: 1;
-    max-width: 30rem;
-    height: 15rem;
-
-    h6 {
-      font-size: 0.6rem;
-    }
-
-    .quote-italic {
-      width: fit-content;
-      font-size: 1.7rem;
-      line-height: 2.3rem;
-      letter-spacing: 1px;
-      font-weight: 400;
-    }
-  }
-
-  #column2 {
-    flex-shrink: 0;
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    max-width: 28rem;
-    height: 15rem;
-
-    p {
-      font-size: 0.75rem;
-      line-height: 1.25rem;
-    }
-  }
-}
-
-
-.journal-section {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background-color: black;
-  padding: 3rem 0 12rem 0;
-  width: 100%;
-
-  .section-header {
-
-    p {
-      font-size: 0.8rem;
-      line-height: 1.3rem;
-      max-width: 32rem !important;
-    }
-  }
-
-  .marquee-wrapper {
-    position: relative;
-    width: 100%;
-    margin: 6rem 0 0;
-    height: 38rem;
-    overflow: hidden;
-
-    .journal-marquee {
-      position: absolute;
-      top: 0;
-      display: flex;
-      gap: 0.75rem;
-
-      img {
-        height: 38rem;
-        width: 27rem;
-        aspect-ratio: 1 /1.4;
-        object-fit: cover;
-      }
-    }
-
-    .marquee-images {
-      animation: journalMarquee 50s linear infinite;
-
-      img {
-        opacity: 1 !important;
-      }
-    }
-
-    .fade-images {
-      position: relative;
-
-      img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0;
-      }
-    }
-  }
-
-  .journal-carousel {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: clamp(0.1rem, 8vw, 6.65rem);
-    height: 100%;
-    padding: 16% 0 5%;
-    overflow: auto;
-    pointer-events: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-      /* Safari and Chrome */
-    }
-
-    .carousel-image {
-      position: relative;
-      width: 28%;
-      max-width: 23rem;
-      aspect-ratio: 1/1.5;
-      flex-shrink: 0;
-      opacity: 0;
-
-      .image {
-        object-fit: cover;
-        height: 100%;
-        width: 100%;
-        max-width: 23rem;
-      }
-    }
-
-    .focused {
-      background: rgb(255, 232, 236);
-      width: calc(39.9% - 2rem);
-    }
-  }
-
-  .journal-button {
-    color: white;
-    margin-top: 6rem;
-    margin-bottom: 6rem;
-    align-self: center;
-  }
-}
-
-section {
-  display: flex;
-  justify-content: center;
-
-  > :first-child {
-    width: 100%;
-    max-width: 115rem;
-  }
-}
-
-.testimony-section {
-  position: relative;
-  gap: 5rem;
-  padding: 3rem 0 8rem 2rem;
-
-  .testimony-wrapper {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding-top: 1.6rem;
-
-    .testimony {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: fit-content;
-      width: 52%;
-      max-width: 60rem;
-
-      .text-wrapper {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        gap: 1.5rem;
-        width: 80%;
-
-        h6 {
-          font-size: 0.7rem;
-          letter-spacing: 5px;
-        }
-
-        .quote-italic {
-          width: fit-content;
-          text-align: start;
-          font-size: 1.5rem;
-          line-height: 2.3rem;
-          letter-spacing: 1px;
-          font-weight: 400;
-        }
-
-      }
-    }
-
-    .testimony-image {
-      position: relative;
-      height: fit-content;
-      flex-shrink: 0;
-      flex-grow: 1;
-      display: flex;
-      justify-content: flex-end;
-
-      img {
-        width: 82%;
-        max-width: 38rem;
-        aspect-ratio: 1 / 1.4;
-        flex-shrink: 0;
-        object-fit: cover;
-        margin-top: -15rem;
-        right: 0;
-      }
-    }
-  }
-}
-
-.vendor-list {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem 6rem;
-
-  .vendor-label {
-    font-family: Montserrat;
-    font-style: regular;
-    letter-spacing: 3px;
-    font-size: 0.8rem;
-  }
-
-  .vendor-images {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-
-    .vendor {
-      height: 3.5vw;
-      max-height: 4rem;
-      object-fit: cover;
-    }
-  }
-}
-
-
-.aesthetic-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-  position: relative;
-  margin: 10rem 0;
-
-  .primary-aesthetic-wrapper {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-
-    .relative-image {
-      position: relative;
-      align-self: center;
-      height: 50rem;
-      width: 35rem;
-      z-index: 1;
-      margin-top: 3rem;
-
-      img {
-        width: fit-content;
-        aspect-ratio: 1 / 1.4;
-        z-index: 1;
-      }
-    }
-
-    .absolute-image-1 {
-      position: absolute;
-      top: 46rem;
-      height: 20rem;
-      width: 17rem;
-      right: calc(50% - 32rem);
-      opacity: 0;
-      z-index: 0;
-    }
-
-    .aesthetic-description {
-      position: relative;
-      padding-top: 4rem;
-      margin-left: -26rem;
-      align-items: flex-start;
-      align-self: center;
-
-      h3 {
-        text-align: unset;
-        top: 1rem
-      }
-    }
-  }
-
-  .absolute-image-2 {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 25rem;
-    width: clamp(1rem, 20vw, 40rem);
-    opacity: 0;
-  }
-
-  .absolute-image-3 {
-    position: absolute;
-    left: 0;
-    height: 28rem;
-    width: clamp(1rem, 22vw, 40rem);
-    opacity: 0;
-    top: 135px
-  }
-}
-
-.maddie-flowers-section {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  background-color: rgb(111, 111, 111);
-  overflow: hidden;
-
-  video {
-    position: absolute;
-    width: fit-content;
-    min-width: 100vw;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  div {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-
-    h1 {
-      color: white;
-    }
-  }
-}
-
-@media only screen and (max-width: 768px) {
+.home_route {
   .main-page {
     position: relative;
-    height: 100vh;
-    max-width: 100vw;
-    overflow: hidden;
+    height: calc(120vh - 65px);
+    width: 100%;
+    overflow-x: hidden;
+    margin-top: 65px;
 
     video {
-      width: 100%;
+      height: 100%;
+      width: fit-content;
+      object-fit: cover;
     }
 
     div {
-      top: 55%;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      width: 100%;
+      top: 50%;
 
       h6 {
-        font-size: 0.5rem;
+        color: white;
       }
 
       h1 {
-        font-size: 2.6rem;
-        line-height: 3rem;
-        max-width: calc(100% - 30px);
-
-        br {
-          display: none;
-        }
+        color: white;
       }
     }
   }
 
   .about-me {
-    flex-direction: column;
-    width: calc(100% - 30px);
-    padding: 5rem 15px;
-    height: fit-content;
-    gap: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    height: 36rem;
+    width: 100%;
 
     #column1 {
       position: relative;
       display: flex;
       flex-direction: column;
-      font-family: didot-italic;
       flex-shrink: 0;
       flex-grow: 1;
-      max-width: 28rem;
-      height: unset;
+      max-width: 30rem;
+      height: 15rem;
 
       h6 {
-        display: none;
+        font-size: 0.6rem;
       }
 
-      h3 {
+      .quote-italic {
+        width: fit-content;
         font-size: 1.7rem;
-        font-weight: 200;
-        max-width: unset;
-        font-family: didot-italic;
+        line-height: 2.3rem;
+        letter-spacing: 1px;
+        font-weight: 400;
       }
     }
 
@@ -451,144 +67,191 @@ section {
       display: flex;
       justify-content: center;
       max-width: 28rem;
-      height: unset;
+      height: 15rem;
 
       p {
-        font-size: 0.7rem;
-        line-height: 1.1rem;
+        font-size: 0.75rem;
+        line-height: 1.25rem;
       }
     }
   }
 
-  .section-header {
-    .sub-header {
-      font-weight: 500;
-      font-size: 0.7rem;
-    }
-
-    .header {
-      font-size: 2.2rem;
-    }
-
-    .description {
-      max-width: 90%;
-      font-size: 0.85rem;
-      font-weight: 300;
-    }
-  }
 
   .journal-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    padding: 3rem 0 12rem 0;
     width: 100%;
-    padding: 3.5rem 0 7rem;
 
     .section-header {
-      width: calc(100% - 30px);
-      padding: 0 15px;
 
-      h2 {
-        font-size: 2.3rem;
-        line-height: 3.4rem;
+      p {
+        font-size: 0.8rem;
+        line-height: 1.3rem;
+        max-width: 32rem !important;
+      }
+    }
 
-        br {
-          display: none;
+    .marquee-wrapper {
+      position: relative;
+      width: 100%;
+      margin: 6rem 0 0;
+      height: 38rem;
+      overflow: hidden;
+
+      .journal-marquee {
+        position: absolute;
+        top: 0;
+        display: flex;
+        gap: 0.75rem;
+
+        img {
+          height: 38rem;
+          width: 27rem;
+          aspect-ratio: 1 /1.4;
+          object-fit: cover;
+        }
+      }
+
+      .marquee-images {
+        animation: journalMarquee 50s linear infinite;
+
+        img {
+          opacity: 1 !important;
+        }
+      }
+
+      .fade-images {
+        position: relative;
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0;
         }
       }
     }
 
     .journal-carousel {
       position: relative;
-      height: fit-content;
+      top: 0;
+      left: 0;
       width: 100%;
-      margin-top: 4rem;
-      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: clamp(0.1rem, 8vw, 6.65rem);
+      height: 100%;
+      padding: 16% 0 5%;
+      overflow: auto;
+      pointer-events: none;
 
-      .carousel-image {
-        width: 100%;
-        min-width: 100%;
-        height: 65vh;
-        aspect-ratio: unset;
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0;
-
-        &:nth-child(2) {
-          position: relative;
-          opacity: 1;
-        }
-
-        .image {}
+      &::-webkit-scrollbar {
+        display: none;
+        /* Safari and Chrome */
       }
 
-      .focused {}
+      .carousel-image {
+        position: relative;
+        width: 28%;
+        max-width: 23rem;
+        aspect-ratio: 1/1.5;
+        flex-shrink: 0;
+        opacity: 0;
+
+        .image {
+          object-fit: cover;
+          height: 100%;
+          width: 100%;
+          max-width: 23rem;
+        }
+      }
+
+      .focused {
+        background: rgb(255, 232, 236);
+        width: calc(39.9% - 2rem);
+      }
     }
 
     .journal-button {
-      margin-bottom: 0;
-      margin-top: 3rem;
+      color: white;
+      margin-top: 6rem;
+      margin-bottom: 6rem;
+      align-self: center;
+    }
+  }
+
+  section {
+    display: flex;
+    justify-content: center;
+
+    > :first-child {
+      width: 100%;
+      max-width: 115rem;
     }
   }
 
   .testimony-section {
-    width: calc(100% - 30px);
-    padding: 2rem 15px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2.5rem;
-    height: fit-content;
+    position: relative;
+    gap: 5rem;
+    padding: 3rem 0 8rem 2rem;
 
     .testimony-wrapper {
-      flex-direction: column-reverse;
-      align-items: center;
-      gap: 2.5rem;
-      padding-top: 0;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding-top: 1.6rem;
 
       .testimony {
-        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: fit-content;
+        width: 52%;
+        max-width: 60rem;
 
         .text-wrapper {
-          align-items: center;
-          width: 97%;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          gap: 1.5rem;
+          width: 80%;
 
           h6 {
-            margin-bottom: 22.5rem;
+            font-size: 0.7rem;
+            letter-spacing: 5px;
           }
 
           .quote-italic {
-            text-align: center;
-            // font-size: 1.25rem;
+            width: fit-content;
+            text-align: start;
+            font-size: 1.5rem;
+            line-height: 2.3rem;
+            letter-spacing: 1px;
+            font-weight: 400;
           }
-        }
 
-        a {
-          align-self: center !important;
-          margin-top: 1.5rem !important;
-          padding-bottom: 1.5rem !important;
         }
       }
 
       .testimony-image {
-        position: absolute;
-        top: 5.7rem;
+        position: relative;
         height: fit-content;
         flex-shrink: 0;
         flex-grow: 1;
         display: flex;
-        justify-content: center;
-        width: 100%;
+        justify-content: flex-end;
 
         img {
-          position: relative;
+          width: 82%;
+          max-width: 38rem;
+          aspect-ratio: 1 / 1.4;
+          flex-shrink: 0;
           object-fit: cover;
-          width: fit-content;
-          height: 19rem;
-          aspect-ratio: unset;
-          top: unset;
-          right: unset;
-          margin-top: 0;
-          width: 57%;
+          margin-top: -15rem;
+          right: 0;
         }
       }
     }
@@ -596,34 +259,26 @@ section {
 
   .vendor-list {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    width: calc(100% - 30px);
-    padding: 4rem 15px;
-    margin: 0;
-    overflow: hidden;
-    background-color: #ececec;
-    gap: 4rem;
+    padding: 2rem 6rem;
 
     .vendor-label {
       font-family: Montserrat;
       font-style: regular;
-      color: black;
-      letter-spacing: 4px;
+      letter-spacing: 3px;
       font-size: 0.8rem;
     }
 
     .vendor-images {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
 
       .vendor {
-        max-width: 100%;
-        height: auto;
-        justify-self: center;
-        align-self: center;
+        height: 3.5vw;
+        max-height: 4rem;
+        object-fit: cover;
       }
     }
   }
@@ -632,65 +287,72 @@ section {
   .aesthetic-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 6rem;
+    gap: 4rem;
     position: relative;
-    padding: 4rem 0;
-    margin: 0;
-    max-width: 80%;
-    overflow: hidden;
+    margin: 10rem 0;
 
     .primary-aesthetic-wrapper {
-      justify-content: flex-start;
-      max-width: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
 
       .relative-image {
         position: relative;
-        width: 80%;
-        height: unset;
-        aspect-ratio: 1 / 1.5;
-        z-index: 5;
+        align-self: center;
+        height: 50rem;
+        width: 35rem;
+        z-index: 1;
+        margin-top: 3rem;
 
         img {
           width: fit-content;
           aspect-ratio: 1 / 1.4;
+          z-index: 1;
         }
       }
 
       .absolute-image-1 {
         position: absolute;
-        top: unset;
-        left: unset;
-        right: 0;
-        top: 90vw;
-        width: 50%;
-        height: unset;
-        object-fit: cover;
-        z-index: 10;
+        top: 46rem;
+        height: 20rem;
+        width: 17rem;
+        right: calc(50% - 32rem);
+        opacity: 0;
+        z-index: 0;
       }
 
       .aesthetic-description {
         position: relative;
-        padding: 7rem 15px 0;
+        padding-top: 4rem;
+        margin-left: -26rem;
         align-items: flex-start;
-        width: calc(100% - 30px);
-        margin: 0;
-        gap: 1rem;
+        align-self: center;
 
         h3 {
           text-align: unset;
-          top: 1rem;
-          margin-bottom: 1rem;
-          font-size: 1.4rem;
+          top: 1rem
         }
       }
     }
 
     .absolute-image-2 {
-      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 25rem;
+      width: clamp(1rem, 20vw, 40rem);
+      opacity: 0;
     }
 
     .absolute-image-3 {
-      display: none;
+      position: absolute;
+      left: 0;
+      height: 28rem;
+      width: clamp(1rem, 22vw, 40rem);
+      opacity: 0;
+      top: 135px
     }
   }
 
@@ -702,7 +364,11 @@ section {
     overflow: hidden;
 
     video {
-      width: 100%;
+      position: absolute;
+      width: fit-content;
+      min-width: 100vw;
+      height: 100%;
+      object-fit: cover;
     }
 
     div {
@@ -716,7 +382,345 @@ section {
       transform: translateY(-50%);
 
       h1 {
-        font-size: 2.35rem;
+        color: white;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .home_route {
+    .main-page {
+      position: relative;
+      height: 100vh;
+      max-width: 100vw;
+      overflow: hidden;
+
+      video {
+        width: 100%;
+      }
+
+      div {
+        top: 55%;
+
+        h6 {
+          font-size: 0.5rem;
+        }
+
+        h1 {
+          font-size: 2.6rem;
+          line-height: 3rem;
+          max-width: calc(100% - 30px);
+
+          br {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .about-me {
+      flex-direction: column;
+      width: calc(100% - 30px);
+      padding: 5rem 15px;
+      height: fit-content;
+      gap: 2.5rem;
+
+      #column1 {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        font-family: didot-italic;
+        flex-shrink: 0;
+        flex-grow: 1;
+        max-width: 28rem;
+        height: unset;
+
+        h6 {
+          display: none;
+        }
+
+        h3 {
+          font-size: 1.7rem;
+          font-weight: 200;
+          max-width: unset;
+          font-family: didot-italic;
+        }
+      }
+
+      #column2 {
+        flex-shrink: 0;
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        max-width: 28rem;
+        height: unset;
+
+        p {
+          font-size: 0.7rem;
+          line-height: 1.1rem;
+        }
+      }
+    }
+
+    .section-header {
+      .sub-header {
+        font-weight: 500;
+        font-size: 0.7rem;
+      }
+
+      .header {
+        font-size: 2.2rem;
+      }
+
+      .description {
+        max-width: 90%;
+        font-size: 0.85rem;
+        font-weight: 300;
+      }
+    }
+
+    .journal-section {
+      width: 100%;
+      padding: 3.5rem 0 7rem;
+
+      .section-header {
+        width: calc(100% - 30px);
+        padding: 0 15px;
+
+        h2 {
+          font-size: 2.3rem;
+          line-height: 3.4rem;
+
+          br {
+            display: none;
+          }
+        }
+      }
+
+      .journal-carousel {
+        position: relative;
+        height: fit-content;
+        width: 100%;
+        margin-top: 4rem;
+        padding: 0;
+
+        .carousel-image {
+          width: 100%;
+          min-width: 100%;
+          height: 65vh;
+          aspect-ratio: unset;
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0;
+
+          &:nth-child(2) {
+            position: relative;
+            opacity: 1;
+          }
+
+          .image {}
+        }
+
+        .focused {}
+      }
+
+      .journal-button {
+        margin-bottom: 0;
+        margin-top: 3rem;
+      }
+    }
+
+    .testimony-section {
+      width: calc(100% - 30px);
+      padding: 2rem 15px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+      height: fit-content;
+
+      .testimony-wrapper {
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 2.5rem;
+        padding-top: 0;
+
+        .testimony {
+          width: 100%;
+
+          .text-wrapper {
+            align-items: center;
+            width: 97%;
+
+            h6 {
+              margin-bottom: 22.5rem;
+            }
+
+            .quote-italic {
+              text-align: center;
+              // font-size: 1.25rem;
+            }
+          }
+
+          a {
+            align-self: center !important;
+            margin-top: 1.5rem !important;
+            padding-bottom: 1.5rem !important;
+          }
+        }
+
+        .testimony-image {
+          position: absolute;
+          top: 5.7rem;
+          height: fit-content;
+          flex-shrink: 0;
+          flex-grow: 1;
+          display: flex;
+          justify-content: center;
+          width: 100%;
+
+          img {
+            position: relative;
+            object-fit: cover;
+            width: fit-content;
+            height: 19rem;
+            aspect-ratio: unset;
+            top: unset;
+            right: unset;
+            margin-top: 0;
+            width: 57%;
+          }
+        }
+      }
+    }
+
+    .vendor-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: calc(100% - 30px);
+      padding: 4rem 15px;
+      margin: 0;
+      overflow: hidden;
+      background-color: #ececec;
+      gap: 4rem;
+
+      .vendor-label {
+        font-family: Montserrat;
+        font-style: regular;
+        color: black;
+        letter-spacing: 4px;
+        font-size: 0.8rem;
+      }
+
+      .vendor-images {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 2rem;
+
+        .vendor {
+          max-width: 100%;
+          height: auto;
+          justify-self: center;
+          align-self: center;
+        }
+      }
+    }
+
+
+    .aesthetic-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 6rem;
+      position: relative;
+      padding: 4rem 0;
+      margin: 0;
+      max-width: 80%;
+      overflow: hidden;
+
+      .primary-aesthetic-wrapper {
+        justify-content: flex-start;
+        max-width: 100%;
+
+        .relative-image {
+          position: relative;
+          width: 80%;
+          height: unset;
+          aspect-ratio: 1 / 1.5;
+          z-index: 5;
+
+          img {
+            width: fit-content;
+            aspect-ratio: 1 / 1.4;
+          }
+        }
+
+        .absolute-image-1 {
+          position: absolute;
+          top: unset;
+          left: unset;
+          right: 0;
+          top: 90vw;
+          width: 50%;
+          height: unset;
+          object-fit: cover;
+          z-index: 10;
+        }
+
+        .aesthetic-description {
+          position: relative;
+          padding: 7rem 15px 0;
+          align-items: flex-start;
+          width: calc(100% - 30px);
+          margin: 0;
+          gap: 1rem;
+
+          h3 {
+            text-align: unset;
+            top: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+          }
+        }
+      }
+
+      .absolute-image-2 {
+        display: none;
+      }
+
+      .absolute-image-3 {
+        display: none;
+      }
+    }
+
+    .maddie-flowers-section {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      background-color: rgb(111, 111, 111);
+      overflow: hidden;
+
+      video {
+        width: 100%;
+      }
+
+      div {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+
+        h1 {
+          font-size: 2.35rem;
+        }
       }
     }
   }
