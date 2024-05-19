@@ -20,6 +20,7 @@
       max-width: 70rem;
       text-align: center;
       line-height: 5.5rem;
+      opacity: 0;
     }
 
     .sub-header {
@@ -29,6 +30,7 @@
       letter-spacing: 3px;
       font-size: 0.65rem;
       font-weight: 500;
+      opacity: 0;
     }
   }
 
@@ -42,6 +44,7 @@
 
     .package-wrapper {
       display: flex;
+      opacity: 0;
 
       .package-image {
         width: 49%;

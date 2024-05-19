@@ -1,100 +1,49 @@
-
+import Barba from 'barba';
+import "./styles.scss";
 import "./assets/fonts/didot-bold.ttf";
 import "./assets/fonts/didot-italic.ttf";
 import "./assets/fonts/didot-regular.ttf";
-
-import "./styles.scss";
-
 import "./assets/favicon-32x32.png";
 import "./assets/general/menu_1.webp";
 import "./assets/contact/maddie_client.webp";
 import "./assets/contact/maddie_phone_1.webp";
 import "./assets/logo/logo_dark.png";
 
-import Barba from 'barba';
-
 let targetPage = '';
+let anchorListeners = [];
 const loadingScreen = document.querySelector('.loading-screen');
 const transitionText = loadingScreen.children[0];
-const headerStyles = {
-  index: 'light',
-  about: 'light',
-  testimonies: 'light',
-  packages: 'light',
-  journal: 'light',
-  contact: 'light'
-}
 
-// Function to add and remove the page transition screen
-function pageTransitionIn() {
-  document.getElementById('route-page').children[0].innerHTML = targetPage;
-  return gsap
-    .timeline()
-    .add('start')
-    .to(loadingScreen, { duration: 0.7, height: '100%', top: 'unset', bottom: 0, ease: 'power3.in' })
-    .fromTo(transitionText, { paddingTop: '40px', opacity: 0 }, { paddingTop: 0, opacity: 1, duration: 0.4 })
-}
-
-// Function to add and remove the page transition screen
-function pageTransitionOut(container) {
-  return gsap
-    .timeline({ delay: 0.8 }) // More readable to put it here
-    .add('start') // Use a label to sync screen and content animation
-    .to(loadingScreen, {
-      duration: 0.7,
-      bottom: 'unset',
-      top: 0,
-      height: 0,
-      ease: 'power3.in'
-    }, 'start')
-    .fromTo(transitionText, { opacity: 1, paddingTop: '0', },
-      { opacity: 0, duration: 0.5 }, 'start')
-    .call(contentAnimation, [container], 'start');
-}
-
-// Function to animate the content of each page
-function contentAnimation(container) {
-  // Query from container
-  // container.querySelector('.text-wrapper').addClass('show')
-  // GSAP methods can be chained and return directly a promise
-  return null;
-}
+initHeader();
+selectAnchors();
 
 document.addEventListener("DOMContentLoaded", () => {
   Barba.init({
     transitions: [{
       async leave(data) {
+        window.barbaIsActive = true;
         await pageTransitionIn()
         data.current.container.remove()
       },
 
-      async afterLeave(data) {
-        console.log(data.current.namespace)
-        // import(`./route_${data.current.namespace}/${data.current.namespace}.js`).then(module => {
-        //   module.onDestroy();
-        //   console.log('destroying')
-        // }).catch(error => {
-        //   console.error('Error loading the module:', error);
-        // });
-      },
-
       async beforeEnter(data) {
-        // const link = document.createElement('link');
-        // link.rel = 'stylesheet'
-        // link.href = window.location.origin + '/' + data.next.namespace + '.scss';
-        // console.log(link.href)
-        // const script = document.createElement('script');
-        // script.type = 'module';
-        // script.src = './src/' + data.next.namespace + '.js';
-        // document.getElementsByTagName('head')[0].appendChild(link);
-        // document.getElementsByTagName('head')[0].appendChild(script);
+        const newRouteName = data.next.namespace;
+        const head = document.getElementsByTagName('head')[0];
+        let scriptLoaded = false;
 
-        // console.log('loading scss')
-        // import(`./${data.next.namespace}.js`).then(module => {
-        //   module.onInit();
-        // }).catch(error => {
-        //   console.error('Error loading the module:', error);
-        // });
+        for (var i = 0; i < head.children.length; i++) {
+          const scriptElement = head.children[i];
+          if (scriptElement.src && (scriptElement.src.endsWith(newRouteName + '.js'))) {
+            scriptLoaded = true;
+          }
+        }
+
+        if (!scriptLoaded) {
+          const script = document.createElement('script');
+          script.type = 'module';
+          script.src = data.next.namespace + '.js';
+          head.appendChild(script);
+        }
       },
 
       async enter(data) {
@@ -103,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         selectAnchors();
         await pageTransitionOut(data.next.container);
         document.getElementsByTagName('main')[0].style.overflow = 'unset';
+        window.barbaIsActive = false;
       },
 
       async once(data) {
@@ -112,26 +62,49 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-let anchorListeners = [];
+/**
+ * Animates in the route transition slide
+ * 
+ * @returns an asynchronous gsap transition
+ */
+function pageTransitionIn() {
+  document.getElementById('route-page').children[0].innerHTML = targetPage;
+  return gsap.timeline().add('start')
+    .to(loadingScreen, { duration: 0.7, height: '100%', top: 'unset', bottom: 0, ease: 'power3.in' })
+    .fromTo(transitionText, { paddingTop: '40px', opacity: 0 }, { paddingTop: 0, opacity: 1, duration: 0.4 })
+}
+
+/**
+ * Animates out the route transition slide
+ * 
+ * @returns an asynchronous gsap transition
+ */
+function pageTransitionOut() {
+  return gsap.timeline({ delay: 0.8 }).add('start')
+    .to(loadingScreen, { duration: 0.7, bottom: 'unset', top: 0, height: 0, ease: 'power3.in' }, 'start')
+    .fromTo(transitionText, { opacity: 1, paddingTop: '0', }, { opacity: 0, duration: 0.5 }, 'start');
+}
+
+/**
+ * Attaches an event listener to all anchor tags on the page to properly load the barba transitions
+ */
 function selectAnchors() {
   anchorListeners.forEach(elem => document.removeEventListener(elem.event, elem.element, true));
   anchorListeners = [];
 
   document.querySelectorAll('a').forEach(anchor => {
     anchor.addEventListener('click', function () {
-      handleClick(anchor);
+      let tagName = anchor.getAttribute('tag');
+      tagName = (tagName === 'index') ? 'MADDDIE WEST EVENTS' : tagName;
+      targetPage = tagName.toUpperCase()
     }, true);
     anchorListeners.push({ event: 'click', element: anchor });
   });
 }
 
-function handleClick(anchor) {
-  let tagName = anchor.getAttribute('tag');
-  tagName = (tagName === 'index') ? 'MADDDIE WEST EVENTS' : tagName;
-  targetPage = tagName.toUpperCase()
-}
-
-
+/**
+ * Initialize the header component
+ */
 function initHeader() {
   window.addEventListener('scroll', function () {
     const scrollTop = window.scrollY || this.document.documentElement.scrollTop;
@@ -158,7 +131,6 @@ function initHeader() {
     }
   });
 
-  const body = document.getElementsByTagName('body')[0];
   const menu = document.getElementById('mobile-menu-wrapper');
   const menuButton = document.getElementById('nav-icon');
   const anchors = document.getElementById('mobile-menu').querySelectorAll('a');
@@ -169,12 +141,7 @@ function initHeader() {
     if (!currentState || currentState === "closed") {
       menuButton.setAttribute("data-state", "opened");
       menuButton.setAttribute("aria-expanded", "true");
-      // body.style.overflow = 'hidden';
       menu.style.display = 'flex';
-
-
-      // var themeColorMeta = document.querySelector('meta[name="theme-color"]');
-      // themeColorMeta.setAttribute('content', '#1a1a1a');
 
       setTimeout(() => {
         menu.style.top = '0';
@@ -205,7 +172,3 @@ function initHeader() {
     }, 500);
   }
 }
-
-console.log('Recreating index file');
-initHeader();
-selectAnchors();

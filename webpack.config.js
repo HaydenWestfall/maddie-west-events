@@ -17,6 +17,7 @@ module.exports = {
     alias: { "barba": path.resolve('node_modules', '@barba/core/dist/barba.js'), }
   },
   entry: {
+    index: path.resolve(__dirname, 'src/index.js'),
     home: path.resolve(__dirname, 'src/route_home/home.js'),
     about: path.resolve(__dirname, 'src/route_about/about.js'),
     testimonies: path.resolve(__dirname, 'src/route_testimonies/testimonies.js'),
@@ -26,7 +27,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash].bundle.js',
+    filename: '[name].js',
     assetModuleFilename: ({ filename }) => {
       var dirname = path.dirname(filename);
       dirname = dirname.replace('src/', '')
@@ -99,6 +100,7 @@ module.exports = {
     })
   ],
   optimization: {
+    runtimeChunk: 'single',
     minimizer: [
       new TerserPlugin(),
       new OptimizeCssAssetsPlugin(),

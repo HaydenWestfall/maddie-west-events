@@ -1,14 +1,5 @@
-// MAIN VIDEO
-import "../index.js";
 import "../route_home/index.scss";
-import "../route_about/about.scss";
-import "../route_testimonies/testimonies.scss";
-import "../route_packages/packages.scss";
-import "../route_journal/journal.scss";
-import "../route_contact/contact.scss";
-
 import "../videos/maddie_main_1.mp4";
-
 import "../assets/home/journal_1.JPG";
 import "../assets/home/journal_2.JPG";
 import "../assets/home/journal_3.JPG";
@@ -18,27 +9,49 @@ import "../assets/home/journal_6.JPG";
 import "../assets/home/journal_7.JPG";
 import "../assets/home/journal_8.JPG";
 import "../assets/home/journal_9.JPG";
-
 import "../assets/home/about_maddie.webp";
-
 import "../assets/vendors/cliffside.png";
 import "../assets/vendors/steamplant.png";
 import "../assets/vendors/jorgensen.png";
 import "../assets/vendors/arcade.png";
-
 import "../assets/aesthetic/aesthetic_1.webp";
 import "../assets/aesthetic/aesthetic_2.webp";
 import "../assets/aesthetic/aesthetic_3.webp";
 import "../assets/aesthetic/aesthetic_4.webp";
 
+let marqueeInterval;
+let windowWidth;
+let index = 0;
+onInit(true);
+setTimeout(() => {
+  window.navigation.addEventListener("navigate", (event) => {
+    if (event.destination.url.includes('index')) {
+      onInit(false);
+    } else {
+      onDestroy();
+    }
+  });
+});
+
 /**
- * Calls the initScript function only one time. If the file is loading
- * for the first time onInit will run by default and we do not need
- * the barba.js callback. So ignore the second call if initizlized
- * is true
+ * Initializes the home route
+ * 
+ * @param {*} initialScriptLoad - Is this the initial page load
  */
-export function onInit() {
-  if (!initialized) {
+export function onInit(initialScriptLoad) {
+  let timeout;
+  if (initialScriptLoad && !window.barbaIsActive) {
+    // Initial page load. wait on page load and run animation.
+    timeout = 0;
+  } else if (initialScriptLoad && window.barbaIsActive) {
+    // Initial page load when routed to by website. Delay half of barba animation.
+    timeout = 1000;
+  } else {
+    // Navigating back to the same page delay the whole barba animation.
+    timeout = 2000;
+  }
+
+  setTimeout(() => {
     gsap.registerPlugin(ScrollTrigger);
     animateElementIn('#column1', true);
     animateElementIn('#column2', true);
@@ -56,50 +69,58 @@ export function onInit() {
     animateElementIn('#maddie-flowers-header', true);
 
     // Start video loops on page load
-    let windowWidth = window.innerWidth;
-    const videos = Array.from(document.getElementsByTagName('video'));
-    videos.forEach(video => video.play());
-
     initJournalSection();
+    windowWidth = window.innerWidth;
+    window.addEventListener('resize', journalHelper);
 
-    window.addEventListener('resize', () => {
-      if (window.innerWidth != windowWidth) {
-        windowWidth = window.innerWidth;
-        initJournalSection()
-      }
+
+    var videoContainer = document.getElementById('video-container');
+    var video = document.createElement('video');
+    video.src = './videos/maddie_main_1.mp4';
+    video.autoplay = true;
+    video.loop = true;
+    video.muted = true;
+    video.playsinline = true;
+    videoContainer.appendChild(video);
+    videoContainer.classList.remove('hidden');
+
+    video.play().catch(function (error) {
+      console.error('Error attempting to play the video:', error);
     });
 
-    initialized = true;
-  }
+    // setTimeout(() => {
+    //   const videos = Array.from(document.getElementsByTagName('video'));
+    //   videos.forEach(video => video.play());
+    // }, 1000);
+  }, timeout);
 }
 
 /**
- * GSAP animation for animating in elements
- * @param {*} id 
- * @param {*} scrub 
+ * GSAP animation for animating in elements.
+ * 
+ * @param {*} id - Id of element to animate.
+ * @param {*} scrub - Should animation follow scroll position.
  */
 export function animateElementIn(id, scrub) {
   gsap.fromTo(id,
-    {
-      opacity: 0,
-      y: 30
-    },
-    {
-      y: 0,
-      opacity: 1,
-      scrollTrigger: {
-        trigger: id,
-        start: "top 70%",
-        end: "top 50%",
-        scrub: scrub
-      }
-    });
+    { opacity: 0, y: 30 },
+    { y: 0, opacity: 1, scrollTrigger: { trigger: id, start: "top 70%", end: "top 50%", scrub: scrub } }
+  );
+}
+
+/**
+ * 
+ */
+function journalHelper() {
+  if (window.innerWidth != windowWidth) {
+    windowWidth = window.innerWidth;
+    initJournalSection()
+  }
 }
 
 /**
  * Determine if journal section should fade images or marquee images
  */
-let index = 0;
 export function initJournalSection() {
   const images = Array.from(document.getElementById('journal-carousel').children);
   const journalCarousel = document.getElementById('journal-carousel');
@@ -128,23 +149,13 @@ export function initJournalSection() {
 }
 
 /**
- * Changes journal section to fade images instead of marquee
+ * Journal images will fade in and out
  */
 export function fadeImages() {
   let images = Array.from(document.getElementById('journal-carousel').children);
   images.splice(-3);
-  const fromIndex = (index != 0) ? (index - 1) : (images.length - 1);
-
-  if (initialized) {
-    gsap.to(images[fromIndex], { opacity: 0, duration: 2 });
-  }
   gsap.to(images[index], { opacity: 1, duration: 2 });
-
-  if (index == images.length - 1) {
-    index = 0;
-  } else {
-    index = index + 1;
-  }
+  index = (index == images.length - 1) ? 0 : (index + 1);
 }
 
 /**
@@ -153,25 +164,5 @@ export function fadeImages() {
 export function onDestroy() {
   // Stop the interval
   clearInterval(marqueeInterval);
-
-  // Remove Script
-  document.querySelectorAll('script').forEach(script => {
-    if (script.src.endsWith('index.js')) {
-      script.parentNode.removeChild(script);
-    }
-  });
-
-  // Remove StyleSheet
-  document.querySelectorAll('link').forEach(styleSheet => {
-    if (styleSheet.href.endsWith('index.scss')) {
-      styleSheet.parentNode.removeChild(styleSheet);
-    }
-  });
-  initialized = false;
+  window.removeEventListener('resize', journalHelper);
 }
-
-let initialized = false;
-let marqueeInterval;
-
-console.log('initing')
-onInit();

@@ -1,22 +1,37 @@
 
-import "../index.js";
-import "../route_home/index.scss";
 import "../route_about/about.scss";
-import "../route_testimonies/testimonies.scss";
-import "../route_packages/packages.scss";
-import "../route_journal/journal.scss";
-import "../route_contact/contact.scss";
-
-// COMPONENT SPECIFIC
 import "../videos/maddie_main_lr.mp4";
 import "../assets/about/maddie_1.webp";
 import "../assets/about/maddie_about_extra.webp";
 
+onInit(true);
+setTimeout(() => {
+  window.navigation.addEventListener("navigate", (event) => {
+    if (event.destination.url.includes('about')) {
+      onInit(false);
+    }
+  });
+});
+
 /**
  * Initializes the about component
+ * 
+ * @param {*} initialScriptLoad - Is this the initial page load
  */
-export function onInit() {
-  if (!initialized) {
+export function onInit(initialScriptLoad) {
+  let timeout;
+  if (initialScriptLoad && !window.barbaIsActive) {
+    // Initial page load. wait on page load and run animation.
+    timeout = 0;
+  } else if (initialScriptLoad && window.barbaIsActive) {
+    // Initial page load when routed to by website. Delay half of barba animation.
+    timeout = 1000;
+  } else {
+    // Navigating back to the same page delay the whole barba animation.
+    timeout = 2000;
+  }
+
+  setTimeout(() => {
     gsap.registerPlugin(ScrollTrigger);
     animateElementIn('#client-quote', true);
     animateElementIn('#client-name', true);
@@ -31,9 +46,7 @@ export function onInit() {
     // Start video loops on page load
     const videos = Array.from(document.getElementsByTagName('video'));
     videos.forEach(video => video.play());
-
-    initialized = true;
-  }
+  }, timeout);
 }
 
 /**
@@ -56,33 +69,4 @@ export function animateElementIn(id, scrub) {
       }
     });
 }
-
-/**
- * On Destroy callback anytime barba navigates away from the page.
- */
-export function onDestroy() {
-  try {
-    window.removeEventListener('resize', switchImage, false);
-  } catch (e) {
-    console.log('About page switchImage listener never registered')
-  }
-
-  // Remove Script
-  document.querySelectorAll('script').forEach(script => {
-    if (script.src.endsWith('about.js')) {
-      script.parentNode.removeChild(script);
-    }
-  });
-
-  // Remove StyleSheet
-  document.querySelectorAll('link').forEach(styleSheet => {
-    if (styleSheet.href.endsWith('about.scss')) {
-      styleSheet.parentNode.removeChild(styleSheet);
-    }
-  });
-  initialized = false;
-}
-
-let initialized = false;
-onInit();
 

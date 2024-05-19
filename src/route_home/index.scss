@@ -6,13 +6,18 @@
     overflow-x: hidden;
     margin-top: 65px;
 
-    video {
+    #video-container {
       height: 100%;
-      width: fit-content;
-      object-fit: cover;
+      width: 100%;
+
+      video {
+        height: 100%;
+        width: fit-content;
+        object-fit: cover;
+      }
     }
 
-    div {
+    #main-page-title {
       position: absolute;
       display: flex;
       flex-direction: column;

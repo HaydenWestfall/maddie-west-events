@@ -22,6 +22,8 @@
       .focused-image {
         width: 100%;
         height: 100%;
+        transform: translateY(80px);
+        opacity: 0;
         object-fit: cover;
       }
 
@@ -38,12 +40,16 @@
         position: absolute;
         top: 0.75rem;
         left: 1rem;
+        transform: translateY(80px);
+        opacity: 0;
       }
 
       .bottom-right {
         position: absolute;
         bottom: 0.75rem;
         right: 1rem;
+        transform: translateY(80px);
+        opacity: 0;
       }
     }
   }
