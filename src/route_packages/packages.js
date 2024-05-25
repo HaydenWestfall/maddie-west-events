@@ -12,8 +12,9 @@ import "../assets/packages/partial_planning_package.webp";
 let timeline = gsap.timeline();
 onInit(true);
 setTimeout(() => {
-  window.navigation.addEventListener("navigate", (event) => {
-    if (event.destination.url.includes('packages')) {
+  document.addEventListener('click', function (event) {
+    const target = event.target.closest('a');
+    if (target && target.href.includes('packages')) {
       onInit(false);
     }
   });

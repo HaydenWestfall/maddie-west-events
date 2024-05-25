@@ -10,8 +10,9 @@ import "../assets/testimony/testimony-3-2.webp";
 let timeline = gsap.timeline();
 onInit(true);
 setTimeout(() => {
-  window.navigation.addEventListener("navigate", (event) => {
-    if (event.destination.url.includes('testimonies')) {
+  document.addEventListener('click', function (event) {
+    const target = event.target.closest('a');
+    if (target && target.href.includes('testimonies')) {
       onInit(false);
     } else {
       timeline.kill();

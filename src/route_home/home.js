@@ -1,5 +1,6 @@
 import "../route_home/index.scss";
-import "../videos/maddie_main_1.mp4";
+import "../videos/maddie_primary.mp4";
+import "../videos/maddie_secondary.mp4";
 import "../assets/home/journal_1.JPG";
 import "../assets/home/journal_2.JPG";
 import "../assets/home/journal_3.JPG";
@@ -22,10 +23,15 @@ import "../assets/aesthetic/aesthetic_4.webp";
 let marqueeInterval;
 let windowWidth;
 let index = 0;
+let journalScrollAnimation;
+let journalFadeOutAnimation;
+let journalFadeInAnimation;
+
 onInit(true);
 setTimeout(() => {
-  window.navigation.addEventListener("navigate", (event) => {
-    if (event.destination.url.includes('index')) {
+  document.addEventListener('click', function (event) {
+    const target = event.target.closest('a');
+    if (target && target.href.includes('index')) {
       onInit(false);
     } else {
       onDestroy();
@@ -58,7 +64,6 @@ export function onInit(initialScriptLoad) {
     animateElementIn('#journal-subheader', true);
     animateElementIn('#journal-header', true);
     animateElementIn('#journal-description', true);
-    animateElementIn('.vendor-list', true);
     animateElementIn('#aesthetic-image-1', true);
     animateElementIn('#aesthetic-image-2', true);
     animateElementIn('#aesthetic-image-3', true);
@@ -72,27 +77,51 @@ export function onInit(initialScriptLoad) {
     initJournalSection();
     windowWidth = window.innerWidth;
     window.addEventListener('resize', journalHelper);
-
-
-    var videoContainer = document.getElementById('video-container');
-    var video = document.createElement('video');
-    video.src = './videos/maddie_main_1.mp4';
-    video.autoplay = true;
-    video.loop = true;
-    video.muted = true;
-    video.playsinline = true;
-    videoContainer.appendChild(video);
-    videoContainer.classList.remove('hidden');
-
-    video.play().catch(function (error) {
-      console.error('Error attempting to play the video:', error);
-    });
-
-    // setTimeout(() => {
-    //   const videos = Array.from(document.getElementsByTagName('video'));
-    //   videos.forEach(video => video.play());
-    // }, 1000);
+    loadVideos();
   }, timeout);
+}
+
+/**
+ * Builds and loads the primary and secondary videos. Doing it through js allows
+ * the page to load without waiting on them.
+ */
+function loadVideos() {
+  console.log(document.getElementsByTagName('video'))
+
+  var primaryVideoContainer = document.getElementById('primary-video');
+  var primaryVideo = document.createElement('video');
+  // primaryVideo.src = './videos/maddie_primary.mp4';
+  // primaryVideo.autoplay = true;
+  // primaryVideo.loop = true;
+  // primaryVideo.muted = true;
+  // primaryVideo.playsinline = true;
+  // primaryVideo.defaultmuted = true;
+  // primaryVideo.preload = "auto";
+  // primaryVideoContainer.appendChild(primaryVideo);
+  // primaryVideoContainer.classList.remove('hidden');
+
+  var secondaryVideoContainer = document.getElementById('secondary-video');
+  var secondaryVideo = document.createElement('video');
+  // secondaryVideo.src = './videos/maddie_secondary.mp4';
+  // secondaryVideo.autoplay = true;
+  // secondaryVideo.loop = true;
+  // secondaryVideo.muted = true;
+  // secondaryVideo.playsinline = true;
+  // secondaryVideoContainer.appendChild(secondaryVideo);
+  // secondaryVideoContainer.classList.remove('hidden');
+
+  const videos = Array.from(document.getElementsByTagName('video'));
+  videos.forEach(video => {
+    video.play().catch(function (error) {
+      console.error('Error attempting to play the primary video:', error);
+    });
+  })
+  // primaryVideoContainer.children[0].play().catch(function (error) {
+  //   console.error('Error attempting to play the primary video:', error);
+  // });
+  // secondaryVideoContainer.children[0].play().catch(function (error) {
+  //   console.error('Error attempting to play the secondary video:', error);
+  // });
 }
 
 /**
@@ -128,18 +157,42 @@ export function initJournalSection() {
   const aboutHeader = document.getElementById('about-maddie-header');
 
   clearInterval(marqueeInterval);
+  if (journalScrollAnimation) {
+    journalScrollAnimation.kill();
+    document.getElementById('journal-carousel').style.transform = 'unset';
+  }
 
   if (document.documentElement.clientWidth > 768) {
+    if (journalFadeInAnimation) {
+      journalFadeInAnimation.kill();
+    }
+    if (journalFadeOutAnimation) {
+      journalFadeOutAnimation.kill();
+    }
+
     indexSubheader.innerHTML = 'WEDDING AND EVENT COORDINATOR';
     aboutHeader.innerHTML = 'The SUCCESS of an EVENT lies within the CAREFUL CONSIDERATION of its DETAILS';
-    journalCarousel.classList.add('marquee-images');
     journalCarousel.classList.remove('fade-images');
     images.forEach(image => { image.style.opacity = 1 });
+    journalScrollAnimation = gsap.fromTo('#journal-carousel',
+      {
+        x: '-15%'
+      },
+      {
+        ease: "power1.out",
+        x: '-30%',
+        scrollTrigger: {
+          trigger: '#journal-carousel',
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        }
+      }
+    );
   } else {
     indexSubheader.innerHTML = 'EVENT COORDINATOR';
     aboutHeader.innerHTML = 'The SUCCESS of an EVENT lies within the CONSIDERATION of its DETAILS';
     journalCarousel.classList.add('fade-images');
-    journalCarousel.classList.remove('marquee-images');
     images.forEach(image => { image.style.opacity = 0 });
 
     marqueeInterval = setInterval(() => {
@@ -153,9 +206,9 @@ export function initJournalSection() {
  */
 export function fadeImages() {
   let images = Array.from(document.getElementById('journal-carousel').children);
-  images.splice(-3);
-  gsap.to(images[index], { opacity: 1, duration: 2 });
+  journalFadeOutAnimation = gsap.to(images[index], { opacity: 0, duration: 2 });
   index = (index == images.length - 1) ? 0 : (index + 1);
+  journalFadeInAnimation = gsap.to(images[index], { opacity: 1, duration: 2 });
 }
 
 /**

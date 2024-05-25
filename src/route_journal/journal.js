@@ -20,8 +20,9 @@ let index = 0;
 
 onInit(true);
 setTimeout(() => {
-  window.navigation.addEventListener("navigate", (event) => {
-    if (event.destination.url.includes('journal')) {
+  document.addEventListener('click', function (event) {
+    const target = event.target.closest('a');
+    if (target && target.href.includes('journal')) {
       onInit(false);
     } else {
       onDestroy();

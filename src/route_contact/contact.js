@@ -4,8 +4,9 @@ import "../assets/contact/contact_cover.webp";
 
 onInit(true);
 setTimeout(() => {
-  window.navigation.addEventListener("navigate", (event) => {
-    if (event.destination.url.includes('contact')) {
+  document.addEventListener('click', function (event) {
+    const target = event.target.closest('a');
+    if (target && target.href.includes('contact')) {
       onInit(false);
     } else {
       onDestroy();

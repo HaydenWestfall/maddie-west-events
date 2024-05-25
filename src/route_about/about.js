@@ -1,13 +1,14 @@
 
 import "../route_about/about.scss";
-import "../videos/maddie_main_lr.mp4";
+import "../videos/about_maddie.mp4";
 import "../assets/about/maddie_1.webp";
 import "../assets/about/maddie_about_extra.webp";
 
 onInit(true);
 setTimeout(() => {
-  window.navigation.addEventListener("navigate", (event) => {
-    if (event.destination.url.includes('about')) {
+  document.addEventListener('click', function (event) {
+    const target = event.target.closest('a');
+    if (target && target.href.includes('about')) {
       onInit(false);
     }
   });
@@ -38,15 +39,37 @@ export function onInit(initialScriptLoad) {
     animateElementIn('#about-maddie-image', true);
     animateElementIn('#about-text-block-1', true);
     animateElementIn('#about-text-block-2', true);
-    animateElementIn('#more-section-image', true);
     animateElementIn('#more-section-sub-header', true);
     animateElementIn('#more-section-header', true);
     animateElementIn('#more-section-description', true);
 
     // Start video loops on page load
-    const videos = Array.from(document.getElementsByTagName('video'));
-    videos.forEach(video => video.play());
+    loadVideo();
   }, timeout);
+}
+
+/**
+ * Builds and loads the primary and secondary videos. Doing it through js allows
+ * the page to load without waiting on them.
+ */
+function loadVideo() {
+  var aboutVideoContainer = document.getElementById('about-video');
+  var aboutVideo = document.createElement('video');
+  // aboutVideo.src = './videos/about_maddie.mp4';
+  // aboutVideo.autoplay = true;
+  // aboutVideo.loop = true;
+  // aboutVideo.muted = true;
+  // aboutVideo.playsinline = true;
+  // aboutVideoContainer.appendChild(aboutVideo);
+  // aboutVideoContainer.classList.remove('hidden');
+
+
+  const videos = Array.from(document.getElementsByTagName('video'));
+  videos.forEach(video => {
+    video.play().catch(function (error) {
+      console.error('Error attempting to play the primary video:', error);
+    });
+  })
 }
 
 /**

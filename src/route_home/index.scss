@@ -6,12 +6,17 @@
     overflow-x: hidden;
     margin-top: 65px;
 
-    #video-container {
+    #primary-video {
+      display: flex;
+      justify-content: center;
       height: 100%;
       width: 100%;
+      pointer-events: none;
+      background: #eaeaea;
 
       video {
         height: 100%;
+        min-width: 100%;
         width: fit-content;
         object-fit: cover;
       }
@@ -117,14 +122,6 @@
           width: 27rem;
           aspect-ratio: 1 /1.4;
           object-fit: cover;
-        }
-      }
-
-      .marquee-images {
-        animation: journalMarquee 50s linear infinite;
-
-        img {
-          opacity: 1 !important;
         }
       }
 
@@ -284,6 +281,10 @@
         height: 3.5vw;
         max-height: 4rem;
         object-fit: cover;
+
+        &.small {
+          height: 3vw;
+        }
       }
     }
   }
@@ -357,7 +358,7 @@
       height: 28rem;
       width: clamp(1rem, 22vw, 40rem);
       opacity: 0;
-      top: 135px
+      top: 6rem
     }
   }
 
@@ -365,15 +366,22 @@
     position: relative;
     height: 100vh;
     width: 100%;
-    background-color: rgb(111, 111, 111);
     overflow: hidden;
 
-    video {
-      position: absolute;
-      width: fit-content;
-      min-width: 100vw;
+
+    #secondary-video {
+      background-color: #eaeaea;
+      display: flex;
+      justify-content: center;
       height: 100%;
-      object-fit: cover;
+      width: 100%;
+
+      video {
+        height: 100%;
+        min-width: 100%;
+        width: fit-content;
+        object-fit: cover;
+      }
     }
 
     div {
@@ -429,24 +437,14 @@
       width: calc(100% - 30px);
       padding: 5rem 15px;
       height: fit-content;
-      gap: 2.5rem;
+      gap: 4rem;
 
       #column1 {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        font-family: didot-italic;
-        flex-shrink: 0;
-        flex-grow: 1;
         max-width: 28rem;
         height: unset;
 
-        h6 {
-          display: none;
-        }
-
         h3 {
-          font-size: 1.7rem;
+          font-size: 2rem;
           font-weight: 200;
           max-width: unset;
           font-family: didot-italic;
@@ -632,6 +630,11 @@
           height: auto;
           justify-self: center;
           align-self: center;
+
+          &.small {
+            height: auto;
+            margin-top: 2vw;
+          }
         }
       }
     }
@@ -657,6 +660,8 @@
           height: unset;
           aspect-ratio: 1 / 1.5;
           z-index: 5;
+          align-self: unset;
+          left: 1rem;
 
           img {
             width: fit-content;
@@ -668,12 +673,13 @@
           position: absolute;
           top: unset;
           left: unset;
-          right: 0;
+          right: 1rem;
           top: 90vw;
           width: 50%;
           height: unset;
           object-fit: cover;
           z-index: 10;
+
         }
 
         .aesthetic-description {
@@ -706,11 +712,11 @@
       position: relative;
       height: 100vh;
       width: 100%;
-      background-color: rgb(111, 111, 111);
       overflow: hidden;
 
-      video {
-        width: 100%;
+      #secondary-video {
+
+        video {}
       }
 
       div {
@@ -725,6 +731,7 @@
 
         h1 {
           font-size: 2.35rem;
+          line-height: 1.4;
         }
       }
     }

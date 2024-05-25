@@ -6,15 +6,22 @@
     justify-content: center;
     height: 120vh;
     width: 100%;
-    background-color: rgb(104, 104, 104);
-    border-bottom: 1px solid rgb(231, 231, 231);
+    background-color: #eaeaea;
     overflow: hidden;
     margin-top: 65px;
 
-    video {
+    #about-video {
+      display: flex;
+      justify-content: center;
       height: 100%;
       width: 100%;
-      object-fit: cover;
+
+      video {
+        height: 100%;
+        min-width: 100%;
+        width: fit-content;
+        object-fit: cover;
+      }
     }
 
     .accent {
@@ -28,7 +35,7 @@
     }
   }
 
-  .client-quote {
+  .about-client-quote {
     position: relative;
     width: 100%;
     margin: 10rem 0 25rem;
@@ -192,35 +199,27 @@
       }
     }
 
-    .client-quote {
+    .about-client-quote {
       font-size: inherit;
       gap: 1.5rem;
       margin: 8rem 0;
 
-      br {
-        display: none;
-      }
-
-      .quote {
+      .about-quote {
+        font-size: 2rem;
+        line-height: 2.8rem;
         max-width: 90%;
-        font-size: 1.5rem;
-        line-height: 2.1rem;
-
-        .about-emphasize {
-          font-size: 1.5rem;
-          line-height: 2.1rem;
-        }
       }
 
-      .client {
-        font-size: 0.6rem;
+      h6 {
+        font-size: 0.7rem;
+        font-weight: 500;
         letter-spacing: 2px;
       }
     }
 
     .about-maddie {
       background-color: unset;
-      padding: 8rem 0 3.5rem;
+      padding: 0 0 3.5rem;
 
       .image {
         position: relative;
@@ -235,7 +234,7 @@
       }
 
       .about-text-wrapper {
-        padding: 0rem 1rem 3rem;
+        padding: 1.5rem 1rem 3rem;
         height: fit-content;
         width: calc(100% - 2rem);
 
@@ -255,8 +254,10 @@
         }
 
         &.second {
+          padding-bottom: 1.5rem;
+          padding: 1.5rem 1rem 3rem;
           height: fit-content;
-          padding-bottom: 5rem;
+          width: calc(100% - 2rem);
 
           p {
             position: relative;
@@ -283,14 +284,13 @@
         }
 
         .more-text-wrapper {
-          margin-top: 100px;
           padding: 3rem 1rem;
           align-items: center;
 
           .quote {
             color: rgb(255, 255, 255);
-            font-size: 1.45rem;
-            line-height: 2rem;
+            font-size: 2rem;
+            line-height: 2.75rem;
             opacity: 0;
             margin-bottom: 2.5rem;
             text-align: center;
