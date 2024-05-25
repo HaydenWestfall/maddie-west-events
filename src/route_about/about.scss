@@ -181,12 +181,11 @@
       height: 120vh;
       margin-top: 65px;
 
-      img {
-        object-position: 40% 50%;
-      }
+      #about-video {
 
-      .text-wrapper {
-        display: none;
+        video {
+          object-position: 55% 50%;
+        }
       }
 
       .accent {
