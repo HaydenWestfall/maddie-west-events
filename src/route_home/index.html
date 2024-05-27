@@ -21,15 +21,15 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap"
     rel="stylesheet">
 
-  <link rel="icon" href="/assets/favicon-32x32.png" type="image/png">
+  <link rel="icon" href="/assets/general/favicon-32x32.png" type="image/png">
   <meta name="theme-color" content="#fafafa" />
-  <script src="./index.js"></script>
+  <script src="./common.js"></script>
 </head>
 
 <body>
   <header>
     <nav id="header" tag="light" class="light">
-      <a id="maddie-text" tag="home" href="./index.html">MADDIE WEST</a>
+      <a id="maddie-text" tag="index" href="./index.html">MADDIE WEST</a>
       <div id="nav-options">
         <a class="nav-link" tag="about" href="./about.html">About</a>
         <a class="nav-link" tag="testimonies" href="./testimonies.html">Testimonies</a>
@@ -64,7 +64,7 @@
   </header>
 
   <main data-barba="wrapper">
-    <div data-barba="container" data-barba-namespace="home" class="home_route">
+    <div data-barba="container" data-barba-namespace="index" class="home_route">
       <div class="main-page">
         <div id="primary-video">
           <video id="myVideo" autoplay loop muted playsinline defaultmuted preload="none">
@@ -130,10 +130,14 @@
 
         <div class="marquee-wrapper">
           <div id="journal-carousel" class="journal-marquee">
-            <img src="./assets/home/journal_4.JPG" class="image" alt="Aesthetic image of chair with flowers" />
-            <img src="./assets/home/journal_2.JPG" class="image" alt="Aesthetic image of a tablescape" />
-            <img src="./assets/home/journal_3.JPG" class="image" alt="Aesthetic image of Maddie West" />
-            <img src="./assets/home/journal_1.JPG" class="image" alt="Aesthetic image of a cake table" />
+            <img loading="lazy" src="./assets/home/journal_4.webp" class="image"
+              alt="Aesthetic image of chair with flowers" />
+            <img loading="lazy" src="./assets/home/journal_2.webp" class="image"
+              alt="Aesthetic image of a tablescape" />
+            <img loading="lazy" src="./assets/home/journal_3.webp" class="image" alt="Aesthetic image of Maddie West" />
+            <img loading="lazy" src="./assets/home/journal_1.webp" class="image"
+              alt="Aesthetic image of a cake table" /><img loading="lazy" src="./assets/home/journal_5.webp"
+              class="image" alt="Wedding invitation on tablescape" />
           </div>
         </div>
         <a tag="journal" href="../journal.html" class="text-button journal-button">EXPLORE JOURNAL</a>
@@ -160,7 +164,7 @@
               </div>
             </div>
             <div class="testimony-image">
-              <img src="./assets/home/about_maddie.webp" alt="Maddie West">
+              <img loading="lazy" src="./assets/home/about_maddie.webp" alt="Maddie West">
             </div>
           </div>
         </div>
@@ -170,10 +174,10 @@
         <div class="vendor-list">
           <span class="vendor-label">A FEW OF MY FAVORITES</span>
           <div class="vendor-images">
-            <img src="./assets/vendors/cliffside.png" class="vendor">
-            <img src="./assets/vendors/steamplant.png" class="vendor">
-            <img src="./assets/vendors/jorgensen.png" class="vendor small">
-            <img src="./assets/vendors/arcade.png" class="vendor">
+            <img loading="lazy" src="./assets/home/cliffside.png" class="vendor">
+            <img loading="lazy" src="./assets/home/steamplant.png" class="vendor">
+            <img loading="lazy" src="./assets/home/jorgensen.png" class="vendor small">
+            <img loading="lazy" src="./assets/home/arcade.png" class="vendor">
           </div>
         </div>
       </section>
@@ -181,8 +185,8 @@
       <section>
         <div class="aesthetic-wrapper">
           <div class="primary-aesthetic-wrapper">
-            <img src="./assets/aesthetic/aesthetic_1.webp" class="relative-image" id="aesthetic-image-1">
-            <img src="./assets/aesthetic/aesthetic_2.webp" class="absolute-image-1" id="aesthetic-image-4">
+            <img loading="lazy" src="./assets/home/aesthetic_1.webp" class="relative-image" id="aesthetic-image-1">
+            <img loading="lazy" src="./assets/home/aesthetic_2.webp" class="absolute-image-1" id="aesthetic-image-4">
             <div class="section-header aesthetic-description">
               <h6 id="aesthetic-subheader">THE AESTHETIC</h6>
               <h3 id="aesthetic-header">TIMELESS, MODERN, AND REFINED</h3>
@@ -206,15 +210,12 @@
               </p>
             </div>
           </div>
-          <img src="./assets/aesthetic/aesthetic_3.webp" class="absolute-image-3" id="aesthetic-image-3">
-          <img src="./assets/aesthetic/aesthetic_4.webp" class="absolute-image-2" id="aesthetic-image-2">
+          <img loading="lazy" src="./assets/home/aesthetic_3.webp" class="absolute-image-3" id="aesthetic-image-3">
+          <img loading="lazy" src="./assets/home/aesthetic_4.webp" class="absolute-image-2" id="aesthetic-image-2">
         </div>
       </section>
 
       <div class="maddie-flowers-section">
-        <!-- <video id="maddie-flowers-video" autoplay muted loop playsInline src="./videos/maddie_secondary.mp4"></video> -->
-
-
         <div id="secondary-video">
           <video id="myVideo" autoplay loop muted playsinline defaultmuted preload="none">
             <source src="./videos/maddie_secondary.mp4" type="video/mp4">
@@ -230,8 +231,8 @@
       <div class="contact-section">
         <div class="header-wrapper">
           <div class="image-wrapper">
-            <img src="./assets/contact/maddie_client.webp" id="image-1">
-            <img src="./assets/contact/maddie_phone_1.webp" id="image-2">
+            <img loading="lazy" src="./assets/contact/maddie_client.webp" id="image-1">
+            <img loading="lazy" src="./assets/contact/maddie_phone.webp" id="image-2">
             <span>FOLLOW <a tag="instagram" target="_blank"
                 href="https://www.instagram.com/maddiewestevents/">@MADDIEWEST</a><br /> ON
               INSTAGRAM</span>
@@ -255,7 +256,7 @@
 
   <footer class="footer">
     <div class="logo-contact">
-      <img src="./assets/logo/logo_dark.png">
+      <img loading="lazy" src="./assets/logo/maddie_west_logo.png">
     </div>
     <div class="footer-wrapper">
       <div class="links-wrapper">

@@ -21,9 +21,9 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap"
     rel="stylesheet">
 
-  <link rel="icon" href="./assets/favicon-32x32.png" type="image/png">
+  <link rel="icon" href="./assets/general/favicon-32x32.png" type="image/png">
   <meta name="theme-color" content="#fafafa" />
-  <script src="./index.js"></script>
+  <script src="./common.js"></script>
 </head>
 
 <body>
@@ -77,41 +77,15 @@
         <div class="testimony-wrapper">
           <div class="client-images">
             <div class="image-wrapper">
-              <img class="testimony-img" id="testimony-1-image-1" src="./assets/testimony/testimony-1-1.webp">
+              <img class="testimony-img" loading="lazy" src="./assets/testimony/testimony-2-1.webp"
+                id="testimony-2-image-1">
             </div>
             <div class="image-wrapper">
-              <img class="testimony-img" id="testimony-1-image-2" src="./assets/testimony/testimony-1-2.webp">
+              <img class="testimony-img" loading="lazy" src="./assets/testimony/testimony-2-2.webp"
+                id="testimony-2-image-2">
             </div>
           </div>
           <div class="client-testimony-wrapper">
-            <div id="testimony-1-quote" class="client-testimony">
-              <span class="client-text">Anna + Kodi | 10.14.2023</span>
-              <p class="testimony-quote">
-                Maddie was a God send! She went above and beyond to ensure our day was picture and memory perfect. From
-                setting up to
-                tearing down, she did not miss a beat. Our venue space looked like a fairy tale, and the ceremony set up
-                was nothing
-                short of magical. She is wildly creative and when you allow her free reign to do what she does best, she
-                100% exceeds
-                expectations.<br /><br />As the bride, her services allowed me to be calm and present for my big day. I
-                could enjoy
-                time with
-                friends and family and my husband without fear of keeping things in order or on time. We cannot
-                recommend
-                her services
-                enough. If we had to do it all over again there are a few things we would change for our day, but she is
-                not one of
-                them. From a small intimate event to the largest grand nuptials, SHE MAKES THE DAY!”
-              </p>
-              <span class="client-name">- Anna Roshak</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimony">
-        <div class="testimony-wrapper middle">
-          <div class="client-testimony-wrapper middle">
             <div id="testimony-2-quote" class="client-testimony">
               <span class="client-text">OLIVIA + CALEB | 09.02.2023</span>
               <p class="testimony-quote">
@@ -137,26 +111,12 @@
               <span class="client-name">- Olivia Gannelli</span>
             </div>
           </div>
-          <div class="client-images">
-            <div class="image-wrapper">
-              <img class="testimony-img" src="./assets/testimony/testimony-2-1.webp" id="testimony-2-image-1">
-            </div>
-            <div class="image-wrapper">
-              <img class="testimony-img" src="./assets/testimony/testimony-2-2.webp" id="testimony-2-image-2">
-            </div>
-          </div>
         </div>
       </div>
 
       <div class="testimony">
-        <div class="testimony-wrapper">
-          <div class="client-images">
-            <div class="image-wrapper"><img class="testimony-img" id="testimony-3-image-1"
-                src="./assets/testimony/testimony-3-1.webp"></div>
-            <div class="image-wrapper"><img class="testimony-img" id="testimony-3-image-2"
-                src="./assets/testimony/testimony-3-2.webp"></div>
-          </div>
-          <div class="client-testimony-wrapper">
+        <div class="testimony-wrapper middle">
+          <div class="client-testimony-wrapper middle">
             <div id="testimony-3-quote" class="client-testimony">
               <span class="client-text">JULIA + COLE | 08.25.2023</span>
               <p class="testimony-quote">
@@ -172,13 +132,59 @@
               <span class="client-name">- Julia Johnson</span>
             </div>
           </div>
+          <div class="client-images">
+            <div class="image-wrapper"><img loading="lazy" class="testimony-img" id="testimony-3-image-1"
+                src="./assets/testimony/testimony-3-1.webp"></div>
+            <div class="image-wrapper"><img loading="lazy" class="testimony-img" id="testimony-3-image-2"
+                src="./assets/testimony/testimony-3-2.webp"></div>
+          </div>
         </div>
       </div>
+
+      <div class="testimony">
+        <div class="testimony-wrapper">
+          <div class="client-images">
+            <div class="image-wrapper">
+              <img class="testimony-img" id="testimony-1-image-1" loading="lazy"
+                src="./assets/testimony/testimony-1-1.webp">
+            </div>
+            <div class="image-wrapper">
+              <img class="testimony-img" id="testimony-1-image-2" loading="lazy"
+                src="./assets/testimony/testimony-1-2.webp">
+            </div>
+          </div>
+          <div class="client-testimony-wrapper">
+            <div id="testimony-1-quote" class="client-testimony">
+              <span class="client-text">ANNA + KODI | 10.14.2023</span>
+              <p class="testimony-quote">
+                Maddie was a God send! She went above and beyond to ensure our day was picture and memory perfect. From
+                setting up to
+                tearing down, she did not miss a beat. Our venue space looked like a fairy tale, and the ceremony set up
+                was nothing
+                short of magical. She is wildly creative and when you allow her free reign to do what she does best, she
+                100% exceeds
+                expectations.<br /><br />As the bride, her services allowed me to be calm and present for my big day. I
+                could enjoy
+                time with
+                friends and family and my husband without fear of keeping things in order or on time. We cannot
+                recommend
+                her services
+                enough. If we had to do it all over again there are a few things we would change for our day, but she is
+                not one of
+                them. From a small intimate event to the largest grand nuptials, SHE MAKES THE DAY!”
+              </p>
+              <span class="client-name">- Anna Roshak</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
       <div class="contact-section">
         <div class="header-wrapper">
           <div class="image-wrapper">
             <img src="./assets/contact/maddie_client.webp" id="image-1">
-            <img src="./assets/contact/maddie_phone_1.webp" id="image-2">
+            <img src="./assets/contact/maddie_phone.webp" id="image-2">
             <span>FOLLOW <a tag="instagram" target="_blank"
                 href="https://www.instagram.com/maddiewestevents/">@MADDIEWEST</a><br /> ON
               INSTAGRAM</span>
@@ -202,7 +208,7 @@
 
   <footer class="footer">
     <div class="logo-contact">
-      <img src="./assets/logo/logo_dark.png">
+      <img src="./assets/logo/maddie_west_logo.png">
     </div>
     <div class="footer-wrapper">
       <div class="links-wrapper">

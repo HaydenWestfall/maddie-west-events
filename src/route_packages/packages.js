@@ -1,4 +1,3 @@
-import "../index.js";
 import "../route_home/index.scss";
 import "../route_about/about.scss";
 import "../route_testimonies/testimonies.scss";

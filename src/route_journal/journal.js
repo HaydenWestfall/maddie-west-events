@@ -1,9 +1,9 @@
 import "../route_journal/journal.scss";
-import "../assets/journal/journal_header_3.JPG";
-import "../assets/journal/journal_header_1.JPG";
-import "../assets/journal/journal_header_2.JPG";
-import "../assets/journal/journal_header_4.JPG";
-import "../assets/journal/journal_header_5.JPG";
+import "../assets/journal/journal_header_3.webp";
+import "../assets/journal/journal_header_1.webp";
+import "../assets/journal/journal_header_2.webp";
+import "../assets/journal/journal_header_4.webp";
+import "../assets/journal/journal_header_5.webp";
 import "../assets/journal/journal_entry_1_1.webp";
 import "../assets/journal/journal_entry_1_2.webp";
 import "../assets/journal/journal_entry_1_3.webp";
@@ -74,7 +74,7 @@ function initScriptDesktop() {
   timeline.fromTo("#journal-5", { opacity: 0, width: '15%' }, { opacity: 1, width: imageWidth, duration: imageAnimationDuration }, journalDelay);
   timeline.play();
 
-  setJournalAnimations();
+  // setJournalAnimations();
 }
 
 
