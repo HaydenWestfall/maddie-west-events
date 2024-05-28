@@ -56,6 +56,6 @@ function onInit(initialScriptLoad) {
 
 function setAnimations(elements) {
   for (const element of elements) {
-    gsap.to(element, { opacity: 1, scrollTrigger: { trigger: element, start: "top 82%", end: "top 50%", scrub: true } });
+    gsap.to(element, { opacity: 1, scrollTrigger: { trigger: element, start: "top 82%", end: "top 40%", scrub: true } });
   }
 }

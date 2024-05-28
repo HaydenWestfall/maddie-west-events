@@ -69,7 +69,7 @@
 
     .image {
       position: absolute;
-      top: -5rem;
+      top: -11rem;
       left: 39%;
       height: 45rem;
       aspect-ratio: 1 / 1.8;
@@ -83,7 +83,7 @@
       position: relative;
 
       &.first {
-        height: 35rem;
+        height: 29rem;
 
         p {
           position: absolute;
@@ -106,7 +106,7 @@
       }
 
       &.second {
-        padding: 7rem 0 8rem;
+        padding: 6rem 0 8rem;
         width: 100%;
 
         p {
@@ -116,7 +116,7 @@
           font-family: Montserrat;
           font-size: 0.8rem;
           max-width: 60rem;
-          width: 35%;
+          width: 38%;
           line-height: 1.5rem;
           align-self: flex-end;
           text-align: justify;

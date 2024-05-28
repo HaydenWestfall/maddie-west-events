@@ -34,14 +34,41 @@ export function onInit(initialScriptLoad) {
 
   setTimeout(() => {
     gsap.registerPlugin(ScrollTrigger);
-    animateElementIn('#client-quote', true);
-    animateElementIn('#client-name', true);
-    animateElementIn('#about-maddie-image', true);
-    animateElementIn('#about-text-block-1', true);
-    animateElementIn('#about-text-block-2', true);
-    animateElementIn('#more-section-sub-header', true);
-    animateElementIn('#more-section-header', true);
-    animateElementIn('#more-section-description', true);
+    // animateElementIn('#client-quote', true);
+    // animateElementIn('#client-name', true);
+    animateElementIn('.about-client-quote', "top 80%", "top 40%", true);
+    // animateElementIn('#about-maddie-image', "top 80%", "top 40%", false);
+    animateElementIn('#about-text-block-1', "top 80%", "top 40%", true);
+    animateElementIn('#about-text-block-2', "top 80%", "top 40%", true);
+    animateElementIn('#more-section-sub-header', "top 80%", "top 40%", true);
+    animateElementIn('#more-section-header', "top 80%", "top 40%", true);
+    animateElementIn('#more-section-description', "top 80%", "top 40%", true);
+
+    gsap.fromTo("#about-maddie-image",
+      { y: 60, opacity: 0 },
+      {
+        y: 0, // End position,
+        opacity: 1,
+        duration: 0.6, // Duration of 1 second
+        ease: "power1.out", // Ease function
+        scrollTrigger: {
+          trigger: "#about-maddie-image", // Element that triggers the animation
+          start: "top 90%", // Start the animation when the top of the trigger element is at 80% of the viewport height
+        }
+      });
+
+    gsap.fromTo("#more-section-image",
+      { y: 60, opacity: 0 },
+      {
+        y: 0, // End position,
+        opacity: 1,
+        duration: 0.6, // Duration of 1 second
+        ease: "power1.out", // Ease function
+        scrollTrigger: {
+          trigger: "#more-section-image", // Element that triggers the animation
+          start: "top 100%", // Start the animation when the top of the trigger element is at 80% of the viewport height
+        }
+      });
 
     // Start video loops on page load
     loadVideo();
@@ -75,19 +102,19 @@ function loadVideo() {
 /**
  * GSAP animation for animating in an element
  */
-export function animateElementIn(id, scrub) {
+export function animateElementIn(id, start, end, scrub) {
   gsap.fromTo(id,
     {
       opacity: 0,
-      y: 30
+      y: 50
     },
     {
       opacity: 1,
       y: 0,
       scrollTrigger: {
         trigger: id,
-        start: "top 80%",
-        end: "top 50%",
+        start: start,
+        end: end,
         scrub: scrub
       }
     });

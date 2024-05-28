@@ -60,19 +60,19 @@ export function onInit(initialScriptLoad) {
 
   setTimeout(() => {
     gsap.registerPlugin(ScrollTrigger);
-    animateElementIn('#column1', true);
-    animateElementIn('#column2', true);
-    animateElementIn('#journal-subheader', true);
-    animateElementIn('#journal-header', true);
-    animateElementIn('#journal-description', true);
-    animateElementIn('#aesthetic-image-1', true);
-    animateElementIn('#aesthetic-image-2', true);
-    animateElementIn('#aesthetic-image-3', true);
-    animateElementIn('#aesthetic-image-4', true);
-    animateElementIn('#aesthetic-subheader', true);
-    animateElementIn('#aesthetic-header', true);
-    animateElementIn('#aesthetic-description', true);
-    animateElementIn('#maddie-flowers-header', true);
+    animateElementIn('#column1', "top 75%", "top 25%", true);
+    animateElementIn('#column2', "top 75%", "top 25%", true);
+    animateElementIn('#journal-subheader', "top 75%", "top 35%", true);
+    animateElementIn('#journal-header', "top 75%", "top 35%", true);
+    animateElementIn('#journal-description', "top 75%", "top 35%", true);
+    animateElementIn('#aesthetic-image-1', "top 75%", "top 35%", true);
+    animateElementIn('#aesthetic-image-2', "top 75%", "top 35%", true);
+    animateElementIn('#aesthetic-image-3', "top 69%", "top 31%", true);
+    animateElementIn('#aesthetic-image-4', "top 75%", "top 35%", true);
+    animateElementIn('#aesthetic-subheader', "top 75%", "top 35%", true);
+    animateElementIn('#aesthetic-header', "top 75%", "top 35%", true);
+    animateElementIn('#aesthetic-description', "top 75%", "top 35%", true);
+    animateElementIn('#maddie-flowers-header', "top 75%", "top 35%", true);
 
     // Start video loops on page load
     initJournalSection();
@@ -131,10 +131,10 @@ function loadVideos() {
  * @param {*} id - Id of element to animate.
  * @param {*} scrub - Should animation follow scroll position.
  */
-export function animateElementIn(id, scrub) {
+export function animateElementIn(id, start, end, scrub) {
   gsap.fromTo(id,
     { opacity: 0, y: 30 },
-    { y: 0, opacity: 1, scrollTrigger: { trigger: id, start: "top 70%", end: "top 50%", scrub: scrub } }
+    { y: 0, opacity: 1, scrollTrigger: { trigger: id, start: start, end: end, scrub: scrub } }
   );
 }
 
