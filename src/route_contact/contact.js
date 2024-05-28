@@ -4,13 +4,15 @@ import "../assets/contact/contact_cover.webp";
 
 onInit(true);
 setTimeout(() => {
-  document.addEventListener('click', function (event) {
-    const target = event.target.closest('a');
-    if (target && target.href.includes('contact')) {
-      onInit(false);
-    } else {
-      onDestroy();
-    }
+  document.querySelectorAll('a').forEach(function (anchor) {
+    anchor.addEventListener('click', function (event) {
+      const target = event.target.closest('a');
+      if (target && target.href.includes('contact')) {
+        onInit(false);
+      } else {
+        onDestroy();
+      }
+    });
   });
 });
 
@@ -64,6 +66,11 @@ function handleFormSubmission(e) {
     return
   }
 
+  if (!email.includes('@')) {
+    alert("Please enter a valid email address.");
+    return
+  }
+
   const formBody = `
         <b>Client Name: </b><br/>${name}<br><br/>
         <b>Client Email: </b><br/>${email}<br><br/>
@@ -80,13 +87,6 @@ function handleFormSubmission(e) {
   button.classList.remove('light');
   button.classList.add('active');
 
-  setTimeout(() => {
-    document.getElementById('overlay').style.display = "flex";
-    gsap.fromTo("#overlay", { opacity: 0 }, { opacity: 1, duration: 0.5 });
-    gsap.fromTo("#submit-loader", { opacity: 1 }, { opacity: 0, duration: 0.5 });
-    gsap.fromTo("#modal", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.75, delay: 0.3 });
-  }, 2000);
-
   Email.send({
     Host: "smtp.elasticemail.com",
     Username: "maddiewestfallevents@gmail.com",
@@ -95,8 +95,12 @@ function handleFormSubmission(e) {
     From: "maddiewestfallevents@gmail.com",
     Subject: "NEW CLIENT INQUIRY!",
     Body: formBody
-  }).then(
-    message => alert(message)
+  }).then(message => {
+    document.getElementById('overlay').style.display = "flex";
+    gsap.fromTo("#overlay", { opacity: 0 }, { opacity: 1, duration: 0.5 });
+    gsap.fromTo("#submit-loader", { opacity: 1 }, { opacity: 0, duration: 0.5 });
+    gsap.fromTo("#modal", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.75, delay: 0.3 });
+  }
   );
 }
 
