@@ -29,10 +29,10 @@ let journalFadeInAnimation;
 
 onInit(true);
 setTimeout(() => {
-  document.addEventListener('click', function (event) {
-    const target = event.target.closest('a');
-    console.log()
-    if (target && target.href.includes('index')) {
+  document.addEventListener("click", function (event) {
+    const target = event.target.closest("a");
+    console.log();
+    if (target && target.href.includes("index")) {
       onInit(false);
     } else {
       onDestroy();
@@ -42,7 +42,7 @@ setTimeout(() => {
 
 /**
  * Initializes the home route
- * 
+ *
  * @param {*} initialScriptLoad - Is this the initial page load
  */
 export function onInit(initialScriptLoad) {
@@ -60,24 +60,30 @@ export function onInit(initialScriptLoad) {
 
   setTimeout(() => {
     gsap.registerPlugin(ScrollTrigger);
-    animateElementIn('#column1', "top 75%", "top 25%", true);
-    animateElementIn('#column2', "top 75%", "top 25%", true);
-    animateElementIn('#journal-subheader', "top 75%", "top 35%", true);
-    animateElementIn('#journal-header', "top 75%", "top 35%", true);
-    animateElementIn('#journal-description', "top 75%", "top 35%", true);
-    animateElementIn('#aesthetic-image-1', "top 75%", "top 35%", true);
-    animateElementIn('#aesthetic-image-2', "top 75%", "top 35%", true);
-    animateElementIn('#aesthetic-image-3', "top 69%", "top 31%", true);
-    animateElementIn('#aesthetic-image-4', "top 75%", "top 35%", true);
-    animateElementIn('#aesthetic-subheader', "top 75%", "top 35%", true);
-    animateElementIn('#aesthetic-header', "top 75%", "top 35%", true);
-    animateElementIn('#aesthetic-description', "top 75%", "top 35%", true);
-    animateElementIn('#maddie-flowers-header', "top 75%", "top 35%", true);
+    animateElementIn("#section-about-column1", "top 75%", "top 25%", true);
+    animateElementIn("#section-about-column2", "top 75%", "top 25%", true);
+    animateElementIn("#section-journal-subheader", "top 75%", "top 35%", true);
+    animateElementIn("#section-journal-header", "top 75%", "top 35%", true);
+    animateElementIn(
+      "#section-journal-description",
+      "top 75%",
+      "top 35%",
+      true
+    );
+    animateElementIn("#aesthetic-image-1", "top 75%", "top 35%", true);
+    animateElementIn("#aesthetic-image-2", "top 75%", "top 35%", true);
+    animateElementIn("#aesthetic-image-3", "top 69%", "top 31%", true);
+    animateElementIn("#aesthetic-image-4", "top 75%", "top 35%", true);
+    animateElementIn("#aesthetic-subheader", "top 75%", "top 35%", true);
+    animateElementIn("#aesthetic-header", "top 75%", "top 35%", true);
+    animateElementIn("#aesthetic-description", "top 75%", "top 35%", true);
+    animateElementIn("#maddie-flowers-header", "top 75%", "top 35%", true);
 
     // Start video loops on page load
     initJournalSection();
     windowWidth = window.innerWidth;
-    window.addEventListener('resize', journalHelper);
+    window.addEventListener("resize", journalHelper);
+
     loadVideos();
   }, timeout);
 }
@@ -87,64 +93,42 @@ export function onInit(initialScriptLoad) {
  * the page to load without waiting on them.
  */
 function loadVideos() {
-  console.log(document.getElementsByTagName('video'))
+  document.getElementById("main").addEventListener("click", function () {
+    document.getElementById("primary-video").children[0].play();
+  });
 
-  var primaryVideoContainer = document.getElementById('primary-video');
-  var primaryVideo = document.createElement('video');
-  // primaryVideo.src = './videos/maddie_primary.mp4';
-  // primaryVideo.autoplay = true;
-  // primaryVideo.loop = true;
-  // primaryVideo.muted = true;
-  // primaryVideo.playsinline = true;
-  // primaryVideo.defaultmuted = true;
-  // primaryVideo.preload = "auto";
-  // primaryVideoContainer.appendChild(primaryVideo);
-  // primaryVideoContainer.classList.remove('hidden');
-
-  var secondaryVideoContainer = document.getElementById('secondary-video');
-  var secondaryVideo = document.createElement('video');
-  // secondaryVideo.src = './videos/maddie_secondary.mp4';
-  // secondaryVideo.autoplay = true;
-  // secondaryVideo.loop = true;
-  // secondaryVideo.muted = true;
-  // secondaryVideo.playsinline = true;
-  // secondaryVideoContainer.appendChild(secondaryVideo);
-  // secondaryVideoContainer.classList.remove('hidden');
-
-  const videos = Array.from(document.getElementsByTagName('video'));
-  videos.forEach(video => {
-    video.play().catch(function (error) {
-      console.error('Error attempting to play the primary video:', error);
+  document
+    .getElementById("maddie-flowers-section")
+    .addEventListener("click", function () {
+      document.getElementById("secondary-video").children[0].play();
     });
-  })
-  // primaryVideoContainer.children[0].play().catch(function (error) {
-  //   console.error('Error attempting to play the primary video:', error);
-  // });
-  // secondaryVideoContainer.children[0].play().catch(function (error) {
-  //   console.error('Error attempting to play the secondary video:', error);
-  // });
 }
 
 /**
  * GSAP animation for animating in elements.
- * 
+ *
  * @param {*} id - Id of element to animate.
  * @param {*} scrub - Should animation follow scroll position.
  */
 export function animateElementIn(id, start, end, scrub) {
-  gsap.fromTo(id,
+  gsap.fromTo(
+    id,
     { opacity: 0, y: 30 },
-    { y: 0, opacity: 1, scrollTrigger: { trigger: id, start: start, end: end, scrub: scrub } }
+    {
+      y: 0,
+      opacity: 1,
+      scrollTrigger: { trigger: id, start: start, end: end, scrub: scrub },
+    }
   );
 }
 
 /**
- * 
+ *
  */
 function journalHelper() {
   if (window.innerWidth != windowWidth) {
     windowWidth = window.innerWidth;
-    initJournalSection()
+    initJournalSection();
   }
 }
 
@@ -152,15 +136,17 @@ function journalHelper() {
  * Determine if journal section should fade images or marquee images
  */
 export function initJournalSection() {
-  const images = Array.from(document.getElementById('journal-carousel').children);
-  const journalCarousel = document.getElementById('journal-carousel');
-  const indexSubheader = document.getElementById('main-subheader');
-  const aboutHeader = document.getElementById('about-maddie-header');
+  const indexSubheader = document.getElementById("main-subheader");
+  const aboutHeader = document.getElementById("section-about-header");
+  const journalCarousel = document.getElementById("section-journal-images");
+  const journalImages = Array.from(
+    document.getElementById("section-journal-images").children
+  );
 
   clearInterval(marqueeInterval);
   if (journalScrollAnimation) {
     journalScrollAnimation.kill();
-    document.getElementById('journal-carousel').style.transform = 'unset';
+    document.getElementById("section-journal-images").style.transform = "unset";
   }
 
   if (document.documentElement.clientWidth > 768) {
@@ -171,30 +157,37 @@ export function initJournalSection() {
       journalFadeOutAnimation.kill();
     }
 
-    indexSubheader.innerHTML = 'WEDDING AND EVENT COORDINATOR';
-    aboutHeader.innerHTML = 'The SUCCESS of an EVENT lies within the CAREFUL CONSIDERATION of its DETAILS';
-    journalCarousel.classList.remove('fade-images');
-    images.forEach(image => { image.style.opacity = 1 });
-    journalScrollAnimation = gsap.fromTo('#journal-carousel',
+    indexSubheader.innerHTML = "WEDDING AND EVENT COORDINATOR";
+    aboutHeader.innerHTML =
+      "The SUCCESS of an EVENT lies within the CAREFUL CONSIDERATION of its DETAILS";
+    journalCarousel.classList.remove("fade-images");
+    journalImages.forEach((journalImage) => {
+      journalImage.style.opacity = 1;
+    });
+    journalScrollAnimation = gsap.fromTo(
+      "#section-journal-images",
       {
-        x: '-15%'
+        x: "-15%",
       },
       {
         ease: "power1.out",
-        x: '-30%',
+        x: "-30%",
         scrollTrigger: {
-          trigger: '#journal-carousel',
+          trigger: "#section-journal-images",
           start: "top bottom",
           end: "bottom top",
-          scrub: true
-        }
+          scrub: true,
+        },
       }
     );
   } else {
-    indexSubheader.innerHTML = 'EVENT COORDINATOR';
-    aboutHeader.innerHTML = 'The SUCCESS of an EVENT lies within the CONSIDERATION of its DETAILS';
-    journalCarousel.classList.add('fade-images');
-    images.forEach(image => { image.style.opacity = 0 });
+    indexSubheader.innerHTML = "EVENT COORDINATOR";
+    aboutHeader.innerHTML =
+      "The SUCCESS of an EVENT lies within the CONSIDERATION of its DETAILS";
+    journalCarousel.classList.add("fade-images");
+    journalImages.forEach((journalImage) => {
+      journalImage.style.opacity = 0;
+    });
 
     marqueeInterval = setInterval(() => {
       fadeImages();
@@ -206,10 +199,18 @@ export function initJournalSection() {
  * Journal images will fade in and out
  */
 export function fadeImages() {
-  let images = Array.from(document.getElementById('journal-carousel').children);
-  journalFadeOutAnimation = gsap.to(images[index], { opacity: 0, duration: 2 });
-  index = (index == images.length - 1) ? 0 : (index + 1);
-  journalFadeInAnimation = gsap.to(images[index], { opacity: 1, duration: 2 });
+  const journalImages = Array.from(
+    document.getElementById("section-journal-images").children
+  );
+  journalFadeOutAnimation = gsap.to(journalImages[index], {
+    opacity: 0,
+    duration: 2,
+  });
+  index = index == journalImages.length - 1 ? 0 : index + 1;
+  journalFadeInAnimation = gsap.to(journalImages[index], {
+    opacity: 1,
+    duration: 2,
+  });
 }
 
 /**
@@ -218,5 +219,5 @@ export function fadeImages() {
 export function onDestroy() {
   // Stop the interval
   clearInterval(marqueeInterval);
-  window.removeEventListener('resize', journalHelper);
+  window.removeEventListener("resize", journalHelper);
 }

@@ -1,5 +1,5 @@
 .about_route {
-  .about-page {
+  #section-about-main {
     position: relative;
     display: flex;
     align-items: center;
@@ -24,7 +24,7 @@
       }
     }
 
-    .accent {
+    #about-accent {
       position: absolute;
       bottom: 0.5rem;
       left: 1rem;
@@ -32,10 +32,11 @@
       font-size: 0.65rem;
       letter-spacing: 2px;
       color: white;
+      z-index: 1000;
     }
   }
 
-  .about-client-quote {
+  #about-client-quote {
     position: relative;
     width: 100%;
     margin: 10rem 0 25rem;
@@ -45,7 +46,7 @@
     align-items: center;
     gap: 2rem;
 
-    .about-quote {
+    #quote {
       font-size: 2.5rem;
       color: rgb(56, 56, 56);
       line-height: 3.5rem;
@@ -54,20 +55,20 @@
       width: 40rem;
     }
 
-    h6 {
+    #client {
       font-size: 0.6rem;
       font-weight: 500;
       letter-spacing: 2px;
     }
   }
 
-  .about-maddie {
+  #about-maddie {
     position: relative;
-    background-color: #F1F0F0;
+    background-color: #f1f0f0;
     padding: 5rem 0 0;
     width: 100%;
 
-    .image {
+    #about-maddie-image {
       position: absolute;
       top: -11rem;
       left: 39%;
@@ -85,10 +86,10 @@
       &.first {
         height: 29rem;
 
-        p {
+        #about-text-block-1 {
           position: absolute;
           display: block;
-          font-family: 'didot-italic', 'sans-serif';
+          font-family: "didot-italic", "sans-serif";
           font-size: 1.6rem;
           width: 40%;
           max-width: 60rem;
@@ -109,7 +110,7 @@
         padding: 6rem 0 8rem;
         width: 100%;
 
-        p {
+        #about-text-block-2 {
           position: relative;
           justify-content: flex-end;
           display: block;
@@ -127,19 +128,19 @@
     }
   }
 
-  .more-section-wrapper {
+  #section-styled-shoot {
     display: flex;
     justify-content: center;
     background-color: black;
     width: 100%;
 
-    .more-section {
+    #styled-shoot-wrapper {
       position: relative;
       display: flex;
       padding-bottom: 8rem;
       max-width: 130rem;
 
-      .image {
+      #styled-shoot-image {
         position: relative;
         width: 48%;
         object-fit: cover;
@@ -147,14 +148,14 @@
         flex-shrink: 0;
       }
 
-      .more-text-wrapper {
+      #styled-shoot-text-wrapper {
         display: flex;
         flex-direction: column;
         padding: 2.6rem 2.6rem 0rem 2.6rem;
         gap: 2rem;
         max-width: 32rem;
 
-        .quote {
+        #styled-shoot-header {
           color: rgb(255, 255, 255);
           font-family: didot-italic;
           font-size: 2rem;
@@ -163,7 +164,7 @@
           text-align: left;
         }
 
-        .description {
+        #styled-shoot-description {
           font-family: Montserrat;
           color: rgb(217, 217, 217);
           font-size: 0.9rem;
@@ -178,18 +179,17 @@
 
 @media only screen and (max-width: 768px) {
   .about_route {
-    .about-page {
+    #section-about-main {
       height: 120vh;
       margin-top: 65px;
 
       #about-video {
-
         video {
           object-position: 55% 50%;
         }
       }
 
-      .accent {
+      #about-accent {
         position: absolute;
         bottom: 1rem;
         left: 1.25rem;
@@ -199,29 +199,29 @@
       }
     }
 
-    .about-client-quote {
+    #about-client-quote {
       font-size: inherit;
       gap: 1.5rem;
       margin: 8rem 0;
 
-      .about-quote {
+      #quote {
         font-size: 1.8rem;
         line-height: 2.5rem;
         max-width: 90%;
       }
 
-      h6 {
+      #client {
         font-size: 0.7rem;
         font-weight: 500;
         letter-spacing: 2px;
       }
     }
 
-    .about-maddie {
+    #about-maddie {
       background-color: unset;
       padding: 0;
 
-      .image {
+      #about-maddie-image {
         position: relative;
         height: 75vh;
         width: 100%;
@@ -241,7 +241,7 @@
         &.first {
           height: fit-content;
 
-          p {
+          #about-text-block-1 {
             position: relative;
             font-size: 1.25rem;
             line-height: 1.75rem;
@@ -259,7 +259,7 @@
           height: fit-content;
           width: calc(100% - 2rem);
 
-          p {
+          #about-text-block-2 {
             position: relative;
             font-size: 0.8rem;
             line-height: 1.5rem;
@@ -271,23 +271,23 @@
       }
     }
 
-    .more-section-wrapper {
-      .more-section {
+    #section-styled-shoot {
+      #styled-shoot-wrapper {
         flex-direction: column;
         padding-bottom: 0;
 
-        .image {
+        #styled-shoot-image {
           width: 100%;
           height: 80vh;
           object-fit: cover;
           margin-top: 0;
         }
 
-        .more-text-wrapper {
+        #styled-shoot-text-wrapper {
           padding: 3rem 1rem;
           align-items: center;
 
-          .quote {
+          #styled-shoot-header {
             color: rgb(255, 255, 255);
             font-size: 2rem;
             line-height: 2.75rem;
@@ -296,11 +296,7 @@
             text-align: center;
           }
 
-          .emphasize {
-            font-size: 1.45rem;
-          }
-
-          .description {
+          #styled-shoot-description {
             font-size: 0.8rem;
             line-height: 1.5rem;
             text-align: justify;

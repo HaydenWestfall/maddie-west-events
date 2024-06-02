@@ -5,7 +5,7 @@
 */
 
 .contact_route {
-  .contact-header {
+  #contact-header {
     position: relative;
     height: 120vh;
     width: 100%;
@@ -17,7 +17,7 @@
       object-fit: cover;
     }
 
-    .accent-wrapper {
+    #accent-wrapper {
       position: absolute;
       left: 0.75rem;
       bottom: 3rem;
@@ -25,7 +25,7 @@
       white-space: nowrap;
       color: white;
 
-      .maddie-west-accent {
+      #maddie-west-accent {
         position: absolute;
         transform: rotate(270deg);
         transform-origin: top left;
@@ -34,7 +34,7 @@
       }
     }
 
-    .contact-header-text {
+    #contact-header-text {
       position: absolute;
       display: flex;
       justify-content: center;
@@ -44,23 +44,10 @@
       text-align: center;
       color: white;
       opacity: 0;
-
-      span {
-        font-size: 5.2rem;
-        font-family: "Cormorant Garamond", serif;
-        font-style: italic;
-      }
-
-      .emphasized {
-        font-family: didot-italic;
-        color: black;
-        font-weight: 400;
-        font-size: 5rem;
-      }
     }
   }
 
-  .contact-section {
+  #contact-section {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -69,7 +56,7 @@
     overflow-x: hidden;
     background-color: white;
 
-    .contact-form-wrapper {
+    #contact-form-wrapper {
       display: flex;
       flex-direction: column;
       gap: 5rem;
@@ -77,14 +64,14 @@
 
       p {
         text-align: center;
-        font-family: 'Montserrat', sans-serif;
+        font-family: "Montserrat", sans-serif;
         font-weight: 300;
         letter-spacing: 3px;
         font-size: 0.9rem;
         line-height: 1.3rem;
       }
 
-      .contact-form {
+      #contact-form {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -104,7 +91,7 @@
           gap: 0.5rem;
 
           .input-label {
-            font-family: 'Montserrat', sans-serif;
+            font-family: "Montserrat", sans-serif;
             font-weight: 300;
             font-size: 0.7rem;
 
@@ -124,7 +111,7 @@
             border-radius: 0;
 
             &:focus {
-              outline: none
+              outline: none;
             }
 
             &::placeholder {
@@ -145,7 +132,7 @@
             border-radius: 0;
 
             &:focus {
-              outline: none
+              outline: none;
             }
 
             &::placeholder {
@@ -155,7 +142,7 @@
           }
         }
 
-        .send-button {
+        #send-button {
           position: relative;
           padding-top: 2rem;
 
@@ -248,19 +235,19 @@
 
 @media only screen and (max-width: 768px) {
   .contact_route {
-    .contact-header {
-      .accent-wrapper {
+    #contact-header {
+      #accent-wrapper {
         top: calc(65px + 0.6rem);
         left: 0.4rem;
 
-        .maddie-west-accent {
+        #maddie-west-accent {
           transform: rotate(270deg) translateX(-100%);
           font-size: 0.55rem;
           font-weight: 500;
         }
       }
 
-      .contact-header-text {
+      #contact-header-text {
         top: 65%;
         padding: 0 15px;
         width: calc(100% - 30px);
@@ -274,7 +261,7 @@
       }
     }
 
-    .contact-section {
+    #contact-section {
       width: 100%;
       display: flex;
       justify-content: center;
@@ -283,11 +270,10 @@
       height: fit-content;
       overflow-x: hidden;
 
-
-      .contact-form-wrapper {
+      #contact-form-wrapper {
         width: 85%;
 
-        .contact-form {
+        #contact-form {
           gap: 1.75rem;
 
           .input-inline {
@@ -297,7 +283,6 @@
           }
 
           .input-wrapper {
-
             .input-label {
               font-size: clamp(0.7rem, 1.5vw, 0.9rem);
             }
@@ -319,24 +304,24 @@
     }
 
     .overlay {
-
       .thank-you-modal {
-
         .header {
+          span {
+          }
 
-          span {}
-
-          #fireworks {}
+          #fireworks {
+          }
         }
 
-        .body {}
+        .body {
+        }
       }
     }
   }
 
   @keyframes loading {
     0% {
-      left: -100%
+      left: -100%;
     }
 
     50% {
@@ -344,7 +329,7 @@
     }
 
     100% {
-      left: -100%
+      left: -100%;
     }
   }
 }
