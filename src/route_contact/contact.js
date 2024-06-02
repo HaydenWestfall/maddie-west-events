@@ -3,15 +3,13 @@ import "../assets/contact/contact_cover.webp";
 
 onInit(true);
 setTimeout(() => {
-  document.querySelectorAll("a").forEach(function (anchor) {
-    anchor.addEventListener("click", function (event) {
-      const target = event.target.closest("a");
-      if (target && target.href.includes("contact")) {
-        onInit(false);
-      } else {
-        onDestroy();
-      }
-    });
+  document.addEventListener("click", function (event) {
+    const target = event.target.closest("a");
+    if (target && target.href.includes("contact")) {
+      onInit(false);
+    } else {
+      onDestroy();
+    }
   });
 });
 
@@ -39,6 +37,8 @@ export function onInit(initialScriptLoad) {
       { y: "80px", opacity: 0 },
       { y: "0", opacity: 1, duration: 0.7 }
     );
+
+    console.log("running");
     document
       .getElementById("submit-button")
       .addEventListener("click", handleFormSubmission);

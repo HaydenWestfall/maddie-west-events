@@ -11,9 +11,9 @@ import "../assets/packages/partial_planning_package.webp";
 let timeline = gsap.timeline();
 onInit(true);
 setTimeout(() => {
-  document.addEventListener('click', function (event) {
-    const target = event.target.closest('a');
-    if (target && target.href.includes('packages')) {
+  document.addEventListener("click", function (event) {
+    const target = event.target.closest("a");
+    if (target && target.href.includes("packages")) {
       onInit(false);
     }
   });
@@ -21,11 +21,10 @@ setTimeout(() => {
 
 /**
  * Intializes the packages page
- * 
+ *
  * @param {*} initialScriptLoad - Is this the initial page load.
  */
 function onInit(initialScriptLoad) {
-  console.log('index about')
   let timeout;
   if (initialScriptLoad && !window.barbaIsActive) {
     // Initial page load. wait on page load and run animation.
@@ -41,17 +40,41 @@ function onInit(initialScriptLoad) {
   setTimeout(() => {
     gsap.registerPlugin(ScrollTrigger);
     timeline = gsap.timeline();
-    timeline.fromTo(".header", { y: '80px', opacity: 0 }, { y: '0', opacity: 1, duration: 0.7 });
-    timeline.fromTo(".sub-header", { y: '80px', opacity: 0 }, { y: '0', opacity: 1, duration: 0.7 }, "0");
+    timeline.fromTo(
+      ".header",
+      { y: "80px", opacity: 0 },
+      { y: "0", opacity: 1, duration: 0.7 }
+    );
+    timeline.fromTo(
+      ".sub-header",
+      { y: "80px", opacity: 0 },
+      { y: "0", opacity: 1, duration: 0.7 },
+      "0"
+    );
 
-    const packageElements = document.querySelectorAll('.package-wrapper');
+    const packageElements = document.querySelectorAll(".package-wrapper");
     for (let i = 0; i < packageElements.length; i++) {
       if (i === 0) {
-        timeline.fromTo(packageElements[i], { y: '80px', opacity: 0 }, { y: '0', opacity: 1, duration: 0.7 }, "<=0");
+        timeline.fromTo(
+          packageElements[i],
+          { y: "80px", opacity: 0 },
+          { y: "0", opacity: 1, duration: 0.7 },
+          "<=0"
+        );
       } else {
-        gsap.fromTo(packageElements[i],
-          { y: '200px', opacity: 0 },
-          { y: 0, opacity: 1, scrollTrigger: { trigger: packageElements[i], start: "top bottom", end: "top 30%", scrub: true } }
+        gsap.fromTo(
+          packageElements[i],
+          { y: "200px", opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            scrollTrigger: {
+              trigger: packageElements[i],
+              start: "top bottom",
+              end: "top 30%",
+              scrub: true,
+            },
+          }
         );
       }
     }

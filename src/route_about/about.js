@@ -33,10 +33,7 @@ export function onInit(initialScriptLoad) {
 
   setTimeout(() => {
     gsap.registerPlugin(ScrollTrigger);
-    // animateElementIn('#client-quote', true);
-    // animateElementIn('#client-name', true);
     animateElementIn("#about-client-quote", "top 80%", "top 40%", true);
-    // animateElementIn('#about-maddie-image', "top 80%", "top 40%", false);
     animateElementIn("#about-text-block-1", "top 80%", "top 40%", true);
     animateElementIn("#about-text-block-2", "top 80%", "top 40%", true);
     animateElementIn("#styled-shoot-sub-header", "top 80%", "top 40%", true);
@@ -83,6 +80,8 @@ export function onInit(initialScriptLoad) {
  * the page to load without waiting on them.
  */
 function loadVideo() {
+  document.getElementById("about-video").children[0].play();
+
   document
     .getElementById("section-about-main")
     .addEventListener("click", function () {
