@@ -1,7 +1,9 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: Montserrat, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
   font-style: regular;
   font-size: 1.25vw;
   line-height: 1.15;
@@ -30,19 +32,19 @@ body {
 */
 
 @font-face {
-  font-family: 'didot';
+  font-family: "didot";
   src: url(./assets/fonts/didot-regular.ttf);
   font-weight: 500;
 }
 
 @font-face {
-  font-family: 'didot';
+  font-family: "didot";
   src: url(./assets/fonts/didot-bold.ttf);
   font-weight: 600;
 }
 
 @font-face {
-  font-family: 'didot-italic';
+  font-family: "didot-italic";
   src: url(./assets/fonts/didot-italic.ttf);
   font-weight: 500;
 }
@@ -81,14 +83,14 @@ h4 {
 
 h5 {
   font-size: 1.2rem;
-  font-family: 'Montserrat', 'serif';
+  font-family: "Montserrat", "serif";
   letter-spacing: 3px;
   color: #868686;
   font-weight: 300;
 }
 
 h6 {
-  font-family: 'Montserrat', 'serif';
+  font-family: "Montserrat", "serif";
   font-style: regular;
   color: #393939;
   letter-spacing: 6px;
@@ -128,7 +130,7 @@ h6 {
 }
 
 .description {
-  font-family: 'Montserrat', 'sans-serif';
+  font-family: "Montserrat", "sans-serif";
   font-style: regular;
   color: #393939;
   font-size: 1.1rem;
@@ -193,14 +195,6 @@ h6 {
     &.justify {
       font-size: 0.8rem;
       line-height: 1.25rem;
-    }
-  }
-
-  .loading-screen {
-
-    div {
-      font-size: 0.7rem;
-      white-space: nowrap;
     }
   }
 }
@@ -293,29 +287,6 @@ h6 {
   }
 }
 
-.loading-screen {
-  position: fixed;
-  background-color: #1a1a1a;
-  width: 100%;
-  height: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
-  clip: rect(0, auto, auto, 0);
-
-  div {
-    font-family: 'Montserrat';
-    font-size: 0.9rem;
-    font-weight: 300;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-    color: rgb(255, 255, 255);
-    letter-spacing: 6px;
-  }
-}
-
 @media only screen and (max-width: 768px) {
   .text-button {
     font-size: 0.7rem;
@@ -402,12 +373,14 @@ header {
       z-index: 750;
 
       .line {
-        transition: y 150ms ease-in 150ms, transform 150ms ease-in, opacity 0ms 150ms;
+        transition: y 150ms ease-in 150ms, transform 150ms ease-in,
+          opacity 0ms 150ms;
         transform-origin: center;
       }
 
       &[aria-expanded="true"] .line {
-        transition: y 150ms ease-in, transform 150ms ease-in 150ms, opacity 0ms 150ms;
+        transition: y 150ms ease-in, transform 150ms ease-in 150ms,
+          opacity 0ms 150ms;
       }
 
       &[aria-expanded="true"] :is(.top, .bottom) {
@@ -498,7 +471,7 @@ header {
       gap: 0;
 
       #link {
-        font-family: 'Cormorant Garamond';
+        font-family: "Cormorant Garamond";
         font-style: italic;
         font-size: 1.85rem;
         line-height: 2.4rem;
@@ -515,7 +488,6 @@ header {
         margin-bottom: 2rem;
         text-decoration: none;
         color: black;
-        ;
       }
     }
   }
@@ -529,9 +501,7 @@ header {
   header {
     height: 65px;
 
-
     @supports (-webkit-touch-callout: none) {
-
       /* Safari 10+ */
       nav {
         padding: 5rem 2rem 0 16px;
@@ -728,7 +698,8 @@ header {
             font-size: 0.6rem;
           }
 
-          strong {}
+          strong {
+          }
         }
       }
 
@@ -910,7 +881,8 @@ header {
         }
       }
 
-      .instagram-link {}
+      .instagram-link {
+      }
     }
 
     .copyright-wrapper {

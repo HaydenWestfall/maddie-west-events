@@ -73,7 +73,6 @@
     }
   }
 
-
   .journal-entry-section {
     display: flex;
     justify-content: center;
@@ -90,13 +89,13 @@
       color: rgb(218, 218, 218);
 
       .couple-name {
-        font-family: 'didot', 'sans-serif';
+        font-family: "didot", "sans-serif";
         font-size: 2rem;
         font-weight: 400;
       }
 
       .wedding-description {
-        font-family: 'Abhaya Libre', 'sans-serif';
+        font-family: "Abhaya Libre", "sans-serif";
         font-weight: 400;
         font-size: 1.2rem;
         line-height: 2rem;
@@ -105,7 +104,7 @@
         .first-letter {
           height: 3rem;
           float: left;
-          font-family: 'Abhaya Libre', 'sans-serif';
+          font-family: "Abhaya Libre", "sans-serif";
           font-weight: 400;
           font-size: 4.7rem;
           line-height: 4.2rem;
@@ -159,7 +158,6 @@
             width: 100%;
             left: 0;
             top: 0;
-            opacity: 0;
 
             &:nth-child(5) {
               display: unset;
