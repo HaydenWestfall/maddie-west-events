@@ -1,4 +1,6 @@
 .journal_route {
+  background-color: black;
+
   .section {
     display: flex;
     justify-content: center;
@@ -8,12 +10,10 @@
     .journal-header-wrapper {
       display: flex;
       flex-direction: column;
-      background-color: white;
       max-width: 120rem;
       width: 100%;
 
       .journal-images {
-        background-color: black;
         height: 65vh;
         min-height: 28rem;
         display: grid;
@@ -37,6 +37,7 @@
         position: relative;
         height: 30vh;
         padding-bottom: 15rem;
+        opacity: 0;
 
         .header-text {
           position: absolute;

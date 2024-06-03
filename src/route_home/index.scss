@@ -23,6 +23,7 @@
       width: 100%;
       pointer-events: none;
       background: #eaeaea;
+      z-index: 100;
 
       video {
         height: 100%;
@@ -203,7 +204,7 @@
         }
       }
 
-      #testimony-image {
+      #testimony-image-wrapper {
         position: relative;
         height: fit-content;
         flex-shrink: 0;
@@ -234,6 +235,7 @@
       font-style: regular;
       letter-spacing: 3px;
       font-size: 0.8rem;
+      width: fit-content;
     }
 
     #vendor-images {
@@ -511,7 +513,7 @@
           }
         }
 
-        #testimony-image {
+        #testimony-image-wrapper {
           position: absolute;
           top: 5.7rem;
           height: fit-content;
@@ -613,7 +615,7 @@
 
         #aesthetic-description-wrapper {
           position: relative;
-          padding: 7rem 15px 0;
+          padding: 8rem 15px 0;
           align-items: flex-start;
           width: calc(100% - 30px);
           margin: 0;

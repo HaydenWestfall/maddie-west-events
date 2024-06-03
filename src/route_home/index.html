@@ -278,7 +278,7 @@
                 >
               </div>
             </div>
-            <div id="testimony-image">
+            <div id="testimony-image-wrapper">
               <img
                 loading="lazy"
                 id="testimony-image"
@@ -311,7 +311,7 @@
           </div>
         </section>
 
-        <section id="section-aesthetic">
+        <section id="section-aesthetic" style="max-width: unset">
           <div id="aesthetic-wrapper">
             <img
               id="aesthetic-image-1"
@@ -383,7 +383,7 @@
           </div>
         </section>
 
-        <section class="contact-section">
+        <div class="contact-section">
           <div class="header-wrapper">
             <div class="image-wrapper">
               <img
@@ -427,7 +427,7 @@
               >GET IN TOUCH</a
             >
           </div>
-        </section>
+        </div>
       </div>
     </main>
 
@@ -489,7 +489,7 @@
       const loadingScreen = document.getElementById("route-page");
       window.addEventListener("load", function () {
         gsap
-          .timeline({ delay: 0.8 })
+          .timeline({ delay: 0.5 })
           .add("start")
           .to(
             loadingScreen,

@@ -92,9 +92,6 @@ export function onInit(initialScriptLoad) {
  * the page to load without waiting on them.
  */
 function loadVideos() {
-  document.getElementById("primary-video").children[0].play();
-  document.getElementById("secondary-video").children[0].play();
-
   document.getElementById("main").addEventListener("click", function () {
     document.getElementById("primary-video").children[0].play();
   });

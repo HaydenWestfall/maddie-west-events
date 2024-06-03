@@ -55,20 +55,20 @@ export function onInit(initialScriptLoad) {
       }
     );
 
-    gsap.fromTo(
-      "#styled-shoot-image",
-      { y: 60, opacity: 0 },
-      {
-        y: 0, // End position,
-        opacity: 1,
-        duration: 0.6, // Duration of 1 second
-        ease: "power1.out", // Ease function
-        scrollTrigger: {
-          trigger: "#styled-shoot-image", // Element that triggers the animation
-          start: "top 100%", // Start the animation when the top of the trigger element is at 80% of the viewport height
-        },
-      }
-    );
+    // gsap.fromTo(
+    //   "#styled-shoot-image",
+    //   { y: 60, opacity: 0 },
+    //   {
+    //     y: 0, // End position,
+    //     opacity: 1,
+    //     duration: 0.6, // Duration of 1 second
+    //     ease: "power1.out", // Ease function
+    //     scrollTrigger: {
+    //       trigger: "#styled-shoot-image", // Element that triggers the animation
+    //       start: "top 100%", // Start the animation when the top of the trigger element is at 80% of the viewport height
+    //     },
+    //   }
+    // );
 
     // Start video loops on page load
     loadVideo();
@@ -80,8 +80,6 @@ export function onInit(initialScriptLoad) {
  * the page to load without waiting on them.
  */
 function loadVideo() {
-  document.getElementById("about-video").children[0].play();
-
   document
     .getElementById("section-about-main")
     .addEventListener("click", function () {

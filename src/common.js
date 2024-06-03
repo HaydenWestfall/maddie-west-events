@@ -98,7 +98,7 @@ function pageTransitionIn() {
  */
 function pageTransitionOut() {
   return gsap
-    .timeline({ delay: 0.8 })
+    .timeline({ delay: 0.5 })
     .add("start")
     .to(
       loadingScreen,

@@ -173,7 +173,7 @@
               </div>
             </div>
 
-            <div class="journal-header">
+            <div class="journal-header" id="journal-header">
               <div class="header-text">
                 <span>ITS ALL IN</span><br />
                 <span>THE DETAILS</span>
@@ -430,7 +430,7 @@
       const loadingScreen = document.getElementById("route-page");
       window.addEventListener("load", function () {
         gsap
-          .timeline({ delay: 0.8 })
+          .timeline({ delay: 0.6 })
           .add("start")
           .to(
             loadingScreen,

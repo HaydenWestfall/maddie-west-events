@@ -42,14 +42,15 @@ function onInit(initialScriptLoad) {
     timeout = 250;
   } else if (initialScriptLoad && window.barbaIsActive) {
     // Initial page load when routed to by website. Delay half of barba animation.
-    timeout = 1200;
+    timeout = 1000;
   } else {
     // Navigating back to the same page delay the whole barba animation.
-    timeout = 2400;
+    timeout = 2200;
   }
 
   setTimeout(() => {
     if (document.documentElement.clientWidth > 768) {
+      document.getElementById("journal-header").style.opacity = 1;
       initScriptDesktop();
     } else {
       fadeImagesJournal();
@@ -104,19 +105,11 @@ function initScriptDesktop() {
 
 function initScriptMobile() {
   gsap.registerPlugin(ScrollTrigger);
-  timeline = gsap.timeline();
-  timeline.fromTo(
-    ".journal-images",
-    { y: "80px", opacity: 0 },
-    { y: "0", opacity: 1, duration: 1.2 }
-  );
-  timeline.fromTo(
+  gsap.fromTo(
     ".journal-header",
-    { y: "80px", opacity: 0 },
-    { y: "0", opacity: 1, duration: 1.2 },
-    "0"
+    { y: 80, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.8 }
   );
-  timeline.play();
 
   fadeInterval = setInterval(() => {
     fadeImagesJournal();
