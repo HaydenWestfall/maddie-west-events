@@ -305,6 +305,7 @@
 
     .overlay {
       .thank-you-modal {
+        width: calc(90% - 5rem);
         .header {
           span {
           }
@@ -316,20 +317,6 @@
         .body {
         }
       }
-    }
-  }
-
-  @keyframes loading {
-    0% {
-      left: -100%;
-    }
-
-    50% {
-      left: 100%;
-    }
-
-    100% {
-      left: -100%;
     }
   }
 }

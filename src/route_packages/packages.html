@@ -14,6 +14,12 @@
     <!-- Deps -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script defer src="https://smtpjs.com/v3/smtp.js"></script>
+    <script
+      defer
+      src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+      type="module"
+    ></script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -469,11 +475,16 @@
     <!-- Barba.js Route Animation -->
     <div id="route-page">
       <div id="route-text">PACKAGES</div>
+      <div id="page-loader" class="page-loader-wrapper">
+        <div class="page-loader"></div>
+      </div>
     </div>
 
     <script>
       const loadingScreen = document.getElementById("route-page");
+      const pageLoader = document.getElementById("page-loader");
       window.addEventListener("load", function () {
+        pageLoader.style.display = "none";
         gsap
           .timeline({ delay: 0.5 })
           .add("start")

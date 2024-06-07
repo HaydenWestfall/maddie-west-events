@@ -206,11 +206,16 @@
     <!-- Barba.js Route Animation -->
     <div id="route-page">
       <div id="route-text">CONTACT</div>
+      <div id="page-loader" class="page-loader-wrapper">
+        <div class="page-loader"></div>
+      </div>
     </div>
 
     <script>
       const loadingScreen = document.getElementById("route-page");
+      const pageLoader = document.getElementById("page-loader");
       window.addEventListener("load", function () {
+        pageLoader.style.display = "none";
         gsap
           .timeline({ delay: 0.5 })
           .add("start")

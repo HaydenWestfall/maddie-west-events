@@ -6,8 +6,10 @@
                             4.12451 10.3075 4.12451 10.1251C4.12451 9.94262 4.19698 9.76765 4.32599 9.63865L10.5135 3.45115C10.5773 3.38722 10.6532 3.33652 10.7366
                             3.30192C10.8201 3.26732 10.9095 3.24951 10.9999 3.24951C11.0902 3.24951 11.1797 3.26732 11.2632 3.30192C11.3466 3.33652 11.4225 3.38722 11.4863
                             3.45115L17.6738 9.63865C17.7377 9.7025 17.7884 9.77832 17.823 9.86178C17.8576 9.94524 17.8754 10.0347 17.8754 10.1251C17.8754 10.2154 17.8576
-                            10.3049 17.823 10.3883C17.7884 10.4718 17.7377 10.5476 17.6738 10.6115Z" fill="currentColor"/></svg></button></div></footer><div id="route-page"><div id="route-text">CONTACT</div></div><script>const loadingScreen = document.getElementById("route-page");
+                            10.3049 17.823 10.3883C17.7884 10.4718 17.7377 10.5476 17.6738 10.6115Z" fill="currentColor"/></svg></button></div></footer><div id="route-page"><div id="route-text">CONTACT</div><div id="page-loader" class="page-loader-wrapper"><div class="page-loader"></div></div></div><script>const loadingScreen = document.getElementById("route-page");
+      const pageLoader = document.getElementById("page-loader");
       window.addEventListener("load", function () {
+        pageLoader.style.display = "none";
         gsap
           .timeline({ delay: 0.5 })
           .add("start")

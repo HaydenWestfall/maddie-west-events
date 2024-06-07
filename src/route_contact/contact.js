@@ -3,13 +3,15 @@ import "../assets/contact/contact_cover.webp";
 
 onInit(true);
 setTimeout(() => {
-  document.addEventListener("click", function (event) {
-    const target = event.target.closest("a");
-    if (target && target.href.includes("contact")) {
-      onInit(false);
-    } else {
-      onDestroy();
-    }
+  document.querySelectorAll("a").forEach(function (anchor) {
+    anchor.addEventListener("click", function (event) {
+      const target = event.target.closest("a");
+      if (target && target.href.includes("contact")) {
+        onInit(false);
+      } else {
+        onDestroy();
+      }
+    });
   });
 });
 
