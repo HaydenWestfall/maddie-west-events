@@ -97,9 +97,9 @@ function handleFormSubmission(e) {
   Email.send({
     Host: "smtp.elasticemail.com",
     Username: "maddiewestfallevents@gmail.com",
-    Password: "433EBF428FCEF8259B7788124EC388EC1B69",
+    Password: "77C1826308C524A3D85CAE1A9821A951C1DA",
     To: "maddiewestfallevents@gmail.com",
-    From: "maddiewestfallevents@gmail.com",
+    From: "customer@maddiewestevents.com",
     Subject: "NEW CLIENT INQUIRY!",
     Body: formBody,
   }).then((message) => {
