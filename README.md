@@ -53,6 +53,7 @@ Using **Elastic Email** to handle submissions—because who likes setting up ema
 - Optimize animations for even more smoothness.
 - Learn more React best practices and realize how bad I screwed up this implementation.
 - Consider world domination (optional).
+- Optimize the SPA for better SEO performance to get ALL THE CLICKS.
 
 ---
 
