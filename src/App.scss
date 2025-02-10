@@ -1,0 +1,666 @@
+.home_route {
+  section {
+    display: flex;
+    justify-content: center;
+
+    > :first-child {
+      width: 100%;
+      max-width: 115rem;
+    }
+  }
+
+  .section-main {
+    position: relative;
+    height: calc(120vh - 65px);
+    width: 100%;
+    overflow-x: hidden;
+    margin-top: 65px;
+
+    #primary-video {
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      pointer-events: none;
+      background: #eaeaea;
+      z-index: 100;
+
+      video {
+        height: 100%;
+        min-width: 100%;
+        width: fit-content;
+        object-fit: cover;
+      }
+    }
+
+    #title {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      width: 100%;
+      top: 50%;
+      z-index: 200;
+
+      #main-subheader {
+        color: white;
+      }
+
+      #main-header {
+        color: white;
+      }
+    }
+  }
+
+  .section-about {
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    padding: 10rem 0;
+
+    .section-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4rem;
+      height: fit-content;
+      width: 100%;
+
+      #section-about-column1 {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        flex-grow: 1;
+        max-width: 30rem;
+        height: 100%;
+
+        #section-about-header {
+          width: fit-content;
+          font-size: 1.65rem;
+          line-height: 2.3rem;
+          letter-spacing: 1px;
+          font-weight: 400;
+        }
+
+        #section-about-subHeader {
+          font-size: 0.6rem;
+        }
+      }
+
+      #section-about-column2 {
+        flex-shrink: 0;
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        max-width: 28rem;
+        height: 100%;
+
+        #about-maddie-description {
+          font-size: 0.75rem;
+          line-height: 1.25rem;
+        }
+      }
+    }
+  }
+
+  .section-journal {
+    position: relative;
+    flex-direction: column;
+    background-color: black;
+    padding: 3rem 0 12rem 0;
+    width: 100%;
+
+    #section-journal-header-wrapper {
+      #section-journal-description {
+        font-size: 0.8rem;
+        line-height: 1.3rem;
+        max-width: 32rem !important;
+        color: rgb(175, 175, 175);
+      }
+    }
+
+    #section-journal-image-wrapper {
+      position: relative;
+      width: 100%;
+      margin: 6rem 0 0;
+      height: 38rem;
+      overflow: hidden;
+
+      #section-journal-images {
+        position: absolute;
+        top: 0;
+        display: flex;
+        gap: 0.75rem;
+
+        img {
+          height: 38rem;
+          width: 27rem;
+          aspect-ratio: 1 /1.4;
+          object-fit: cover;
+        }
+      }
+
+      .fade-images {
+        position: relative;
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0;
+        }
+      }
+    }
+
+    #section-journal-button {
+      color: white;
+      margin-top: 6rem;
+      margin-bottom: 6rem;
+      align-self: center;
+    }
+  }
+
+  #section-testimony {
+    position: relative;
+    gap: 5rem;
+    padding: 3rem 0 8rem 2rem;
+
+    #testimony-wrapper {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding-top: 1.6rem;
+
+      #testimony {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: fit-content;
+        width: 52%;
+        max-width: 60rem;
+
+        #text-wrapper {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          gap: 1.5rem;
+          width: 80%;
+
+          h6 {
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+          }
+
+          h4 {
+            width: fit-content;
+            text-align: start;
+            font-size: 1.5rem;
+            line-height: 2.3rem;
+            letter-spacing: 1px;
+            font-weight: 400;
+          }
+        }
+      }
+
+      #testimony-image-wrapper {
+        position: relative;
+        height: fit-content;
+        flex-shrink: 0;
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-end;
+
+        img {
+          width: 82%;
+          max-width: 38rem;
+          aspect-ratio: 1 / 1.4;
+          flex-shrink: 0;
+          object-fit: cover;
+          margin-top: -15rem;
+          right: 0;
+        }
+      }
+    }
+  }
+
+  #section-vendor-list {
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 6rem;
+
+    #vendor-label {
+      font-family: Montserrat;
+      font-style: regular;
+      letter-spacing: 3px;
+      font-size: 0.8rem;
+      width: fit-content;
+    }
+
+    #vendor-images {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+
+      .vendor {
+        height: 3.5vw;
+        max-height: 4rem;
+        object-fit: cover;
+
+        &.small {
+          height: 3vw;
+        }
+      }
+    }
+  }
+
+  #section-aesthetic {
+    flex-direction: column;
+    gap: 4rem;
+    position: relative;
+    margin: 10rem 0;
+
+    #aesthetic-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+
+      #aesthetic-image-1 {
+        position: relative;
+        align-self: center;
+        height: 50rem;
+        width: 35rem;
+        z-index: 1;
+        margin-top: 3rem;
+      }
+
+      #aesthetic-image-2 {
+        position: absolute;
+        top: 46rem;
+        height: 20rem;
+        width: 17rem;
+        right: calc(50% - 32rem);
+        opacity: 0;
+        z-index: 0;
+      }
+
+      #aesthetic-description-wrapper {
+        position: relative;
+        padding-top: 4rem;
+        margin-left: -26rem;
+        align-items: flex-start;
+        align-self: center;
+
+        h3 {
+          text-align: unset;
+          top: 1rem;
+        }
+      }
+    }
+
+    #aesthetic-image-3 {
+      position: absolute;
+      left: 0;
+      height: 28rem;
+      width: clamp(1rem, 22vw, 40rem);
+      opacity: 0;
+      top: 15rem;
+    }
+
+    #aesthetic-image-4 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 25rem;
+      width: clamp(1rem, 20vw, 40rem);
+      opacity: 0;
+    }
+  }
+
+  #maddie-flowers-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+
+    #secondary-video {
+      background-color: #eaeaea;
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+
+      video {
+        height: 100%;
+        min-width: 100%;
+        width: fit-content;
+        object-fit: cover;
+      }
+    }
+
+    div {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1000;
+
+      h1 {
+        color: white;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .section-header {
+    .sub-header {
+      font-weight: 500;
+      font-size: 0.7rem;
+    }
+
+    .header {
+      font-size: 2.2rem;
+    }
+
+    .description {
+      max-width: 90%;
+      font-size: 0.85rem;
+      font-weight: 300;
+    }
+  }
+
+  .home_route {
+    .section-main {
+      position: relative;
+      height: 100vh;
+      max-width: 100vw;
+      overflow: hidden;
+
+      #primary-video {
+        video {
+          width: 100%;
+          object-position: 42% 50%;
+        }
+      }
+
+      #title {
+        top: 55%;
+
+        #main-subheader {
+          font-size: 0.5rem;
+        }
+
+        #main-header {
+          font-size: 2.6rem;
+          line-height: 3rem;
+          max-width: calc(100% - 30px);
+
+          br {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .section-about {
+      width: calc(100% - 30px);
+      padding: 5rem 15px;
+
+      .section-wrapper {
+        width: 100%;
+        flex-direction: column;
+
+        #section-about-column1 {
+          max-width: 28rem;
+          height: unset;
+          gap: 1rem;
+
+          #section-about-header {
+            font-size: 1.7rem;
+          }
+        }
+
+        #section-about-column2 {
+          flex-shrink: 0;
+          flex-grow: 1;
+          display: flex;
+          justify-content: center;
+          max-width: 28rem;
+          height: unset;
+
+          #about-maddie-description {
+            font-size: 0.7rem;
+            line-height: 1.1rem;
+          }
+        }
+      }
+    }
+
+    .section-journal {
+      padding: 3.5rem 0 7rem;
+
+      #section-journal-header-wrapper {
+        width: calc(100% - 30px);
+        padding: 0 15px;
+
+        #section-journal-header {
+          font-size: 2.3rem;
+          line-height: 3.4rem;
+
+          br {
+            display: none;
+          }
+        }
+      }
+
+      #section-journal-image-wrapper {
+        #section-journal-images {
+          position: relative;
+        }
+      }
+
+      #section-journal-button {
+        margin-bottom: 0;
+        margin-top: 3rem;
+      }
+    }
+
+    #section-testimony {
+      width: calc(100% - 30px);
+      padding: 2rem 15px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+      height: fit-content;
+
+      #testimony-wrapper {
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 2.5rem;
+        padding-top: 0;
+
+        #testimony {
+          width: 100%;
+
+          #text-wrapper {
+            align-items: center;
+            width: 97%;
+
+            h6 {
+              margin-bottom: 22.5rem;
+            }
+
+            h4 {
+              text-align: center;
+              font-size: 1.25rem;
+            }
+          }
+
+          a {
+            align-self: center !important;
+            margin-top: 1.5rem !important;
+            padding-bottom: 1.5rem !important;
+          }
+        }
+
+        #testimony-image-wrapper {
+          position: absolute;
+          top: 5.7rem;
+          height: fit-content;
+          flex-shrink: 0;
+          flex-grow: 1;
+          display: flex;
+          justify-content: center;
+          width: 100%;
+
+          img {
+            position: relative;
+            object-fit: cover;
+            width: fit-content;
+            height: 19rem;
+            aspect-ratio: unset;
+            top: unset;
+            right: unset;
+            margin-top: 0;
+            width: 57%;
+          }
+        }
+      }
+    }
+
+    #section-vendor-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: calc(100% - 30px);
+      padding: 4rem 15px;
+      margin: 0;
+      overflow: hidden;
+      background-color: #ececec;
+      gap: 4rem;
+
+      #vendor-label {
+        font-family: Montserrat;
+        font-style: regular;
+        color: black;
+        letter-spacing: 4px;
+        font-size: 0.8rem;
+      }
+
+      #vendor-images {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 2rem;
+
+        .vendor {
+          max-width: 100%;
+          height: auto;
+          justify-self: center;
+          align-self: center;
+
+          &.small {
+            height: auto;
+            margin-top: 2vw;
+          }
+        }
+      }
+    }
+
+    #section-aesthetic {
+      gap: 6rem;
+      padding: 4rem 0;
+      margin: 0;
+      max-width: 80%;
+      overflow: hidden;
+
+      #aesthetic-wrapper {
+        justify-content: flex-start;
+
+        #aesthetic-image-1 {
+          width: 80%;
+          height: unset;
+          aspect-ratio: 1 / 1.5;
+          z-index: 5;
+          align-self: unset;
+          left: 1rem;
+
+          img {
+            width: fit-content;
+            aspect-ratio: 1 / 1.4;
+          }
+        }
+
+        #aesthetic-image-2 {
+          position: absolute;
+          top: unset;
+          left: unset;
+          right: 1rem;
+          top: 90vw;
+          width: 50%;
+          height: unset;
+          object-fit: cover;
+          z-index: 10;
+        }
+
+        #aesthetic-description-wrapper {
+          position: relative;
+          padding: 8rem 15px 0;
+          align-items: flex-start;
+          width: calc(100% - 30px);
+          margin: 0;
+          gap: 1rem;
+
+          h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+          }
+        }
+      }
+
+      #aesthetic-image-3 {
+        display: none;
+      }
+
+      #aesthetic-image-4 {
+        display: none;
+      }
+    }
+
+    #maddie-flowers-section {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+
+      #secondary-video {
+      }
+
+      div {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+
+        h1 {
+          font-size: 2.35rem;
+          line-height: 1.4;
+        }
+      }
+    }
+  }
+}
