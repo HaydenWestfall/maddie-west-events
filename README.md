@@ -1,50 +1,59 @@
-# React + TypeScript + Vite
+# Maddie West Events 🎉
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the **Maddie West Events** repo—where vanilla JS and Webpack were sent packing, and React + Vite now reign supreme. 🚀
 
-Currently, two official plugins are available:
+## 🚀 Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Clone the repo** (because you’re about to make magic):
+   git clone https://github.com/your-repo/maddie_west_events.git cd maddie_west_events
 
-## Expanding the ESLint configuration
+2. **Install dependencies** (grab a coffee, it's quick):
+   npm install
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+3. **Start the dev server** (and watch the magic happen):
+   npm run dev
 
-- Configure the top-level `parserOptions` property like this:
+Your app will be live at `http://localhost:5173/` (or whatever Vite decides).
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🏗️ Building for Production
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+When you're ready to show off:
+npm run build
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+This compiles everything into a neat little `dist/` folder, optimized for deployment.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## 👀 Preview the Build
+
+To see what your production build looks like before launching it to the world:
+
+npm run preview
+
+## 🧹 Linting (Because Clean Code is Sexy)
+
+Run ESLint to make sure everything is looking tidy:
+
+npm run lint
+
+No errors? You’re a legend. Errors? Fix ‘em.
+
+## ✨ Tech Stack
+
+- **React 18** - Because we like things fresh.
+- **Vite** - Blazing fast builds and HMR for that buttery dev experience.
+- **GSAP + Framer Motion** - For animations smoother than your best pickup line.
+- **SASS** - Because CSS deserves some structure.
+- **React Router** - Navigation made easy.
+
+## 📬 Contact Form Magic
+
+Using **Elastic Email** to handle submissions—because who likes setting up email servers? Not us.
+
+## 🛠️ Future Improvements
+
+- Optimize animations for even more smoothness.
+- Learn more React best practices and realize how bad I screwed up this implementation.
+- Consider world domination (optional).
+
+---
+
+**TL;DR:** Run `npm run dev`, enjoy the experience, and let the event planning magic begin. 🎉
