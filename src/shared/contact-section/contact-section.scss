@@ -1,0 +1,187 @@
+/*
+-------------------------------------------------------------------
+---  CONTACT SECTION STYLES
+-------------------------------------------------------------------
+*/
+.contact-section {
+  display: flex;
+  padding: 10rem 0;
+  width: 100%;
+  overflow: hidden;
+  background-color: white;
+  position: relative;
+
+  .header-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-shrink: 0;
+    padding-right: 4rem;
+    width: calc(50% - 4rem);
+
+    .image-wrapper {
+      position: relative;
+      display: flex;
+      flex-shrink: 0;
+      height: 34rem;
+
+      span {
+        font-family: Montserrat;
+        font-weight: 400;
+        font-size: 0.575rem;
+        position: absolute;
+        line-height: 0.9rem;
+        left: 0;
+        top: 22.75rem;
+        width: 13rem;
+
+        a {
+          font-size: 0.575rem;
+          font-weight: 600;
+          cursor: pointer;
+          text-decoration: none;
+          color: black;
+        }
+      }
+    }
+
+    #image-1 {
+      height: 22rem;
+      object-fit: cover;
+      aspect-ratio: 1 /1.5;
+    }
+
+    #image-2 {
+      height: 22rem;
+      object-fit: cover;
+      aspect-ratio: 1 /1.5;
+      align-self: flex-end;
+      margin-left: -4rem;
+    }
+  }
+
+  .contact-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    flex-shrink: 0;
+    flex-grow: 1;
+    padding-right: 6rem;
+    width: calc(50% - 12rem);
+    max-width: 58rem;
+
+    .client-quote {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+
+      .quote {
+        position: relative;
+        font-family: didot-italic;
+        font-weight: 300;
+        font-style: italic;
+        color: black;
+        font-size: 1.75rem;
+        line-height: 2.25rem;
+        max-width: fit-content;
+        text-align: center;
+      }
+
+      .emphasize {
+        font-family: didot-italic;
+        font-size: 2.2rem;
+        font-weight: 400;
+      }
+
+      .client {
+        font-family: Montserrat;
+        font-style: regular;
+        letter-spacing: 4px;
+        font-size: 0.5rem;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .contact-section {
+    flex-direction: column-reverse;
+    width: calc(100% - 30px);
+    padding: 5rem 15px 18rem;
+    gap: 8rem;
+    padding-top: 8rem;
+
+    .header-wrapper {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      padding: 0;
+      height: fit-content;
+
+      .image-wrapper {
+        display: block;
+        width: 100%;
+
+        span {
+          font-weight: 300;
+          width: 8.4rem;
+          font-size: 0.6rem;
+
+          a {
+            font-size: 0.6rem;
+          }
+
+          strong {
+          }
+        }
+      }
+
+      #image-1 {
+        width: 70%;
+      }
+
+      #image-2 {
+        position: absolute;
+        right: 0;
+        width: 60%;
+        bottom: 0;
+        object-position: 20% 50%;
+      }
+    }
+
+    .contact-info-wrapper {
+      width: 100%;
+
+      .client-quote {
+        gap: 2rem;
+
+        .quote {
+          font-size: 1.6rem;
+          line-height: 1.9rem;
+          color: rgb(68, 68, 68);
+        }
+
+        .emphasize {
+          font-size: 1.6rem;
+          line-height: 1.9rem;
+          color: rgb(68, 68, 68);
+        }
+
+        .client {
+          font-size: 0.6rem;
+        }
+      }
+
+      #desktop-button {
+        position: absolute;
+        bottom: 10rem;
+      }
+    }
+  }
+}
