@@ -2,6 +2,9 @@
 
 Welcome to the **Maddie West Events** repo—where vanilla JS and Webpack were sent packing, and React + Vite now reign supreme. 🚀
 
+Check out the live site here:
+https://maddiewestevents.com/
+
 ## 🚀 Getting Started
 
 1. **Clone the repo** (because you’re about to make magic):
