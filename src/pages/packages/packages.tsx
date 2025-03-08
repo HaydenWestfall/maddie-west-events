@@ -88,7 +88,7 @@ const PackagesRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({
                   <div className="details">
                     <div className="info-price-wrapper">
                       <p>This package begins one month prior to the wedding day.</p>
-                      <span>$1,650</span>
+                      <span>$1,900</span>
                     </div>
                     <p className="description">
                       Starting one month before the wedding, this package is ideal for brides who are confident in their
