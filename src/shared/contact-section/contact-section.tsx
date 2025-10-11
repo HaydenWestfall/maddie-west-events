@@ -1,5 +1,6 @@
 import "./contact-section.scss";
 import { mweNavigate } from "../utility";
+import { env } from "../../config/env";
 
 const ContactSection: React.FC<{ handleNavigation: (path: string) => void }> = ({ handleNavigation }) => {
   return (
@@ -10,7 +11,7 @@ const ContactSection: React.FC<{ handleNavigation: (path: string) => void }> = (
           <img loading="lazy" src="/contact/maddie_phone.webp" id="image-2" />
           <span>
             FOLLOW
-            <a target="_blank" href="https://www.instagram.com/maddiewestevents/">
+            <a target="_blank" href={env.INSTAGRAM_URL}>
               @MADDIEWEST
             </a>
             <br />

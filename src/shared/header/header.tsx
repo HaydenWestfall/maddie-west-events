@@ -3,6 +3,7 @@ import { mweNavigate, TransitionState } from "../utility";
 import "./header.scss";
 import gsap from "gsap";
 import { useMWETransitionContext } from "../route-transition/TransitionProvider";
+import { env } from "../../config/env";
 
 const HeaderSection: React.FC<{ handleNavigation: (path: string) => void }> = ({ handleNavigation }) => {
   const { isTransitioning } = useMWETransitionContext();
@@ -109,12 +110,7 @@ const HeaderSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
             <a id="link" href="/journal" onClick={(e: any) => mweNavigate(e, handleNavigation, "/journal")}>
               JOURNAL
             </a>
-            <a
-              id="instagram"
-              href="https://www.instagram.com/maddiewestevents/"
-              onClick={() => closeMobileMenu()}
-              target="_blank"
-            >
+            <a id="instagram" href={env.INSTAGRAM_URL} onClick={() => closeMobileMenu()} target="_blank">
               INSTAGRAM
             </a>
             <a

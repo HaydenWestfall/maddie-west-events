@@ -15,6 +15,7 @@ import ContactSection from "./shared/contact-section/contact-section";
 import FooterSection from "./shared/footer/footer";
 import { TransitionProvider } from "./shared/route-transition/TransitionProvider";
 import PageTransition from "./shared/route-transition/PageTransition";
+import { ToastContainer } from "react-toastify";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -45,6 +46,7 @@ function App() {
           )}
         </PageTransition>
       </TransitionProvider>
+      <ToastContainer position="top-right" autoClose={3000} />
     </ReactLenis>
   );
 }

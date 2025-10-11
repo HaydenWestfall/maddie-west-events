@@ -248,6 +248,11 @@ h6 {
     pointer-events: none;
   }
 
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
   &.light {
     background-color: black;
     color: #bababa;

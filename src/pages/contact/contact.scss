@@ -10,6 +10,7 @@
     height: 120vh;
     width: 100%;
     overflow-x: hidden;
+    pointer-events: none;
 
     img {
       height: 100%;
@@ -155,7 +156,7 @@
           }
 
           .loader-wrapper {
-            display: none;
+            display: flex;
             position: absolute;
             width: 50%;
             height: 2px;
@@ -231,6 +232,17 @@
       }
     }
   }
+}
+
+input.invalid,
+textarea.invalid {
+  border-bottom: 1.5px solid #e53935 !important;
+  outline: none;
+}
+
+.input-error {
+  color: #e53935;
+  font-size: 0.75em;
 }
 
 @media only screen and (max-width: 768px) {

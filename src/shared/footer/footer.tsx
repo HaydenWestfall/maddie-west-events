@@ -1,5 +1,6 @@
 import { mweNavigate } from "../utility";
 import "./footer.scss";
+import { env } from "../../config/env";
 
 const FooterSection: React.FC<{ handleNavigation: (path: string) => void }> = ({ handleNavigation }) => {
   const scrollTop = () => {
@@ -32,7 +33,7 @@ const FooterSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
             CONTACT
           </a>
         </div>
-        <a className="instagram-link" href="https://www.instagram.com/maddiewestevents/" target="_blank">
+        <a className="instagram-link" href={env.INSTAGRAM_URL} target="_blank">
           INSTAGRAM
         </a>
       </div>
