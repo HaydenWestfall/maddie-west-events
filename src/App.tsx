@@ -16,6 +16,7 @@ import FooterSection from "./shared/footer/footer";
 import { TransitionProvider } from "./shared/route-transition/TransitionProvider";
 import PageTransition from "./shared/route-transition/PageTransition";
 import { ToastContainer } from "react-toastify";
+import RentalsRoute from "./pages/rentals/rentals";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -38,6 +39,7 @@ function App() {
                 <Route path="/testimonies" element={<TestimoniesRoute />} />
                 <Route path="/packages" element={<PackagesRoute handleNavigation={handleNavigation} />} />
                 <Route path="/journal" element={<JournalRoute />} />
+                <Route path="/rentals" element={<RentalsRoute handleNavigation={handleNavigation} />} />
                 <Route path="/contact" element={<ContactRoute handleNavigation={handleNavigation} />} />
               </Routes>
               {location.pathname !== "/contact" && <ContactSection handleNavigation={handleNavigation} />}
