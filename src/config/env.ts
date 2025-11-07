@@ -11,6 +11,7 @@ interface EnvConfig {
 
 const getEnvVar = (key: string, defaultValue?: string): string => {
   const value = import.meta.env[key];
+  console.log(value);
   if (!value && !defaultValue) {
     console.warn(`Environment variable ${key} is not set`);
     return "";
