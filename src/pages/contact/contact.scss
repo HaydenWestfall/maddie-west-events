@@ -60,7 +60,6 @@
     #contact-form-wrapper {
       display: flex;
       flex-direction: column;
-      gap: 5rem;
       width: 34rem;
 
       p {
@@ -70,6 +69,60 @@
         letter-spacing: 3px;
         font-size: 0.9rem;
         line-height: 1.3rem;
+        margin-bottom: 5rem;
+      }
+
+      // Form type selector styling
+      #form-type-selector {
+        .form-type-tabs {
+          display: flex;
+          gap: 1rem;
+          margin-top: 0.5rem;
+          margin-bottom: 3rem;
+
+          .form-type-tab {
+            background: transparent;
+            border: 2px solid #000;
+            padding: 0.75rem 2rem;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #000;
+
+            &:hover {
+              background-color: #d7d7d7;
+              color: white;
+            }
+
+            &.active {
+              background-color: #000;
+              color: white;
+            }
+          }
+
+          @media (max-width: 768px) {
+            flex-direction: column;
+            gap: 1rem;
+
+            .form-type-tab {
+              padding: 1rem;
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
+
+      .input-label {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 300;
+        font-size: 0.7rem;
+
+        span {
+          color: red;
+          font-size: 0.7rem;
+        }
       }
 
       #contact-form {
@@ -91,17 +144,6 @@
           flex-direction: column;
           gap: 0.5rem;
 
-          .input-label {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 300;
-            font-size: 0.7rem;
-
-            span {
-              color: red;
-              font-size: 0.7rem;
-            }
-          }
-
           input {
             border: none;
             border-bottom: 1px solid black;
@@ -118,6 +160,31 @@
             &::placeholder {
               color: #e2e2e2;
               font-weight: 300;
+            }
+          }
+
+          select {
+            border: none;
+            border-bottom: 1px solid black;
+            padding: 0.75rem 1rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 0;
+            background-color: transparent;
+            font-weight: 400;
+
+            &:focus {
+              outline: none;
+            }
+
+            &::placeholder {
+              color: #e2e2e2;
+              font-weight: 300;
+            }
+
+            select option[disabled] {
+              color: red;
             }
           }
 
@@ -320,13 +387,16 @@ textarea.invalid {
         width: calc(90% - 5rem);
         .header {
           span {
+            color: inherit;
           }
 
           #fireworks {
+            display: block;
           }
         }
 
         .body {
+          line-height: 1.5;
         }
       }
     }
