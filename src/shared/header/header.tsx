@@ -47,36 +47,9 @@ const HeaderSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
         <a href="/" id="maddie-text" onClick={(e: any) => mweNavigate(e, handleNavigation, "/")}>
           MADDIE WEST
         </a>
-        <div id="nav-options">
-          <a href="/about" className="nav-link" onClick={(e: any) => mweNavigate(e, handleNavigation, "/about")}>
-            About
-          </a>
-          <a
-            href="/testimonies"
-            className="nav-link"
-            onClick={(e: any) => mweNavigate(e, handleNavigation, "/testimonies")}
-          >
-            Testimonies
-          </a>
-          <a href="/packages" className="nav-link" onClick={(e: any) => mweNavigate(e, handleNavigation, "/packages")}>
-            Packages
-          </a>
-          <a href="/journal" className="nav-link" onClick={(e: any) => mweNavigate(e, handleNavigation, "/journal")}>
-            Journal
-          </a>
-          <a
-            href="/contact"
-            className="primary-button medium light"
-            id="call-to-action"
-            onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
-          >
-            Contact
-          </a>
-        </div>
         <button
           id="nav-icon"
           ref={mobileMenuButton}
-          className="more-btn"
           aria-controls="primary-navigation"
           aria-expanded="false"
           onClick={() => {
@@ -107,14 +80,19 @@ const HeaderSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
             <a id="link" href="/packages" onClick={(e: any) => mweNavigate(e, handleNavigation, "/packages")}>
               PACKAGES
             </a>
-            <a id="link" href="/journal" onClick={(e: any) => mweNavigate(e, handleNavigation, "/journal")}>
-              JOURNAL
+            <a id="link" href="/studio" onClick={(e: any) => mweNavigate(e, handleNavigation, "/studio")}>
+              STILL ACRE STUDIO
             </a>
-            <a id="instagram" href={env.INSTAGRAM_URL} onClick={() => closeMobileMenu()} target="_blank">
-              INSTAGRAM
-            </a>
+            <div className="small-links">
+              <a id="journal" href="/journal" onClick={(e: any) => mweNavigate(e, handleNavigation, "/journal")}>
+                JOURNAL
+              </a>
+              <a id="instagram" href={env.INSTAGRAM_URL} onClick={() => closeMobileMenu()} target="_blank">
+                INSTAGRAM
+              </a>
+            </div>
             <a
-              className="primary-button large light"
+              className="primary-button small light"
               href="/contact"
               onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
             >
