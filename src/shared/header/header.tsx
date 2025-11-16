@@ -63,6 +63,7 @@ const HeaderSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
             </svg>
           </button>
           <a
+            id="contact"
             className="primary-button medium light"
             href="/contact"
             onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
