@@ -1,4 +1,5 @@
 import "./contact.scss";
+import "./form.scss";
 import { useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";

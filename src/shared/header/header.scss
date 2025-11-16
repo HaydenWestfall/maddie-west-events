@@ -12,6 +12,7 @@ header {
   transition: top 0.25s ease-in-out;
   height: 70px;
   background-color: white;
+  border-bottom: 1px solid rgb(229, 229, 229);
 
   @supports (-webkit-touch-callout: none) {
     /* Safari 10+ */
@@ -27,7 +28,7 @@ header {
     align-items: center;
     justify-content: space-between;
     transition: background-color 175ms ease-in-out;
-    padding: 0rem 2rem 0 16px;
+    padding: 0rem 32px 0 32px;
 
     #maddie-text {
       font-style: regular;
@@ -38,36 +39,41 @@ header {
       color: inherit;
     }
 
-    #nav-icon {
+    .nav-wrapper {
       display: flex;
-      background: transparent;
-      align-items: center;
-      justify-content: center;
-      border-radius: 0.3rem;
-      border: none;
-      cursor: pointer;
-      z-index: 750;
-      color: black;
+      gap: 2rem;
 
-      .line {
-        transition: y 150ms ease-in 150ms, transform 150ms ease-in, opacity 0ms 150ms;
-        transform-origin: center;
-      }
+      #nav-icon {
+        display: flex;
+        background: transparent;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.3rem;
+        border: none;
+        cursor: pointer;
+        z-index: 750;
+        color: black;
 
-      &[aria-expanded="true"] .line {
-        transition: y 150ms ease-in, transform 150ms ease-in 150ms, opacity 0ms 150ms;
-      }
+        .line {
+          transition: y 150ms ease-in 150ms, transform 150ms ease-in, opacity 0ms 150ms;
+          transform-origin: center;
+        }
 
-      &[aria-expanded="true"] :is(.top, .bottom) {
-        y: 48px;
-      }
+        &[aria-expanded="true"] .line {
+          transition: y 150ms ease-in, transform 150ms ease-in 150ms, opacity 0ms 150ms;
+        }
 
-      &[aria-expanded="true"] .top {
-        transform: rotate(45deg);
-      }
+        &[aria-expanded="true"] :is(.top, .bottom) {
+          y: 48px;
+        }
 
-      &[aria-expanded="true"] .bottom {
-        transform: rotate(-45deg);
+        &[aria-expanded="true"] .top {
+          transform: rotate(45deg);
+        }
+
+        &[aria-expanded="true"] .bottom {
+          transform: rotate(-45deg);
+        }
       }
     }
   }

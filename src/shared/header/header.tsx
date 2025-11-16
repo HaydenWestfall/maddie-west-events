@@ -47,20 +47,29 @@ const HeaderSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
         <a href="/" id="maddie-text" onClick={(e: any) => mweNavigate(e, handleNavigation, "/")}>
           MADDIE WEST
         </a>
-        <button
-          id="nav-icon"
-          ref={mobileMenuButton}
-          aria-controls="primary-navigation"
-          aria-expanded="false"
-          onClick={() => {
-            toggleMobileMenu();
-          }}
-        >
-          <svg fill="var(--button-color)" className="hamburger" viewBox="0 0 100 100" width="35px">
-            <rect className="line top" width="80" height="2" x="10" y="37" rx="5" fill="currentColor"></rect>
-            <rect className="line bottom" width="80" height="2" x="10" y="63" rx="5" fill="currentColor"></rect>
-          </svg>
-        </button>
+        <div className="nav-wrapper">
+          <button
+            id="nav-icon"
+            ref={mobileMenuButton}
+            aria-controls="primary-navigation"
+            aria-expanded="false"
+            onClick={() => {
+              toggleMobileMenu();
+            }}
+          >
+            <svg fill="var(--button-color)" className="hamburger" viewBox="0 0 100 100" width="35px">
+              <rect className="line top" width="80" height="2" x="10" y="37" rx="5" fill="currentColor"></rect>
+              <rect className="line bottom" width="80" height="2" x="10" y="63" rx="5" fill="currentColor"></rect>
+            </svg>
+          </button>
+          <a
+            className="primary-button medium light"
+            href="/contact"
+            onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+          >
+            CONTACT
+          </a>
+        </div>
       </nav>
 
       <div id="mobile-menu-wrapper" ref={mobileMenu} className="mobile-menu-wrapper active">
