@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { createGsapAnimation, mweNavigate } from "../../shared/utility";
 import { ScrollTrigger } from "gsap/all";
+import Overlay, { OverlayRef } from "../../shared/overlay";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -255,6 +256,9 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
   const aboutContainer = useRef<HTMLDivElement | null>(null);
   const column1 = useRef<HTMLDivElement | null>(null);
   const column2 = useRef<HTMLDivElement | null>(null);
+  const adOverlayRef = useRef<OverlayRef | null>(null);
+
+  const AD_OVERLAY_SESSION_KEY = "mwe_ad_overlay_shown";
 
   useGSAP(
     () => {
@@ -271,6 +275,20 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
     } else {
       mainSubHeader.current!.innerHTML = "EVENT COORDINATOR";
       aboutHeader.current!.innerHTML = "The SUCCESS of an EVENT lies within the CONSIDERATION of its DETAILS";
+    }
+
+    // Check if ad overlay should be shown
+    const hasShownAd = sessionStorage.getItem(AD_OVERLAY_SESSION_KEY);
+    // if (!hasShownAd) {
+    if (true) {
+      // Show ad overlay after 750ms delay
+      setTimeout(() => {
+        if (adOverlayRef.current) {
+          adOverlayRef.current.show();
+          // Mark as shown in session storage
+          sessionStorage.setItem(AD_OVERLAY_SESSION_KEY, "true");
+        }
+      }, 2500);
     }
   }, []);
 
@@ -335,12 +353,12 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
                   running the show!"
                 </p>
                 <a
-                  href="/testimonies"
-                  className="text-button"
-                  style={{ alignSelf: "flex-end", marginTop: "2.5rem" }}
-                  onClick={(e: any) => mweNavigate(e, handleNavigation, "/testimonies")}
+                  id="contact"
+                  className="primary-button medium light"
+                  href="/contact"
+                  onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
                 >
-                  READ MORE
+                  CONTACT
                 </a>
               </div>
             </div>
@@ -363,6 +381,43 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
         <AestheticSection />
 
         <MaddieFlowersSection />
+
+        {/* Advertisement Overlay */}
+        <Overlay ref={adOverlayRef} className="ad-overlay" id="ad-overlay">
+          <div className="ad-wrapper">
+            <img src="/studio/main.jpg" alt="Still Acre Studio Image" />
+
+            <div className="ad-content">
+              <h4>Still Acre Studio</h4>
+              <h6>Studio Description</h6>
+              <p>
+                Nestled among the trees at 9358 Fenner Rd in Ludlow Falls, Ohio, Stillacre Studio offers a one-of-a-kind
+                setting designed to bring out the natural beauty in every photo.
+              </p>
+              <br />
+              <p>
+                Whether it’s an intimate couple’s session, a fun shoot with friends, or family portraits that feel
+                effortlessly genuine, Stillacre Studio provides an atmosphere where every moment feels real.
+              </p>
+              <a
+                id="contact"
+                className="primary-button small outline"
+                href="/contact"
+                onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+              >
+                CONTACT
+              </a>
+            </div>
+
+            <button
+              className="close-modal"
+              onClick={() => adOverlayRef.current?.hide()}
+              aria-label="Close advertisement"
+            >
+              ×
+            </button>
+          </div>
+        </Overlay>
       </div>
     </main>
   );

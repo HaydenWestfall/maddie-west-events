@@ -10,6 +10,7 @@ import { useMWETransitionContext } from "../../shared/route-transition/Transitio
 import { env } from "../../config/env";
 import EventContactForm from "./EventContactForm";
 import StudioContactForm from "./StudioContactForm";
+import Overlay, { OverlayRef } from "../../shared/overlay";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -18,21 +19,16 @@ const ContactRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
   const { isTransitioning } = useMWETransitionContext();
   const contactContainer = useRef<HTMLDivElement | null>(null);
   const contactHeader = useRef<HTMLDivElement | null>(null);
-  const submissionOverlay = useRef<HTMLDivElement | null>(null);
-  const submissionConfirmation = useRef<HTMLDivElement | null>(null);
+  const overlayRef = useRef<OverlayRef | null>(null);
 
   // Form type selection state
   const [selectedFormType, setSelectedFormType] = useState<"event" | "studio">("event");
 
   // Handle successful form submission from child components
   const handleFormSubmissionSuccess = () => {
-    submissionOverlay.current!.style.display = "flex";
-    gsap.fromTo(submissionOverlay.current, { opacity: 0 }, { opacity: 1, duration: 0.5 });
-    gsap.fromTo(
-      submissionConfirmation.current,
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.75, delay: 0.3 }
-    );
+    if (overlayRef.current) {
+      overlayRef.current.show();
+    }
   };
 
   useGSAP(
@@ -87,6 +83,7 @@ const ContactRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
                 </button>
               </div>
             </div>
+            <button onClick={() => overlayRef.current!.show()}>test</button>
 
             {/* Conditional Form Rendering */}
             {selectedFormType === "event" ? (
@@ -97,8 +94,8 @@ const ContactRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
           </div>
         </section>
 
-        <div ref={submissionOverlay} className="overlay" id="overlay">
-          <div ref={submissionConfirmation} className="thank-you-modal" id="modal">
+        <Overlay ref={overlayRef} className="thank-you-overlay" id="overlay">
+          <div className="thank-you-modal" id="modal">
             <div className="header">
               <span>THANK YOU</span>
               <Player id="fireworks" src={env.LOTTIE_FIREWORKS_URL} speed={0.7} loop autoplay />
@@ -106,11 +103,18 @@ const ContactRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
             <div className="body">
               I have received your inquiry and will get back with you within the next 48 hours.
             </div>
-            <a href="/" className="text-button small" onClick={(e: any) => mweNavigate(e, handleNavigation, "/")}>
+            <a
+              href="/"
+              className="text-button small"
+              onClick={(e: any) => {
+                overlayRef.current?.hide();
+                mweNavigate(e, handleNavigation, "/");
+              }}
+            >
               HOME
             </a>
           </div>
-        </div>
+        </Overlay>
       </div>
     </main>
   );

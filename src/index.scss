@@ -274,6 +274,12 @@ h6 {
       color: rgb(255, 255, 255);
     }
   }
+
+  &.outline {
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+  }
 }
 
 .text-button {
