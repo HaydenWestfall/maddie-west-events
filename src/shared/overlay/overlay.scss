@@ -1,0 +1,224 @@
+/*
+-------------------------------------------------------------------
+---  OVERLAY COMPONENT
+-------------------------------------------------------------------
+*/
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.308);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+
+  .overlay-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  // Allow for custom content styling while maintaining overlay behavior
+  &.thank-you-overlay {
+    .overlay-content {
+      .thank-you-modal {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        gap: 1.25rem;
+        padding: 2.5rem;
+        padding-top: 6rem;
+        padding-bottom: 4rem;
+        width: fit-content;
+
+        .header {
+          position: relative;
+
+          span {
+            font-family: didot-italic;
+            font-size: 2.5rem;
+            color: inherit;
+          }
+
+          #fireworks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8rem;
+            top: -6.5rem;
+            display: block;
+          }
+        }
+
+        .body {
+          font-family: Montserrat;
+          font-size: 0.65rem;
+          text-align: center;
+          margin-bottom: 8rem;
+          width: 17rem;
+          line-height: 1rem;
+        }
+
+        // .text-button {
+        //   display: inline-block;
+        //   padding: 0.75rem 1.5rem;
+        //   background: #000;
+        //   color: white;
+        //   text-decoration: none;
+        //   border-radius: 4px;
+        //   transition: background-color 0.3s ease;
+
+        //   &:hover {
+        //     background: #333;
+        //   }
+
+        //   &.small {
+        //     font-size: 0.9rem;
+        //     padding: 0.5rem 1rem;
+        //   }
+        // }
+      }
+    }
+  }
+
+  // Advertisement overlay styling - customize as needed
+  &.ad-overlay {
+    .overlay-content {
+      .ad-wrapper {
+        position: relative;
+        background: white;
+        width: 90%;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+
+        display: flex;
+        height: 55vh;
+        max-height: 35rem;
+
+        img {
+          width: 22rem;
+          max-width: 280px;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .ad-content {
+          width: 22rem;
+          max-width: 560px;
+          display: flex;
+          flex-direction: column;
+
+          padding: 1.5rem;
+
+          h4 {
+            text-align: left;
+            font-size: 2vw;
+          }
+
+          h6 {
+            font-size: 0.8vw;
+            margin-bottom: 1rem;
+          }
+
+          p {
+            font-size: 0.85vw;
+            line-height: 1.45vw;
+          }
+
+          a {
+            margin-top: 2rem;
+            width: -webkit-fill-available;
+            text-align: center;
+          }
+        }
+
+        .close-modal {
+          position: absolute;
+          top: 0.75rem;
+          right: 0.75rem;
+          background: none;
+          border: none;
+          cursor: pointer;
+          height: 35px;
+          width: 35px;
+          border-radius: 50%;
+          font-size: 25px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:hover {
+            background-color: rgb(240, 240, 240);
+          }
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      .overlay-content {
+        .ad-content {
+          margin: 1rem;
+          max-width: none;
+
+          .ad-header {
+            padding: 1rem;
+
+            h3 {
+              font-size: 1.25rem;
+            }
+          }
+
+          .ad-body {
+            padding: 1.5rem 1rem;
+          }
+
+          .ad-footer {
+            padding: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    &.thank-you-overlay {
+      .overlay-content {
+        .thank-you-modal {
+          width: calc(90% - 5rem);
+          padding: 2rem;
+          margin: 1rem;
+
+          .header {
+            span {
+              font-size: 2rem;
+            }
+
+            #fireworks {
+              width: 100%;
+              height: 6rem;
+              top: -5rem;
+            }
+          }
+
+          .body {
+            font-size: 0.6rem;
+            width: 90%;
+            margin-bottom: 6rem;
+          }
+        }
+      }
+    }
+  }
+}

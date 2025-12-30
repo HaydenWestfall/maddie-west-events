@@ -47,47 +47,30 @@ const HeaderSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
         <a href="/" id="maddie-text" onClick={(e: any) => mweNavigate(e, handleNavigation, "/")}>
           MADDIE WEST
         </a>
-        <div id="nav-options">
-          <a href="/about" className="nav-link" onClick={(e: any) => mweNavigate(e, handleNavigation, "/about")}>
-            About
-          </a>
-          <a
-            href="/testimonies"
-            className="nav-link"
-            onClick={(e: any) => mweNavigate(e, handleNavigation, "/testimonies")}
+        <div className="nav-wrapper">
+          <button
+            id="nav-icon"
+            ref={mobileMenuButton}
+            aria-controls="primary-navigation"
+            aria-expanded="false"
+            onClick={() => {
+              toggleMobileMenu();
+            }}
           >
-            Testimonies
-          </a>
-          <a href="/packages" className="nav-link" onClick={(e: any) => mweNavigate(e, handleNavigation, "/packages")}>
-            Packages
-          </a>
-          <a href="/journal" className="nav-link" onClick={(e: any) => mweNavigate(e, handleNavigation, "/journal")}>
-            Journal
-          </a>
+            <svg fill="var(--button-color)" className="hamburger" viewBox="0 0 100 100" width="35px">
+              <rect className="line top" width="80" height="2" x="10" y="37" rx="5" fill="currentColor"></rect>
+              <rect className="line bottom" width="80" height="2" x="10" y="63" rx="5" fill="currentColor"></rect>
+            </svg>
+          </button>
           <a
-            href="/contact"
+            id="contact"
             className="primary-button medium light"
-            id="call-to-action"
+            href="/contact"
             onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
           >
-            Contact
+            CONTACT
           </a>
         </div>
-        <button
-          id="nav-icon"
-          ref={mobileMenuButton}
-          className="more-btn"
-          aria-controls="primary-navigation"
-          aria-expanded="false"
-          onClick={() => {
-            toggleMobileMenu();
-          }}
-        >
-          <svg fill="var(--button-color)" className="hamburger" viewBox="0 0 100 100" width="35px">
-            <rect className="line top" width="80" height="2" x="10" y="37" rx="5" fill="currentColor"></rect>
-            <rect className="line bottom" width="80" height="2" x="10" y="63" rx="5" fill="currentColor"></rect>
-          </svg>
-        </button>
       </nav>
 
       <div id="mobile-menu-wrapper" ref={mobileMenu} className="mobile-menu-wrapper active">
@@ -107,14 +90,19 @@ const HeaderSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
             <a id="link" href="/packages" onClick={(e: any) => mweNavigate(e, handleNavigation, "/packages")}>
               PACKAGES
             </a>
-            <a id="link" href="/journal" onClick={(e: any) => mweNavigate(e, handleNavigation, "/journal")}>
-              JOURNAL
+            <a id="link" href="/studio" onClick={(e: any) => mweNavigate(e, handleNavigation, "/studio")}>
+              STILL ACRE STUDIO
             </a>
-            <a id="instagram" href={env.INSTAGRAM_URL} onClick={() => closeMobileMenu()} target="_blank">
-              INSTAGRAM
-            </a>
+            <div className="small-links">
+              <a id="journal" href="/journal" onClick={(e: any) => mweNavigate(e, handleNavigation, "/journal")}>
+                JOURNAL
+              </a>
+              <a id="instagram" href={env.INSTAGRAM_URL} onClick={() => closeMobileMenu()} target="_blank">
+                INSTAGRAM
+              </a>
+            </div>
             <a
-              className="primary-button large light"
+              className="primary-button small light"
               href="/contact"
               onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
             >
