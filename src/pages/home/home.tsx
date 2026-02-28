@@ -37,7 +37,7 @@ const JournalSection: React.FC<{ handleNavigation: (path: string) => void }> = (
       createGsapAnimation(journalHeader.current, 30, "top 75%", "top 25%", true);
       createGsapAnimation(journalDescription.current, 30, "top 75%", "top 25%", true);
     },
-    { scope: journalContainer }
+    { scope: journalContainer },
   );
 
   /**
@@ -93,7 +93,7 @@ const JournalSection: React.FC<{ handleNavigation: (path: string) => void }> = (
           end: "bottom top",
           scrub: true,
         },
-      }
+      },
     );
   };
 
@@ -183,7 +183,7 @@ const AestheticSection: React.FC = () => {
       createGsapAnimation(aestheticHeader.current, 30, "top 75%", "top 35%", true);
       createGsapAnimation(aestheticDescription.current, 30, "top 75%", "top 35%", true);
     },
-    { scope: aestheticContainer }
+    { scope: aestheticContainer },
   );
 
   return (
@@ -231,7 +231,7 @@ const MaddieFlowersSection: React.FC = () => {
     () => {
       createGsapAnimation(maddieFlowersHeader.current, 30, "top 75%", "top 35%", true);
     },
-    { scope: maddieFlowersContainer }
+    { scope: maddieFlowersContainer },
   );
 
   return (
@@ -265,7 +265,7 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
       createGsapAnimation(column1.current, 30, "top 75%", "top 25%", true);
       createGsapAnimation(column2.current, 30, "top 75%", "top 25%", true);
     },
-    { scope: aboutContainer }
+    { scope: aboutContainer },
   );
 
   useEffect(() => {
@@ -389,7 +389,7 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
 
             <div className="ad-content">
               <h4>Still Acre Studio</h4>
-              <h6>Studio Description</h6>
+              <h6>Photography studio</h6>
               <p>
                 Nestled among the trees at 9358 Fenner Rd in Ludlow Falls, Ohio, Stillacre Studio offers a one-of-a-kind
                 setting designed to bring out the natural beauty in every photo.
@@ -401,11 +401,52 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
               </p>
               <a
                 id="contact"
-                className="primary-button small outline"
+                className="primary-button small light"
                 href="/contact"
                 onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
               >
-                CONTACT
+                Book a Session
+              </a>
+            </div>
+
+            <button
+              className="close-modal"
+              onClick={() => adOverlayRef.current?.hide()}
+              aria-label="Close advertisement"
+            >
+              ×
+            </button>
+          </div>
+          <div className="ad-wrapper-mobile">
+            <div className="ad-header">
+              <h4>Still Acre Studio</h4>
+              <h6>Photography studio</h6>
+            </div>
+
+            <div className="ad-content-wrapper">
+              <img src="/studio/main.jpg" alt="Still Acre Studio Image" />
+
+              <div className="ad-content">
+                <p>
+                  Nestled among the trees at 9358 Fenner Rd in Ludlow Falls, Ohio, Stillacre Studio offers a
+                  one-of-a-kind setting designed to bring out the natural beauty in every photo.
+                </p>
+                <br />
+                <p>
+                  Whether it’s an intimate couple’s session, a fun shoot with friends, or family portraits that feel
+                  effortlessly genuine, Stillacre Studio provides an atmosphere where every moment feels real.
+                </p>
+              </div>
+            </div>
+
+            <div className="action-wrapper">
+              <a
+                id="contact"
+                className="primary-button small light"
+                href="/contact"
+                onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+              >
+                Book a Session
               </a>
             </div>
 

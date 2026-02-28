@@ -41,15 +41,27 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
   const galleryItems: GalleryItem[] = [
     {
       id: 1,
-      image: "/studio/gallery1.jpg",
-      images: ["/studio/gallery1.jpg", "/studio/gallery2.jpg", "/studio/gallery3.jpg", "/studio/gallery4.jpg"],
+      image: "/studio/gallery1/cover.jpeg",
+      images: [
+        "/studio/gallery1/cover.jpeg",
+        "/studio/gallery1/image1.jpeg",
+        "/studio/gallery1/image2.jpeg",
+        "/studio/gallery1/image3.jpeg",
+        "/studio/gallery1/image4.jpeg",
+      ],
       title: "Hayden + Madison",
       description: "Fall Shoot",
     },
     {
       id: 2,
-      image: "/studio/gallery2.jpg",
-      images: ["/studio/gallery2.jpg", "/studio/gallery2.jpg", "/studio/gallery2.jpg", "/studio/gallery2.jpg"],
+      image: "/studio/gallery2/cover.jpeg",
+      images: [
+        "/studio/gallery2/cover.jpeg",
+        "/studio/gallery2/image1.jpeg",
+        "/studio/gallery2/image2.jpeg",
+        "/studio/gallery2/image3.jpeg",
+        "/studio/gallery2/image4.jpeg",
+      ],
       title: "Sarah + James",
       description: "Spring Session",
     },
@@ -106,7 +118,7 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
       createGsapAnimation(column1.current, 30, "top 75%", "top 25%", true);
       createGsapAnimation(column2.current, 30, "top 75%", "top 25%", true);
     },
-    { scope: aboutContainer }
+    { scope: aboutContainer },
   );
 
   // Review rotation effect
@@ -198,6 +210,14 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
                 sunlit portraits to moody, romantic tones. At Stillacre Studio, you’ll find more than just a space to
                 take photos — you’ll find a place where moments come alive.
               </p>
+
+              <a
+                href="/contact"
+                className="text-button large dark"
+                onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+              >
+                Instagram
+              </a>
             </div>
           </div>
         </section>
@@ -265,15 +285,15 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
 
         <section ref={contactSection} className="section-contact">
           <img src="/studio/main.jpg" alt="Stillacre Studios interior" />
-          {/* <div className="contact-overlay">
+          <div className="contact-overlay">
             <a
               href="/contact"
-              className="primary-button large light"
+              className="primary-button large dark"
               onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
             >
               BOOK YOUR SESSION
             </a>
-          </div> */}
+          </div>
         </section>
 
         {/* Gallery Modal */}
@@ -293,6 +313,7 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
                   <img
                     src={galleryItems[currentGalleryIndex].images[currentImageIndex]}
                     alt={`${galleryItems[currentGalleryIndex].title} - Image ${currentImageIndex + 1}`}
+                    loading="lazy"
                   />
                 </div>
 

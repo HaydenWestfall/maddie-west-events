@@ -10,8 +10,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.308);
-  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.391);
+  backdrop-filter: blur(2px);
   z-index: 1000;
   display: flex;
   justify-content: center;
@@ -24,6 +24,7 @@
     max-height: 90%;
     opacity: 0;
     transform: translateY(30px);
+    box-sizing: border-box;
   }
 
   // Allow for custom content styling while maintaining overlay behavior
@@ -95,114 +96,182 @@
   // Advertisement overlay styling - customize as needed
   &.ad-overlay {
     .overlay-content {
+      width: 50%;
+      max-width: 850px;
+
       .ad-wrapper {
         position: relative;
         background: white;
-        width: 90%;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         overflow: hidden;
-
+        width: 100%;
+        aspect-ratio: 16 / 12;
         display: flex;
-        height: 55vh;
-        max-height: 35rem;
 
         img {
-          width: 22rem;
-          max-width: 280px;
-          height: 100%;
+          width: 45%;
           object-fit: cover;
           display: block;
         }
 
         .ad-content {
-          width: 22rem;
-          max-width: 560px;
           display: flex;
           flex-direction: column;
-
-          padding: 1.5rem;
+          justify-content: center;
+          padding: 5rem 1.5rem 3rem;
 
           h4 {
             text-align: left;
-            font-size: 2vw;
+            font-size: clamp(0px, 2.2vw, 42px);
+            margin-bottom: 2px;
           }
 
           h6 {
-            font-size: 0.8vw;
+            font-size: clamp(0px, 1vw, 16px);
             margin-bottom: 1rem;
+            letter-spacing: 4px;
           }
 
           p {
-            font-size: 0.85vw;
-            line-height: 1.45vw;
+            font-size: clamp(0px, 0.9vw, 12px);
+            line-height: clamp(0px, 1.6vw, 25px);
           }
 
           a {
-            margin-top: 2rem;
+            margin-top: 40px;
             width: -webkit-fill-available;
             text-align: center;
           }
         }
+      }
 
-        .close-modal {
-          position: absolute;
-          top: 0.75rem;
-          right: 0.75rem;
-          background: none;
-          border: none;
-          cursor: pointer;
-          height: 35px;
-          width: 35px;
-          border-radius: 50%;
-          font-size: 25px;
+      .ad-wrapper-mobile {
+        display: none;
+        position: relative;
+        background: white;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        width: 100%;
+        // aspect-ratio: 16 / 12;
+        flex-direction: column;
+        padding: 1px;
+
+        .ad-header {
           display: flex;
+          flex-direction: column;
           align-items: center;
-          justify-content: center;
+          padding: 1rem 0;
 
-          &:hover {
-            background-color: rgb(240, 240, 240);
+          h4 {
+            text-align: left;
+            font-size: clamp(0px, 5vw, 42px);
+            margin-bottom: 2px;
+            line-height: 2rem;
           }
+
+          h6 {
+            font-size: clamp(0px, 3vw, 16px);
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+            margin-top: -8px;
+          }
+        }
+
+        .ad-content-wrapper {
+          display: flex;
+          width: 100%;
+          height: 15rem;
+
+          img {
+            width: 45%;
+            object-fit: cover;
+            display: block;
+          }
+
+          .ad-content {
+            display: flex;
+            flex-direction: column;
+            padding: 0 1rem;
+
+            p {
+              font-size: clamp(0px, 2.6vw, 12px);
+              line-height: clamp(0px, 4vw, 25px);
+            }
+
+            br {
+              line-height: 10px;
+            }
+          }
+        }
+
+        .action-wrapper {
+          box-sizing: border-box;
+          padding: 2rem 1rem;
+          width: 100%;
+
+          a {
+            box-sizing: border-box;
+            width: -webkit-fill-available;
+            text-align: center;
+            display: block;
+            width: 100%;
+          }
+        }
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+        font-size: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: black;
+
+        &:hover {
+          background-color: rgb(240, 240, 240);
         }
       }
     }
 
     @media (max-width: 768px) {
       .overlay-content {
-        .ad-content {
-          margin: 1rem;
-          max-width: none;
+        width: 85%;
+        max-width: 500px;
 
-          .ad-header {
-            padding: 1rem;
+        .ad-wrapper {
+          display: none;
+        }
 
-            h3 {
-              font-size: 1.25rem;
-            }
-          }
-
-          .ad-body {
-            padding: 1.5rem 1rem;
-          }
-
-          .ad-footer {
-            padding: 1rem;
-          }
+        .ad-wrapper-mobile {
+          display: flex;
         }
       }
     }
   }
 
   @media (max-width: 768px) {
+    .overlay-content {
+      width: 80%;
+    }
+
     &.thank-you-overlay {
       .overlay-content {
         .thank-you-modal {
           width: calc(90% - 5rem);
-          padding: 2rem;
           margin: 1rem;
 
           .header {
             span {
               font-size: 2rem;
+              text-wrap: nowrap;
             }
 
             #fireworks {

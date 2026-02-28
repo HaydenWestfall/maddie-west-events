@@ -44,7 +44,7 @@ function App() {
                 <Route path="/studio" element={<StudioRoute handleNavigation={handleNavigation} />} />
                 <Route path="/contact" element={<ContactRoute handleNavigation={handleNavigation} />} />
               </Routes>
-              {!["/contact", "/studio"].includes(location.pathname) && (
+              {!["/contact", "/studio", "/rentals"].includes(location.pathname) && (
                 <ContactSection handleNavigation={handleNavigation} />
               )}
               <FooterSection handleNavigation={handleNavigation} />

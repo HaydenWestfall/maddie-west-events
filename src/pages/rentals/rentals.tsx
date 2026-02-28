@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import { useMWETransitionContext } from "../../shared/route-transition/TransitionProvider";
 import { env } from "../../config/env";
 import { RentalItem, RentalItemsResponse, RentalFilters } from "../../types/rentals";
+import Angle from "../../assets/angle.svg?react";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -14,13 +15,26 @@ const RentalsRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
   const [rentalItems, setRentalItems] = useState<RentalItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalItems, setTotalItems] = useState(0);
+  let [currentPage, setCurrentPage] = useState(1);
+  let [totalPages, setTotalPages] = useState(1);
+  let [totalItems, setTotalItems] = useState(0);
+  const productFiltersRef = useRef<HTMLDivElement>(null);
   const [filters, setFilters] = useState<RentalFilters>({
     date: new Date().toISOString().split("T")[0], // Default to today's date
     category: "",
   });
   const itemsPerPage = 16;
+
+  // Function to format date for display
+  const formatDateForDisplay = (dateString: string): string => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
 
   // Available categories - you can fetch this from API or define statically
   const categories = [
@@ -61,11 +75,15 @@ const RentalsRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
       }
 
       const data: RentalItemsResponse = await response.json();
+      console.log(data);
 
       if (data.success) {
         console.log(data);
         setRentalItems(data.data);
-        setTotalItems(data.total);
+        setCurrentPage(data.pagination.current);
+        setTotalPages(data.pagination.pages);
+        console.log(currentPage);
+        console.log(totalPages);
       } else {
         throw new Error("Failed to load rental items");
       }
@@ -81,11 +99,9 @@ const RentalsRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
     fetchRentalItems(currentPage, filters);
   }, [currentPage, filters]);
 
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
-
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    productFiltersRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleFilterChange = (filterType: keyof RentalFilters, value: string) => {
@@ -120,7 +136,7 @@ const RentalsRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
         <div className="rental-summary"></div>
         <img src="/general/tablescape.png" alt="decorative flourish" className="rental-image" />
 
-        <div className="product-filters-wrapper">
+        <div className="product-filters-wrapper" ref={productFiltersRef}>
           <div className="product-filters">
             <div className="search-bar">
               <input
@@ -144,6 +160,7 @@ const RentalsRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
                   onChange={(e) => handleFilterChange("date", e.target.value)}
                   min={new Date().toISOString().split("T")[0]}
                 />
+                <Angle className="angle-icon" />
               </div>
 
               <div className="filter-group">
@@ -197,7 +214,9 @@ const RentalsRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
                     </div>
                     <div className="item-info">
                       <h3 className="item-name">{item.name}</h3>
-                      <p className="item-price">${item.price.toFixed(2)}</p>
+                      <p className="item-price">
+                        ${item.price.toFixed(2)} | {item.availableQuantity}/{item.totalQuantity} available
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -210,27 +229,25 @@ const RentalsRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
                     disabled={currentPage === 1}
                     className="pagination-button"
                   >
-                    Previous
+                    <Angle className="angle-icon" />
                   </button>
 
-                  <div className="page-numbers">
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                      <button
-                        key={page}
-                        onClick={() => handlePageChange(page)}
-                        className={`page-number ${currentPage === page ? "active" : ""}`}
-                      >
-                        {page}
-                      </button>
-                    ))}
-                  </div>
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                    <button
+                      key={page}
+                      onClick={() => handlePageChange(page)}
+                      className={`page-button ${currentPage === page ? "current-page" : ""}`}
+                    >
+                      {page}
+                    </button>
+                  ))}
 
                   <button
                     onClick={() => handlePageChange(currentPage + 1)}
                     disabled={currentPage === totalPages}
                     className="pagination-button"
                   >
-                    Next
+                    <Angle className="angle-icon" />
                   </button>
                 </div>
               )}
@@ -243,6 +260,20 @@ const RentalsRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
             </div>
           )}
         </div>
+
+        {/* <div id="pagination-wrapper">
+          <button>
+            <Angle className="angle-icon" />
+          </button>
+          <div>
+            {[...Array(pages)].map((_, index) => (
+              <span key={index}>{index + 1}</span>
+            ))}
+          </div>
+          <button>
+            <Angle className="angle-icon" />
+          </button>
+        </div> */}
       </div>
     </main>
   );

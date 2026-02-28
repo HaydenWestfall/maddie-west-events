@@ -94,6 +94,9 @@ const HeaderSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
               STILL ACRE STUDIO
             </a>
             <div className="small-links">
+              <a id="rentals" href="/rentals" onClick={(e: any) => mweNavigate(e, handleNavigation, "/rentals")}>
+                RENTALS
+              </a>
               <a id="journal" href="/journal" onClick={(e: any) => mweNavigate(e, handleNavigation, "/journal")}>
                 JOURNAL
               </a>

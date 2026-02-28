@@ -18,10 +18,17 @@ export interface RentalItem {
   availableQuantity: number;
 }
 
+export interface Pagination {
+  current: number;
+  pages: number;
+  total: number;
+  limit: number;
+}
+
 export interface RentalItemsResponse {
   success: boolean;
   data: RentalItem[];
-  total: number;
+  pagination: Pagination;
 }
 
 export interface PaginationParams {
