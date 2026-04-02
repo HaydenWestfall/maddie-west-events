@@ -24,7 +24,7 @@ const PackagesRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({
           packagesSubHeader.current,
           { y: "40px", opacity: 0 },
           { y: "0", opacity: 1, duration: 0.7 },
-          "0"
+          "0",
         );
 
         const packageElements = document.querySelectorAll(".package-wrapper");
@@ -34,7 +34,7 @@ const PackagesRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({
               packageElements[i],
               { y: "40px", opacity: 0 },
               { y: "0", opacity: 1, duration: 0.7 },
-              "<=0"
+              "<=0",
             );
           } else {
             gsap.fromTo(
@@ -49,7 +49,7 @@ const PackagesRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({
                   end: "top 30%",
                   scrub: true,
                 },
-              }
+              },
             );
           }
         }
@@ -57,7 +57,7 @@ const PackagesRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({
         timeline.play();
       }
     },
-    { dependencies: [isTransitioning], scope: packagesContainer }
+    { dependencies: [isTransitioning], scope: packagesContainer },
   );
 
   return (
@@ -88,7 +88,7 @@ const PackagesRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({
                   <div className="details">
                     <div className="info-price-wrapper">
                       <p>This package begins one month prior to the wedding day.</p>
-                      <span>$1,900</span>
+                      <span>$2,200</span>
                     </div>
                     <p className="description">
                       Starting one month before the wedding, this package is ideal for brides who are confident in their
