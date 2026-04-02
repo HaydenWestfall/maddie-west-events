@@ -26,16 +26,21 @@ const FooterSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
           <a href="/packages" onClick={(e: any) => mweNavigate(e, handleNavigation, "/packages")}>
             PACKAGES
           </a>
-          <a href="/journal" onClick={(e: any) => mweNavigate(e, handleNavigation, "/journal")}>
-            JOURNAL
+          <a href="/studio" onClick={(e: any) => mweNavigate(e, handleNavigation, "/studio")}>
+            STUDIO
           </a>
           <a href="/contact" onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}>
             CONTACT
           </a>
         </div>
-        <a className="instagram-link" href={env.INSTAGRAM_URL} target="_blank">
-          INSTAGRAM
-        </a>
+        <div className="sub-links-wrapper">
+          <a className="sub-link" href="/journal" onClick={(e: any) => mweNavigate(e, handleNavigation, "/journal")}>
+            RENTALS
+          </a>
+          <a className="sub-link" href={env.INSTAGRAM_URL} target="_blank">
+            INSTAGRAM
+          </a>
+        </div>
       </div>
 
       <div className="copyright-wrapper">

@@ -1,0 +1,125 @@
+// Instagram Bubble Styles
+.instagram-bubble {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 400;
+  animation: bubbleSlideIn 0.4s ease-out;
+
+  .instagram-bubble-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: white;
+    color: #333;
+    text-decoration: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.8rem;
+    z-index: 425;
+    outline: 2px solid white;
+    box-shadow:
+      inset 3px 3px 5px -5px #b4b4b4,
+      inset 1px 1px 0px 0px #f6f6f6,
+      rgb(173, 75, 165) 0px 0px 50px -10px;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    .instagram-bubble-content {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+
+      svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      span {
+        white-space: nowrap;
+        font-size: 0.8rem;
+        padding-top: 2px;
+        font-family: "Montserrat", "sans-serif";
+      }
+    }
+  }
+
+  .instagram-bubble-close {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: white;
+    border: 1px solid #e1e1e1;
+    color: #333;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    z-index: 450;
+
+    &:hover {
+      background: white;
+      transform: scale(1.1);
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .instagram-bubble {
+    .instagram-bubble-link {
+      box-shadow:
+        inset 2px 2px 5px -5px #b4b4b4,
+        inset 1px 1px 0px 0px #f6f6f6,
+        rgb(173, 75, 165) 0px 0px 50px -17px;
+    }
+  }
+}
+
+@keyframes bubbleSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Mobile styles for Instagram bubble
+@media screen and (max-width: 768px) {
+  .instagram-bubble {
+    bottom: 1.5rem;
+    right: 1.5rem;
+
+    .instagram-bubble-link {
+      padding: 0.8rem 1.2rem;
+      font-size: 0.8rem;
+
+      .instagram-bubble-content {
+        gap: 0.5rem;
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
+    .instagram-bubble-close {
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+    }
+  }
+}

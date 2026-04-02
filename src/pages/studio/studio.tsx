@@ -6,6 +6,8 @@ import { createGsapAnimation, mweNavigate } from "../../shared/utility";
 import { ScrollTrigger } from "gsap/all";
 import Angle from "../../assets/angle.svg?react";
 import Cross from "../../assets/cross.svg?react";
+import InstagramBubble from "../../shared/instagram-bubble";
+import { env } from "../../config/env";
 
 interface GalleryItem {
   id: number;
@@ -47,10 +49,9 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
         "/studio/gallery1/image1.jpeg",
         "/studio/gallery1/image2.jpeg",
         "/studio/gallery1/image3.jpeg",
-        "/studio/gallery1/image4.jpeg",
       ],
-      title: "Hayden + Madison",
-      description: "Fall Shoot",
+      title: "Kleyson + Kat",
+      description: "Engagement Shoot",
     },
     {
       id: 2,
@@ -62,21 +63,33 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
         "/studio/gallery2/image3.jpeg",
         "/studio/gallery2/image4.jpeg",
       ],
-      title: "Sarah + James",
-      description: "Spring Session",
+      title: "Martin Family",
+      description: "Christmas Shoot",
     },
     {
       id: 3,
-      image: "/studio/gallery3.jpg",
-      images: ["/studio/gallery3.jpg", "/studio/gallery3.jpg", "/studio/gallery3.jpg", "/studio/gallery3.jpg"],
-      title: "Emma + Friends",
-      description: "Group Portrait",
+      image: "/studio/gallery3/cover.jpeg",
+      images: [
+        "/studio/gallery3/cover.jpeg",
+        "/studio/gallery3/image1.jpeg",
+        "/studio/gallery3/image2.jpeg",
+        "/studio/gallery3/image3.jpeg",
+        "/studio/gallery3/image4.jpeg",
+      ],
+      title: "Matt, Kate, + Graham",
+      description: "Christmas Shoot",
     },
     {
       id: 4,
-      image: "/studio/gallery4.jpg",
-      images: ["/studio/gallery4.jpg", "/studio/gallery4.jpg", "/studio/gallery4.jpg", "/studio/gallery4.jpg"],
-      title: "The Johnson Family",
+      image: "/studio/gallery4/cover.jpeg",
+      images: [
+        "/studio/gallery4/cover.jpeg",
+        "/studio/gallery4/image1.jpeg",
+        "/studio/gallery4/image2.jpeg",
+        "/studio/gallery4/image3.jpeg",
+        "/studio/gallery4/image4.jpeg",
+      ],
+      title: "4 Generations",
       description: "Family Session",
     },
   ];
@@ -285,7 +298,7 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
 
         <section ref={contactSection} className="section-contact">
           <img src="/studio/main.jpg" alt="Stillacre Studios interior" />
-          <div className="contact-overlay">
+          {/* <div className="contact-overlay">
             <a
               href="/contact"
               className="primary-button large dark"
@@ -293,8 +306,10 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
             >
               BOOK YOUR SESSION
             </a>
-          </div>
+          </div> */}
         </section>
+
+        <InstagramBubble instagramUrl={env.STUDIO_URL} />
 
         {/* Gallery Modal */}
         {isGalleryOpen && (

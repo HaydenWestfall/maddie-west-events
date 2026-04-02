@@ -5,6 +5,8 @@ import gsap from "gsap";
 import { createGsapAnimation, mweNavigate } from "../../shared/utility";
 import { ScrollTrigger } from "gsap/all";
 import Overlay, { OverlayRef } from "../../shared/overlay";
+import { env } from "../../config/env";
+import InstagramBubble from "../../shared/instagram-bubble";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -279,16 +281,17 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
 
     // Check if ad overlay should be shown
     const hasShownAd = sessionStorage.getItem(AD_OVERLAY_SESSION_KEY);
-    // if (!hasShownAd) {
-    if (true) {
+    if (!hasShownAd) {
+      // if (true) {
       // Show ad overlay after 750ms delay
       setTimeout(() => {
-        if (adOverlayRef.current) {
+        if (adOverlayRef.current && !hasShownAd) {
           adOverlayRef.current.show();
           // Mark as shown in session storage
           sessionStorage.setItem(AD_OVERLAY_SESSION_KEY, "true");
         }
       }, 2500);
+      // }
     }
   }, []);
 
@@ -459,6 +462,7 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
             </button>
           </div>
         </Overlay>
+        <InstagramBubble instagramUrl={env.INSTAGRAM_URL} />
       </div>
     </main>
   );

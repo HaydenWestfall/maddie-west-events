@@ -39,7 +39,7 @@ const ContactRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
         timeline.play();
       }
     },
-    { dependencies: [isTransitioning], scope: contactContainer }
+    { dependencies: [isTransitioning], scope: contactContainer },
   );
 
   return (
@@ -83,7 +83,6 @@ const ContactRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
                 </button>
               </div>
             </div>
-            <button onClick={() => overlayRef.current!.show()}>test</button>
 
             {/* Conditional Form Rendering */}
             {selectedFormType === "event" ? (

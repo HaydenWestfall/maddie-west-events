@@ -49,19 +49,24 @@
       }
     }
 
-    .instagram-link {
-      font-family: Montserrat;
-      font-size: clamp(0.1rem, 0.85rem, 16px);
-      color: rgb(0, 0, 0);
-      text-decoration: none;
-      cursor: pointer;
-      width: fit-content;
-      letter-spacing: 2px;
-      font-weight: 500;
+    .sub-links-wrapper {
+      display: flex;
+      gap: 20px;
 
-      &:hover {
+      .sub-link {
+        font-family: Montserrat;
+        font-size: clamp(0.1rem, 0.85rem, 16px);
         color: rgb(0, 0, 0);
-        text-decoration: underline;
+        text-decoration: none;
+        cursor: pointer;
+        width: fit-content;
+        letter-spacing: 2px;
+        font-weight: 500;
+
+        &:hover {
+          color: rgb(0, 0, 0);
+          text-decoration: underline;
+        }
       }
     }
   }

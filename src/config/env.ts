@@ -7,6 +7,7 @@ interface EnvConfig {
   API_BASE_URL: string;
   RENTALS_API_BASE_URL: string;
   INSTAGRAM_URL: string;
+  STUDIO_URL: string;
   LOTTIE_FIREWORKS_URL: string;
 }
 
@@ -24,6 +25,7 @@ export const env: EnvConfig = {
   API_BASE_URL: getEnvVar("VITE_API_BASE_URL"),
   RENTALS_API_BASE_URL: getEnvVar("VITE_RENTALS_API_BASE_URL"),
   INSTAGRAM_URL: getEnvVar("VITE_INSTAGRAM_URL"),
+  STUDIO_URL: getEnvVar("VITE_STUDIO_URL"),
   LOTTIE_FIREWORKS_URL: getEnvVar("VITE_LOTTIE_FIREWORKS_URL"),
 };
 
