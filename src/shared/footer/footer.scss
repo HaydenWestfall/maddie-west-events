@@ -5,173 +5,218 @@
 */
 .footer {
   position: relative;
-  padding: 40px 40px 30px;
   background-color: #fafafa;
+  border-top: 1px solid rgb(229, 229, 229);
   overflow-x: hidden;
 
-  .logo-contact {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 5rem 32px 2.5rem;
+  }
 
-    img {
-      height: 3rem;
+  /* --- Top: brand + link columns --- */
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.4fr 2fr;
+    gap: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    max-width: 24rem;
+
+    .footer-logo {
+      display: block;
+      width: fit-content;
+
+      img {
+        height: 3rem;
+        width: auto;
+      }
+    }
+
+    .footer-tagline {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.7rem;
+      color: #696969;
+    }
+  }
+
+  .footer-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .footer-col-heading {
+      font-family: didot-italic;
+      font-style: italic;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: black;
+      margin-bottom: 1.5rem;
+      text-align: left;
     }
 
     a {
-      color: rgb(0, 0, 0);
-      cursor: pointer;
-    }
-  }
+      font-family: Montserrat;
+      font-size: clamp(0.1rem, 0.8rem, 15px);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #575757;
+      width: fit-content;
+      padding: 0.45rem 0;
+      transition: color 0.25s ease;
 
-  .footer-wrapper {
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid rgb(0, 0, 0);
-    margin: 5rem 0 1rem 0;
-
-    .links-wrapper {
-      display: flex;
-      gap: 50px;
-      padding: 1rem 0 1.5rem;
-
-      a {
-        font-family: didot-italic;
-        font-size: clamp(0.1rem, 1.4rem, 25px);
-        text-decoration: none;
-        cursor: pointer;
+      &:hover,
+      &:focus-visible {
         color: black;
-
-        &:hover {
-          color: rgb(0, 0, 0);
-          text-decoration: underline;
-        }
       }
-    }
 
-    .sub-links-wrapper {
-      display: flex;
-      gap: 20px;
-
-      .sub-link {
-        font-family: Montserrat;
-        font-size: clamp(0.1rem, 0.85rem, 16px);
-        color: rgb(0, 0, 0);
-        text-decoration: none;
-        cursor: pointer;
-        width: fit-content;
-        letter-spacing: 2px;
-        font-weight: 500;
-
-        &:hover {
-          color: rgb(0, 0, 0);
-          text-decoration: underline;
-        }
+      &:focus-visible {
+        outline: 1px solid black;
+        outline-offset: 4px;
       }
     }
   }
 
-  .copyright-wrapper {
+  /* --- Bottom: legal + back to top --- */
+  .footer-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 3rem;
+    gap: 1.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgb(0, 0, 0);
 
-    .copyright {
-      display: flex;
-      justify-content: space-between;
-      z-index: 1;
-
-      .copyright-text {
-        display: flex;
-        font-size: clamp(0.1rem, 0.6rem, 12px);
-        color: rgb(0, 0, 0);
-        line-height: 1rem;
-      }
+    .copyright-text {
+      font-size: clamp(0.1rem, 0.6rem, 12px);
+      letter-spacing: 0.5px;
+      color: #575757;
+      line-height: 1rem;
     }
 
     .back-to-top {
-      color: rgb(0, 0, 0);
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       letter-spacing: 2px;
+      text-transform: uppercase;
       cursor: pointer;
       border: none;
       background-color: transparent;
+      color: black;
       font-size: clamp(0.1rem, 0.7rem, 12px);
+      transition: opacity 0.25s ease;
 
       svg {
         height: clamp(0.1rem, 1rem, 15px);
+        transition: transform 0.25s ease;
+      }
+
+      &:hover svg,
+      &:focus-visible svg {
+        transform: translateY(-3px);
+      }
+
+      &:focus-visible {
+        outline: 1px solid black;
+        outline-offset: 4px;
       }
     }
   }
 }
 
+/* --- Tablet --- */
+@media only screen and (max-width: 900px) {
+  .footer {
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .footer-brand {
+      max-width: none;
+      align-items: center;
+      text-align: center;
+
+      .footer-logo {
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+/* --- Mobile --- */
 @media only screen and (max-width: 768px) {
   .footer {
-    padding: 60px 15px;
+    .footer-inner {
+      padding: 4rem 20px 2rem;
+    }
 
-    .logo-contact {
-      justify-content: center;
+    .footer-top {
+      gap: 3.5rem;
+      padding-bottom: 3rem;
+    }
 
-      img {
+    .footer-brand {
+      gap: 1.5rem;
+
+      .footer-logo img {
         height: unset;
-        width: calc(100% - 30px);
+        width: min(100%, 20rem);
+      }
+
+      .footer-tagline {
+        font-size: 1rem;
+        max-width: 22rem;
       }
     }
 
-    .footer-wrapper {
-      margin: 2.5rem 0 1rem;
-      border-bottom: 1px solid rgb(0, 0, 0);
-      padding: 2rem 0 2rem 0;
-      gap: 1.75rem;
+    .footer-nav {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem 1.5rem;
+      text-align: left;
+    }
 
-      .links-wrapper {
-        flex-direction: column;
-        padding: 0;
-        gap: 25px;
-
-        a {
-          font-size: 1.6rem;
-        }
+    .footer-col {
+      .footer-col-heading {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
       }
 
-      .instagram-link {
+      a {
+        font-size: 0.85rem;
+        padding: 0.5rem 0;
       }
     }
 
-    .copyright-wrapper {
-      display: flex;
-      flex-direction: column;
-      justify-items: center;
+    .footer-bottom {
+      flex-direction: column-reverse;
       align-items: center;
-      margin-top: 3rem;
       gap: 2rem;
+      text-align: center;
 
-      .copyright {
-        width: fit-content;
-        display: flex;
-        justify-content: center;
-
-        .copyright-text {
-          display: flex;
-          flex-direction: column;
-          line-height: unset;
-          text-align: center;
-          font-size: 0.7rem;
-          max-width: 75%;
-          white-space: unset;
-        }
+      .copyright-text {
+        font-size: 0.7rem;
+        max-width: 80%;
+        text-align: center;
       }
 
       .back-to-top {
         font-size: 0.7rem;
-        gap: 0.2rem;
-
-        svg {
-          height: 0.86rem;
-        }
       }
     }
   }

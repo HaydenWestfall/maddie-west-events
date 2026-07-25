@@ -33,12 +33,41 @@ header {
     margin: 0 auto;
 
     #maddie-text {
+      position: relative;
       font-style: regular;
       font-size: 0.875rem;
       letter-spacing: 5px;
       font-weight: 400;
       text-decoration: none;
       color: inherit;
+      transition: color 0.25s ease;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 100%;
+        height: 1px;
+        background-color: currentColor;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.25s ease;
+      }
+
+      &:hover,
+      &:focus-visible {
+        color: rgb(105, 105, 105);
+
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+
+      &:focus-visible {
+        outline: 1px solid black;
+        outline-offset: 4px;
+      }
     }
 
     .nav-wrapper {
@@ -58,12 +87,18 @@ header {
         color: black;
 
         .line {
-          transition: y 150ms ease-in 150ms, transform 150ms ease-in, opacity 0ms 150ms;
+          transition:
+            y 150ms ease-in 150ms,
+            transform 150ms ease-in,
+            opacity 0ms 150ms;
           transform-origin: center;
         }
 
         &[aria-expanded="true"] .line {
-          transition: y 150ms ease-in, transform 150ms ease-in 150ms, opacity 0ms 150ms;
+          transition:
+            y 150ms ease-in,
+            transform 150ms ease-in 150ms,
+            opacity 0ms 150ms;
         }
 
         &[aria-expanded="true"] :is(.top, .bottom) {
@@ -86,7 +121,7 @@ header {
   position: fixed;
   width: 100%;
   height: 100vh;
-  background-color: #faf8f8;
+  background-color: #fdfdfd;
   z-index: 600;
   opacity: 0;
   display: none;
@@ -131,6 +166,20 @@ header {
         font-weight: 300;
         text-decoration: none;
         color: black;
+        transition:
+          color 0.25s ease,
+          transform 0.25s ease;
+
+        &:hover,
+        &:focus-visible {
+          color: rgb(105, 105, 105);
+          transform: translateX(10px);
+        }
+
+        &:focus-visible {
+          outline: 1px solid black;
+          outline-offset: 4px;
+        }
       }
 
       .small-links {
@@ -145,6 +194,17 @@ header {
           margin-bottom: 2rem;
           text-decoration: none;
           color: black;
+          transition: color 0.25s ease;
+
+          &:hover,
+          &:focus-visible {
+            color: rgb(105, 105, 105);
+          }
+
+          &:focus-visible {
+            outline: 1px solid black;
+            outline-offset: 4px;
+          }
         }
       }
     }
