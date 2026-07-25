@@ -5,11 +5,20 @@
 */
 .contact-section {
   display: flex;
+  justify-content: center;
   padding: 10rem 0;
   width: 100%;
   overflow: hidden;
   background-color: white;
   position: relative;
+
+  // Full-bleed white background, but the content is capped to the navbar width
+  // and centered so it lines up with the header on wide screens.
+  .contact-inner {
+    display: flex;
+    width: 100%;
+    max-width: 1280px;
+  }
 
   .header-wrapper {
     display: flex;
@@ -111,11 +120,13 @@
 
 @media only screen and (max-width: 768px) {
   .contact-section {
-    flex-direction: column-reverse;
     width: calc(100% - 30px);
-    padding: 5rem 15px 18rem;
-    gap: 8rem;
-    padding-top: 8rem;
+    padding: 8rem 15px 18rem;
+
+    .contact-inner {
+      flex-direction: column-reverse;
+      gap: 8rem;
+    }
 
     .header-wrapper {
       display: block;

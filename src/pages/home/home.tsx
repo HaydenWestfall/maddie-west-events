@@ -12,6 +12,16 @@ import Seo from "../../seo/Seo";
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
+// Rendered twice in the marquee so the scrolling strip is always wider than the
+// viewport and keeps filling the screen as it grows.
+const JOURNAL_IMAGES = [
+  { src: "/home/journal_4.webp", alt: "Aesthetic image of chair with flowers" },
+  { src: "/home/journal_2.webp", alt: "Aesthetic image of a tablescape" },
+  { src: "/home/journal_3.webp", alt: "Aesthetic image of Maddie West" },
+  { src: "/home/journal_1.webp", alt: "Aesthetic image of a cake table" },
+  { src: "/home/journal_5.webp", alt: "Wedding invitation on tablescape" },
+];
+
 const JournalSection: React.FC<{ handleNavigation: (path: string) => void }> = ({ handleNavigation }) => {
   const journalContainer = useRef<HTMLDivElement | null>(null);
   const journalSubHeader = useRef<HTMLDivElement | null>(null);
@@ -142,16 +152,9 @@ const JournalSection: React.FC<{ handleNavigation: (path: string) => void }> = (
 
       <div id="section-journal-image-wrapper">
         <div ref={journalCarousel} id="section-journal-images" className="journal-marquee">
-          <img
-            loading="lazy"
-            src="/home/journal_4.webp"
-            className="image"
-            alt="Aesthetic image of chair with flowers"
-          />
-          <img loading="lazy" src="/home/journal_2.webp" className="image" alt="Aesthetic image of a tablescape" />
-          <img loading="lazy" src="./home/journal_3.webp" className="image" alt="Aesthetic image of Maddie West" />
-          <img loading="lazy" src="/home/journal_1.webp" className="image" alt="Aesthetic image of a cake table" />
-          <img loading="lazy" src="/home/journal_5.webp" className="image" alt="Wedding invitation on tablescape" />
+          {[...JOURNAL_IMAGES, ...JOURNAL_IMAGES].map((image, index) => (
+            <img key={index} loading="lazy" src={image.src} className="image" alt={image.alt} />
+          ))}
         </div>
       </div>
       <a

@@ -3,8 +3,33 @@
     display: flex;
     justify-content: center;
 
+    // Content sits inside the same 1280px column the navbar uses so the page
+    // lines up with the header on wide screens. margin auto keeps it centered
+    // even in the column-direction sections where justify-content can't.
     > :first-child {
       width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+  }
+
+  // The hero and closing videos stay immersive, filling the viewport up to a
+  // wider cap; the section background then frames them with pillarbox bars on
+  // very wide screens.
+  .section-main,
+  #maddie-flowers-section {
+    background-color: #eaeaea;
+
+    > :first-child {
+      max-width: 2000px;
+    }
+  }
+
+  // The aesthetic collage is an intentional full-bleed composition (image-3 and
+  // image-4 anchor to the screen edges), so it keeps its own wider bound rather
+  // than the navbar cap.
+  #section-aesthetic {
+    > :first-child {
       max-width: 115rem;
     }
   }
@@ -228,6 +253,9 @@
   #section-vendor-list {
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
     padding: 2rem 6rem;
 
     #vendor-label {
@@ -301,9 +329,12 @@
       }
     }
 
+    // Anchor the accent images to the edges of the centered 1280px navbar
+    // column rather than the viewport edges. Below 1280px the column is
+    // full-width, so max(0px, ...) keeps them flush with the screen edge.
     #aesthetic-image-3 {
       position: absolute;
-      left: 0;
+      left: max(0px, calc((100% - 1280px) / 2));
       height: 28rem;
       width: clamp(1rem, 22vw, 40rem);
       opacity: 0;
@@ -313,7 +344,7 @@
     #aesthetic-image-4 {
       position: absolute;
       top: 0;
-      right: 0;
+      right: max(0px, calc((100% - 1280px) / 2));
       height: 25rem;
       width: clamp(1rem, 20vw, 40rem);
       opacity: 0;
