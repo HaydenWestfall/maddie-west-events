@@ -5,7 +5,16 @@
 
     > :first-child {
       width: 100%;
-      max-width: 115rem;
+      max-width: 1280px;
+    }
+  }
+
+  // Hero and closing images cap at 2000px so the blurred border bars can show on
+  // either side on wider viewports.
+  .section-main,
+  .section-contact {
+    > :first-child {
+      max-width: 2000px;
     }
   }
 
@@ -13,10 +22,30 @@
     position: relative;
     height: calc(120vh - 70px);
     width: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
     margin-top: 70px;
 
+    // Blurred border bars: the same hero image fills the full section width and
+    // sits behind the capped main image, showing on either side once the
+    // viewport grows past the 2000px cap.
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("/studio/main.jpg");
+      background-size: cover;
+      background-position: 75% 50%;
+      filter: blur(24px);
+      transform: scale(1.1);
+      z-index: 0;
+    }
+
     img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 2000px;
+      height: 100%;
       object-fit: cover;
       object-position: 75% 50%;
     }
@@ -106,7 +135,8 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      max-width: 80%;
+      width: 80%;
+      max-width: 1280px;
 
       .gallery-header {
         display: flex;
@@ -293,8 +323,26 @@
     width: 100%;
     overflow: hidden;
 
+    // Blurred border bars: the same closing image fills the full section width
+    // and sits behind the capped image, showing on either side once the viewport
+    // grows past the 2000px cap.
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("/studio/main.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: blur(24px);
+      transform: scale(1.1);
+      z-index: 0;
+    }
+
     img {
+      position: relative;
+      z-index: 1;
       width: 100%;
+      max-width: 2000px;
       height: 100%;
       object-fit: cover;
       object-position: center;

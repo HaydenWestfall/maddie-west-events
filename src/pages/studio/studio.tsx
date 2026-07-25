@@ -300,7 +300,7 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
 
         <section ref={contactSection} className="section-contact">
           <img src="/studio/main.jpg" alt="Stillacre Studios interior" />
-          {/* <div className="contact-overlay">
+          <div className="contact-overlay">
             <a
               href="/contact"
               className="primary-button large dark"
@@ -308,7 +308,7 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
             >
               BOOK YOUR SESSION
             </a>
-          </div> */}
+          </div>
         </section>
 
         <InstagramBubble instagramUrl={env.STUDIO_URL} />

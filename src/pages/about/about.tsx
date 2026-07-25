@@ -57,8 +57,8 @@ function AboutRoute() {
             <video id="myVideo" src="./videos/about_maddie.mp4" autoPlay loop muted playsInline preload="auto">
               Your browser does not support the video tag.
             </video>
+            <div id="about-accent">WEDDING AND EVENT COORDINATOR | DAYTON, CINCINNATI, COLUMBUS</div>
           </div>
-          <div id="about-accent">WEDDING AND EVENT COORDINATOR | DAYTON, CINCINNATI, COLUMBUS</div>
         </section>
 
         <section id="about-client-quote" ref={clientQuote}>
@@ -67,15 +67,16 @@ function AboutRoute() {
         </section>
 
         <section id="about-maddie">
-          <img
-            ref={maddieHeadshot}
-            loading="lazy"
-            id="about-maddie-image"
-            src="/about/maddie_1.webp"
-            alt="Portrait of Madison Westfall, owner and lead coordinator of Maddie West Events"
-          />
+          <div id="about-maddie-inner">
+            <img
+              ref={maddieHeadshot}
+              loading="lazy"
+              id="about-maddie-image"
+              src="/about/maddie_1.webp"
+              alt="Portrait of Madison Westfall, owner and lead coordinator of Maddie West Events"
+            />
 
-          <div className="about-text-wrapper first">
+            <div className="about-text-wrapper first">
             <p id="about-text-block-1" ref={aboutDescription1}>
               I’m Maddie Westfall, owner and lead coordinator of Maddie West Events. In 2022, I got married and executed
               the wedding that I had always envisioned. Having been a recent bride myself, I realized my passion for
@@ -96,6 +97,7 @@ function AboutRoute() {
               families, most of whom are a true testimony of what marriage really is. The relationships that I have
               formed with venues and other vendors within the industry is immeasurable.
             </p>
+          </div>
           </div>
         </section>
 

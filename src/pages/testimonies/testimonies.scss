@@ -5,6 +5,11 @@
 */
 
 .testimonies_route {
+  // Cap the page to the navbar's content width (see header.scss nav max-width)
+  // so it stays aligned with the header on wide viewports instead of full-bleed.
+  max-width: 1280px;
+  margin: 0 auto;
+
   .testimonies-page {
     height: calc(100vh - 70px);
     width: 100%;
@@ -185,8 +190,7 @@
         flex-direction: column;
         height: fit-content;
         gap: 2rem;
-        padding: 0 15px;
-        width: calc(100% - 30px);
+        width: 100%;
 
         .client-images {
           height: 32rem;

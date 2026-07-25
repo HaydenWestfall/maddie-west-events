@@ -29,6 +29,8 @@ header {
     justify-content: space-between;
     transition: background-color 175ms ease-in-out;
     padding: 0rem 32px 0 32px;
+    max-width: 1280px;
+    margin: 0 auto;
 
     #maddie-text {
       font-style: regular;
