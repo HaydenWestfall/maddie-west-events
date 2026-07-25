@@ -19,7 +19,9 @@ const PageTransition: React.FC<{ children: (handleNavigation: (path: string) => 
 
   useEffect(() => {
     if (nextRoute || !appInitialized) {
-      const transitionText = nextRoute ?? location.pathname;
+      // Strip any query string so links like "/contact?type=studio" still show
+      // a clean "CONTACT" on the transition cover.
+      const transitionText = (nextRoute ?? location.pathname).split("?")[0];
       updateTransitioningState(TransitionState.Transitioning);
       setDisplayText(transitionText.replace("/", "") || "MADDIE WEST EVENTS");
     }

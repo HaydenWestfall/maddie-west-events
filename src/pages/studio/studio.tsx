@@ -227,9 +227,9 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
               </p>
 
               <a
-                href="/contact"
+                href="/contact?type=studio"
                 className="text-button large dark"
-                onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+                onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=studio")}
               >
                 Instagram
               </a>
@@ -278,9 +278,9 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
                 <span id="price">$50.00 | hour</span>
               </div>
               <a
-                href="/contact"
+                href="/contact?type=studio"
                 className="primary-button medium light"
-                onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+                onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=studio")}
               >
                 Book now
               </a>
@@ -302,9 +302,9 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
           <img src="/studio/main.jpg" alt="Stillacre Studios interior" />
           <div className="contact-overlay">
             <a
-              href="/contact"
+              href="/contact?type=studio"
               className="primary-button large dark"
-              onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+              onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=studio")}
             >
               BOOK YOUR SESSION
             </a>

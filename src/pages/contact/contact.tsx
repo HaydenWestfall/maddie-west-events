@@ -1,6 +1,7 @@
 import "./contact.scss";
 import "./form.scss";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -22,8 +23,18 @@ const ContactRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
   const contactHeader = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<OverlayRef | null>(null);
 
-  // Form type selection state
-  const [selectedFormType, setSelectedFormType] = useState<"event" | "studio">("event");
+  // Form type selection state. A `?type=studio` query param (used by the studio
+  // page CTAs) pre-selects Studio Booking; anything else falls back to Event Planning.
+  const [searchParams] = useSearchParams();
+  const [selectedFormType, setSelectedFormType] = useState<"event" | "studio">(
+    searchParams.get("type") === "studio" ? "studio" : "event",
+  );
+
+  // Re-sync when the query param changes without a full remount (e.g. arriving
+  // from a pre-selecting link while already on the contact page).
+  useEffect(() => {
+    setSelectedFormType(searchParams.get("type") === "studio" ? "studio" : "event");
+  }, [searchParams]);
 
   // Handle successful form submission from child components
   const handleFormSubmissionSuccess = () => {

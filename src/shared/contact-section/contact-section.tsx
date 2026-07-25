@@ -40,9 +40,9 @@ const ContactSection: React.FC<{ handleNavigation: (path: string) => void }> = (
           </div>
 
           <a
-            href="/contact"
+            href="/contact?type=event"
             className="primary-button medium light"
-            onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+            onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=event")}
           >
             GET IN TOUCH
           </a>

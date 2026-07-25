@@ -387,8 +387,8 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
                 <a
                   id="contact"
                   className="primary-button medium light"
-                  href="/contact"
-                  onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+                  href="/contact?type=event"
+                  onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=event")}
                 >
                   CONTACT
                 </a>
@@ -434,8 +434,8 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
               <a
                 id="contact"
                 className="primary-button small light"
-                href="/contact"
-                onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+                href="/contact?type=event"
+                onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=event")}
               >
                 Book a Session
               </a>
@@ -475,8 +475,8 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
               <a
                 id="contact"
                 className="primary-button small light"
-                href="/contact"
-                onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+                href="/contact?type=event"
+                onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=event")}
               >
                 Book a Session
               </a>

@@ -144,8 +144,8 @@ const PackagesRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({
                     </ul>
                     <a
                       className="primary-button light large"
-                      href="/contact"
-                      onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+                      href="/contact?type=event"
+                      onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=event")}
                     >
                       INQUIRE HERE
                     </a>
@@ -201,8 +201,8 @@ const PackagesRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({
                     </ul>
                     <a
                       className="primary-button light large"
-                      href="/contact"
-                      onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+                      href="/contact?type=event"
+                      onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=event")}
                     >
                       INQUIRE HERE
                     </a>
@@ -260,8 +260,8 @@ const PackagesRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({
                     </ul>
                     <a
                       className="primary-button light large"
-                      href="/contact"
-                      onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+                      href="/contact?type=event"
+                      onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=event")}
                     >
                       INQUIRE HERE
                     </a>
