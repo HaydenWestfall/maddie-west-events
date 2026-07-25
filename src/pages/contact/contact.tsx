@@ -11,6 +11,7 @@ import { env } from "../../config/env";
 import EventContactForm from "./EventContactForm";
 import StudioContactForm from "./StudioContactForm";
 import Overlay, { OverlayRef } from "../../shared/overlay";
+import Seo from "../../seo/Seo";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -44,6 +45,7 @@ const ContactRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
 
   return (
     <main data-barba="wrapper">
+      <Seo route="/contact" />
       <div ref={contactContainer} data-barba="container" data-barba-namespace="contact" className="contact_route">
         <section id="contact-header">
           <img src="/contact/contact_cover.webp" alt="Madison Westfall posing in front of a tablescape" />

@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { createGsapAnimation } from "../../shared/utility";
+import Seo from "../../seo/Seo";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -46,7 +47,11 @@ function AboutRoute() {
 
   return (
     <main data-barba="wrapper">
+      <Seo route="/about" />
       <div ref={aboutContainer} data-barba="container" data-barba-namespace="about" className="about_route">
+        <h1 className="sr-only">
+          About Madison Westfall — Wedding &amp; Event Coordinator serving Dayton, Cincinnati &amp; Columbus, Ohio
+        </h1>
         <section id="section-about-main">
           <div id="about-video">
             <video id="myVideo" src="./videos/about_maddie.mp4" autoPlay loop muted playsInline preload="auto">
@@ -62,7 +67,13 @@ function AboutRoute() {
         </section>
 
         <section id="about-maddie">
-          <img ref={maddieHeadshot} loading="lazy" id="about-maddie-image" src="/about/maddie_1.webp" />
+          <img
+            ref={maddieHeadshot}
+            loading="lazy"
+            id="about-maddie-image"
+            src="/about/maddie_1.webp"
+            alt="Portrait of Madison Westfall, owner and lead coordinator of Maddie West Events"
+          />
 
           <div className="about-text-wrapper first">
             <p id="about-text-block-1" ref={aboutDescription1}>

@@ -16,6 +16,7 @@ import RentalDateSelector from "./components/RentalDateSelector";
 import RentalItemCard from "./components/RentalItemCard";
 import RentalItemDetail, { RentalItemDetailRef } from "./components/RentalItemDetail";
 import RentalCartDrawer from "./components/RentalCartDrawer";
+import Seo from "../../seo/Seo";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -131,7 +132,9 @@ const RentalsContent: React.FC<{ handleNavigation: (path: string) => void }> = (
 
   return (
     <main data-barba="wrapper">
+      <Seo route="/rentals" />
       <div ref={containerRef} data-barba="container" data-barba-namespace="rentals" className="rentals_route">
+        <h1 className="sr-only">Event &amp; Wedding Décor Rentals — Maddie West Events</h1>
         <div className="rentals-header">
           <div className="header-content" ref={headerRef}>
             <div className="header">RENTALS</div>

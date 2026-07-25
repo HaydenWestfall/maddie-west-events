@@ -10,7 +10,7 @@ const FooterSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
   return (
     <div className="footer">
       <div className="logo-contact">
-        <img src="/logo/maddie_west_logo.png" />
+        <img src="/logo/maddie_west_logo.png" alt="Maddie West Events logo" />
       </div>
       <div className="footer-wrapper">
         <div className="links-wrapper">
@@ -34,10 +34,13 @@ const FooterSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
           </a>
         </div>
         <div className="sub-links-wrapper">
-          <a className="sub-link" href="/journal" onClick={(e: any) => mweNavigate(e, handleNavigation, "/journal")}>
+          <a className="sub-link" href="/rentals" onClick={(e: any) => mweNavigate(e, handleNavigation, "/rentals")}>
             RENTALS
           </a>
-          <a className="sub-link" href={env.INSTAGRAM_URL} target="_blank">
+          <a className="sub-link" href="/journal" onClick={(e: any) => mweNavigate(e, handleNavigation, "/journal")}>
+            JOURNAL
+          </a>
+          <a className="sub-link" href={env.INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
             INSTAGRAM
           </a>
         </div>
@@ -45,7 +48,9 @@ const FooterSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
 
       <div className="copyright-wrapper">
         <div className="copyright">
-          <span className="copyright-text">© Maddie West Events 2024 | Site Designed by Hayden Westfall</span>
+          <span className="copyright-text">
+            © Maddie West Events {new Date().getFullYear()} | Site Designed by Hayden Westfall
+          </span>
         </div>
         <button className="back-to-top" onClick={scrollTop}>
           Back to Top

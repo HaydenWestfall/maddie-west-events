@@ -7,11 +7,21 @@ const ContactSection: React.FC<{ handleNavigation: (path: string) => void }> = (
     <div className="contact-section">
       <div className="header-wrapper">
         <div className="image-wrapper">
-          <img loading="lazy" src="/contact/maddie_client.webp" id="image-1" />
-          <img loading="lazy" src="/contact/maddie_phone.webp" id="image-2" />
+          <img
+            loading="lazy"
+            src="/contact/maddie_client.webp"
+            id="image-1"
+            alt="Maddie West with a client on a wedding day"
+          />
+          <img
+            loading="lazy"
+            src="/contact/maddie_phone.webp"
+            id="image-2"
+            alt="Maddie West coordinating wedding details"
+          />
           <span>
             FOLLOW
-            <a target="_blank" href={env.INSTAGRAM_URL}>
+            <a target="_blank" rel="noopener noreferrer" href={env.INSTAGRAM_URL}>
               @MADDIEWEST
             </a>
             <br />

@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/all";
 import Overlay, { OverlayRef } from "../../shared/overlay";
 import { env } from "../../config/env";
 import InstagramBubble from "../../shared/instagram-bubble";
+import Seo from "../../seo/Seo";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -191,8 +192,20 @@ const AestheticSection: React.FC = () => {
   return (
     <section ref={aestheticContainer} id="section-aesthetic" style={{ maxWidth: "unset" }}>
       <div id="aesthetic-wrapper">
-        <img ref={aestheticImage1} id="aesthetic-image-1" loading="lazy" src="/home/aesthetic_1.webp" />
-        <img ref={aestheticImage2} id="aesthetic-image-2" loading="lazy" src="/home/aesthetic_2.webp" />
+        <img
+          ref={aestheticImage1}
+          id="aesthetic-image-1"
+          loading="lazy"
+          src="/home/aesthetic_1.webp"
+          alt="Elegant wedding tablescape styled by Maddie West Events"
+        />
+        <img
+          ref={aestheticImage2}
+          id="aesthetic-image-2"
+          loading="lazy"
+          src="/home/aesthetic_2.webp"
+          alt="Refined floral and place-setting detail from a Maddie West Events wedding"
+        />
         <div id="aesthetic-description-wrapper" className="section-header">
           <h6 ref={aestheticSubHeader} id="aesthetic-subheader">
             THE AESTHETIC
@@ -219,8 +232,20 @@ const AestheticSection: React.FC = () => {
           </p>
         </div>
       </div>
-      <img ref={aestheticImage3} id="aesthetic-image-3" loading="lazy" src="/home/aesthetic_3.webp" />
-      <img ref={aestheticImage4} id="aesthetic-image-4" loading="lazy" src="/home/aesthetic_4.webp" />
+      <img
+        ref={aestheticImage3}
+        id="aesthetic-image-3"
+        loading="lazy"
+        src="/home/aesthetic_3.webp"
+        alt="Timeless wedding ceremony décor in organic neutral tones"
+      />
+      <img
+        ref={aestheticImage4}
+        id="aesthetic-image-4"
+        loading="lazy"
+        src="/home/aesthetic_4.webp"
+        alt="Curated wedding reception details by Maddie West Events"
+      />
     </section>
   );
 };
@@ -297,6 +322,7 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
 
   return (
     <main data-barba="wrapper">
+      <Seo route="/" />
       <div data-barba="container" data-barba-namespace="index" className="home_route">
         <section id="main" className="section-main">
           <div id="primary-video">
@@ -374,10 +400,10 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
         <section id="section-vendor-list">
           <span id="vendor-label">A FEW OF MY FAVORITES</span>
           <div id="vendor-images">
-            <img loading="lazy" src="/home/cliffside.png" className="vendor" />
-            <img loading="lazy" src="/home/steamplant.png" className="vendor" />
-            <img loading="lazy" src="/home/jorgensen.png" className="vendor small" />
-            <img loading="lazy" src="/home/arcade.png" className="vendor" />
+            <img loading="lazy" src="/home/cliffside.png" className="vendor" alt="Cliffside wedding venue logo" />
+            <img loading="lazy" src="/home/steamplant.png" className="vendor" alt="The Steam Plant wedding venue logo" />
+            <img loading="lazy" src="/home/jorgensen.png" className="vendor small" alt="Jorgensen Farms wedding venue logo" />
+            <img loading="lazy" src="/home/arcade.png" className="vendor" alt="Dayton Arcade wedding venue logo" />
           </div>
         </section>
 

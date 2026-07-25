@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import { componentOnLoadAnimationDelay, mweNavigate, TransitionState } from "../../shared/utility";
 import { useMWETransitionContext } from "../../shared/route-transition/TransitionProvider";
 import RentalAgreement from "./components/RentalAgreement";
+import Seo from "../../seo/Seo";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -29,6 +30,7 @@ const RentalAgreementRoute: React.FC<{ handleNavigation: (path: string) => void 
 
   return (
     <div className="rental-agreement_page">
+      <Seo route="/rentals/agreement" />
       <div className="agreement-page-header">
         <a href="/" className="agreement-wordmark" onClick={(e: any) => mweNavigate(e, handleNavigation, "/")}>
           MADDIE WEST

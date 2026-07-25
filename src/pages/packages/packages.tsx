@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { componentOnLoadAnimationDelay, mweNavigate, TransitionState } from "../../shared/utility";
 import { useMWETransitionContext } from "../../shared/route-transition/TransitionProvider";
+import Seo from "../../seo/Seo";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -62,7 +63,11 @@ const PackagesRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({
 
   return (
     <main data-barba="wrapper">
+      <Seo route="/packages" />
       <div ref={packagesContainer} data-barba="container" data-barba-namespace="packages" className="packages_route">
+        <h1 className="sr-only">
+          Wedding Coordination Packages &amp; Pricing — Maddie West Events (Dayton, Cincinnati, Columbus, OH)
+        </h1>
         <div className="packages-header">
           <div className="header" ref={packagesHeader}>
             COORDINATION PACKAGES
@@ -75,7 +80,7 @@ const PackagesRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({
         <div className="packages-body">
           <div className="package-wrapper">
             <div className="package-image">
-              <img src="/packages/month_of_package.webp" />
+              <img src="/packages/month_of_package.webp" alt="Month Of Coordination Package — wedding day details styled by Maddie West Events" />
             </div>
             <div className="package-info-wrapper">
               <div className="package-info">
@@ -206,13 +211,13 @@ const PackagesRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({
               </div>
             </div>
             <div className="package-image">
-              <img src="/packages/final_planning_package.webp" style={{ float: "left" }} />
+              <img src="/packages/final_planning_package.webp" style={{ float: "left" }} alt="Final Planning Package — wedding reception coordinated by Maddie West Events" />
             </div>
           </div>
 
           <div className="package-wrapper">
             <div className="package-image">
-              <img src="/packages/partial_planning_package.webp" />
+              <img src="/packages/partial_planning_package.webp" alt="Partial Planning Package — full wedding planning support from Maddie West Events" />
             </div>
             <div className="package-info-wrapper">
               <div className="package-info">

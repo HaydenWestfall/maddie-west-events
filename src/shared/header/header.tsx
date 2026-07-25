@@ -104,7 +104,13 @@ const HeaderSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
               <a id="journal" href="/journal" onClick={(e: any) => mweNavigate(e, handleNavigation, "/journal")}>
                 JOURNAL
               </a>
-              <a id="instagram" href={env.INSTAGRAM_URL} onClick={() => closeMobileMenu()} target="_blank">
+              <a
+                id="instagram"
+                href={env.INSTAGRAM_URL}
+                onClick={() => closeMobileMenu()}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 INSTAGRAM
               </a>
             </div>

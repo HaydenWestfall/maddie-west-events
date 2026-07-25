@@ -8,6 +8,7 @@ import Angle from "../../assets/angle.svg?react";
 import Cross from "../../assets/cross.svg?react";
 import InstagramBubble from "../../shared/instagram-bubble";
 import { env } from "../../config/env";
+import Seo from "../../seo/Seo";
 
 interface GalleryItem {
   id: number;
@@ -190,9 +191,10 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
 
   return (
     <main data-barba="wrapper">
+      <Seo route="/studio" />
       <div data-barba="container" data-barba-namespace="index" className="studio_route">
         <section id="main" className="section-main">
-          <img src="/studio/main.jpg" alt="" />
+          <img src="/studio/main.jpg" alt="Interior of Still Acre Studio filled with soft natural light" />
           <div id="title">
             <h6 id="main-subheader" ref={mainSubHeader}>
               PHOTOGRAPHY STUDIO
@@ -283,7 +285,7 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
                 Book now
               </a>
             </div>
-            <img src="/studio/about.jpg" alt="" />
+            <img src="/studio/about.jpg" alt="Still Acre Studio nestled among the trees in Ludlow Falls, Ohio" />
           </div>
         </section>
 
