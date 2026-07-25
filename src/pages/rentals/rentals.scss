@@ -1,77 +1,483 @@
 .rentals_route {
   border-bottom: 1px solid rgb(227, 227, 227);
+  position: relative;
 
   .rentals-header {
+    position: relative;
+    width: 100%;
+    height: 30rem;
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 6rem 3rem 3rem 3rem;
-    background-color: #f4f4f4;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("/rentals/cover-3.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    object-position: center;
+
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
 
     .header {
       font-family: didot, serif;
-      font-size: 3.6rem;
+      font-size: 5rem;
       font-weight: 500;
+      letter-spacing: 4px;
+      color: #fff;
+      line-height: 1;
     }
 
     .sub-header {
       font-family: Montserrat;
       font-style: regular;
-      color: black;
-      font-size: 1rem;
-      line-height: 1.5rem;
-      font-weight: 400;
-      align-self: flex-end;
-      max-width: 42%;
+      color: #fff;
+      letter-spacing: 3px;
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      height: 22rem;
+
+      .header {
+        font-size: 3rem;
+        letter-spacing: 2px;
+      }
+
+      .sub-header {
+        font-size: 0.6rem;
+        letter-spacing: 2px;
+      }
     }
   }
 
-  .rental-summary {
-    height: 8rem;
-    border: 1px solid rgb(180, 180, 180);
+  /*
+  -------------------------------------------------------------------
+  ---  DATE GATE (shown until an event date is chosen)
+  -------------------------------------------------------------------
+  */
+  .rental-date-gate {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    overflow: hidden;
+
+    .gate-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gate-content {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(3px);
+      padding: 3.5rem 3rem;
+      max-width: 34rem;
+      width: calc(100% - 3rem);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+
+      h2 {
+        font-family: didot, serif;
+        font-size: 2.4rem;
+        font-weight: 500;
+      }
+
+      p {
+        font-family: Montserrat, sans-serif;
+        font-size: 0.9rem;
+        line-height: 1.4rem;
+        color: #555;
+        max-width: 26rem;
+      }
+
+      .rental-date-selector {
+        margin-top: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      min-height: 60vh;
+
+      .gate-content {
+        padding: 2.5rem 1.5rem;
+
+        h2 {
+          font-size: 1.8rem;
+        }
+      }
+    }
   }
 
-  .rental-image {
-    width: 100%;
-    height: 80vh;
-  }
-
-  .product-filters-wrapper {
+  /*
+  -------------------------------------------------------------------
+  ---  DATE SELECTOR (hero + compact variants)
+  -------------------------------------------------------------------
+  */
+  .rental-date-selector {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 4rem 3rem 0.5rem;
-    background-color: #f7f7f7;
+    gap: 0.5rem;
+
+    .date-field-wrap {
+      position: relative;
+      display: inline-flex;
+    }
+
+    .date-field {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      font: inherit;
+
+      .date-label {
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
+        color: #333;
+      }
+
+      .date-display {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #000;
+        border-bottom: 1px solid #000;
+        padding-bottom: 2px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition:
+          border-color 0.25s ease,
+          color 0.25s ease;
+
+        &.placeholder {
+          color: #999;
+          border-bottom-color: #999;
+        }
+      }
+
+      &:hover .date-display,
+      &.open .date-display {
+        border-bottom-color: #b09a6b;
+        color: #b09a6b;
+      }
+    }
+
+    /* Calendar popover */
+    .calendar-scrim {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      background: transparent;
+    }
+
+    .rental-calendar {
+      position: absolute;
+      top: calc(100% + 0.9rem);
+      left: 50%;
+      transform-origin: top center;
+      translate: -50%;
+      z-index: 100;
+      width: 300px;
+      padding: 1.25rem;
+      background: #fff;
+      border: 1px solid #ececec;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.14);
+      text-align: center;
+      cursor: default;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -6px;
+        left: 50%;
+        translate: -50% 0;
+        width: 11px;
+        height: 11px;
+        background: #fff;
+        border-left: 1px solid #ececec;
+        border-top: 1px solid #ececec;
+        rotate: 45deg;
+      }
+
+      .calendar-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+
+        .calendar-title {
+          display: flex;
+          align-items: baseline;
+          gap: 0.5rem;
+
+          .month {
+            font-family: didot, serif;
+            font-size: 1.15rem;
+            color: #111;
+            letter-spacing: 0.5px;
+          }
+
+          .year {
+            font-family: Montserrat, sans-serif;
+            font-size: 0.7rem;
+            color: #b09a6b;
+            letter-spacing: 1px;
+          }
+        }
+
+        .nav {
+          width: 30px;
+          height: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: none;
+          border: 1px solid #e6e6e6;
+          border-radius: 50%;
+          color: #444;
+          font-size: 1.1rem;
+          line-height: 1;
+          cursor: pointer;
+          transition: all 0.2s ease;
+
+          &:hover:not(:disabled) {
+            border-color: #b09a6b;
+            color: #b09a6b;
+          }
+
+          &:disabled {
+            opacity: 0.3;
+            cursor: default;
+          }
+        }
+      }
+
+      .calendar-weekdays {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        margin-bottom: 0.4rem;
+
+        span {
+          font-family: Montserrat, sans-serif;
+          font-size: 0.6rem;
+          letter-spacing: 0.5px;
+          color: #bbb;
+          text-transform: uppercase;
+        }
+      }
+
+      .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 2px;
+
+        .day {
+          aspect-ratio: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: none;
+          border: none;
+          border-radius: 50%;
+          font-family: "Cormorant Garamond", serif;
+          font-size: 1.05rem;
+          color: #333;
+          cursor: pointer;
+          transition:
+            background-color 0.18s ease,
+            color 0.18s ease;
+
+          &.empty {
+            cursor: default;
+          }
+
+          &.today:not(.selected) {
+            color: #b09a6b;
+            box-shadow: inset 0 0 0 1px #e2d4b5;
+          }
+
+          &:hover:not(:disabled):not(.selected) {
+            background: #f4efe4;
+            color: #111;
+          }
+
+          &.selected {
+            background: #b09a6b;
+            color: #fff;
+          }
+
+          &:disabled {
+            color: #d8d8d8;
+            cursor: default;
+          }
+        }
+      }
+
+      &.date-confirm {
+        width: 260px;
+        text-align: left;
+        padding: 1.5rem;
+
+        .confirm-message {
+          font-family: Montserrat, sans-serif;
+          font-size: 0.75rem;
+          line-height: 1.3rem;
+          color: #444;
+          margin-bottom: 1.25rem;
+        }
+
+        .confirm-actions {
+          display: flex;
+          flex-direction: column;
+          gap: 0.6rem;
+
+          button {
+            font-family: Montserrat, sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 0.7rem 0.75rem;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+          }
+
+          .confirm-cancel {
+            background: none;
+            border: 1px solid #e0e0e0;
+            color: #333;
+
+            &:hover {
+              border-color: #b09a6b;
+              color: #b09a6b;
+            }
+          }
+
+          .confirm-proceed {
+            background: #000;
+            border: 1px solid #000;
+            color: #fff;
+
+            &:hover {
+              background: #333;
+            }
+          }
+        }
+      }
+    }
+
+    .date-window {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: Montserrat, sans-serif;
+      font-size: 0.65rem;
+      color: #888;
+      letter-spacing: 0.3px;
+
+      em {
+        font-style: normal;
+        color: #b09a6b;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-right: 0.15rem;
+      }
+
+      .dot {
+        color: #ccc;
+      }
+    }
+
+    &.hero {
+      .date-field {
+        font-size: 1.3rem;
+
+        .date-display {
+          font-size: 1.6rem;
+        }
+      }
+    }
+
+    &.compact {
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+
+      .date-window {
+        font-size: 0.6rem;
+      }
+    }
+  }
+
+  /*
+  -------------------------------------------------------------------
+  ---  STICKY FILTER BAR
+  -------------------------------------------------------------------
+  */
+  .product-filters-wrapper {
+    position: sticky;
+    top: 70px;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 3rem 7px;
+    background-color: rgba(247, 247, 247, 0.823);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid #ececec;
 
     .product-filters {
       width: 100%;
-      max-width: 65rem;
+      max-width: 60rem;
 
       .search-bar {
-        margin-bottom: 1.5rem;
-        max-width: 65rem;
+        margin-bottom: 1rem;
         width: 100%;
 
         input {
           width: 100%;
           font-size: 0.9rem;
-          padding: 1rem 1.5rem;
-          border-radius: 5px;
-          border: none;
+          padding: 16px;
+          border-radius: 4px;
+          border: 1px solid #e6e6e6;
           box-sizing: border-box;
+          font-family: Montserrat, sans-serif;
+
+          &:focus {
+            outline: none;
+            border-color: #b09a6b;
+          }
         }
       }
 
       .filters {
         display: flex;
-        gap: 1rem;
+        gap: 2rem;
         flex-wrap: wrap;
-        align-items: end;
-        max-width: 65rem;
+        align-items: center;
+        justify-content: space-between;
         width: 100%;
 
         @media (max-width: 768px) {
-          padding: 1.5rem;
           gap: 1rem;
           flex-direction: column;
           align-items: stretch;
@@ -83,80 +489,23 @@
           gap: 0.25rem;
           position: relative;
 
-          @media (max-width: 768px) {
-            min-width: unset;
-          }
-
           label {
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             font-weight: 500;
             color: #333;
             letter-spacing: 0.5px;
-            font-family: didot, serif;
           }
 
-          input[type="date"],
           select {
-            padding: 0.5rem 0;
+            padding: 0.5rem 1.5rem 0.5rem 0;
             border: none;
-            font-family: didot, serif;
-            font-size: 0.75rem;
-            transition: border-color 0.3s ease;
+            font-size: 0.65rem;
             background-color: transparent;
+            cursor: pointer;
+            appearance: none;
 
             &:focus {
               outline: none;
-              border-color: #666;
-            }
-
-            &:hover {
-              border-color: #999;
-            }
-          }
-
-          input[type="date"] {
-            // Make calendar icon invisible but keep it functional
-            &::-webkit-calendar-picker-indicator {
-              opacity: 0;
-              width: 100%;
-              height: 100%;
-              position: absolute;
-              left: 0;
-              top: 0;
-              cursor: pointer;
-            }
-
-            // Hide calendar icon in Firefox but keep functional
-            &::-moz-calendar-picker-indicator {
-              opacity: 0;
-            }
-
-            // Additional webkit styling reset
-            &::-webkit-inner-spin-button,
-            &::-webkit-outer-spin-button {
-              -webkit-appearance: none;
-              margin: 0;
-            }
-
-            // Make the entire input area clickable and visually indicate it's interactive
-            cursor: pointer;
-            position: relative;
-
-            // Add a subtle visual cue that it's clickable
-            &:hover {
-              background-color: rgba(0, 0, 0, 0.02);
-            }
-
-            // Ensure the input is fully clickable
-            &:focus {
-              background-color: rgba(0, 0, 0, 0.05);
-            }
-          }
-          select {
-            cursor: pointer;
-
-            option {
-              padding: 0.5rem;
             }
           }
 
@@ -166,7 +515,7 @@
             pointer-events: none;
             fill: #333;
             position: absolute;
-            right: 0.35rem;
+            right: 0.15rem;
             top: 50%;
             transform: translateY(-60%) rotate(180deg);
           }
@@ -175,13 +524,22 @@
     }
   }
 
+  /*
+  -------------------------------------------------------------------
+  ---  ITEM GRID
+  -------------------------------------------------------------------
+  */
   .rental-items-section {
-    padding: 0rem 3rem 1rem;
+    padding: 2rem 3rem 4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #f7f7f7;
+
+    @media (max-width: 768px) {
+      padding: 1.5rem 1.5rem 3rem;
+    }
 
     .loading-state,
     .error-state,
@@ -195,9 +553,11 @@
 
       p {
         font-family: Montserrat, sans-serif;
-        font-size: 1.2rem;
+        font-size: 1rem;
         color: #666;
         margin-bottom: 1rem;
+        max-width: 26rem;
+        line-height: 1.5rem;
       }
 
       .retry-button {
@@ -206,7 +566,7 @@
         border: none;
         padding: 0.75rem 1.5rem;
         font-family: Montserrat, sans-serif;
-        font-size: 1rem;
+        font-size: 0.85rem;
         cursor: pointer;
         transition: background-color 0.3s ease;
 
@@ -219,75 +579,136 @@
     .rental-items-grid {
       display: grid;
       justify-content: center;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 2rem;
       margin-bottom: 3rem;
-      max-width: 65rem;
+      max-width: 60rem;
+      width: 100%;
 
       @media (max-width: 1200px) {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
       @media (max-width: 768px) {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem 1rem;
       }
 
       @media (max-width: 480px) {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem 0.75rem;
       }
 
       .rental-item {
+        // reset button element
+        appearance: none;
+        border: none;
+        background: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+        font-family: inherit;
         display: flex;
         flex-direction: column;
-        overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        margin-bottom: 1.5rem;
+        min-width: 0;
+        cursor: pointer;
+        transition: transform 0.3s ease;
 
-        &:hover {
-          cursor: pointer;
+        &:hover:not(.sold-out) {
+          transform: translateY(-3px);
+        }
+
+        &.sold-out {
+          cursor: default;
+          opacity: 0.55;
         }
 
         .item-image-wrapper {
+          position: relative;
           width: 100%;
-          height: 350px;
+          aspect-ratio: 3 / 4;
           overflow: hidden;
-          background-color: #f8f8f8;
+          background-color: #ececec;
 
           img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: transform 0.5s ease;
           }
 
-          &:hover img {
-            transform: scale(1.05);
+          .item-badges {
+            position: absolute;
+            top: 0.6rem;
+            left: 0.6rem;
+            display: flex;
+            justify-content: space-between;
+            gap: 0.35rem;
+            width: calc(100% - 1.2rem);
+          }
+
+          .item-availability,
+          .in-cart-badge,
+          .sold-out-badge {
+            font-family: Montserrat, sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 0.3rem 0.55rem;
+            border-radius: 2px;
+            white-space: nowrap;
+          }
+
+          .item-availability {
+            background: rgba(255, 255, 255, 0.92);
+            color: #333;
+          }
+
+          .in-cart-badge {
+            background: #000;
+            color: #fff;
+          }
+
+          .sold-out-badge {
+            position: absolute;
+            top: 0.6rem;
+            left: 0.6rem;
+            background: #fff;
+            color: #333;
           }
         }
 
+        &:hover:not(.sold-out) .item-image-wrapper img {
+          transform: scale(1.05);
+        }
+
         .item-info {
-          padding: 1rem 0 0 0;
+          padding: 0.85rem 0;
 
           .item-name {
-            font-family: "Cormorant Garamond", serif;
+            font-family: "didot";
             font-size: 1.1rem;
             font-weight: 500;
             margin: 0 0 0.25rem 0;
             color: #333;
             line-height: 1.3;
-            text-align: left;
-            text-transform: uppercase;
             letter-spacing: 0px;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
 
-          .item-price {
-            font-family: Montserrat, sans-serif;
-            font-size: 0.7rem;
-            font-weight: 400;
-            color: #a4a4a4;
-            margin: 0;
+          .item-price-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .item-price {
+              font-size: 0.75rem;
+              font-weight: 600;
+              color: #555;
+            }
           }
         }
       }
@@ -297,8 +718,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1rem;
-      margin-top: 2rem;
+      gap: 0.75rem;
+      margin-top: 1rem;
       flex-wrap: wrap;
 
       .pagination-button {
@@ -312,13 +733,8 @@
         cursor: pointer;
         transition: all 0.3s ease;
 
-        &:hover:not(:disabled) {
-          background-color: #f5f5f5;
-          border-color: #999;
-        }
-
         &:disabled {
-          opacity: 0.5;
+          opacity: 0.4;
           cursor: not-allowed;
         }
 
@@ -340,60 +756,922 @@
         align-items: center;
         justify-content: center;
         height: 30px;
-        width: 25px;
+        min-width: 25px;
         cursor: pointer;
-        transition: all 0.3s ease;
         color: rgb(164, 163, 163);
-
-        &:hover:not(:disabled) {
-          background-color: #f5f5f5;
-          border-color: #999;
-        }
-
-        &:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
-
-        &:first-child {
-          transform: rotate(-180deg);
-        }
+        font-family: Montserrat, sans-serif;
 
         &.current-page {
           color: black;
           text-decoration: underline;
         }
+      }
+    }
+  }
 
-        .angle-icon {
-          color: white;
-          transform: rotate(90deg);
-          height: 1rem;
+  /*
+  -------------------------------------------------------------------
+  ---  QUANTITY STEPPER (shared)
+  -------------------------------------------------------------------
+  */
+  .qty-stepper {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #d8d8d8;
+    border-radius: 3px;
+    overflow: hidden;
+
+    button {
+      background: #fff;
+      border: none;
+      width: 2.4rem;
+      height: 2.4rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+
+      &:hover:not(:disabled) {
+        background: #f0f0f0;
+      }
+
+      &:disabled {
+        color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+
+    .qty-value {
+      min-width: 2.4rem;
+      text-align: center;
+      font-family: Montserrat, sans-serif;
+      font-size: 0.9rem;
+    }
+
+    &.small {
+      button {
+        width: 1.9rem;
+        height: 1.9rem;
+        font-size: 0.95rem;
+      }
+
+      .qty-value {
+        min-width: 1.9rem;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+/*
+-------------------------------------------------------------------
+---  DETAIL QUICK-VIEW (rendered inside shared .overlay)
+-------------------------------------------------------------------
+*/
+.overlay.rental-detail-overlay {
+  .overlay-content {
+    width: 100%;
+    max-width: 58rem;
+  }
+
+  .rental-detail {
+    position: relative;
+    display: flex;
+    background: #fff;
+    max-height: 88vh;
+    overflow: hidden;
+
+    .detail-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 3;
+      background: rgba(255, 255, 255, 0.85);
+      border: none;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 0.85rem;
+        height: 0.85rem;
+        fill: #000;
+      }
+
+      &:hover {
+        background: #f0f0f0;
+      }
+    }
+
+    .detail-gallery {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      background: #ececec;
+
+      .detail-main-image {
+        flex: 1;
+        min-height: 0;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .detail-thumbs {
+        display: flex;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        background: #fff;
+        overflow-x: auto;
+
+        .detail-thumb {
+          flex: 0 0 auto;
+          width: 3.5rem;
+          height: 3.5rem;
+          border: 1px solid transparent;
+          padding: 0;
+          background: none;
+          cursor: pointer;
+          overflow: hidden;
+
+          &.active {
+            border-color: #000;
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+
+    .detail-info {
+      width: 50%;
+      padding: 3rem 2.5rem 2.5rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+
+      .detail-heading {
+        .detail-name {
+          font-family: didot, serif;
+          font-size: 2rem;
+          font-weight: 500;
+          line-height: 1.15;
+          margin-bottom: 0.4rem;
+        }
+
+        .detail-price {
+          font-family: "Cormorant Garamond", serif;
+          font-size: 1.2rem;
+          color: #b09a6b;
+        }
+      }
+
+      .detail-description {
+        font-family: Montserrat, sans-serif;
+        font-size: 0.8rem;
+        line-height: 1.5rem;
+        color: #555;
+      }
+
+      .detail-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        border-top: 1px solid #eee;
+        padding-top: 1.25rem;
+
+        .meta-row {
+          display: flex;
+          justify-content: space-between;
+          font-family: Montserrat, sans-serif;
+          font-size: 0.75rem;
+
+          dt {
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+
+          dd {
+            color: #333;
+            text-align: right;
+          }
+        }
+      }
+
+      .detail-availability {
+        font-family: Montserrat, sans-serif;
+        font-size: 0.72rem;
+        color: #777;
+
+        .already {
+          color: #b09a6b;
+        }
+      }
+
+      .detail-actions {
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+
+        .add-to-cart {
+          flex: 1;
+          min-width: 12rem;
         }
       }
     }
   }
 
-  #pagination-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0 3rem 3rem;
-    background-color: #f7f7f7;
+  @media (max-width: 768px) {
+    .overlay-content {
+      width: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      height: 100%;
+    }
 
-    button {
-      border: none;
-      background-color: black;
-      height: 30px;
-      width: 25px;
-      cursor: pointer;
+    .rental-detail {
+      flex-direction: column;
+      max-height: 100vh;
+      height: 100vh;
 
-      &:first-child {
-        transform: rotate(-180deg);
+      .detail-gallery {
+        width: 100%;
+        flex: 0 0 auto;
+        max-height: 45vh;
       }
 
-      .angle-icon {
-        transform: rotate(90deg);
-        color: white;
+      .detail-info {
+        width: 100%;
+        padding: 1.75rem 1.5rem 2rem;
+      }
+    }
+  }
+}
+
+/*
+-------------------------------------------------------------------
+---  RENTAL AGREEMENT PAGE (standalone, opens in a new tab — its own
+---  minimal chrome instead of the full site header/nav/footer, since
+---  the reader still has the original tab for using the app)
+-------------------------------------------------------------------
+*/
+.rental-agreement_page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fafafa;
+}
+
+.agreement-page-header {
+  display: flex;
+  align-items: center;
+  padding: 1.75rem 3rem;
+  border-bottom: 1px solid rgb(227, 227, 227);
+
+  .agreement-wordmark {
+    font-family: didot, serif;
+    font-size: 1.05rem;
+    letter-spacing: 3px;
+    color: #000;
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+.agreement-page-footer {
+  padding: 1.5rem 3rem;
+  border-top: 1px solid rgb(227, 227, 227);
+  text-align: center;
+
+  span {
+    font-family: Montserrat, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    color: #999;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+}
+
+.rental-agreement_route {
+  flex: 1;
+  width: 100%;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 5rem;
+  box-sizing: border-box;
+
+  .rental-agreement-back {
+    display: inline-block;
+    margin-bottom: 2rem;
+    background: none;
+    border: none;
+    font-family: Montserrat, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 2.5rem 1.25rem 3.5rem;
+  }
+}
+
+.rental-agreement {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #ececec;
+  padding: 3rem;
+  box-sizing: border-box;
+
+  .rental-agreement-title {
+    font-family: Montserrat, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.3;
+    max-width: none;
+    text-align: left;
+    color: #111;
+  }
+
+  .rental-agreement-version {
+    margin: 0.35rem 0 1.75rem;
+    font-family: Montserrat, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: left;
+    color: #b09a6b;
+  }
+
+  .rental-agreement-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 0.85rem;
+    line-height: 1.75;
+    color: #333;
+
+    p {
+      max-width: none;
+      text-align: left;
+      font-family: "inter", sans-serif;
+      line-height: 1.5;
+      font-size: 0.85rem;
+    }
+
+    strong {
+      color: #000;
+      font-weight: 600;
+      font-family: "inter", sans-serif;
+      line-height: 1.5;
+      font-size: 0.85rem;
+    }
+
+    h3 {
+      margin: 1.25rem 0 0.25rem;
+      max-width: none;
+      text-align: left;
+      letter-spacing: 0;
+      font-family: Montserrat, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #000;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid #ececec;
+    }
+
+    .rental-agreement-disclaimer {
+      margin-top: 0.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgb(227, 227, 227);
+      font-family: Montserrat, sans-serif;
+      font-size: 0.75rem;
+      line-height: 1.5;
+      color: #888;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem;
+
+    .rental-agreement-body {
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+  }
+}
+
+/*
+-------------------------------------------------------------------
+---  FLOATING CART BUTTON
+-------------------------------------------------------------------
+*/
+.cart-fab {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  .cart-fab-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    .cart-count {
+      font-family: Montserrat, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: #fff;
+      color: #000;
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .cart-fab-label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: Montserrat, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    line-height: 1.1;
+
+    em {
+      font-style: normal;
+      font-size: 0.65rem;
+      color: #bbb;
+      text-transform: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    right: 1rem;
+    bottom: 1rem;
+    padding: 0.75rem 1.1rem;
+  }
+}
+
+/*
+-------------------------------------------------------------------
+---  CART DRAWER (right panel on desktop, bottom sheet on mobile)
+-------------------------------------------------------------------
+*/
+.cart-drawer-root {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  pointer-events: none;
+  visibility: hidden;
+
+  .cart-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .cart-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    max-width: 600px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -6px 0 30px rgba(0, 0, 0, 0.15);
+  }
+
+  &.open {
+    pointer-events: auto;
+    visibility: visible;
+
+    .cart-backdrop {
+      opacity: 1;
+    }
+
+    .cart-panel {
+      transform: translateX(0);
+    }
+  }
+
+  .cart-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1.5rem 1.5rem 1.25rem;
+    border-bottom: 1px solid #eee;
+    box-sizing: border-box;
+    height: 6rem;
+
+    .cart-title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+
+      .eyebrow {
+        font-family: didot, serif;
+        font-size: 1.3rem;
+      }
+
+      .cart-dates {
+        font-family: Montserrat, sans-serif;
+        font-size: 0.68rem;
+        letter-spacing: 0.5px;
+        color: #999;
+        text-transform: uppercase;
+      }
+    }
+
+    .cart-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 0.85rem;
+        height: 0.85rem;
+        fill: #000;
+      }
+    }
+  }
+
+  .cart-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 6.6rem 1.5rem 1.25rem;
+
+    &.inquiry {
+      padding-top: 1rem;
+    }
+
+    .cart-empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 3rem 1rem;
+      text-align: center;
+
+      p {
+        font-family: Montserrat, sans-serif;
+        font-size: 0.9rem;
+        color: #777;
+      }
+    }
+
+    .cart-lines {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+
+      .cart-line {
+        display: grid;
+        grid-template-columns: 4.5rem 1fr auto;
+        gap: 0.85rem;
+        align-items: start;
+
+        .line-thumb {
+          width: 4.5rem;
+          height: 5.5rem;
+          overflow: hidden;
+          background: #ececec;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .line-info {
+          display: flex;
+          flex-direction: column;
+          gap: 0.4rem;
+
+          .line-name {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: #222;
+          }
+
+          .line-price {
+            font-family: Montserrat, sans-serif;
+            font-size: 0.68rem;
+            color: #999;
+          }
+
+          .line-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 0.15rem;
+
+            .line-remove {
+              background: none;
+              border: none;
+              cursor: pointer;
+              font-family: Montserrat, sans-serif;
+              font-size: 0.62rem;
+              letter-spacing: 0.5px;
+              text-transform: uppercase;
+              color: #b00;
+              opacity: 0.7;
+
+              &:hover {
+                opacity: 1;
+              }
+            }
+          }
+        }
+
+        .line-subtotal {
+          font-family: Montserrat, sans-serif;
+          font-size: 0.8rem;
+          color: #333;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  .cart-footer {
+    border-top: 1px solid #eee;
+    padding: 1.25rem 1.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+
+    .cart-total {
+      display: flex;
+      flex-direction: column;
+      font-family: didot, serif;
+      line-height: 1.1;
+
+      .total-label {
+        font-size: 0.6rem;
+        letter-spacing: 0.5px;
+        color: #888;
+        text-transform: uppercase;
+      }
+
+      .total-amount {
+        font-size: 1.1rem;
+      }
+    }
+
+    .primary-button {
+      flex: 0 0 auto;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .cart-panel {
+      max-width: 100%;
+      height: auto;
+      max-height: 90vh;
+      top: auto;
+      bottom: 0;
+      right: 0;
+      transform: translateY(100%);
+      border-radius: 14px 14px 0 0;
+      box-shadow: 0 -6px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    &.open .cart-panel {
+      transform: translateY(0);
+    }
+  }
+}
+
+/*
+-------------------------------------------------------------------
+---  INQUIRY FORM (inside the drawer)
+-------------------------------------------------------------------
+*/
+.rental-inquiry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .inquiry-back {
+    align-self: flex-start;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: Montserrat, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #666;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  .inquiry-intro {
+    font-family: Montserrat, sans-serif;
+    font-size: 0.72rem;
+    line-height: 1.15rem;
+    color: #777;
+  }
+
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .input-label {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 500;
+      font-size: 0.7rem;
+      letter-spacing: 0.5px;
+      color: #333;
+
+      span {
+        color: #b00;
+      }
+    }
+
+    input,
+    textarea {
+      border: none;
+      border-bottom: 1px solid black;
+      padding: 0.6rem 0.25rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 0;
+      background: transparent;
+      font-family: Montserrat, sans-serif;
+      color: #111;
+      transition: border-color 0.25s ease;
+
+      &:focus {
+        outline: none;
+        border-bottom-color: #b09a6b;
+      }
+
+      &::placeholder {
+        color: #999;
+        font-weight: 400;
+      }
+
+      &.invalid {
+        border-bottom: 1.5px solid #e53935;
+      }
+    }
+
+    textarea {
+      resize: none;
+      height: 5rem;
+    }
+
+    .input-error {
+      color: #e53935;
+      font-size: 0.7rem;
+    }
+  }
+
+  .agreement-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #ececec;
+
+    .agreement-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      cursor: pointer;
+
+      input[type="checkbox"] {
+        flex: 0 0 auto;
+        width: 1rem;
+        height: 1rem;
+        margin-top: 0.15rem;
+        accent-color: #000;
+        cursor: pointer;
+      }
+
+      span {
+        font-family: Montserrat, sans-serif;
+        font-size: 0.72rem;
+        line-height: 1.2rem;
+        color: #444;
+      }
+
+      .agreement-link {
+        background: none;
+        border: none;
+        padding: 0;
+        font: inherit;
+        color: #000;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        cursor: pointer;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: #b09a6b;
+        }
+      }
+    }
+  }
+
+  .inquiry-submit {
+    position: relative;
+    margin-top: 0.5rem;
+
+    .primary-button {
+      width: 100%;
+    }
+
+    .loader-wrapper {
+      display: flex;
+      position: relative;
+      width: 100%;
+      height: 2px;
+      background-color: rgb(205, 205, 205);
+      overflow: hidden;
+
+      .loader {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        animation: loading 2.5s ease-in-out infinite;
       }
     }
   }

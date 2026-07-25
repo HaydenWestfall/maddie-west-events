@@ -16,8 +16,9 @@ import FooterSection from "./shared/footer/footer";
 import { TransitionProvider } from "./shared/route-transition/TransitionProvider";
 import PageTransition from "./shared/route-transition/PageTransition";
 import { ToastContainer } from "react-toastify";
-import RentalsRoute from "./pages/rentals/rentals";
 import StudioRoute from "./pages/studio/studio";
+import RentalsRoute from "./pages/rentals/rentals";
+import RentalAgreementRoute from "./pages/rentals/rental-agreement-page";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -33,21 +34,26 @@ function App() {
           {(handleNavigation) => (
             <>
               {/* <TransitionCover displayText="test" /> */}
-              <HeaderSection handleNavigation={handleNavigation} />
+              {location.pathname !== "/rentals/agreement" && (
+                <HeaderSection handleNavigation={handleNavigation} />
+              )}
               <Routes location={location} key={location.pathname}>
                 <Route path="/" element={<HomeRoute handleNavigation={handleNavigation} />} />
                 <Route path="/about" element={<AboutRoute />} />
                 <Route path="/testimonies" element={<TestimoniesRoute />} />
                 <Route path="/packages" element={<PackagesRoute handleNavigation={handleNavigation} />} />
                 <Route path="/journal" element={<JournalRoute />} />
-                <Route path="/rentals" element={<RentalsRoute handleNavigation={handleNavigation} />} />
                 <Route path="/studio" element={<StudioRoute handleNavigation={handleNavigation} />} />
                 <Route path="/contact" element={<ContactRoute handleNavigation={handleNavigation} />} />
+                <Route path="/rentals" element={<RentalsRoute handleNavigation={handleNavigation} />} />
+                <Route path="/rentals/agreement" element={<RentalAgreementRoute handleNavigation={handleNavigation} />} />
               </Routes>
-              {!["/contact", "/studio", "/rentals"].includes(location.pathname) && (
+              {!["/contact", "/studio", "/rentals", "/rentals/agreement"].includes(location.pathname) && (
                 <ContactSection handleNavigation={handleNavigation} />
               )}
-              <FooterSection handleNavigation={handleNavigation} />
+              {location.pathname !== "/rentals/agreement" && (
+                <FooterSection handleNavigation={handleNavigation} />
+              )}
             </>
           )}
         </PageTransition>

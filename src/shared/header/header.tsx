@@ -84,8 +84,8 @@ const HeaderSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
             <a id="link" href="/about" onClick={(e: any) => mweNavigate(e, handleNavigation, "/about")}>
               ABOUT
             </a>
-            <a id="link" href="/testimonies" onClick={(e: any) => mweNavigate(e, handleNavigation, "/testimonies")}>
-              TESTIMONIES
+            <a id="link" href="/rentals" onClick={(e: any) => mweNavigate(e, handleNavigation, "/rentals")}>
+              RENTALS
             </a>
             <a id="link" href="/packages" onClick={(e: any) => mweNavigate(e, handleNavigation, "/packages")}>
               PACKAGES
@@ -94,9 +94,13 @@ const HeaderSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
               STILL ACRE STUDIO
             </a>
             <div className="small-links">
-              {/* <a id="rentals" href="/rentals" onClick={(e: any) => mweNavigate(e, handleNavigation, "/rentals")}>
-                RENTALS
-              </a> */}
+              <a
+                id="testimonies"
+                href="/testimonies"
+                onClick={(e: any) => mweNavigate(e, handleNavigation, "/testimonies")}
+              >
+                TESTIMONIES
+              </a>
               <a id="journal" href="/journal" onClick={(e: any) => mweNavigate(e, handleNavigation, "/journal")}>
                 JOURNAL
               </a>
