@@ -7,19 +7,40 @@
 .contact_route {
   #contact-header {
     position: relative;
+    display: flex;
+    justify-content: center;
     height: 120vh;
     width: 100%;
     overflow: hidden;
     pointer-events: none;
 
+    // Blurred, scaled copy of the cover fills the full section width behind the
+    // capped image, so the side bars read as an extension of the photo instead
+    // of flat borders on screens wider than 2000px.
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("/contact/contact_cover.webp");
+      background-size: cover;
+      background-position: center;
+      filter: blur(24px);
+      transform: scale(1.1);
+      z-index: 0;
+    }
+
     img {
+      position: relative;
+      z-index: 1;
       height: 100%;
       width: 100%;
+      max-width: 2000px;
       object-fit: cover;
     }
 
     #accent-wrapper {
       position: absolute;
+      z-index: 2;
       left: 0.75rem;
       bottom: 3rem;
       width: fit-content;
@@ -37,6 +58,7 @@
 
     #contact-header-text {
       position: absolute;
+      z-index: 2;
       display: flex;
       justify-content: center;
       width: 100%;

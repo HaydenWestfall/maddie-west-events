@@ -336,7 +336,7 @@
       position: absolute;
       left: max(0px, calc((100% - 1280px) / 2));
       height: 28rem;
-      width: clamp(1rem, 22vw, 40rem);
+      width: clamp(1rem, 22vw, 19rem);
       opacity: 0;
       top: 15rem;
     }
@@ -346,7 +346,7 @@
       top: 0;
       right: max(0px, calc((100% - 1280px) / 2));
       height: 25rem;
-      width: clamp(1rem, 20vw, 40rem);
+      width: clamp(1rem, 22vw, 19rem);
       opacity: 0;
     }
   }
