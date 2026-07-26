@@ -8,6 +8,7 @@ import Angle from "../../assets/angle.svg?react";
 import Cross from "../../assets/cross.svg?react";
 import InstagramBubble from "../../shared/instagram-bubble";
 import { env } from "../../config/env";
+import { asset } from "../../config/assets";
 import Seo from "../../seo/Seo";
 
 interface GalleryItem {
@@ -249,7 +250,7 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
               {galleryItems.map((item, index) => (
                 <div key={item.id} className="gallery-item" onClick={() => openGallery(index)}>
                   <div className="gallery-image-wrapper">
-                    <img src={item.image} alt={`${item.title} - ${item.description}`} />
+                    <img src={asset(item.image)} alt={`${item.title} - ${item.description}`} />
                   </div>
                   <div className="gallery-info">
                     <h5 className="gallery-title">{item.title}</h5>
@@ -328,7 +329,7 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
 
                 <div className="gallery-image-container">
                   <img
-                    src={galleryItems[currentGalleryIndex].images[currentImageIndex]}
+                    src={asset(galleryItems[currentGalleryIndex].images[currentImageIndex])}
                     alt={`${galleryItems[currentGalleryIndex].title} - Image ${currentImageIndex + 1}`}
                     loading="lazy"
                   />

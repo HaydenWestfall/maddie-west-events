@@ -40,8 +40,8 @@ const RentalInquiryForm: React.FC<RentalInquiryFormProps> = ({ onSuccess, onBack
       touched.email && !formData.email
         ? "Required"
         : touched.email && formData.email && !validateEmail(formData.email)
-        ? "Please enter a valid email address."
-        : "",
+          ? "Please enter a valid email address."
+          : "",
   };
 
   const disableSubmit =
@@ -108,24 +108,30 @@ const RentalInquiryForm: React.FC<RentalInquiryFormProps> = ({ onSuccess, onBack
       </button>
 
       <p className="inquiry-intro">
-        Share your details and we'll send this request to Maddie West. You'll both get an email, and Maddie will
-        confirm availability and final pricing.
+        Share your details and we'll send this request to Maddie West. You'll both get an email, and Maddie will confirm
+        availability and final pricing.
       </p>
 
-      <div className="input-wrapper">
-        <label className="input-label">
-          NAME <span>*</span>
-        </label>
-        <input
-          type="text"
-          name="name"
-          placeholder="FULL NAME"
-          value={formData.name}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={isInvalid.name ? "invalid" : ""}
-        />
-        {errorMsg.name && <span className="input-error">{errorMsg.name}</span>}
+      <div className="input-row">
+        <div className="input-wrapper">
+          <label className="input-label">
+            NAME <span>*</span>
+          </label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={isInvalid.name ? "invalid" : ""}
+          />
+          {errorMsg.name && <span className="input-error">{errorMsg.name}</span>}
+        </div>
+
+        <div className="input-wrapper">
+          <label className="input-label">PHONE</label>
+          <input type="tel" name="phone" value={formData.phone} onChange={handleChange} />
+        </div>
       </div>
 
       <div className="input-wrapper">
@@ -135,7 +141,6 @@ const RentalInquiryForm: React.FC<RentalInquiryFormProps> = ({ onSuccess, onBack
         <input
           type="text"
           name="email"
-          placeholder="EMAIL ADDRESS . . ."
           value={formData.email}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -145,18 +150,8 @@ const RentalInquiryForm: React.FC<RentalInquiryFormProps> = ({ onSuccess, onBack
       </div>
 
       <div className="input-wrapper">
-        <label className="input-label">PHONE</label>
-        <input type="tel" name="phone" placeholder="PHONE NUMBER" value={formData.phone} onChange={handleChange} />
-      </div>
-
-      <div className="input-wrapper">
-        <label className="input-label">NOTES FOR MADDIE</label>
-        <textarea
-          name="notes"
-          placeholder="ANYTHING ELSE WE SHOULD KNOW ABOUT YOUR EVENT . . ."
-          value={formData.notes}
-          onChange={handleChange}
-        ></textarea>
+        <label className="input-label">ADDITIONAL NOTES</label>
+        <textarea name="notes" value={formData.notes} onChange={handleChange}></textarea>
       </div>
 
       <div className="agreement-block">
@@ -178,7 +173,6 @@ const RentalInquiryForm: React.FC<RentalInquiryFormProps> = ({ onSuccess, onBack
           <input
             type="text"
             name="signatureName"
-            placeholder="FULL NAME"
             value={signatureName}
             onChange={(e) => setSignatureName(e.target.value)}
           />

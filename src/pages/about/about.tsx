@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { createGsapAnimation } from "../../shared/utility";
+import { asset } from "../../config/assets";
 import Seo from "../../seo/Seo";
 
 gsap.registerPlugin(useGSAP);
@@ -54,7 +55,7 @@ function AboutRoute() {
         </h1>
         <section id="section-about-main">
           <div id="about-video">
-            <video id="myVideo" src="./videos/about_maddie.mp4" autoPlay loop muted playsInline preload="auto">
+            <video id="myVideo" src={asset("/videos/about_maddie.mp4")} autoPlay loop muted playsInline preload="auto">
               Your browser does not support the video tag.
             </video>
             <div id="about-accent">WEDDING AND EVENT COORDINATOR | DAYTON, CINCINNATI, COLUMBUS</div>

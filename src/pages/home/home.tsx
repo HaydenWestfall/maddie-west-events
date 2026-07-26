@@ -6,6 +6,7 @@ import { createGsapAnimation, mweNavigate } from "../../shared/utility";
 import { ScrollTrigger } from "gsap/all";
 import Overlay, { OverlayRef } from "../../shared/overlay";
 import { env } from "../../config/env";
+import { asset } from "../../config/assets";
 import InstagramBubble from "../../shared/instagram-bubble";
 import Seo from "../../seo/Seo";
 
@@ -267,7 +268,7 @@ const MaddieFlowersSection: React.FC = () => {
   return (
     <section ref={maddieFlowersContainer} id="maddie-flowers-section">
       <div id="secondary-video">
-        <video id="myVideo" src="./videos/maddie_secondary.mp4" autoPlay loop muted playsInline preload="none"></video>
+        <video id="myVideo" src={asset("/videos/maddie_secondary.mp4")} autoPlay loop muted playsInline preload="none"></video>
       </div>
       <div>
         <h1 ref={maddieFlowersHeader} id="maddie-flowers-header">
@@ -329,7 +330,7 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
       <div data-barba="container" data-barba-namespace="index" className="home_route">
         <section id="main" className="section-main">
           <div id="primary-video">
-            <video id="myVideo" src="/videos/maddie_primary.mp4" autoPlay muted loop playsInline preload="auto"></video>
+            <video id="myVideo" src={asset("/videos/maddie_primary.mp4")} autoPlay muted loop playsInline preload="auto"></video>
           </div>
           <div id="title">
             <h6 id="main-subheader" ref={mainSubHeader}>

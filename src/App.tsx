@@ -15,7 +15,8 @@ import ContactSection from "./shared/contact-section/contact-section";
 import FooterSection from "./shared/footer/footer";
 import { TransitionProvider } from "./shared/route-transition/TransitionProvider";
 import PageTransition from "./shared/route-transition/PageTransition";
-import { ToastContainer } from "react-toastify";
+import { Slide, ToastContainer } from "react-toastify";
+import "./shared/toast/toast.scss";
 import StudioRoute from "./pages/studio/studio";
 import RentalsRoute from "./pages/rentals/rentals";
 import RentalAgreementRoute from "./pages/rentals/rental-agreement-page";
@@ -58,7 +59,17 @@ function App() {
           )}
         </PageTransition>
       </TransitionProvider>
-      <ToastContainer position="top-right" autoClose={3000} />
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3500}
+        transition={Slide}
+        theme="light"
+        className="mw-toast-container"
+        toastClassName="mw-toast"
+        closeOnClick
+        pauseOnHover
+        draggable
+      />
     </ReactLenis>
   );
 }

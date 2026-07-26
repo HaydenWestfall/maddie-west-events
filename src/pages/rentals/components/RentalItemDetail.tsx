@@ -9,7 +9,7 @@ export interface RentalItemDetailRef {
   open: (item: RentalItem) => void;
 }
 
-const FALLBACK_IMAGE = "/general/tablescape.png";
+const FALLBACK_IMAGE = "/general/tablescape.jpg";
 
 const RentalItemDetail = forwardRef<RentalItemDetailRef>((_props, ref) => {
   const overlayRef = useRef<OverlayRef | null>(null);

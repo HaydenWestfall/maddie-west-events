@@ -232,7 +232,7 @@ export const ROUTES: RouteMeta[] = [
     title: "Event & Wedding Décor Rentals | Maddie West Events",
     description:
       "Browse curated event and wedding décor rentals from Maddie West Events. Pick your date, check live availability, and request the pieces that bring your celebration to life across the Dayton, OH area.",
-    image: "/general/tablescape.png",
+    image: "/general/tablescape.jpg",
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "Service",

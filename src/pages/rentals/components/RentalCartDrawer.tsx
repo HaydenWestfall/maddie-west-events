@@ -8,7 +8,7 @@ interface RentalCartDrawerProps {
   onInquirySuccess: () => void;
 }
 
-const FALLBACK_IMAGE = "/general/tablescape.png";
+const FALLBACK_IMAGE = "/general/tablescape.jpg";
 
 const RentalCartDrawer: React.FC<RentalCartDrawerProps> = ({ onInquirySuccess }) => {
   const { items, count, estimatedTotal, dateRange, updateQuantity, removeItem } = useRentalCart();

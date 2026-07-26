@@ -32,6 +32,7 @@ const RentalsContent: React.FC<{ handleNavigation: (path: string) => void }> = (
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [retryKey, setRetryKey] = useState(0);
 
   const [categories, setCategories] = useState<string[]>([]);
   const [category, setCategory] = useState("");
@@ -107,7 +108,7 @@ const RentalsContent: React.FC<{ handleNavigation: (path: string) => void }> = (
       cancelled = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dateRange?.startDate, dateRange?.endDate, category, name, currentPage]);
+  }, [dateRange?.startDate, dateRange?.endDate, category, name, currentPage, retryKey]);
 
   const handleDateChange = (date: string) => {
     if (date === eventDate) return;
@@ -144,7 +145,7 @@ const RentalsContent: React.FC<{ handleNavigation: (path: string) => void }> = (
 
         {!eventDate ? (
           <section className="rental-date-gate">
-            <img src="/general/tablescape.png" alt="Styled tablescape" className="gate-image" />
+            <img src="/general/tablescape.jpg" alt="Styled tablescape" className="gate-image" />
             <div className="gate-content">
               <h2>When is your event?</h2>
               <p>Tell us your date and we'll show you exactly what's available to reserve.</p>
@@ -164,7 +165,12 @@ const RentalsContent: React.FC<{ handleNavigation: (path: string) => void }> = (
                   />
                 </div>
                 <div className="filters">
-                  <RentalDateSelector eventDate={eventDate} onChange={handleDateChange} variant="compact" cartCount={count} />
+                  <RentalDateSelector
+                    eventDate={eventDate}
+                    onChange={handleDateChange}
+                    variant="compact"
+                    cartCount={count}
+                  />
 
                   <div className="filter-group">
                     <label htmlFor="category">Category:</label>
@@ -191,9 +197,9 @@ const RentalsContent: React.FC<{ handleNavigation: (path: string) => void }> = (
 
               {error && !loading && (
                 <div className="error-state">
-                  <p>{error}</p>
-                  <button onClick={() => handlePageChange(currentPage)} className="retry-button">
-                    Try Again
+                  <p>Something went wrong while loading rentals. Please check your connection and try again.</p>
+                  <button onClick={() => setRetryKey((key) => key + 1)} className="retry-button">
+                    Try again
                   </button>
                 </div>
               )}
