@@ -173,16 +173,26 @@ const RentalsContent: React.FC<{ handleNavigation: (path: string) => void }> = (
                   />
 
                   <div className="filter-group">
-                    <label htmlFor="category">Category:</label>
-                    <select id="category" value={category} onChange={(e) => handleCategoryChange(e.target.value)}>
-                      <option value="">All Categories</option>
-                      {categories.map((cat) => (
-                        <option key={cat} value={cat}>
-                          {cat}
-                        </option>
-                      ))}
-                    </select>
-                    <Angle className="angle-icon" />
+                    <label className="filter-label" htmlFor="category">
+                      Category:
+                    </label>
+                    {/*
+                      The native select is layered invisibly over a styled span so the
+                      closed control matches the event-date field, while the open picker
+                      stays the OS-native list.
+                    */}
+                    <div className="select-field">
+                      <span className="select-display">{category || "All Categories"}</span>
+                      <Angle className="angle-icon" />
+                      <select id="category" value={category} onChange={(e) => handleCategoryChange(e.target.value)}>
+                        <option value="">All Categories</option>
+                        {categories.map((cat) => (
+                          <option key={cat} value={cat}>
+                            {cat}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
                 </div>
               </div>

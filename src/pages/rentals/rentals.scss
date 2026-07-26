@@ -161,6 +161,7 @@
         color: #000;
         border-bottom: 1px solid #000;
         padding-bottom: 2px;
+        padding-top: 4px;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         transition:
@@ -483,49 +484,118 @@
           align-items: stretch;
         }
 
+        /*
+        Event date and category are two halves of the same filter row, so they
+        share one type scale: a muted uppercase label followed by an underlined
+        uppercase value.
+        */
+        .rental-date-selector.compact .date-field,
         .filter-group {
           display: flex;
           align-items: center;
-          gap: 0.25rem;
-          position: relative;
+          gap: 0.5rem;
 
-          label {
+          .date-label,
+          .filter-label {
+            font-family: Montserrat, sans-serif;
             font-size: 0.65rem;
             font-weight: 500;
-            color: #333;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #888;
+            line-height: 1;
+            white-space: nowrap;
           }
 
-          select {
-            padding: 0.5rem 1.5rem 0.5rem 0;
-            border: none;
+          .date-display,
+          .select-display {
+            font-family: Montserrat, sans-serif;
             font-size: 0.65rem;
-            background-color: transparent;
-            cursor: pointer;
-            appearance: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #000;
+            line-height: 1;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #000;
+            white-space: nowrap;
+            transition:
+              border-color 0.25s ease,
+              color 0.25s ease;
 
-            &:focus {
-              outline: none;
+            &.placeholder {
+              color: #999;
+              border-bottom-color: #999;
             }
+          }
+
+          // These out-specify the base .date-field rules above, so the hover and
+          // open states have to be restated here.
+          &:hover .date-display,
+          &.open .date-display {
+            color: #b09a6b;
+            border-bottom-color: #b09a6b;
+          }
+        }
+
+        .filter-group {
+          .select-field {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+            padding-top: 4px;
 
             // The global `*` rule forces Montserrat and a clamped font-size onto
-            // <option>, which renders badly in the native picker. Hand the popup
-            // back to the OS font at a normal size.
-            option {
-              font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            // <option>, which renders badly in the native picker. The select sits
+            // invisibly on top of .select-display purely to open the OS list, so
+            // only the popup's own typography matters here.
+            select {
+              position: absolute;
+              inset: 0;
+              width: 100%;
+              height: 100%;
+              opacity: 0;
+              border: none;
+              background: transparent;
+              cursor: pointer;
+              font-family:
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                sans-serif;
               font-size: 13px;
-            }
-          }
+              line-height: 1;
 
-          .angle-icon {
-            width: 0.6rem;
-            height: 0.6rem;
-            pointer-events: none;
-            fill: #333;
-            position: absolute;
-            right: 0.15rem;
-            top: 50%;
-            transform: translateY(-60%) rotate(180deg);
+              option {
+                font-family: inherit;
+                font-size: 13px;
+              }
+            }
+
+            .angle-icon {
+              width: 0.55rem;
+              height: 0.55rem;
+              pointer-events: none;
+              fill: #333;
+              transform: rotate(180deg);
+              transition: fill 0.25s ease;
+            }
+
+            &:hover,
+            &:focus-within {
+              .select-display {
+                color: #b09a6b;
+                border-bottom-color: #b09a6b;
+              }
+
+              .angle-icon {
+                fill: #b09a6b;
+              }
+            }
           }
         }
       }
