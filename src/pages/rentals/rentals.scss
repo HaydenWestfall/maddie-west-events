@@ -67,7 +67,11 @@
     align-items: center;
     justify-content: center;
     min-height: 70vh;
-    overflow: hidden;
+    /*
+    No overflow clipping here: the calendar popover opens below a vertically
+    centred card and has to be able to spill past the section (over the footer)
+    to stay reachable. .gate-image is inset-0/object-fit so it never overflows.
+    */
 
     .gate-image {
       position: absolute;
@@ -112,9 +116,11 @@
 
     @media (max-width: 768px) {
       min-height: 60vh;
+      padding: 0 1.25rem;
 
       .gate-content {
-        padding: 2.5rem 1.5rem;
+        padding: 2.5rem 2rem;
+        width: 100%;
 
         h2 {
           font-size: 1.8rem;
@@ -409,10 +415,23 @@
 
     &.hero {
       .date-field {
-        font-size: 1.3rem;
+        /* Match the gate card's body copy so the picker reads as part of it. */
+        font-family: Montserrat, sans-serif;
+        font-size: 0.9rem;
+        line-height: 1.4rem;
+
+        .date-label {
+          font-size: 0.9rem;
+          line-height: 1.4rem;
+          letter-spacing: normal;
+          color: #555;
+        }
 
         .date-display {
-          font-size: 1.6rem;
+          font-size: 0.9rem;
+          line-height: 1.4rem;
+          letter-spacing: normal;
+          text-transform: none;
         }
       }
     }
@@ -425,6 +444,13 @@
 
       .date-window {
         font-size: 0.6rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      /* Keep the popover inside the viewport on narrow screens. */
+      .rental-calendar {
+        width: min(300px, calc(100vw - 2.5rem));
       }
     }
   }

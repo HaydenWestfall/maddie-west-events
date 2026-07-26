@@ -145,10 +145,9 @@ const RentalsContent: React.FC<{ handleNavigation: (path: string) => void }> = (
 
         {!eventDate ? (
           <section className="rental-date-gate">
-            <img src="/general/tablescape.jpg" alt="Styled tablescape" className="gate-image" />
             <div className="gate-content">
               <h2>When is your event?</h2>
-              <p>Tell us your date and we'll show you exactly what's available to reserve.</p>
+              <p>Tell us your date and we'll show you exact avialability for our items.</p>
               <RentalDateSelector eventDate={eventDate} onChange={handleDateChange} variant="hero" cartCount={count} />
             </div>
           </section>
