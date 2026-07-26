@@ -42,13 +42,13 @@ const PageTransition: React.FC<{ children: (handleNavigation: (path: string) => 
    */
   const loadNewPage = () => {
     gsap.fromTo(transitionTextRef.current, { opacity: 0, y: "20px" }, { opacity: 1, y: 0, duration: 0.8 });
-    setTimeout(() => {
-      navigate(nextRoute!);
-      window.scrollTo({ top: 0, behavior: "instant" });
-      setNextRoute(null);
-      updateTransitioningState(TransitionState.DoneTransitioning);
-      initializeApplication();
-    }, 1350);
+    // setTimeout(() => {
+    //   navigate(nextRoute!);
+    //   window.scrollTo({ top: 0, behavior: "instant" });
+    //   setNextRoute(null);
+    //   updateTransitioningState(TransitionState.DoneTransitioning);
+    //   initializeApplication();
+    // }, 1350);
   };
 
   return (
@@ -70,7 +70,7 @@ const PageTransition: React.FC<{ children: (handleNavigation: (path: string) => 
               }
             }}
           >
-            <h1 ref={transitionTextRef} style={{ color: "white", opacity: 0 }}>
+            <h1 ref={transitionTextRef} style={{ opacity: 0 }}>
               {displayText.toUpperCase()}
             </h1>
           </motion.div>
