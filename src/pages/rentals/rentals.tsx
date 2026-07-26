@@ -16,6 +16,7 @@ import RentalDateSelector from "./components/RentalDateSelector";
 import RentalItemCard from "./components/RentalItemCard";
 import RentalItemDetail, { RentalItemDetailRef } from "./components/RentalItemDetail";
 import RentalCartDrawer from "./components/RentalCartDrawer";
+import RentalGuidelines from "./components/RentalGuidelines";
 import Seo from "../../seo/Seo";
 
 gsap.registerPlugin(useGSAP);
@@ -147,8 +148,18 @@ const RentalsContent: React.FC<{ handleNavigation: (path: string) => void }> = (
           <section className="rental-date-gate">
             <div className="gate-content">
               <h2>When is your event?</h2>
-              <p>Tell us your date and we'll show you exact avialability for our items.</p>
+              <p>Tell us your date and we'll show you exact availability for our items.</p>
               <RentalDateSelector eventDate={eventDate} onChange={handleDateChange} variant="hero" cartCount={count} />
+              {/*
+                The date they pick isn't the date they collect on, so state the
+                window up front — it's the thing that decides whether a date
+                works for them at all.
+              */}
+              <ul className="gate-notes">
+                <li>Pick up the day before</li>
+                <li>Return the day after</li>
+                <li>Ludlow Falls, OH</li>
+              </ul>
             </div>
           </section>
         ) : (
@@ -266,6 +277,10 @@ const RentalsContent: React.FC<{ handleNavigation: (path: string) => void }> = (
             </div>
           </>
         )}
+
+        {/* Shown on both the date gate and the browse view — the questions it
+            answers come up in either place. */}
+        <RentalGuidelines />
 
         <RentalItemDetail ref={detailRef} />
         <RentalCartDrawer onInquirySuccess={() => confirmationRef.current?.show()} />

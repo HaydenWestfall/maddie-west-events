@@ -61,7 +61,7 @@ const RentalDateSelector: React.FC<RentalDateSelectorProps> = ({
         </button>
 
         {pendingDate ? (
-          <RentalDateConfirmPopover open onConfirm={confirmChange} onCancel={() => setPendingDate(null)} />
+          <RentalDateConfirmPopover open onConfirm={confirmChange} onCancel={close} />
         ) : (
           <RentalCalendarPopover open={open} value={eventDate} min={todayISO()} onSelect={handleSelect} onClose={close} />
         )}

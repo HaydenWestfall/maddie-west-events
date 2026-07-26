@@ -54,8 +54,10 @@ const RentalCartDrawer: React.FC<RentalCartDrawerProps> = ({ onInquirySuccess })
             <div className="cart-title">
               <span className="eyebrow">{step === "cart" ? "Your rentals" : "Request details"}</span>
               {dateRange && (
+                // The range is the pickup -> return window, not the event date;
+                // labelling it stops it reading as a mistake.
                 <span className="cart-dates">
-                  {formatFriendlyDate(dateRange.startDate)} – {formatFriendlyDate(dateRange.endDate)}
+                  Pickup {formatFriendlyDate(dateRange.startDate)} · Return {formatFriendlyDate(dateRange.endDate)}
                 </span>
               )}
             </div>

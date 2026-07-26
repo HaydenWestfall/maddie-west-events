@@ -46,7 +46,7 @@ const RentalItemDetail = forwardRef<RentalItemDetailRef>((_props, ref) => {
   const handleAdd = () => {
     if (!item || !canAdd) return;
     addItem(item, Math.min(quantity, remaining));
-    toast.success(`${item.name} added to your cart.`);
+    toast.success(`Item added to cart.`);
     overlayRef.current?.hide();
   };
 
@@ -140,7 +140,12 @@ const RentalItemDetail = forwardRef<RentalItemDetailRef>((_props, ref) => {
                 </button>
               </div>
 
-              <button type="button" className="primary-button large light add-to-cart" onClick={handleAdd} disabled={!canAdd}>
+              <button
+                type="button"
+                className="primary-button large light add-to-cart"
+                onClick={handleAdd}
+                disabled={!canAdd}
+              >
                 <span>{canAdd ? "Add to cart" : "Max in cart"}</span>
               </button>
             </div>

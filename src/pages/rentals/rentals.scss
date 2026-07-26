@@ -112,6 +112,34 @@
       .rental-date-selector {
         margin-top: 1rem;
       }
+
+      .gate-notes {
+        list-style: none;
+        margin: 0.5rem 0 0;
+        padding: 1.25rem 0 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.09);
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem 1.25rem;
+
+        li {
+          font-family: Montserrat, sans-serif;
+          font-size: 0.65rem;
+          font-weight: 500;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          color: #888;
+          white-space: nowrap;
+        }
+
+        li + li::before {
+          content: "·";
+          margin-right: 1.25rem;
+          color: #c9c9c9;
+        }
+      }
     }
 
     @media (max-width: 768px) {
@@ -124,6 +152,16 @@
 
         h2 {
           font-size: 1.8rem;
+        }
+
+        /* Stacked rather than wrapped, so no separator dot starts a line. */
+        .gate-notes {
+          flex-direction: column;
+          gap: 0.5rem;
+
+          li + li::before {
+            content: none;
+          }
         }
       }
     }
@@ -202,6 +240,7 @@
       transform-origin: top center;
       translate: -50%;
       z-index: 100;
+      box-sizing: border-box;
       width: 300px;
       padding: 1.25rem;
       background: #fff;
@@ -467,7 +506,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 25px 3rem 7px;
+    padding: 25px 1rem 7px;
     background-color: rgba(247, 247, 247, 0.823);
     backdrop-filter: blur(6px);
     border-bottom: 1px solid #ececec;
@@ -504,10 +543,13 @@
         justify-content: space-between;
         width: 100%;
 
+        // One row on mobile rather than stacked: the bar is sticky, so every
+        // extra line it takes is height permanently lost from the grid.
         @media (max-width: 768px) {
-          gap: 1rem;
-          flex-direction: column;
-          align-items: stretch;
+          gap: 0.75rem;
+          flex-wrap: nowrap;
+          align-items: center;
+          justify-content: space-between;
         }
 
         /*
@@ -561,6 +603,59 @@
           &.open .date-display {
             color: #b09a6b;
             border-bottom-color: #b09a6b;
+          }
+
+          @media (max-width: 768px) {
+            gap: 0.4rem;
+
+            .date-label,
+            .date-display,
+            .select-display {
+              letter-spacing: 0.5px;
+            }
+          }
+        }
+
+        /*
+        The chevron and the value itself already read as a category picker, so
+        on mobile the label is redundant. Visually hidden rather than removed —
+        it's the select's only accessible name.
+        */
+        @media (max-width: 768px) {
+          .filter-label {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+          }
+
+          // The date is fixed-length and can't be abbreviated usefully, so it
+          // holds its width and the category gives way instead.
+          .rental-date-selector.compact {
+            flex: 0 0 auto;
+          }
+
+          .filter-group {
+            flex: 0 1 auto;
+            min-width: 0;
+            justify-content: flex-end;
+
+            .select-field {
+              min-width: 0;
+            }
+
+            // min-width: 0 down the whole chain is what lets the ellipsis
+            // engage instead of the row growing past the screen.
+            .select-display {
+              min-width: 0;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
           }
         }
 
@@ -761,7 +856,12 @@
             top: 0.6rem;
             left: 0.6rem;
             display: flex;
+            // Wide cards keep both badges on one line with the cart count pinned
+            // right; once the card is too narrow for both, the cart count wraps
+            // beneath the availability badge instead of overflowing the card.
+            flex-wrap: wrap;
             justify-content: space-between;
+            align-items: flex-start;
             gap: 0.35rem;
             width: calc(100% - 1.2rem);
           }
@@ -890,6 +990,141 @@
 
   /*
   -------------------------------------------------------------------
+  ---  GUIDELINES ("Good to know")
+  -------------------------------------------------------------------
+  Sits between the page content and the footer on both the date gate and
+  the browse view, so it reads as a closing note either way.
+  */
+  .rental-guidelines {
+    background: #fff;
+    border-top: 1px solid #ececec;
+    padding: 5rem 3rem;
+
+    .guidelines-inner {
+      max-width: 60rem;
+      margin: 0 auto;
+    }
+
+    .guidelines-head {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      text-align: center;
+      margin-bottom: 3.5rem;
+
+      .eyebrow {
+        font-family: Montserrat, sans-serif;
+        font-size: 0.65rem;
+        font-weight: 500;
+        letter-spacing: 2px;
+        color: #b09a6b;
+      }
+
+      h2 {
+        font-family: didot, serif;
+        font-size: 2.2rem;
+        font-weight: 500;
+        line-height: 1.15;
+        color: #111;
+      }
+    }
+
+    .guidelines-grid {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2.75rem 3.5rem;
+    }
+
+    .guideline {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      /* Hairline rule doubles as the column gutter marker. */
+      padding-left: 1.5rem;
+      border-left: 1px solid #ececec;
+
+      .guideline-index {
+        font-family: didot, serif;
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        color: #b09a6b;
+      }
+
+      h3 {
+        font-family: didot, serif;
+        font-size: 1.35rem;
+        font-weight: 500;
+        color: #111;
+      }
+
+      p {
+        font-family: Montserrat, sans-serif;
+        font-size: 0.85rem;
+        line-height: 1.65rem;
+        color: #555;
+
+        strong {
+          font-weight: 600;
+          color: #222;
+        }
+      }
+    }
+
+    .guidelines-footnote {
+      margin-top: 3.5rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid #ececec;
+      text-align: center;
+      font-family: Montserrat, sans-serif;
+      font-size: 0.78rem;
+      line-height: 1.5rem;
+      color: #888;
+
+      a {
+        color: #111;
+        text-decoration: none;
+        border-bottom: 1px solid #b09a6b;
+        padding-bottom: 1px;
+        transition: color 0.25s ease;
+
+        &:hover {
+          color: #b09a6b;
+        }
+      }
+    }
+
+    @media (max-width: 900px) {
+      padding: 4rem 2rem;
+
+      .guidelines-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2.25rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      padding: 3.5rem 1.5rem;
+
+      .guidelines-head {
+        margin-bottom: 2.5rem;
+
+        h2 {
+          font-size: 1.7rem;
+        }
+      }
+
+      .guidelines-footnote {
+        margin-top: 2.5rem;
+      }
+    }
+  }
+
+  /*
+  -------------------------------------------------------------------
   ---  QUANTITY STEPPER (shared)
   -------------------------------------------------------------------
   */
@@ -989,6 +1224,14 @@
       }
     }
 
+    // There is no global border-box reset in this app (index.scss resets only
+    // margin/padding/font), so any explicit width here has to opt in — an
+    // otherwise-correct `width: 100%` plus side padding runs past the edge.
+    .detail-gallery,
+    .detail-info {
+      box-sizing: border-box;
+    }
+
     .detail-gallery {
       width: 50%;
       display: flex;
@@ -1061,11 +1304,13 @@
 
       .detail-heading {
         .detail-name {
+          text-align: left;
           font-family: didot, serif;
           font-size: 2rem;
           font-weight: 500;
           line-height: 1.15;
           margin-bottom: 0.4rem;
+          overflow-wrap: break-word;
         }
 
         .detail-price {
@@ -1080,6 +1325,9 @@
         font-size: 0.8rem;
         line-height: 1.5rem;
         color: #555;
+        // Item copy is operator-entered; a pasted URL or model number
+        // shouldn't be able to push the column wide.
+        overflow-wrap: break-word;
       }
 
       .detail-meta {
@@ -1092,6 +1340,7 @@
         .meta-row {
           display: flex;
           justify-content: space-between;
+          gap: 1rem;
           font-family: Montserrat, sans-serif;
           font-size: 0.75rem;
 
@@ -1099,11 +1348,16 @@
             color: #999;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            flex: 0 0 auto;
           }
 
           dd {
             color: #333;
             text-align: right;
+            // A long dimensions/material string wraps instead of widening
+            // the row.
+            min-width: 0;
+            overflow-wrap: break-word;
           }
         }
       }
@@ -1135,33 +1389,111 @@
   }
 
   @media (max-width: 768px) {
+    // Mobile browsers report 100vh as the viewport with the URL bar *hidden*,
+    // so a 100vh modal is taller than what's actually on screen and the bottom
+    // of it (the add-to-cart button) sits below the fold. dvh tracks the real
+    // visible height; the vh line stays as the fallback for older browsers.
+    height: 100vh;
+    height: 100dvh;
+
     .overlay-content {
       width: 100%;
       max-width: 100%;
-      max-height: 100%;
       height: 100%;
+      max-height: 100%;
     }
 
     .rental-detail {
       flex-direction: column;
-      max-height: 100vh;
-      height: 100vh;
+      height: 100%;
+      max-height: 100%;
+
+      .detail-close {
+        top: 0.75rem;
+        right: 0.75rem;
+      }
 
       .detail-gallery {
         width: 100%;
+        // Fixed block: the image keeps its size and the info column below
+        // absorbs whatever height is left.
         flex: 0 0 auto;
 
         // Full-width here, so a 3:4 stage would eat the screen — square it up
-        // and cap it to leave room for the details below.
+        // and cap it so the details below always get the larger share.
         .detail-main-image {
           aspect-ratio: 1 / 1;
-          max-height: 38vh;
+          max-height: min(38vh, 20rem);
+          max-height: min(38dvh, 20rem);
+        }
+
+        .detail-thumbs {
+          gap: 0.4rem;
+          padding: 0.4rem;
+
+          .detail-thumb {
+            width: 2.75rem;
+            height: 2.75rem;
+          }
         }
       }
 
       .detail-info {
         width: 100%;
-        padding: 1.75rem 1.5rem 2rem;
+        // Claims the leftover height and scrolls inside it. min-height: 0 is
+        // what actually permits the shrink — a flex item won't go below its
+        // content height without it, which is what pushed the modal past the
+        // bottom of the screen.
+        flex: 1 1 auto;
+        min-height: 0;
+        // Stops a flick past the end of the list from scrolling the page
+        // behind the modal (which also re-shows the URL bar and resizes the
+        // viewport mid-interaction).
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        padding: 1.5rem 1.25rem 0;
+        gap: 1rem;
+
+        .detail-heading {
+          // Leave room for the close button rather than running under it.
+          padding-right: 2.5rem;
+
+          .detail-name {
+            font-size: 1.5rem;
+          }
+
+          .detail-price {
+            font-size: 1.05rem;
+          }
+        }
+
+        .detail-meta {
+          padding-top: 1rem;
+        }
+
+        // Pinned to the bottom of the scroll area so adding to the cart never
+        // requires reading through the description first. Bled to full width
+        // past the column padding, and kept clear of the iOS home indicator.
+        .detail-actions {
+          position: sticky;
+          bottom: 0;
+          margin: auto -1.25rem 0;
+          padding: 0.9rem 1.25rem;
+          padding-bottom: max(0.9rem, env(safe-area-inset-bottom));
+          background: #fff;
+          border-top: 1px solid #eee;
+          gap: 0.75rem;
+          flex-wrap: nowrap;
+
+          .add-to-cart {
+            // Fills the row beside the stepper, but min-width: 0 lets it give
+            // way rather than push the row wide on the narrowest phones.
+            flex: 1 1 auto;
+            min-width: 0;
+            box-sizing: border-box;
+            padding: 0 1rem;
+          }
+        }
       }
     }
   }
@@ -1464,7 +1796,7 @@
     padding: 1.5rem 1.5rem 1.25rem;
     border-bottom: 1px solid #eee;
     box-sizing: border-box;
-    height: 6rem;
+    height: fit-content;
 
     .cart-title {
       display: flex;
@@ -1478,7 +1810,7 @@
 
       .cart-dates {
         font-family: Montserrat, sans-serif;
-        font-size: 0.68rem;
+        font-size: 0.62rem;
         letter-spacing: 0.5px;
         color: #999;
         text-transform: uppercase;
