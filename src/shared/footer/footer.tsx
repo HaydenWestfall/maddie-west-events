@@ -50,9 +50,9 @@ const FooterSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
               <a href="/packages" onClick={(e: any) => mweNavigate(e, handleNavigation, "/packages")}>
                 Packages
               </a>
-              <a href="/rentals" onClick={(e: any) => mweNavigate(e, handleNavigation, "/rentals")}>
+              {/* <a href="/rentals" onClick={(e: any) => mweNavigate(e, handleNavigation, "/rentals")}>
                 Rentals
-              </a>
+              </a> */}
               <a href="/studio" onClick={(e: any) => mweNavigate(e, handleNavigation, "/studio")}>
                 Still Acre Studio
               </a>
@@ -60,7 +60,10 @@ const FooterSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
 
             <div className="footer-col">
               <h2 className="footer-col-heading">Connect</h2>
-              <a href="/contact?type=event" onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=event")}>
+              <a
+                href="/contact?type=event"
+                onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=event")}
+              >
                 Contact
               </a>
               <a href={env.INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">

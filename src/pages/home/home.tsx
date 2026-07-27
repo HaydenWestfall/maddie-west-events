@@ -268,7 +268,15 @@ const MaddieFlowersSection: React.FC = () => {
   return (
     <section ref={maddieFlowersContainer} id="maddie-flowers-section">
       <div id="secondary-video">
-        <video id="myVideo" src={asset("/media/videos/maddie_secondary.mp4")} autoPlay loop muted playsInline preload="none"></video>
+        <video
+          id="myVideo"
+          src={asset("/media/videos/maddie_secondary.mp4")}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="none"
+        ></video>
       </div>
       <div>
         <h1 ref={maddieFlowersHeader} id="maddie-flowers-header">
@@ -330,7 +338,15 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
       <div data-barba="container" data-barba-namespace="index" className="home_route">
         <section id="main" className="section-main">
           <div id="primary-video">
-            <video id="myVideo" src={asset("/media/videos/maddie_primary.mp4")} autoPlay muted loop playsInline preload="auto"></video>
+            <video
+              id="myVideo"
+              src={asset("/media/videos/maddie_primary.mp4")}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+            ></video>
           </div>
           <div id="title">
             <h6 id="main-subheader" ref={mainSubHeader}>
@@ -396,7 +412,12 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
               </div>
             </div>
             <div id="testimony-image-wrapper">
-              <img loading="lazy" id="testimony-image" src="/media/home/about_maddie.webp" alt="Picture of Maddie West" />
+              <img
+                loading="lazy"
+                id="testimony-image"
+                src="/media/home/about_maddie.webp"
+                alt="Picture of Maddie West"
+              />
             </div>
           </div>
         </section>
@@ -405,9 +426,24 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
           <span id="vendor-label">A FEW OF MY FAVORITES</span>
           <div id="vendor-images">
             <img loading="lazy" src="/media/home/cliffside.png" className="vendor" alt="Cliffside wedding venue logo" />
-            <img loading="lazy" src="/media/home/steamplant.png" className="vendor" alt="The Steam Plant wedding venue logo" />
-            <img loading="lazy" src="/media/home/jorgensen.png" className="vendor small" alt="Jorgensen Farms wedding venue logo" />
-            <img loading="lazy" src="/media/home/arcade.png" className="vendor" alt="Dayton Arcade wedding venue logo" />
+            <img
+              loading="lazy"
+              src="/media/home/steamplant.png"
+              className="vendor"
+              alt="The Steam Plant wedding venue logo"
+            />
+            <img
+              loading="lazy"
+              src="/media/home/jorgensen.png"
+              className="vendor small"
+              alt="Jorgensen Farms wedding venue logo"
+            />
+            <img
+              loading="lazy"
+              src="/media/home/arcade.png"
+              className="vendor"
+              alt="Dayton Arcade wedding venue logo"
+            />
           </div>
         </section>
 
@@ -436,7 +472,10 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
                 id="contact"
                 className="primary-button small light"
                 href="/contact?type=event"
-                onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=event")}
+                onClick={(e: any) => {
+                  adOverlayRef.current?.hide();
+                  mweNavigate(e, handleNavigation, "/contact?type=event");
+                }}
               >
                 Book a Session
               </a>
