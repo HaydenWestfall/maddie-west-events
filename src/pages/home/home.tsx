@@ -16,11 +16,11 @@ gsap.registerPlugin(ScrollTrigger);
 // Rendered twice in the marquee so the scrolling strip is always wider than the
 // viewport and keeps filling the screen as it grows.
 const JOURNAL_IMAGES = [
-  { src: "/home/journal_4.webp", alt: "Aesthetic image of chair with flowers" },
-  { src: "/home/journal_2.webp", alt: "Aesthetic image of a tablescape" },
-  { src: "/home/journal_3.webp", alt: "Aesthetic image of Maddie West" },
-  { src: "/home/journal_1.webp", alt: "Aesthetic image of a cake table" },
-  { src: "/home/journal_5.webp", alt: "Wedding invitation on tablescape" },
+  { src: "/media/home/journal_4.webp", alt: "Aesthetic image of chair with flowers" },
+  { src: "/media/home/journal_2.webp", alt: "Aesthetic image of a tablescape" },
+  { src: "/media/home/journal_3.webp", alt: "Aesthetic image of Maddie West" },
+  { src: "/media/home/journal_1.webp", alt: "Aesthetic image of a cake table" },
+  { src: "/media/home/journal_5.webp", alt: "Wedding invitation on tablescape" },
 ];
 
 const JournalSection: React.FC<{ handleNavigation: (path: string) => void }> = ({ handleNavigation }) => {
@@ -200,14 +200,14 @@ const AestheticSection: React.FC = () => {
           ref={aestheticImage1}
           id="aesthetic-image-1"
           loading="lazy"
-          src="/home/aesthetic_1.webp"
+          src="/media/home/aesthetic_1.webp"
           alt="Elegant wedding tablescape styled by Maddie West Events"
         />
         <img
           ref={aestheticImage2}
           id="aesthetic-image-2"
           loading="lazy"
-          src="/home/aesthetic_2.webp"
+          src="/media/home/aesthetic_2.webp"
           alt="Refined floral and place-setting detail from a Maddie West Events wedding"
         />
         <div id="aesthetic-description-wrapper" className="section-header">
@@ -240,14 +240,14 @@ const AestheticSection: React.FC = () => {
         ref={aestheticImage3}
         id="aesthetic-image-3"
         loading="lazy"
-        src="/home/aesthetic_3.webp"
+        src="/media/home/aesthetic_3.webp"
         alt="Timeless wedding ceremony décor in organic neutral tones"
       />
       <img
         ref={aestheticImage4}
         id="aesthetic-image-4"
         loading="lazy"
-        src="/home/aesthetic_4.webp"
+        src="/media/home/aesthetic_4.webp"
         alt="Curated wedding reception details by Maddie West Events"
       />
     </section>
@@ -268,7 +268,7 @@ const MaddieFlowersSection: React.FC = () => {
   return (
     <section ref={maddieFlowersContainer} id="maddie-flowers-section">
       <div id="secondary-video">
-        <video id="myVideo" src={asset("/videos/maddie_secondary.mp4")} autoPlay loop muted playsInline preload="none"></video>
+        <video id="myVideo" src={asset("/media/videos/maddie_secondary.mp4")} autoPlay loop muted playsInline preload="none"></video>
       </div>
       <div>
         <h1 ref={maddieFlowersHeader} id="maddie-flowers-header">
@@ -330,7 +330,7 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
       <div data-barba="container" data-barba-namespace="index" className="home_route">
         <section id="main" className="section-main">
           <div id="primary-video">
-            <video id="myVideo" src={asset("/videos/maddie_primary.mp4")} autoPlay muted loop playsInline preload="auto"></video>
+            <video id="myVideo" src={asset("/media/videos/maddie_primary.mp4")} autoPlay muted loop playsInline preload="auto"></video>
           </div>
           <div id="title">
             <h6 id="main-subheader" ref={mainSubHeader}>
@@ -396,7 +396,7 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
               </div>
             </div>
             <div id="testimony-image-wrapper">
-              <img loading="lazy" id="testimony-image" src="/home/about_maddie.webp" alt="Picture of Maddie West" />
+              <img loading="lazy" id="testimony-image" src="/media/home/about_maddie.webp" alt="Picture of Maddie West" />
             </div>
           </div>
         </section>
@@ -404,10 +404,10 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
         <section id="section-vendor-list">
           <span id="vendor-label">A FEW OF MY FAVORITES</span>
           <div id="vendor-images">
-            <img loading="lazy" src="/home/cliffside.png" className="vendor" alt="Cliffside wedding venue logo" />
-            <img loading="lazy" src="/home/steamplant.png" className="vendor" alt="The Steam Plant wedding venue logo" />
-            <img loading="lazy" src="/home/jorgensen.png" className="vendor small" alt="Jorgensen Farms wedding venue logo" />
-            <img loading="lazy" src="/home/arcade.png" className="vendor" alt="Dayton Arcade wedding venue logo" />
+            <img loading="lazy" src="/media/home/cliffside.png" className="vendor" alt="Cliffside wedding venue logo" />
+            <img loading="lazy" src="/media/home/steamplant.png" className="vendor" alt="The Steam Plant wedding venue logo" />
+            <img loading="lazy" src="/media/home/jorgensen.png" className="vendor small" alt="Jorgensen Farms wedding venue logo" />
+            <img loading="lazy" src="/media/home/arcade.png" className="vendor" alt="Dayton Arcade wedding venue logo" />
           </div>
         </section>
 
@@ -418,7 +418,7 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
         {/* Advertisement Overlay */}
         <Overlay ref={adOverlayRef} className="ad-overlay" id="ad-overlay">
           <div className="ad-wrapper">
-            <img src="/studio/main.jpg" alt="Still Acre Studio Image" />
+            <img src="/media/studio/main.jpg" alt="Still Acre Studio Image" />
 
             <div className="ad-content">
               <h4>Still Acre Studio</h4>
@@ -457,7 +457,7 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
             </div>
 
             <div className="ad-content-wrapper">
-              <img src="/studio/main.jpg" alt="Still Acre Studio Image" />
+              <img src="/media/studio/main.jpg" alt="Still Acre Studio Image" />
 
               <div className="ad-content">
                 <p>

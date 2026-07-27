@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { formatFriendlyDate, todayISO } from "../rentals.api";
+import { formatFriendlyDate, todayISO } from "../../../shared/date-picker/date-utils";
 import { RentalCalendarPopover, RentalDateConfirmPopover } from "./RentalCalendar";
 
 interface RentalDateSelectorProps {
@@ -63,7 +63,14 @@ const RentalDateSelector: React.FC<RentalDateSelectorProps> = ({
         {pendingDate ? (
           <RentalDateConfirmPopover open onConfirm={confirmChange} onCancel={close} />
         ) : (
-          <RentalCalendarPopover open={open} value={eventDate} min={todayISO()} onSelect={handleSelect} onClose={close} />
+          <RentalCalendarPopover
+            open={open}
+            value={eventDate}
+            min={todayISO()}
+            label="Choose your event date"
+            onSelect={handleSelect}
+            onClose={close}
+          />
         )}
       </div>
     </div>

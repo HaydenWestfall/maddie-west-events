@@ -80,7 +80,7 @@ const PackagesRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({
         <div className="packages-body">
           <div className="package-wrapper">
             <div className="package-image">
-              <img src="/packages/month_of_package.webp" alt="Month Of Coordination Package — wedding day details styled by Maddie West Events" />
+              <img src="/media/packages/month_of_package.webp" alt="Month Of Coordination Package — wedding day details styled by Maddie West Events" />
             </div>
             <div className="package-info-wrapper">
               <div className="package-info">
@@ -211,13 +211,13 @@ const PackagesRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({
               </div>
             </div>
             <div className="package-image">
-              <img src="/packages/final_planning_package.webp" style={{ float: "left" }} alt="Final Planning Package — wedding reception coordinated by Maddie West Events" />
+              <img src="/media/packages/final_planning_package.webp" style={{ float: "left" }} alt="Final Planning Package — wedding reception coordinated by Maddie West Events" />
             </div>
           </div>
 
           <div className="package-wrapper">
             <div className="package-image">
-              <img src="/packages/partial_planning_package.webp" alt="Partial Planning Package — full wedding planning support from Maddie West Events" />
+              <img src="/media/packages/partial_planning_package.webp" alt="Partial Planning Package — full wedding planning support from Maddie West Events" />
             </div>
             <div className="package-info-wrapper">
               <div className="package-info">

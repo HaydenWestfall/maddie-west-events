@@ -10,13 +10,13 @@ const ContactSection: React.FC<{ handleNavigation: (path: string) => void }> = (
           <div className="image-wrapper">
             <img
               loading="lazy"
-              src="/contact/maddie_client.webp"
+              src="/media/contact/maddie_client.webp"
               id="image-1"
               alt="Maddie West with a client on a wedding day"
             />
             <img
               loading="lazy"
-              src="/contact/maddie_phone.webp"
+              src="/media/contact/maddie_phone.webp"
               id="image-2"
               alt="Maddie West coordinating wedding details"
             />

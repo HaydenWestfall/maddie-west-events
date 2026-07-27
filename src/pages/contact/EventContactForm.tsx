@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { env } from "../../config/env";
+import { ContactSubmitError, submitContactForm } from "./contact.api";
+import DateInput from "./DateInput";
 
 interface EventFormData {
   name: string;
@@ -107,67 +108,56 @@ const EventContactForm: React.FC<EventContactFormProps> = ({ onSubmissionSuccess
 
     try {
       setStatus({ type: "loading", message: "Sending..." });
-      console.log("Submitting event form: ", formData);
-      const res = await fetch(`${env.API_BASE_URL}/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, formType: "event" }),
-      });
+      await submitContactForm({ ...formData, formType: "event" });
 
-      const data = await res.json();
-      if (res.ok && data.success) {
-        setStatus({ type: "success", message: "Message sent successfully!" });
-        setFormData({
-          name: "",
-          email: "",
-          eventLocation: "",
-          eventType: "",
-          eventDate: "",
-          eventBudget: "",
-          guestCount: "",
-          message: "",
-        });
-        setTouched({
-          name: false,
-          email: false,
-          eventLocation: false,
-          eventType: false,
-          eventDate: false,
-          eventBudget: false,
-        });
-        onSubmissionSuccess();
-      } else {
-        handleEmailError(data);
-      }
+      setStatus({ type: "success", message: "Message sent successfully!" });
+      setFormData({
+        name: "",
+        email: "",
+        eventLocation: "",
+        eventType: "",
+        eventDate: "",
+        eventBudget: "",
+        guestCount: "",
+        message: "",
+      });
+      setTouched({
+        name: false,
+        email: false,
+        eventLocation: false,
+        eventType: false,
+        eventDate: false,
+        eventBudget: false,
+      });
+      onSubmissionSuccess();
     } catch (error) {
-      console.error("Failed to send email:", error);
-      alert(
-        "There was an error sending your message. Please try again later. If issues persist, try reaching out to Madison via instagram."
-      );
+      handleSubmitError(error);
     } finally {
       setStatus({ type: "", message: "" });
     }
   };
 
-  const handleEmailError = (data: any) => {
-    const errorMessages = [data.error];
-    if (data.details) {
-      data.details.forEach((detail: any) => {
-        errorMessages.push(detail.msg);
-      });
+  const handleSubmitError = (error: unknown) => {
+    console.error("Failed to send contact form:", error);
+
+    if (error instanceof ContactSubmitError) {
+      const messages = [error.message, ...error.details];
+      toast.error(
+        <div>
+          {messages.map((msg, index) => (
+            <div key={index}>{msg}</div>
+          ))}
+        </div>,
+        { autoClose: false }
+      );
+      return;
     }
-    console.log("Error messages: ", errorMessages);
 
-    const errorContent = (
-      <div>
-        {errorMessages.map((msg, index) => (
-          <div key={index}>{msg}</div>
-        ))}
-      </div>
+    // Network/unreachable-server failures never reached the backend.
+    toast.error(
+      "There was an error sending your message. Please try again later. If issues persist, try reaching out to Madison via instagram.",
+      { autoClose: false }
     );
-
-    setStatus({ type: "error", message: data.error || "Failed to send." });
-    toast.error(errorContent, { autoClose: false });
   };
 
   return (
@@ -241,14 +231,13 @@ const EventContactForm: React.FC<EventContactFormProps> = ({ onSubmissionSuccess
           <label className="input-label">
             EVENT DATE <span>*</span>
           </label>
-          <input
-            type="text"
-            name="eventDate"
-            placeholder="EVENT DATE"
+          <DateInput
             value={formData.eventDate}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            className={isInvalid.eventDate ? "invalid" : ""}
+            onChange={(eventDate) => setFormData({ ...formData, eventDate })}
+            onTouched={() => setTouched({ ...touched, eventDate: true })}
+            invalid={isInvalid.eventDate}
+            placeholder="SELECT A DATE"
+            label="Choose your event date"
           />
           {errorMsg.eventDate && <span className="input-error">{errorMsg.eventDate}</span>}
         </div>

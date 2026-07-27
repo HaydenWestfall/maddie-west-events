@@ -6,7 +6,7 @@ interface RentalItemCardProps {
   onSelect: (item: RentalItem) => void;
 }
 
-const FALLBACK_IMAGE = "/general/tablescape.jpg";
+const FALLBACK_IMAGE = "/media/general/tablescape.jpg";
 
 const RentalItemCard: React.FC<RentalItemCardProps> = ({ item, inCart, onSelect }) => {
   const soldOut = item.availableQuantity <= 0;

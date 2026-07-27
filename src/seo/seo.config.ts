@@ -22,7 +22,7 @@ export const SITE = {
   defaultDescription:
     "Maddie West Events is a boutique wedding and event coordination company serving Dayton, Cincinnati, and Columbus, Ohio. Detail-driven planning so you can be fully present on your big day.",
   /** Fallback social-share image (absolutized at use). Ideally a 1200x630 image. */
-  defaultImage: "/home/about_maddie.webp",
+  defaultImage: "/media/home/about_maddie.webp",
   locale: "en_US",
 } as const;
 
@@ -56,8 +56,8 @@ const ORGANIZATION_LD: Record<string, unknown> = {
   "@id": `${SITE.url}/#business`,
   name: "Maddie West Events",
   url: SITE.url,
-  image: absoluteUrl("/home/about_maddie.webp"),
-  logo: absoluteUrl("/logo/maddie_west_logo.png"),
+  image: absoluteUrl("/media/home/about_maddie.webp"),
+  logo: absoluteUrl("/media/logo/maddie_west_logo.png"),
   description:
     "Boutique wedding and event coordination serving Dayton, Cincinnati, and Columbus, Ohio.",
   founder: { "@type": "Person", name: "Madison Westfall" },
@@ -107,7 +107,7 @@ export const ROUTES: RouteMeta[] = [
     path: "/",
     title: SITE.defaultTitle,
     description: SITE.defaultDescription,
-    image: "/home/about_maddie.webp",
+    image: "/media/home/about_maddie.webp",
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -124,7 +124,7 @@ export const ROUTES: RouteMeta[] = [
     title: "About Maddie Westfall | Wedding Coordinator | Maddie West Events",
     description:
       "Meet Madison Westfall, founder and lead coordinator of Maddie West Events — a boutique wedding and event planner based near Dayton, Ohio, serving Cincinnati, Columbus, and beyond.",
-    image: "/about/maddie_1.webp",
+    image: "/media/about/maddie_1.webp",
     type: "profile",
     jsonLd: {
       "@context": "https://schema.org",
@@ -136,7 +136,7 @@ export const ROUTES: RouteMeta[] = [
         name: "Madison Westfall",
         jobTitle: "Wedding & Event Coordinator",
         worksFor: { "@id": `${SITE.url}/#business` },
-        image: absoluteUrl("/about/maddie_1.webp"),
+        image: absoluteUrl("/media/about/maddie_1.webp"),
       },
     },
   },
@@ -145,7 +145,7 @@ export const ROUTES: RouteMeta[] = [
     title: "Wedding Coordination Packages & Pricing | Maddie West Events",
     description:
       "Explore Maddie West Events' wedding coordination packages — Month-Of ($2,200), Final Planning ($2,500), and Partial Planning ($3,250) — for weddings across Dayton, Cincinnati, and Columbus, OH.",
-    image: "/packages/month_of_package.webp",
+    image: "/media/packages/month_of_package.webp",
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "Service",
@@ -190,13 +190,13 @@ export const ROUTES: RouteMeta[] = [
       "Still Acre Studio | Natural-Light Photo Studio in Ludlow Falls, OH",
     description:
       "Still Acre Studio is a private, natural-light photography studio nestled in the woods at 9358 Fenner Rd, Ludlow Falls, Ohio. Hourly bookings at $50/hour for portraits, engagements, and family sessions.",
-    image: "/studio/main.jpg",
+    image: "/media/studio/main.jpg",
     jsonLd: {
       "@context": "https://schema.org",
       "@type": ["PhotographyBusiness", "LocalBusiness"],
       name: "Still Acre Studio",
       url: `${SITE.url}/studio`,
-      image: absoluteUrl("/studio/main.jpg"),
+      image: absoluteUrl("/media/studio/main.jpg"),
       description:
         "Private, natural-light photography studio surrounded by woods, available for hourly bookings.",
       parentOrganization: { "@id": `${SITE.url}/#business` },
@@ -232,7 +232,7 @@ export const ROUTES: RouteMeta[] = [
     title: "Event & Wedding Décor Rentals | Maddie West Events",
     description:
       "Browse curated event and wedding décor rentals from Maddie West Events. Pick your date, check live availability, and request the pieces that bring your celebration to life across the Dayton, OH area.",
-    image: "/general/tablescape.jpg",
+    image: "/media/general/tablescape.jpg",
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "Service",
@@ -248,7 +248,7 @@ export const ROUTES: RouteMeta[] = [
     title: "Wedding Journal & Real Weddings | Maddie West Events",
     description:
       "Real wedding stories from Maddie West Events. Go behind the scenes of celebrations across Ohio — the details, the emotions, and the couples who made each day unforgettable.",
-    image: "/journal/journal_header_3.webp",
+    image: "/media/journal/journal_header_3.webp",
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "Blog",
@@ -264,7 +264,7 @@ export const ROUTES: RouteMeta[] = [
     title: "Client Reviews & Testimonials | Maddie West Events",
     description:
       "See what couples say about working with Maddie West Events. Real testimonials from brides and grooms across Dayton, Cincinnati, and Columbus, Ohio.",
-    image: "/testimony/testimony-cover.webp",
+    image: "/media/testimony/testimony-cover.webp",
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -278,7 +278,7 @@ export const ROUTES: RouteMeta[] = [
     title: "Contact | Book Your Wedding Coordinator | Maddie West Events",
     description:
       "Get in touch with Maddie West Events to plan your wedding or event, or to book a Still Acre Studio session. Fill out the inquiry form and hear back within 48 hours.",
-    image: "/contact/contact_cover.webp",
+    image: "/media/contact/contact_cover.webp",
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "ContactPage",

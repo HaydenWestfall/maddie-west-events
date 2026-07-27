@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import Cross from "../../../assets/cross.svg?react";
 import { useRentalCart } from "../context/RentalCartContext";
-import { formatFriendlyDate } from "../rentals.api";
+import { formatFriendlyDate } from "../../../shared/date-picker/date-utils";
 import RentalInquiryForm from "./RentalInquiryForm";
 
 interface RentalCartDrawerProps {
   onInquirySuccess: () => void;
 }
 
-const FALLBACK_IMAGE = "/general/tablescape.jpg";
+const FALLBACK_IMAGE = "/media/general/tablescape.jpg";
 
 const RentalCartDrawer: React.FC<RentalCartDrawerProps> = ({ onInquirySuccess }) => {
   const { items, count, estimatedTotal, dateRange, updateQuantity, removeItem } = useRentalCart();

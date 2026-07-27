@@ -55,7 +55,7 @@ function AboutRoute() {
         </h1>
         <section id="section-about-main">
           <div id="about-video">
-            <video id="myVideo" src={asset("/videos/about_maddie.mp4")} autoPlay loop muted playsInline preload="auto">
+            <video id="myVideo" src={asset("/media/videos/about_maddie.mp4")} autoPlay loop muted playsInline preload="auto">
               Your browser does not support the video tag.
             </video>
             <div id="about-accent">WEDDING AND EVENT COORDINATOR | DAYTON, CINCINNATI, COLUMBUS</div>
@@ -73,7 +73,7 @@ function AboutRoute() {
               ref={maddieHeadshot}
               loading="lazy"
               id="about-maddie-image"
-              src="/about/maddie_1.webp"
+              src="/media/about/maddie_1.webp"
               alt="Portrait of Madison Westfall, owner and lead coordinator of Maddie West Events"
             />
 
@@ -107,7 +107,7 @@ function AboutRoute() {
             <img
               loading="lazy"
               id="styled-shoot-image"
-              src="/about/maddie_about_extra.webp"
+              src="/media/about/maddie_about_extra.webp"
               alt="Decor done by Maddie West"
             />
             <div id="styled-shoot-text-wrapper">

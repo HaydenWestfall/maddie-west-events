@@ -75,7 +75,7 @@ const HeaderSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
 
       <div id="mobile-menu-wrapper" ref={mobileMenu} className="mobile-menu-wrapper active">
         <div id="mobile-menu" className="mobile-menu">
-          <img src="/general/menu_1.webp" alt="aesthetic wedding photo" />
+          <img src="/media/general/menu_1.webp" alt="aesthetic wedding photo" />
 
           <div id="link-wrapper">
             <a id="link" href="/index" onClick={(e: any) => mweNavigate(e, handleNavigation, "/")}>

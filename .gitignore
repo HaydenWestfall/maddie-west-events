@@ -13,6 +13,8 @@ dist-ssr
 *.local
 
 # Environment variables
+# Only .env.development and .env.production are used, and both are committed.
+# Anything else (.env, *.env.local) is a stray override — keep it out of git.
 .env
 
 # Editor directories and files

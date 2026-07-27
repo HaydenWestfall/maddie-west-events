@@ -45,51 +45,51 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
   const galleryItems: GalleryItem[] = [
     {
       id: 1,
-      image: "/studio/gallery1/cover.jpeg",
+      image: "/media/studio/gallery1/cover.jpeg",
       images: [
-        "/studio/gallery1/cover.jpeg",
-        "/studio/gallery1/image1.jpeg",
-        "/studio/gallery1/image2.jpeg",
-        "/studio/gallery1/image3.jpeg",
+        "/media/studio/gallery1/cover.jpeg",
+        "/media/studio/gallery1/image1.jpeg",
+        "/media/studio/gallery1/image2.jpeg",
+        "/media/studio/gallery1/image3.jpeg",
       ],
       title: "Kleyson + Kat",
       description: "Engagement Shoot",
     },
     {
       id: 2,
-      image: "/studio/gallery2/cover.jpeg",
+      image: "/media/studio/gallery2/cover.jpeg",
       images: [
-        "/studio/gallery2/cover.jpeg",
-        "/studio/gallery2/image1.jpeg",
-        "/studio/gallery2/image2.jpeg",
-        "/studio/gallery2/image3.jpeg",
-        "/studio/gallery2/image4.jpeg",
+        "/media/studio/gallery2/cover.jpeg",
+        "/media/studio/gallery2/image1.jpeg",
+        "/media/studio/gallery2/image2.jpeg",
+        "/media/studio/gallery2/image3.jpeg",
+        "/media/studio/gallery2/image4.jpeg",
       ],
       title: "Martin Family",
       description: "Christmas Shoot",
     },
     {
       id: 3,
-      image: "/studio/gallery3/cover.jpeg",
+      image: "/media/studio/gallery3/cover.jpeg",
       images: [
-        "/studio/gallery3/cover.jpeg",
-        "/studio/gallery3/image1.jpeg",
-        "/studio/gallery3/image2.jpeg",
-        "/studio/gallery3/image3.jpeg",
-        "/studio/gallery3/image4.jpeg",
+        "/media/studio/gallery3/cover.jpeg",
+        "/media/studio/gallery3/image1.jpeg",
+        "/media/studio/gallery3/image2.jpeg",
+        "/media/studio/gallery3/image3.jpeg",
+        "/media/studio/gallery3/image4.jpeg",
       ],
       title: "Matt, Kate, + Graham",
       description: "Christmas Shoot",
     },
     {
       id: 4,
-      image: "/studio/gallery4/cover.jpeg",
+      image: "/media/studio/gallery4/cover.jpeg",
       images: [
-        "/studio/gallery4/cover.jpeg",
-        "/studio/gallery4/image1.jpeg",
-        "/studio/gallery4/image2.jpeg",
-        "/studio/gallery4/image3.jpeg",
-        "/studio/gallery4/image4.jpeg",
+        "/media/studio/gallery4/cover.jpeg",
+        "/media/studio/gallery4/image1.jpeg",
+        "/media/studio/gallery4/image2.jpeg",
+        "/media/studio/gallery4/image3.jpeg",
+        "/media/studio/gallery4/image4.jpeg",
       ],
       title: "4 Generations",
       description: "Family Session",
@@ -195,7 +195,7 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
       <Seo route="/studio" />
       <div data-barba="container" data-barba-namespace="index" className="studio_route">
         <section id="main" className="section-main">
-          <img src="/studio/main.jpg" alt="Interior of Still Acre Studio filled with soft natural light" />
+          <img src="/media/studio/main.jpg" alt="Interior of Still Acre Studio filled with soft natural light" />
           <div id="title">
             <h6 id="main-subheader" ref={mainSubHeader}>
               PHOTOGRAPHY STUDIO
@@ -286,7 +286,7 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
                 Book now
               </a>
             </div>
-            <img src="/studio/about.jpg" alt="Still Acre Studio nestled among the trees in Ludlow Falls, Ohio" />
+            <img src="/media/studio/about.jpg" alt="Still Acre Studio nestled among the trees in Ludlow Falls, Ohio" />
           </div>
         </section>
 
@@ -300,7 +300,7 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
         </section>
 
         <section ref={contactSection} className="section-contact">
-          <img src="/studio/main.jpg" alt="Stillacre Studios interior" />
+          <img src="/media/studio/main.jpg" alt="Stillacre Studios interior" />
           <div className="contact-overlay">
             <a
               href="/contact?type=studio"

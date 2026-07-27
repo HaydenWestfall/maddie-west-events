@@ -1,4 +1,5 @@
 import { env } from "../../config/env";
+import { parseISODate, toISODate } from "../../shared/date-picker/date-utils";
 import {
   RentalDateRange,
   RentalItem,
@@ -18,30 +19,6 @@ export const RENTAL_BUFFER_DAYS = {
   after: 1, // return this many days after the event
 };
 
-const pad = (n: number) => String(n).padStart(2, "0");
-
-/** Format a Date as a local ISO date string (YYYY-MM-DD), no timezone shift. */
-export const toISODate = (date: Date): string =>
-  `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
-
-/** Today as an ISO date string (used as the date picker minimum). */
-export const todayISO = (): string => toISODate(new Date());
-
-/** Parse an ISO date string (YYYY-MM-DD) as a local Date. */
-export const parseISODate = (iso: string): Date => {
-  const [y, m, d] = iso.split("-").map(Number);
-  return new Date(y, m - 1, d);
-};
-
-/** Human-friendly display, e.g. "Fri, Aug 15". */
-export const formatFriendlyDate = (iso: string): string =>
-  parseISODate(iso).toLocaleDateString("en-US", {
-    weekday: "short",
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-
 /** Derive the reserved pickup/return window from a single event date. */
 export const deriveDateRange = (eventDate: string): RentalDateRange => {
   const event = parseISODate(eventDate);
@@ -52,7 +29,7 @@ export const deriveDateRange = (eventDate: string): RentalDateRange => {
   return { startDate: toISODate(start), endDate: toISODate(end) };
 };
 
-const baseUrl = () => env.RENTALS_API_BASE_URL;
+const baseUrl = () => env.API_BASE_URL;
 
 interface GetAvailableItemsParams {
   dateRange: RentalDateRange;

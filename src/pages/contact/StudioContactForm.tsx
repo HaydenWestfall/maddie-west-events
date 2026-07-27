@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { env } from "../../config/env";
+import { ContactSubmitError, submitContactForm } from "./contact.api";
+import DateInput from "./DateInput";
 
 interface StudioFormData {
   name: string;
@@ -122,66 +123,55 @@ const StudioContactForm: React.FC<StudioContactFormProps> = ({ onSubmissionSucce
 
     try {
       setStatus({ type: "loading", message: "Sending..." });
-      console.log("Submitting studio form: ", formData);
-      const res = await fetch(`${env.API_BASE_URL}/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, formType: "studio" }),
-      });
+      await submitContactForm({ ...formData, formType: "studio" });
 
-      const data = await res.json();
-      if (res.ok && data.success) {
-        setStatus({ type: "success", message: "Message sent successfully!" });
-        setFormData({
-          name: "",
-          email: "",
-          shootDate: "",
-          shootLength: "",
-          sessionType: "",
-          numberOfPeople: "",
-          message: "",
-        });
-        setTouched({
-          name: false,
-          email: false,
-          shootDate: false,
-          shootLength: false,
-          sessionType: false,
-          numberOfPeople: false,
-        });
-        onSubmissionSuccess();
-      } else {
-        handleEmailError(data);
-      }
+      setStatus({ type: "success", message: "Message sent successfully!" });
+      setFormData({
+        name: "",
+        email: "",
+        shootDate: "",
+        shootLength: "",
+        sessionType: "",
+        numberOfPeople: "",
+        message: "",
+      });
+      setTouched({
+        name: false,
+        email: false,
+        shootDate: false,
+        shootLength: false,
+        sessionType: false,
+        numberOfPeople: false,
+      });
+      onSubmissionSuccess();
     } catch (error) {
-      console.error("Failed to send email:", error);
-      alert(
-        "There was an error sending your message. Please try again later. If issues persist, try reaching out to Madison via instagram.",
-      );
+      handleSubmitError(error);
     } finally {
       setStatus({ type: "", message: "" });
     }
   };
 
-  const handleEmailError = (data: any) => {
-    const errorMessages = [data.error];
-    if (data.details) {
-      data.details.forEach((detail: any) => {
-        errorMessages.push(detail.msg);
-      });
+  const handleSubmitError = (error: unknown) => {
+    console.error("Failed to send contact form:", error);
+
+    if (error instanceof ContactSubmitError) {
+      const messages = [error.message, ...error.details];
+      toast.error(
+        <div>
+          {messages.map((msg, index) => (
+            <div key={index}>{msg}</div>
+          ))}
+        </div>,
+        { autoClose: false },
+      );
+      return;
     }
-    console.log("Error messages: ", errorMessages);
 
-    const errorContent = (
-      <div>
-        {errorMessages.map((msg, index) => (
-          <div key={index}>{msg}</div>
-        ))}
-      </div>
+    // Network/unreachable-server failures never reached the backend.
+    toast.error(
+      "There was an error sending your message. Please try again later. If issues persist, try reaching out to Madison via instagram.",
+      { autoClose: false },
     );
-
-    setStatus({ type: "error", message: data.error || "Failed to send." });
-    toast.error(errorContent, { autoClose: false });
   };
 
   return (
@@ -224,15 +214,13 @@ const StudioContactForm: React.FC<StudioContactFormProps> = ({ onSubmissionSucce
           <label className="input-label">
             DATE OF SHOOT <span>*</span>
           </label>
-          <input
-            type="date"
-            name="shootDate"
+          <DateInput
             value={formData.shootDate}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            className={isInvalid.shootDate ? "invalid" : ""}
-            min={new Date().toISOString().split("T")[0]}
-            style={!formData.shootDate.length ? { color: "#ededed" } : {}}
+            onChange={(shootDate) => setFormData({ ...formData, shootDate })}
+            onTouched={() => setTouched({ ...touched, shootDate: true })}
+            invalid={isInvalid.shootDate}
+            placeholder="SELECT A DATE"
+            label="Choose your shoot date"
           />
           {errorMsg.shootDate && <span className="input-error">{errorMsg.shootDate}</span>}
         </div>

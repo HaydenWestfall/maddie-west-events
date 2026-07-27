@@ -59,7 +59,7 @@ const ContactRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
       <Seo route="/contact" />
       <div ref={contactContainer} data-barba="container" data-barba-namespace="contact" className="contact_route">
         <section id="contact-header">
-          <img src="/contact/contact_cover.webp" alt="Madison Westfall posing in front of a tablescape" />
+          <img src="/media/contact/contact_cover.webp" alt="Madison Westfall posing in front of a tablescape" />
           <div id="accent-wrapper">
             <span id="maddie-west-accent">MADDIE WEST EVENTS | EVENT COORDINATOR</span>
           </div>

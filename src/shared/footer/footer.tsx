@@ -20,7 +20,7 @@ const FooterSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
               aria-label="Maddie West Events — home"
               onClick={(e: any) => mweNavigate(e, handleNavigation, "/")}
             >
-              <img src="/logo/maddie_west_logo.png" alt="Maddie West Events logo" />
+              <img src="/media/logo/maddie_west_logo.png" alt="Maddie West Events logo" />
             </a>
             <p className="footer-tagline">
               A boutique wedding &amp; event planning company based in Dayton, Ohio &mdash; serving Cincinnati, Columbus
