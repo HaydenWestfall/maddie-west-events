@@ -1,0 +1,90 @@
+name: Nightly Backend Health Check
+
+# Contact-form emails are sent asynchronously and failures are only logged, so the site
+# can look fine while inquiries silently go nowhere. This checks the backend every night
+# and emails ALERT_EMAIL_TO if anything is off.
+on:
+  schedule:
+    - cron: "0 6 * * *" # 06:00 UTC (~1–2am US Central/Eastern); schedules only run from main
+  workflow_dispatch:
+    inputs:
+      api_base_url:
+        description: "Override the API base URL (e.g. a bad URL to test the alert email)"
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      ORIGIN: https://maddiewestevents.com
+    steps:
+      - uses: actions/checkout@v4
+
+      # Same backend the production build talks to, so the URL lives in one place.
+      - name: Resolve API base URL
+        run: |
+          url="${{ inputs.api_base_url }}"
+          if [ -z "$url" ]; then
+            url=$(grep -E '^VITE_API_BASE_URL=' .env.production | cut -d= -f2-)
+          fi
+          echo "API=${url%/}" >> "$GITHUB_ENV"
+          echo "Checking $url"
+
+      # Retries ride out a one-off network blip so we only alert on real outages.
+      - name: Mongo + SMTP reachable (/actuator/health/deep)
+        run: |
+          for i in 1 2 3; do
+            body=$(curl -fsS --max-time 20 "$API/actuator/health/deep") && echo "$body" | grep -q '"status":"UP"' && { echo "$body"; exit 0; }
+            echo "Attempt $i failed: ${body:-no response}"; sleep 30
+          done
+          exit 1
+
+      - name: Public rentals API responds (/api/items)
+        run: |
+          for i in 1 2 3; do
+            curl -fsS --max-time 20 -o /dev/null "$API/api/items?limit=1" && exit 0
+            echo "Attempt $i failed"; sleep 30
+          done
+          exit 1
+
+      # The browser preflight must succeed or the contact form fails before it ever posts.
+      - name: Contact form CORS preflight (/api/contact)
+        run: |
+          for i in 1 2 3; do
+            headers=$(curl -fsS --max-time 20 -o /dev/null -D - -X OPTIONS \
+              -H "Origin: $ORIGIN" -H "Access-Control-Request-Method: POST" \
+              -H "Access-Control-Request-Headers: content-type" \
+              "$API/api/contact") \
+              && echo "$headers" | grep -qi "^access-control-allow-origin: $ORIGIN" && exit 0
+            echo "Attempt $i failed"; sleep 30
+          done
+          exit 1
+
+      # Sent through Gmail rather than SMTP2GO, so the alert still goes out if SMTP2GO is what broke.
+      - name: Email alert
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.ALERT_SMTP_USER }}
+          password: ${{ secrets.ALERT_SMTP_PASS }}
+          from: Maddie West Events Monitor <${{ secrets.ALERT_SMTP_USER }}>
+          to: ${{ secrets.ALERT_EMAIL_TO }}
+          subject: "⚠️ Maddie West Events backend needs attention"
+          body: |
+            The nightly health check for ${{ env.API }} failed, so website inquiries may not be reaching your inbox.
+
+            See which check failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            To fix (usually a restart is enough):
+              1. SSH into the Lightsail instance
+              2. docker compose ps
+              3. docker compose logs --tail=200 backend
+              4. docker compose restart backend
+              5. Re-run this workflow from the Actions tab to confirm it's green
