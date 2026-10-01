@@ -31,6 +31,18 @@ To see what your production build looks like before launching it to the world:
 
 npm run preview
 
+## 🚢 Deployment
+
+Every merge to `main` runs [.github/workflows/deploy.yml](.github/workflows/deploy.yml): it builds the site with `npm run build` and uploads `dist/` to Hostinger over FTP. Only changed files are sent. You can also run it by hand from the Actions tab ("Run workflow").
+
+Required repository secrets (Settings → Secrets and variables → Actions), all found in hPanel → Files → FTP Accounts:
+
+| Secret                   | Example                                 |
+| ------------------------ | --------------------------------------- |
+| `HOSTINGER_FTP_HOST`     | `123.45.67.89` or `ftp.maddiewestevents.com` |
+| `HOSTINGER_FTP_USER`     | `u123456789.maddiewestevents.com`       |
+| `HOSTINGER_FTP_PASSWORD` | the FTP account's password              |
+
 ## 🧹 Linting (Because Clean Code is Sexy)
 
 Run ESLint to make sure everything is looking tidy:
