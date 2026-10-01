@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/all";
 import HeaderSection from "./shared/header/header";
 import HomeRoute from "./pages/home/home";
 import ContactRoute from "./pages/contact/contact";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import AboutRoute from "./pages/about/about";
 import TestimoniesRoute from "./pages/testimonies/testimonies";
 import PackagesRoute from "./pages/packages/packages";
@@ -48,6 +48,9 @@ function App() {
                 <Route path="/contact" element={<ContactRoute handleNavigation={handleNavigation} />} />
                 <Route path="/rentals" element={<RentalsRoute handleNavigation={handleNavigation} />} />
                 <Route path="/rentals/agreement" element={<RentalAgreementRoute handleNavigation={handleNavigation} />} />
+                <Route path="/index" element={<Navigate to="/" replace />} />
+                <Route path="/index.html" element={<Navigate to="/" replace />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
               {!["/contact", "/studio", "/rentals", "/rentals/agreement"].includes(location.pathname) && (
                 <ContactSection handleNavigation={handleNavigation} />
