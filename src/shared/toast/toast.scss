@@ -1,0 +1,155 @@
+/*
+-------------------------------------------------------------------
+---  TOAST NOTIFICATIONS
+---  react-toastify injects its own stylesheet at runtime, so every
+---  override below is doubled up (.Toastify__toast.mw-toast) to win
+---  on specificity regardless of style order.
+-------------------------------------------------------------------
+*/
+
+.Toastify__toast-container.mw-toast-container {
+  width: fit-content;
+  max-width: min(34rem, calc(100vw - 2rem));
+  bottom: 2.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0;
+  align-items: center;
+}
+
+.Toastify__toast.mw-toast {
+  --toastify-icon-color-success: #b09a6b;
+  --toastify-icon-color-info: #111;
+  --toastify-icon-color-warning: #b09a6b;
+  --toastify-icon-color-error: #b00;
+
+  position: relative;
+  width: auto;
+  min-width: 18rem;
+  max-width: min(34rem, calc(100vw - 2rem));
+  min-height: unset;
+  margin-bottom: 0.75rem;
+  padding: 1rem 2.5rem 1rem 1.25rem;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid #e3e3e3;
+  border-radius: 0;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+  font-family: Montserrat, sans-serif;
+  color: #333;
+
+  /* hairline accent rule, mirroring the gold detailing used across the site */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    background: #b09a6b;
+  }
+
+  &.Toastify__toast--error::before {
+    background: #b00;
+  }
+
+  &.Toastify__toast--info::before,
+  &.Toastify__toast--default::before {
+    background: #111;
+  }
+
+  /* the global `*` rule sets a font-size on every element, so nested
+     nodes inside the body have to be targeted explicitly too */
+  .Toastify__toast-body,
+  .Toastify__toast-body * {
+    font-family: Montserrat, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+    color: #333;
+  }
+
+  .Toastify__toast-body {
+    margin: 0;
+    padding: 0;
+    align-items: flex-start;
+
+    /* multi-line error payloads (contact + rental forms) */
+    div + div {
+      margin-top: 0.35rem;
+    }
+  }
+
+  .Toastify__toast-icon {
+    width: 1rem;
+    margin-inline-end: 0.75rem;
+    margin-top: 0.1rem;
+  }
+
+  .Toastify__close-button {
+    top: 50%;
+    right: 0.9rem;
+    transform: translateY(-50%);
+    color: #999;
+    opacity: 1;
+
+    &:hover,
+    &:focus {
+      color: #111;
+    }
+
+    svg {
+      width: 0.7rem;
+      height: 0.7rem;
+    }
+  }
+
+  .Toastify__progress-bar--wrp {
+    height: 2px;
+    border-radius: 0;
+  }
+
+  .Toastify__progress-bar {
+    opacity: 1;
+    background: #b09a6b;
+  }
+
+  .Toastify__progress-bar--bg {
+    opacity: 0;
+  }
+
+  &.Toastify__toast--error .Toastify__progress-bar {
+    background: #b00;
+  }
+
+  &.Toastify__toast--info .Toastify__progress-bar,
+  &.Toastify__toast--default .Toastify__progress-bar {
+    background: #111;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .Toastify__toast-container.mw-toast-container {
+    width: calc(100vw - 1.5rem);
+    max-width: none;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .Toastify__toast.mw-toast {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    margin-bottom: 0.6rem;
+    padding: 0.9rem 2.25rem 0.9rem 1rem;
+    border-radius: 0;
+
+    .Toastify__toast-body,
+    .Toastify__toast-body * {
+      font-size: 0.7rem;
+      letter-spacing: 0.4px;
+    }
+  }
+}

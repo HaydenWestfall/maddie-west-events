@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { env } from "../../config/env";
+import { ContactSubmitError, submitContactForm } from "./contact.api";
+import DateInput from "./DateInput";
 
 interface StudioFormData {
   name: string;
   email: string;
   shootDate: string;
   shootLength: string;
-  eventType: string;
+  sessionType: string;
   numberOfPeople: string;
   message: string;
 }
@@ -24,7 +25,7 @@ const StudioContactForm: React.FC<StudioContactFormProps> = ({ onSubmissionSucce
     email: "",
     shootDate: "",
     shootLength: "",
-    eventType: "",
+    sessionType: "",
     numberOfPeople: "",
     message: "",
   });
@@ -34,7 +35,7 @@ const StudioContactForm: React.FC<StudioContactFormProps> = ({ onSubmissionSucce
     email: false,
     shootDate: false,
     shootLength: false,
-    eventType: false,
+    sessionType: false,
     numberOfPeople: false,
   });
 
@@ -72,7 +73,7 @@ const StudioContactForm: React.FC<StudioContactFormProps> = ({ onSubmissionSucce
     email: touched.email && (!formData.email || !validateEmail(formData.email)),
     shootDate: touched.shootDate && !formData.shootDate,
     shootLength: touched.shootLength && !formData.shootLength,
-    eventType: touched.eventType && !formData.eventType,
+    sessionType: touched.sessionType && !formData.sessionType,
     numberOfPeople: touched.numberOfPeople && !formData.numberOfPeople,
   };
 
@@ -82,11 +83,11 @@ const StudioContactForm: React.FC<StudioContactFormProps> = ({ onSubmissionSucce
       touched.email && !formData.email
         ? "Required"
         : touched.email && formData.email && !validateEmail(formData.email)
-        ? "Please enter a valid email address."
-        : "",
+          ? "Please enter a valid email address."
+          : "",
     shootDate: touched.shootDate && !formData.shootDate ? "Required" : "",
     shootLength: touched.shootLength && !formData.shootLength ? "Required" : "",
-    eventType: touched.eventType && !formData.eventType ? "Required" : "",
+    sessionType: touched.sessionType && !formData.sessionType ? "Required" : "",
     numberOfPeople: touched.numberOfPeople && !formData.numberOfPeople ? "Required" : "",
   };
 
@@ -95,7 +96,7 @@ const StudioContactForm: React.FC<StudioContactFormProps> = ({ onSubmissionSucce
     !formData.email ||
     !formData.shootDate ||
     !formData.shootLength ||
-    !formData.eventType ||
+    !formData.sessionType ||
     !formData.numberOfPeople;
   const isFormInvalid = !validateEmail(formData.email) || isFormEmpty;
   const disableSubmit = isFormInvalid || status.type !== "";
@@ -109,7 +110,7 @@ const StudioContactForm: React.FC<StudioContactFormProps> = ({ onSubmissionSucce
       !formData.email ||
       !formData.shootDate ||
       !formData.shootLength ||
-      !formData.eventType ||
+      !formData.sessionType ||
       !formData.numberOfPeople
     ) {
       toast.error("Please fill out all required fields.", { autoClose: false });
@@ -122,66 +123,55 @@ const StudioContactForm: React.FC<StudioContactFormProps> = ({ onSubmissionSucce
 
     try {
       setStatus({ type: "loading", message: "Sending..." });
-      console.log("Submitting studio form: ", formData);
-      const res = await fetch(`${env.API_BASE_URL}/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, formType: "studio" }),
-      });
+      await submitContactForm({ ...formData, formType: "studio" });
 
-      const data = await res.json();
-      if (res.ok && data.success) {
-        setStatus({ type: "success", message: "Message sent successfully!" });
-        setFormData({
-          name: "",
-          email: "",
-          shootDate: "",
-          shootLength: "",
-          eventType: "",
-          numberOfPeople: "",
-          message: "",
-        });
-        setTouched({
-          name: false,
-          email: false,
-          shootDate: false,
-          shootLength: false,
-          eventType: false,
-          numberOfPeople: false,
-        });
-        onSubmissionSuccess();
-      } else {
-        handleEmailError(data);
-      }
+      setStatus({ type: "success", message: "Message sent successfully!" });
+      setFormData({
+        name: "",
+        email: "",
+        shootDate: "",
+        shootLength: "",
+        sessionType: "",
+        numberOfPeople: "",
+        message: "",
+      });
+      setTouched({
+        name: false,
+        email: false,
+        shootDate: false,
+        shootLength: false,
+        sessionType: false,
+        numberOfPeople: false,
+      });
+      onSubmissionSuccess();
     } catch (error) {
-      console.error("Failed to send email:", error);
-      alert(
-        "There was an error sending your message. Please try again later. If issues persist, try reaching out to Madison via instagram."
-      );
+      handleSubmitError(error);
     } finally {
       setStatus({ type: "", message: "" });
     }
   };
 
-  const handleEmailError = (data: any) => {
-    const errorMessages = [data.error];
-    if (data.details) {
-      data.details.forEach((detail: any) => {
-        errorMessages.push(detail.msg);
-      });
+  const handleSubmitError = (error: unknown) => {
+    console.error("Failed to send contact form:", error);
+
+    if (error instanceof ContactSubmitError) {
+      const messages = [error.message, ...error.details];
+      toast.error(
+        <div>
+          {messages.map((msg, index) => (
+            <div key={index}>{msg}</div>
+          ))}
+        </div>,
+        { autoClose: false },
+      );
+      return;
     }
-    console.log("Error messages: ", errorMessages);
 
-    const errorContent = (
-      <div>
-        {errorMessages.map((msg, index) => (
-          <div key={index}>{msg}</div>
-        ))}
-      </div>
+    // Network/unreachable-server failures never reached the backend.
+    toast.error(
+      "There was an error sending your message. Please try again later. If issues persist, try reaching out to Madison via instagram.",
+      { autoClose: false },
     );
-
-    setStatus({ type: "error", message: data.error || "Failed to send." });
-    toast.error(errorContent, { autoClose: false });
   };
 
   return (
@@ -224,15 +214,13 @@ const StudioContactForm: React.FC<StudioContactFormProps> = ({ onSubmissionSucce
           <label className="input-label">
             DATE OF SHOOT <span>*</span>
           </label>
-          <input
-            type="date"
-            name="shootDate"
+          <DateInput
             value={formData.shootDate}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            className={isInvalid.shootDate ? "invalid" : ""}
-            min={new Date().toISOString().split("T")[0]}
-            style={!formData.shootDate.length ? { color: "#ededed" } : {}}
+            onChange={(shootDate) => setFormData({ ...formData, shootDate })}
+            onTouched={() => setTouched({ ...touched, shootDate: true })}
+            invalid={isInvalid.shootDate}
+            placeholder="SELECT A DATE"
+            label="Choose your shoot date"
           />
           {errorMsg.shootDate && <span className="input-error">{errorMsg.shootDate}</span>}
         </div>
@@ -261,18 +249,18 @@ const StudioContactForm: React.FC<StudioContactFormProps> = ({ onSubmissionSucce
       <div className="input-inline">
         <div className="input-wrapper">
           <label className="input-label">
-            EVENT TYPE <span>*</span>
+            SESSION TYPE <span>*</span>
           </label>
           <input
             type="text"
-            name="eventType"
+            name="sessionType"
             placeholder="TYPE OF SHOOT (I.E. COUPLE'S SESSION)"
-            value={formData.eventType}
+            value={formData.sessionType}
             onChange={handleChange}
             onBlur={handleBlur}
-            className={isInvalid.eventType ? "invalid" : ""}
+            className={isInvalid.sessionType ? "invalid" : ""}
           />
-          {errorMsg.eventType && <span className="input-error">{errorMsg.eventType}</span>}
+          {errorMsg.sessionType && <span className="input-error">{errorMsg.sessionType}</span>}
         </div>
         <div className="input-wrapper">
           <label className="input-label">

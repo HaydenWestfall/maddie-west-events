@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/all";
 import HeaderSection from "./shared/header/header";
 import HomeRoute from "./pages/home/home";
 import ContactRoute from "./pages/contact/contact";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import AboutRoute from "./pages/about/about";
 import TestimoniesRoute from "./pages/testimonies/testimonies";
 import PackagesRoute from "./pages/packages/packages";
@@ -15,8 +15,11 @@ import ContactSection from "./shared/contact-section/contact-section";
 import FooterSection from "./shared/footer/footer";
 import { TransitionProvider } from "./shared/route-transition/TransitionProvider";
 import PageTransition from "./shared/route-transition/PageTransition";
-import { ToastContainer } from "react-toastify";
+import { Slide, ToastContainer } from "react-toastify";
+import "./shared/toast/toast.scss";
 import StudioRoute from "./pages/studio/studio";
+import RentalsRoute from "./pages/rentals/rentals";
+import RentalAgreementRoute from "./pages/rentals/rental-agreement-page";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -32,7 +35,9 @@ function App() {
           {(handleNavigation) => (
             <>
               {/* <TransitionCover displayText="test" /> */}
-              <HeaderSection handleNavigation={handleNavigation} />
+              {location.pathname !== "/rentals/agreement" && (
+                <HeaderSection handleNavigation={handleNavigation} />
+              )}
               <Routes location={location} key={location.pathname}>
                 <Route path="/" element={<HomeRoute handleNavigation={handleNavigation} />} />
                 <Route path="/about" element={<AboutRoute />} />
@@ -41,16 +46,33 @@ function App() {
                 <Route path="/journal" element={<JournalRoute />} />
                 <Route path="/studio" element={<StudioRoute handleNavigation={handleNavigation} />} />
                 <Route path="/contact" element={<ContactRoute handleNavigation={handleNavigation} />} />
+                <Route path="/rentals" element={<RentalsRoute handleNavigation={handleNavigation} />} />
+                <Route path="/rentals/agreement" element={<RentalAgreementRoute handleNavigation={handleNavigation} />} />
+                <Route path="/index" element={<Navigate to="/" replace />} />
+                <Route path="/index.html" element={<Navigate to="/" replace />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
-              {!["/contact", "/studio"].includes(location.pathname) && (
+              {!["/contact", "/studio", "/rentals", "/rentals/agreement"].includes(location.pathname) && (
                 <ContactSection handleNavigation={handleNavigation} />
               )}
-              <FooterSection handleNavigation={handleNavigation} />
+              {location.pathname !== "/rentals/agreement" && (
+                <FooterSection handleNavigation={handleNavigation} />
+              )}
             </>
           )}
         </PageTransition>
       </TransitionProvider>
-      <ToastContainer position="top-right" autoClose={3000} />
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3500}
+        transition={Slide}
+        theme="light"
+        className="mw-toast-container"
+        toastClassName="mw-toast"
+        closeOnClick
+        pauseOnHover
+        draggable
+      />
     </ReactLenis>
   );
 }

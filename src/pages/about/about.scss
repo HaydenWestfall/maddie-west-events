@@ -11,10 +11,14 @@
     margin-top: 70px;
 
     #about-video {
+      position: relative;
       display: flex;
       justify-content: center;
       height: 100%;
       width: 100%;
+      // Video fills the viewport until it hits the max width, after which the
+      // section background frames it with clean pillarbox bars on wide screens.
+      max-width: 2000px;
 
       video {
         height: 100%;
@@ -22,24 +26,25 @@
         width: fit-content;
         object-fit: cover;
       }
-    }
 
-    #about-accent {
-      position: absolute;
-      bottom: 0.5rem;
-      left: 1rem;
-      max-width: 55%;
-      font-size: 0.65rem;
-      letter-spacing: 2px;
-      color: white;
-      z-index: 1000;
+      #about-accent {
+        position: absolute;
+        bottom: 0.5rem;
+        left: 1rem;
+        max-width: 55%;
+        font-size: 0.65rem;
+        letter-spacing: 2px;
+        color: white;
+        z-index: 1000;
+      }
     }
   }
 
   #about-client-quote {
     position: relative;
     width: 100%;
-    margin: 10rem 0 25rem;
+    max-width: 1280px;
+    margin: 10rem auto 25rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -65,8 +70,16 @@
   #about-maddie {
     position: relative;
     background-color: #f1f0f0;
-    padding: 5rem 0 0;
     width: 100%;
+
+    // Full-bleed background, but content is capped to the navbar width and centered.
+    #about-maddie-inner {
+      position: relative;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 5rem 0 0;
+    }
 
     #about-maddie-image {
       position: absolute;
@@ -138,7 +151,10 @@
       position: relative;
       display: flex;
       padding-bottom: 8rem;
-      max-width: 130rem;
+      // Fills the width so the image touches the left edge of the screen, until
+      // the viewport exceeds the navbar max width and the content centers.
+      width: 100%;
+      max-width: 1280px;
 
       #styled-shoot-image {
         position: relative;
@@ -222,6 +238,10 @@
     #about-maddie {
       background-color: unset;
       padding: 0;
+
+      #about-maddie-inner {
+        padding: 0;
+      }
 
       #about-maddie-image {
         position: relative;

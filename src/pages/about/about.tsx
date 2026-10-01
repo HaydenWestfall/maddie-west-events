@@ -4,6 +4,8 @@ import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { createGsapAnimation } from "../../shared/utility";
+import { asset } from "../../config/assets";
+import Seo from "../../seo/Seo";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -46,14 +48,18 @@ function AboutRoute() {
 
   return (
     <main data-barba="wrapper">
+      <Seo route="/about" />
       <div ref={aboutContainer} data-barba="container" data-barba-namespace="about" className="about_route">
+        <h1 className="sr-only">
+          About Madison Westfall — Wedding &amp; Event Coordinator serving Dayton, Cincinnati &amp; Columbus, Ohio
+        </h1>
         <section id="section-about-main">
           <div id="about-video">
-            <video id="myVideo" src="./videos/about_maddie.mp4" autoPlay loop muted playsInline preload="auto">
+            <video id="myVideo" src={asset("/media/videos/about_maddie.mp4")} autoPlay loop muted playsInline preload="auto">
               Your browser does not support the video tag.
             </video>
+            <div id="about-accent">WEDDING AND EVENT COORDINATOR | DAYTON, CINCINNATI, COLUMBUS</div>
           </div>
-          <div id="about-accent">WEDDING AND EVENT COORDINATOR | DAYTON, CINCINNATI, COLUMBUS</div>
         </section>
 
         <section id="about-client-quote" ref={clientQuote}>
@@ -62,9 +68,16 @@ function AboutRoute() {
         </section>
 
         <section id="about-maddie">
-          <img ref={maddieHeadshot} loading="lazy" id="about-maddie-image" src="/about/maddie_1.webp" />
+          <div id="about-maddie-inner">
+            <img
+              ref={maddieHeadshot}
+              loading="lazy"
+              id="about-maddie-image"
+              src="/media/about/maddie_1.webp"
+              alt="Portrait of Madison Westfall, owner and lead coordinator of Maddie West Events"
+            />
 
-          <div className="about-text-wrapper first">
+            <div className="about-text-wrapper first">
             <p id="about-text-block-1" ref={aboutDescription1}>
               I’m Maddie Westfall, owner and lead coordinator of Maddie West Events. In 2022, I got married and executed
               the wedding that I had always envisioned. Having been a recent bride myself, I realized my passion for
@@ -86,6 +99,7 @@ function AboutRoute() {
               formed with venues and other vendors within the industry is immeasurable.
             </p>
           </div>
+          </div>
         </section>
 
         <section id="section-styled-shoot">
@@ -93,7 +107,7 @@ function AboutRoute() {
             <img
               loading="lazy"
               id="styled-shoot-image"
-              src="/about/maddie_about_extra.webp"
+              src="/media/about/maddie_about_extra.webp"
               alt="Decor done by Maddie West"
             />
             <div id="styled-shoot-text-wrapper">

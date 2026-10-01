@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useMWETransitionContext } from "../../shared/route-transition/TransitionProvider";
 import { componentOnLoadAnimationDelay, TransitionState } from "../../shared/utility";
+import Seo from "../../seo/Seo";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -37,6 +38,8 @@ const TestimoniesRoute: React.FC = () => {
         data-barba-namespace="testimonies"
         className="testimonies_route"
       >
+        <Seo route="/testimonies" />
+        <h1 className="sr-only">Client Reviews &amp; Testimonials — Maddie West Events</h1>
         <div className="testimonies-page">
           <div className="image-wrapper">
             <div ref={headerTopLeft} className="header top-left">
@@ -45,7 +48,12 @@ const TestimoniesRoute: React.FC = () => {
             <div ref={headerBottomLeft} className="header bottom-right">
               ARE SAYING
             </div>
-            <img ref={headerBg} className="focused-image" src="/testimony/testimony-cover.webp" />
+            <img
+              ref={headerBg}
+              className="focused-image"
+              src="/media/testimony/testimony-cover.webp"
+              alt="Bride and groom celebrating a wedding coordinated by Maddie West Events"
+            />
           </div>
         </div>
 
@@ -56,7 +64,8 @@ const TestimoniesRoute: React.FC = () => {
                 <img
                   className="testimony-img"
                   loading="lazy"
-                  src="/testimony/testimony-2-1.webp"
+                  src="/media/testimony/testimony-2-1.webp"
+                  alt="Olivia and Caleb's wedding coordinated by Maddie West Events"
                   id="testimony-2-image-1"
                 />
               </div>
@@ -64,7 +73,8 @@ const TestimoniesRoute: React.FC = () => {
                 <img
                   className="testimony-img"
                   loading="lazy"
-                  src="/testimony/testimony-2-2.webp"
+                  src="/media/testimony/testimony-2-2.webp"
+                  alt="Reception details from Olivia and Caleb's wedding"
                   id="testimony-2-image-2"
                 />
               </div>
@@ -116,7 +126,8 @@ const TestimoniesRoute: React.FC = () => {
                   loading="lazy"
                   className="testimony-img"
                   id="testimony-3-image-1"
-                  src="/testimony/testimony-3-1.webp"
+                  src="/media/testimony/testimony-3-1.webp"
+                  alt="Julia and Cole's wedding coordinated by Maddie West Events"
                 />
               </div>
               <div className="image-wrapper">
@@ -124,7 +135,8 @@ const TestimoniesRoute: React.FC = () => {
                   loading="lazy"
                   className="testimony-img"
                   id="testimony-3-image-2"
-                  src="/testimony/testimony-3-2.webp"
+                  src="/media/testimony/testimony-3-2.webp"
+                  alt="Ceremony setup from Julia and Cole's wedding"
                 />
               </div>
             </div>
@@ -139,7 +151,8 @@ const TestimoniesRoute: React.FC = () => {
                   className="testimony-img"
                   id="testimony-1-image-1"
                   loading="lazy"
-                  src="/testimony/testimony-1-1.webp"
+                  src="/media/testimony/testimony-1-1.webp"
+                  alt="Anna and Kodi's wedding coordinated by Maddie West Events"
                 />
               </div>
               <div className="image-wrapper">
@@ -147,7 +160,8 @@ const TestimoniesRoute: React.FC = () => {
                   className="testimony-img"
                   id="testimony-1-image-2"
                   loading="lazy"
-                  src="/testimony/testimony-1-2.webp"
+                  src="/media/testimony/testimony-1-2.webp"
+                  alt="Fairy-tale reception space from Anna and Kodi's wedding"
                 />
               </div>
             </div>

@@ -1,6 +1,7 @@
 import "./contact.scss";
 import "./form.scss";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -11,6 +12,7 @@ import { env } from "../../config/env";
 import EventContactForm from "./EventContactForm";
 import StudioContactForm from "./StudioContactForm";
 import Overlay, { OverlayRef } from "../../shared/overlay";
+import Seo from "../../seo/Seo";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -21,8 +23,18 @@ const ContactRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
   const contactHeader = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<OverlayRef | null>(null);
 
-  // Form type selection state
-  const [selectedFormType, setSelectedFormType] = useState<"event" | "studio">("event");
+  // Form type selection state. A `?type=studio` query param (used by the studio
+  // page CTAs) pre-selects Studio Booking; anything else falls back to Event Planning.
+  const [searchParams] = useSearchParams();
+  const [selectedFormType, setSelectedFormType] = useState<"event" | "studio">(
+    searchParams.get("type") === "studio" ? "studio" : "event",
+  );
+
+  // Re-sync when the query param changes without a full remount (e.g. arriving
+  // from a pre-selecting link while already on the contact page).
+  useEffect(() => {
+    setSelectedFormType(searchParams.get("type") === "studio" ? "studio" : "event");
+  }, [searchParams]);
 
   // Handle successful form submission from child components
   const handleFormSubmissionSuccess = () => {
@@ -39,14 +51,15 @@ const ContactRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
         timeline.play();
       }
     },
-    { dependencies: [isTransitioning], scope: contactContainer }
+    { dependencies: [isTransitioning], scope: contactContainer },
   );
 
   return (
     <main data-barba="wrapper">
+      <Seo route="/contact" />
       <div ref={contactContainer} data-barba="container" data-barba-namespace="contact" className="contact_route">
         <section id="contact-header">
-          <img src="/contact/contact_cover.webp" alt="Madison Westfall posing in front of a tablescape" />
+          <img src="/media/contact/contact_cover.webp" alt="Madison Westfall posing in front of a tablescape" />
           <div id="accent-wrapper">
             <span id="maddie-west-accent">MADDIE WEST EVENTS | EVENT COORDINATOR</span>
           </div>
@@ -83,7 +96,6 @@ const ContactRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ 
                 </button>
               </div>
             </div>
-            <button onClick={() => overlayRef.current!.show()}>test</button>
 
             {/* Conditional Form Rendering */}
             {selectedFormType === "event" ? (

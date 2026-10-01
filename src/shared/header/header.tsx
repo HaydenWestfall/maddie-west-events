@@ -65,8 +65,8 @@ const HeaderSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
           <a
             id="contact"
             className="primary-button medium light"
-            href="/contact"
-            onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+            href="/contact?type=event"
+            onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=event")}
           >
             CONTACT
           </a>
@@ -75,7 +75,7 @@ const HeaderSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
 
       <div id="mobile-menu-wrapper" ref={mobileMenu} className="mobile-menu-wrapper active">
         <div id="mobile-menu" className="mobile-menu">
-          <img src="/general/menu_1.webp" alt="aesthetic wedding photo" />
+          <img src="/media/general/menu_1.webp" alt="aesthetic wedding photo" />
 
           <div id="link-wrapper">
             <a id="link" href="/index" onClick={(e: any) => mweNavigate(e, handleNavigation, "/")}>
@@ -84,9 +84,9 @@ const HeaderSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
             <a id="link" href="/about" onClick={(e: any) => mweNavigate(e, handleNavigation, "/about")}>
               ABOUT
             </a>
-            <a id="link" href="/testimonies" onClick={(e: any) => mweNavigate(e, handleNavigation, "/testimonies")}>
-              TESTIMONIES
-            </a>
+            {/* <a id="link" href="/rentals" onClick={(e: any) => mweNavigate(e, handleNavigation, "/rentals")}>\
+              RENTALS\
+            </a> */}
             <a id="link" href="/packages" onClick={(e: any) => mweNavigate(e, handleNavigation, "/packages")}>
               PACKAGES
             </a>
@@ -94,17 +94,30 @@ const HeaderSection: React.FC<{ handleNavigation: (path: string) => void }> = ({
               STILL ACRE STUDIO
             </a>
             <div className="small-links">
+              <a
+                id="testimonies"
+                href="/testimonies"
+                onClick={(e: any) => mweNavigate(e, handleNavigation, "/testimonies")}
+              >
+                TESTIMONIES
+              </a>
               <a id="journal" href="/journal" onClick={(e: any) => mweNavigate(e, handleNavigation, "/journal")}>
                 JOURNAL
               </a>
-              <a id="instagram" href={env.INSTAGRAM_URL} onClick={() => closeMobileMenu()} target="_blank">
+              <a
+                id="instagram"
+                href={env.INSTAGRAM_URL}
+                onClick={() => closeMobileMenu()}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 INSTAGRAM
               </a>
             </div>
             <a
               className="primary-button small light"
-              href="/contact"
-              onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+              href="/contact?type=event"
+              onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=event")}
             >
               CONTACT
             </a>

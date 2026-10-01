@@ -6,6 +6,10 @@ import { createGsapAnimation, mweNavigate } from "../../shared/utility";
 import { ScrollTrigger } from "gsap/all";
 import Angle from "../../assets/angle.svg?react";
 import Cross from "../../assets/cross.svg?react";
+import InstagramBubble from "../../shared/instagram-bubble";
+import { env } from "../../config/env";
+import { asset } from "../../config/assets";
+import Seo from "../../seo/Seo";
 
 interface GalleryItem {
   id: number;
@@ -41,30 +45,53 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
   const galleryItems: GalleryItem[] = [
     {
       id: 1,
-      image: "/studio/gallery1.jpg",
-      images: ["/studio/gallery1.jpg", "/studio/gallery2.jpg", "/studio/gallery3.jpg", "/studio/gallery4.jpg"],
-      title: "Hayden + Madison",
-      description: "Fall Shoot",
+      image: "/media/studio/gallery1/cover.jpeg",
+      images: [
+        "/media/studio/gallery1/cover.jpeg",
+        "/media/studio/gallery1/image1.jpeg",
+        "/media/studio/gallery1/image2.jpeg",
+        "/media/studio/gallery1/image3.jpeg",
+      ],
+      title: "Kleyson + Kat",
+      description: "Engagement Shoot",
     },
     {
       id: 2,
-      image: "/studio/gallery2.jpg",
-      images: ["/studio/gallery2.jpg", "/studio/gallery2.jpg", "/studio/gallery2.jpg", "/studio/gallery2.jpg"],
-      title: "Sarah + James",
-      description: "Spring Session",
+      image: "/media/studio/gallery2/cover.jpeg",
+      images: [
+        "/media/studio/gallery2/cover.jpeg",
+        "/media/studio/gallery2/image1.jpeg",
+        "/media/studio/gallery2/image2.jpeg",
+        "/media/studio/gallery2/image3.jpeg",
+        "/media/studio/gallery2/image4.jpeg",
+      ],
+      title: "Martin Family",
+      description: "Christmas Shoot",
     },
     {
       id: 3,
-      image: "/studio/gallery3.jpg",
-      images: ["/studio/gallery3.jpg", "/studio/gallery3.jpg", "/studio/gallery3.jpg", "/studio/gallery3.jpg"],
-      title: "Emma + Friends",
-      description: "Group Portrait",
+      image: "/media/studio/gallery3/cover.jpeg",
+      images: [
+        "/media/studio/gallery3/cover.jpeg",
+        "/media/studio/gallery3/image1.jpeg",
+        "/media/studio/gallery3/image2.jpeg",
+        "/media/studio/gallery3/image3.jpeg",
+        "/media/studio/gallery3/image4.jpeg",
+      ],
+      title: "Matt, Kate, + Graham",
+      description: "Christmas Shoot",
     },
     {
       id: 4,
-      image: "/studio/gallery4.jpg",
-      images: ["/studio/gallery4.jpg", "/studio/gallery4.jpg", "/studio/gallery4.jpg", "/studio/gallery4.jpg"],
-      title: "The Johnson Family",
+      image: "/media/studio/gallery4/cover.jpeg",
+      images: [
+        "/media/studio/gallery4/cover.jpeg",
+        "/media/studio/gallery4/image1.jpeg",
+        "/media/studio/gallery4/image2.jpeg",
+        "/media/studio/gallery4/image3.jpeg",
+        "/media/studio/gallery4/image4.jpeg",
+      ],
+      title: "4 Generations",
       description: "Family Session",
     },
   ];
@@ -106,7 +133,7 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
       createGsapAnimation(column1.current, 30, "top 75%", "top 25%", true);
       createGsapAnimation(column2.current, 30, "top 75%", "top 25%", true);
     },
-    { scope: aboutContainer }
+    { scope: aboutContainer },
   );
 
   // Review rotation effect
@@ -165,9 +192,10 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
 
   return (
     <main data-barba="wrapper">
+      <Seo route="/studio" />
       <div data-barba="container" data-barba-namespace="index" className="studio_route">
         <section id="main" className="section-main">
-          <img src="/studio/main.jpg" alt="" />
+          <img src="/media/studio/main.jpg" alt="Interior of Still Acre Studio filled with soft natural light" />
           <div id="title">
             <h6 id="main-subheader" ref={mainSubHeader}>
               PHOTOGRAPHY STUDIO
@@ -198,6 +226,14 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
                 sunlit portraits to moody, romantic tones. At Stillacre Studio, you’ll find more than just a space to
                 take photos — you’ll find a place where moments come alive.
               </p>
+
+              <a
+                href="/contact?type=studio"
+                className="text-button large dark"
+                onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=studio")}
+              >
+                Instagram
+              </a>
             </div>
           </div>
         </section>
@@ -214,7 +250,7 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
               {galleryItems.map((item, index) => (
                 <div key={item.id} className="gallery-item" onClick={() => openGallery(index)}>
                   <div className="gallery-image-wrapper">
-                    <img src={item.image} alt={`${item.title} - ${item.description}`} />
+                    <img src={asset(item.image)} alt={`${item.title} - ${item.description}`} />
                   </div>
                   <div className="gallery-info">
                     <h5 className="gallery-title">{item.title}</h5>
@@ -243,14 +279,14 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
                 <span id="price">$50.00 | hour</span>
               </div>
               <a
-                href="/contact"
+                href="/contact?type=studio"
                 className="primary-button medium light"
-                onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+                onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=studio")}
               >
                 Book now
               </a>
             </div>
-            <img src="/studio/about.jpg" alt="" />
+            <img src="/media/studio/about.jpg" alt="Still Acre Studio nestled among the trees in Ludlow Falls, Ohio" />
           </div>
         </section>
 
@@ -264,17 +300,19 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
         </section>
 
         <section ref={contactSection} className="section-contact">
-          <img src="/studio/main.jpg" alt="Stillacre Studios interior" />
-          {/* <div className="contact-overlay">
+          <img src="/media/studio/main.jpg" alt="Stillacre Studios interior" />
+          <div className="contact-overlay">
             <a
-              href="/contact"
-              className="primary-button large light"
-              onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+              href="/contact?type=studio"
+              className="primary-button large dark"
+              onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=studio")}
             >
               BOOK YOUR SESSION
             </a>
-          </div> */}
+          </div>
         </section>
+
+        <InstagramBubble instagramUrl={env.STUDIO_URL} />
 
         {/* Gallery Modal */}
         {isGalleryOpen && (
@@ -291,8 +329,9 @@ const StudioRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ h
 
                 <div className="gallery-image-container">
                   <img
-                    src={galleryItems[currentGalleryIndex].images[currentImageIndex]}
+                    src={asset(galleryItems[currentGalleryIndex].images[currentImageIndex])}
                     alt={`${galleryItems[currentGalleryIndex].title} - Image ${currentImageIndex + 1}`}
+                    loading="lazy"
                   />
                 </div>
 

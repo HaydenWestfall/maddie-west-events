@@ -5,9 +5,23 @@ import gsap from "gsap";
 import { createGsapAnimation, mweNavigate } from "../../shared/utility";
 import { ScrollTrigger } from "gsap/all";
 import Overlay, { OverlayRef } from "../../shared/overlay";
+import { env } from "../../config/env";
+import { asset } from "../../config/assets";
+import InstagramBubble from "../../shared/instagram-bubble";
+import Seo from "../../seo/Seo";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
+
+// Rendered twice in the marquee so the scrolling strip is always wider than the
+// viewport and keeps filling the screen as it grows.
+const JOURNAL_IMAGES = [
+  { src: "/media/home/journal_4.webp", alt: "Aesthetic image of chair with flowers" },
+  { src: "/media/home/journal_2.webp", alt: "Aesthetic image of a tablescape" },
+  { src: "/media/home/journal_3.webp", alt: "Aesthetic image of Maddie West" },
+  { src: "/media/home/journal_1.webp", alt: "Aesthetic image of a cake table" },
+  { src: "/media/home/journal_5.webp", alt: "Wedding invitation on tablescape" },
+];
 
 const JournalSection: React.FC<{ handleNavigation: (path: string) => void }> = ({ handleNavigation }) => {
   const journalContainer = useRef<HTMLDivElement | null>(null);
@@ -37,7 +51,7 @@ const JournalSection: React.FC<{ handleNavigation: (path: string) => void }> = (
       createGsapAnimation(journalHeader.current, 30, "top 75%", "top 25%", true);
       createGsapAnimation(journalDescription.current, 30, "top 75%", "top 25%", true);
     },
-    { scope: journalContainer }
+    { scope: journalContainer },
   );
 
   /**
@@ -93,7 +107,7 @@ const JournalSection: React.FC<{ handleNavigation: (path: string) => void }> = (
           end: "bottom top",
           scrub: true,
         },
-      }
+      },
     );
   };
 
@@ -139,16 +153,9 @@ const JournalSection: React.FC<{ handleNavigation: (path: string) => void }> = (
 
       <div id="section-journal-image-wrapper">
         <div ref={journalCarousel} id="section-journal-images" className="journal-marquee">
-          <img
-            loading="lazy"
-            src="/home/journal_4.webp"
-            className="image"
-            alt="Aesthetic image of chair with flowers"
-          />
-          <img loading="lazy" src="/home/journal_2.webp" className="image" alt="Aesthetic image of a tablescape" />
-          <img loading="lazy" src="./home/journal_3.webp" className="image" alt="Aesthetic image of Maddie West" />
-          <img loading="lazy" src="/home/journal_1.webp" className="image" alt="Aesthetic image of a cake table" />
-          <img loading="lazy" src="/home/journal_5.webp" className="image" alt="Wedding invitation on tablescape" />
+          {[...JOURNAL_IMAGES, ...JOURNAL_IMAGES].map((image, index) => (
+            <img key={index} loading="lazy" src={image.src} className="image" alt={image.alt} />
+          ))}
         </div>
       </div>
       <a
@@ -183,14 +190,26 @@ const AestheticSection: React.FC = () => {
       createGsapAnimation(aestheticHeader.current, 30, "top 75%", "top 35%", true);
       createGsapAnimation(aestheticDescription.current, 30, "top 75%", "top 35%", true);
     },
-    { scope: aestheticContainer }
+    { scope: aestheticContainer },
   );
 
   return (
     <section ref={aestheticContainer} id="section-aesthetic" style={{ maxWidth: "unset" }}>
       <div id="aesthetic-wrapper">
-        <img ref={aestheticImage1} id="aesthetic-image-1" loading="lazy" src="/home/aesthetic_1.webp" />
-        <img ref={aestheticImage2} id="aesthetic-image-2" loading="lazy" src="/home/aesthetic_2.webp" />
+        <img
+          ref={aestheticImage1}
+          id="aesthetic-image-1"
+          loading="lazy"
+          src="/media/home/aesthetic_1.webp"
+          alt="Elegant wedding tablescape styled by Maddie West Events"
+        />
+        <img
+          ref={aestheticImage2}
+          id="aesthetic-image-2"
+          loading="lazy"
+          src="/media/home/aesthetic_2.webp"
+          alt="Refined floral and place-setting detail from a Maddie West Events wedding"
+        />
         <div id="aesthetic-description-wrapper" className="section-header">
           <h6 ref={aestheticSubHeader} id="aesthetic-subheader">
             THE AESTHETIC
@@ -217,8 +236,20 @@ const AestheticSection: React.FC = () => {
           </p>
         </div>
       </div>
-      <img ref={aestheticImage3} id="aesthetic-image-3" loading="lazy" src="/home/aesthetic_3.webp" />
-      <img ref={aestheticImage4} id="aesthetic-image-4" loading="lazy" src="/home/aesthetic_4.webp" />
+      <img
+        ref={aestheticImage3}
+        id="aesthetic-image-3"
+        loading="lazy"
+        src="/media/home/aesthetic_3.webp"
+        alt="Timeless wedding ceremony décor in organic neutral tones"
+      />
+      <img
+        ref={aestheticImage4}
+        id="aesthetic-image-4"
+        loading="lazy"
+        src="/media/home/aesthetic_4.webp"
+        alt="Curated wedding reception details by Maddie West Events"
+      />
     </section>
   );
 };
@@ -231,13 +262,21 @@ const MaddieFlowersSection: React.FC = () => {
     () => {
       createGsapAnimation(maddieFlowersHeader.current, 30, "top 75%", "top 35%", true);
     },
-    { scope: maddieFlowersContainer }
+    { scope: maddieFlowersContainer },
   );
 
   return (
     <section ref={maddieFlowersContainer} id="maddie-flowers-section">
       <div id="secondary-video">
-        <video id="myVideo" src="./videos/maddie_secondary.mp4" autoPlay loop muted playsInline preload="none"></video>
+        <video
+          id="myVideo"
+          src={asset("/media/videos/maddie_secondary.mp4")}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="none"
+        ></video>
       </div>
       <div>
         <h1 ref={maddieFlowersHeader} id="maddie-flowers-header">
@@ -265,7 +304,7 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
       createGsapAnimation(column1.current, 30, "top 75%", "top 25%", true);
       createGsapAnimation(column2.current, 30, "top 75%", "top 25%", true);
     },
-    { scope: aboutContainer }
+    { scope: aboutContainer },
   );
 
   useEffect(() => {
@@ -279,25 +318,35 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
 
     // Check if ad overlay should be shown
     const hasShownAd = sessionStorage.getItem(AD_OVERLAY_SESSION_KEY);
-    // if (!hasShownAd) {
-    if (true) {
+    if (!hasShownAd) {
+      // if (true) {
       // Show ad overlay after 750ms delay
       setTimeout(() => {
-        if (adOverlayRef.current) {
+        if (adOverlayRef.current && !hasShownAd) {
           adOverlayRef.current.show();
           // Mark as shown in session storage
           sessionStorage.setItem(AD_OVERLAY_SESSION_KEY, "true");
         }
       }, 2500);
+      // }
     }
   }, []);
 
   return (
     <main data-barba="wrapper">
+      <Seo route="/" />
       <div data-barba="container" data-barba-namespace="index" className="home_route">
         <section id="main" className="section-main">
           <div id="primary-video">
-            <video id="myVideo" src="/videos/maddie_primary.mp4" autoPlay muted loop playsInline preload="auto"></video>
+            <video
+              id="myVideo"
+              src={asset("/media/videos/maddie_primary.mp4")}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+            ></video>
           </div>
           <div id="title">
             <h6 id="main-subheader" ref={mainSubHeader}>
@@ -355,15 +404,20 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
                 <a
                   id="contact"
                   className="primary-button medium light"
-                  href="/contact"
-                  onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+                  href="/contact?type=event"
+                  onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=event")}
                 >
                   CONTACT
                 </a>
               </div>
             </div>
             <div id="testimony-image-wrapper">
-              <img loading="lazy" id="testimony-image" src="/home/about_maddie.webp" alt="Picture of Maddie West" />
+              <img
+                loading="lazy"
+                id="testimony-image"
+                src="/media/home/about_maddie.webp"
+                alt="Picture of Maddie West"
+              />
             </div>
           </div>
         </section>
@@ -371,10 +425,25 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
         <section id="section-vendor-list">
           <span id="vendor-label">A FEW OF MY FAVORITES</span>
           <div id="vendor-images">
-            <img loading="lazy" src="/home/cliffside.png" className="vendor" />
-            <img loading="lazy" src="/home/steamplant.png" className="vendor" />
-            <img loading="lazy" src="/home/jorgensen.png" className="vendor small" />
-            <img loading="lazy" src="/home/arcade.png" className="vendor" />
+            <img loading="lazy" src="/media/home/cliffside.png" className="vendor" alt="Cliffside wedding venue logo" />
+            <img
+              loading="lazy"
+              src="/media/home/steamplant.png"
+              className="vendor"
+              alt="The Steam Plant wedding venue logo"
+            />
+            <img
+              loading="lazy"
+              src="/media/home/jorgensen.png"
+              className="vendor small"
+              alt="Jorgensen Farms wedding venue logo"
+            />
+            <img
+              loading="lazy"
+              src="/media/home/arcade.png"
+              className="vendor"
+              alt="Dayton Arcade wedding venue logo"
+            />
           </div>
         </section>
 
@@ -385,11 +454,11 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
         {/* Advertisement Overlay */}
         <Overlay ref={adOverlayRef} className="ad-overlay" id="ad-overlay">
           <div className="ad-wrapper">
-            <img src="/studio/main.jpg" alt="Still Acre Studio Image" />
+            <img src="/media/studio/main.jpg" alt="Still Acre Studio Image" />
 
             <div className="ad-content">
               <h4>Still Acre Studio</h4>
-              <h6>Studio Description</h6>
+              <h6>Photography studio</h6>
               <p>
                 Nestled among the trees at 9358 Fenner Rd in Ludlow Falls, Ohio, Stillacre Studio offers a one-of-a-kind
                 setting designed to bring out the natural beauty in every photo.
@@ -401,11 +470,55 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
               </p>
               <a
                 id="contact"
-                className="primary-button small outline"
-                href="/contact"
-                onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact")}
+                className="primary-button small light"
+                href="/contact?type=event"
+                onClick={(e: any) => {
+                  adOverlayRef.current?.hide();
+                  mweNavigate(e, handleNavigation, "/contact?type=event");
+                }}
               >
-                CONTACT
+                Book a Session
+              </a>
+            </div>
+
+            <button
+              className="close-modal"
+              onClick={() => adOverlayRef.current?.hide()}
+              aria-label="Close advertisement"
+            >
+              ×
+            </button>
+          </div>
+          <div className="ad-wrapper-mobile">
+            <div className="ad-header">
+              <h4>Still Acre Studio</h4>
+              <h6>Photography studio</h6>
+            </div>
+
+            <div className="ad-content-wrapper">
+              <img src="/media/studio/main.jpg" alt="Still Acre Studio Image" />
+
+              <div className="ad-content">
+                <p>
+                  Nestled among the trees at 9358 Fenner Rd in Ludlow Falls, Ohio, Stillacre Studio offers a
+                  one-of-a-kind setting designed to bring out the natural beauty in every photo.
+                </p>
+                <br />
+                <p>
+                  Whether it’s an intimate couple’s session, a fun shoot with friends, or family portraits that feel
+                  effortlessly genuine, Stillacre Studio provides an atmosphere where every moment feels real.
+                </p>
+              </div>
+            </div>
+
+            <div className="action-wrapper">
+              <a
+                id="contact"
+                className="primary-button small light"
+                href="/contact?type=event"
+                onClick={(e: any) => mweNavigate(e, handleNavigation, "/contact?type=event")}
+              >
+                Book a Session
               </a>
             </div>
 
@@ -418,6 +531,7 @@ const HomeRoute: React.FC<{ handleNavigation: (path: string) => void }> = ({ han
             </button>
           </div>
         </Overlay>
+        <InstagramBubble instagramUrl={env.INSTAGRAM_URL} />
       </div>
     </main>
   );

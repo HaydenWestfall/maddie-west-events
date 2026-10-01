@@ -1,0 +1,2018 @@
+.rentals_route {
+  border-bottom: 1px solid rgb(227, 227, 227);
+  position: relative;
+
+  .rentals-header {
+    position: relative;
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("/media/rentals/cover-3.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    object-position: center;
+
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .header {
+      font-family: didot, serif;
+      font-size: 5rem;
+      font-weight: 500;
+      letter-spacing: 4px;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .sub-header {
+      font-family: Montserrat;
+      font-style: regular;
+      color: #fff;
+      letter-spacing: 3px;
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      height: 22rem;
+
+      .header {
+        font-size: 3rem;
+        letter-spacing: 2px;
+      }
+
+      .sub-header {
+        font-size: 0.6rem;
+        letter-spacing: 2px;
+      }
+    }
+  }
+
+  /*
+  -------------------------------------------------------------------
+  ---  DATE GATE (shown until an event date is chosen)
+  -------------------------------------------------------------------
+  */
+  .rental-date-gate {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    /*
+    No overflow clipping here: the calendar popover opens below a vertically
+    centred card and has to be able to spill past the section (over the footer)
+    to stay reachable. .gate-image is inset-0/object-fit so it never overflows.
+    */
+
+    .gate-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gate-content {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(3px);
+      padding: 3.5rem 3rem;
+      max-width: 34rem;
+      width: calc(100% - 3rem);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+
+      h2 {
+        font-family: didot, serif;
+        font-size: 2.4rem;
+        font-weight: 500;
+      }
+
+      p {
+        font-family: Montserrat, sans-serif;
+        font-size: 0.9rem;
+        line-height: 1.4rem;
+        color: #555;
+        max-width: 26rem;
+      }
+
+      .rental-date-selector {
+        margin-top: 1rem;
+      }
+
+      .gate-notes {
+        list-style: none;
+        margin: 0.5rem 0 0;
+        padding: 1.25rem 0 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.09);
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem 1.25rem;
+
+        li {
+          font-family: Montserrat, sans-serif;
+          font-size: 0.65rem;
+          font-weight: 500;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          color: #888;
+          white-space: nowrap;
+        }
+
+        li + li::before {
+          content: "·";
+          margin-right: 1.25rem;
+          color: #c9c9c9;
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      min-height: 60vh;
+      padding: 0 1.25rem;
+
+      .gate-content {
+        padding: 2.5rem 2rem;
+        width: 100%;
+
+        h2 {
+          font-size: 1.8rem;
+        }
+
+        /* Stacked rather than wrapped, so no separator dot starts a line. */
+        .gate-notes {
+          flex-direction: column;
+          gap: 0.5rem;
+
+          li + li::before {
+            content: none;
+          }
+        }
+      }
+    }
+  }
+
+  /*
+  -------------------------------------------------------------------
+  ---  DATE SELECTOR (hero + compact variants)
+  -------------------------------------------------------------------
+  */
+  .rental-date-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+
+    .date-field-wrap {
+      position: relative;
+      display: inline-flex;
+    }
+
+    .date-field {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      font: inherit;
+
+      .date-label {
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
+        color: #333;
+      }
+
+      .date-display {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #000;
+        border-bottom: 1px solid #000;
+        padding-bottom: 2px;
+        padding-top: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition:
+          border-color 0.25s ease,
+          color 0.25s ease;
+
+        &.placeholder {
+          color: #999;
+          border-bottom-color: #999;
+        }
+      }
+
+      &:hover .date-display,
+      &.open .date-display {
+        border-bottom-color: #b09a6b;
+        color: #b09a6b;
+      }
+    }
+
+    /*
+    Calendar popover chrome lives in shared/date-picker; only the rentals-only
+    confirm variant is styled here.
+    */
+    .mwe-calendar.date-confirm {
+      width: min(260px, calc(100vw - 2.5rem));
+      text-align: left;
+      padding: 1.5rem;
+
+      .confirm-message {
+        font-family: Montserrat, sans-serif;
+        font-size: 0.75rem;
+        line-height: 1.3rem;
+        color: #444;
+        margin-bottom: 1.25rem;
+      }
+
+      .confirm-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+
+        button {
+          font-family: Montserrat, sans-serif;
+          font-size: 0.65rem;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+          padding: 0.7rem 0.75rem;
+          border-radius: 2px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+
+        .confirm-cancel {
+          background: none;
+          border: 1px solid #e0e0e0;
+          color: #333;
+
+          &:hover {
+            border-color: #b09a6b;
+            color: #b09a6b;
+          }
+        }
+
+        .confirm-proceed {
+          background: #000;
+          border: 1px solid #000;
+          color: #fff;
+
+          &:hover {
+            background: #333;
+          }
+        }
+      }
+    }
+
+    .date-window {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: Montserrat, sans-serif;
+      font-size: 0.65rem;
+      color: #888;
+      letter-spacing: 0.3px;
+
+      em {
+        font-style: normal;
+        color: #b09a6b;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-right: 0.15rem;
+      }
+
+      .dot {
+        color: #ccc;
+      }
+    }
+
+    &.hero {
+      .date-field {
+        /* Match the gate card's body copy so the picker reads as part of it. */
+        font-family: Montserrat, sans-serif;
+        font-size: 0.9rem;
+        line-height: 1.4rem;
+
+        .date-label {
+          font-size: 0.9rem;
+          line-height: 1.4rem;
+          letter-spacing: normal;
+          color: #555;
+        }
+
+        .date-display {
+          font-size: 0.9rem;
+          line-height: 1.4rem;
+          letter-spacing: normal;
+          text-transform: none;
+        }
+      }
+    }
+
+    &.compact {
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+
+      .date-window {
+        font-size: 0.6rem;
+      }
+    }
+  }
+
+  /*
+  -------------------------------------------------------------------
+  ---  STICKY FILTER BAR
+  -------------------------------------------------------------------
+  */
+  .product-filters-wrapper {
+    position: sticky;
+    top: 70px;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 1rem 7px;
+    background-color: rgba(247, 247, 247, 0.823);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid #ececec;
+
+    .product-filters {
+      width: 100%;
+      max-width: 60rem;
+
+      .search-bar {
+        margin-bottom: 1rem;
+        width: 100%;
+
+        input {
+          width: 100%;
+          font-size: 0.9rem;
+          padding: 16px;
+          border-radius: 4px;
+          border: 1px solid #e6e6e6;
+          box-sizing: border-box;
+          font-family: Montserrat, sans-serif;
+
+          &:focus {
+            outline: none;
+            border-color: #b09a6b;
+          }
+        }
+      }
+
+      .filters {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        // One row on mobile rather than stacked: the bar is sticky, so every
+        // extra line it takes is height permanently lost from the grid.
+        @media (max-width: 768px) {
+          gap: 0.75rem;
+          flex-wrap: nowrap;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        /*
+        Event date and category are two halves of the same filter row, so they
+        share one type scale: a muted uppercase label followed by an underlined
+        uppercase value.
+        */
+        .rental-date-selector.compact .date-field,
+        .filter-group {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          .date-label,
+          .filter-label {
+            font-family: Montserrat, sans-serif;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #888;
+            line-height: 1;
+            white-space: nowrap;
+          }
+
+          .date-display,
+          .select-display {
+            font-family: Montserrat, sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #000;
+            line-height: 1;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #000;
+            white-space: nowrap;
+            transition:
+              border-color 0.25s ease,
+              color 0.25s ease;
+
+            &.placeholder {
+              color: #999;
+              border-bottom-color: #999;
+            }
+          }
+
+          // These out-specify the base .date-field rules above, so the hover and
+          // open states have to be restated here.
+          &:hover .date-display,
+          &.open .date-display {
+            color: #b09a6b;
+            border-bottom-color: #b09a6b;
+          }
+
+          @media (max-width: 768px) {
+            gap: 0.4rem;
+
+            .date-label,
+            .date-display,
+            .select-display {
+              letter-spacing: 0.5px;
+            }
+          }
+        }
+
+        /*
+        The chevron and the value itself already read as a category picker, so
+        on mobile the label is redundant. Visually hidden rather than removed —
+        it's the select's only accessible name.
+        */
+        @media (max-width: 768px) {
+          .filter-label {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+          }
+
+          // The date is fixed-length and can't be abbreviated usefully, so it
+          // holds its width and the category gives way instead.
+          .rental-date-selector.compact {
+            flex: 0 0 auto;
+          }
+
+          .filter-group {
+            flex: 0 1 auto;
+            min-width: 0;
+            justify-content: flex-end;
+
+            .select-field {
+              min-width: 0;
+            }
+
+            // min-width: 0 down the whole chain is what lets the ellipsis
+            // engage instead of the row growing past the screen.
+            .select-display {
+              min-width: 0;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+
+        .filter-group {
+          .select-field {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+            padding-top: 4px;
+
+            // The global `*` rule forces Montserrat and a clamped font-size onto
+            // <option>, which renders badly in the native picker. The select sits
+            // invisibly on top of .select-display purely to open the OS list, so
+            // only the popup's own typography matters here.
+            select {
+              position: absolute;
+              inset: 0;
+              width: 100%;
+              height: 100%;
+              opacity: 0;
+              border: none;
+              background: transparent;
+              cursor: pointer;
+              font-family:
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                sans-serif;
+              font-size: 13px;
+              line-height: 1;
+
+              option {
+                font-family: inherit;
+                font-size: 13px;
+              }
+            }
+
+            .angle-icon {
+              width: 0.55rem;
+              height: 0.55rem;
+              pointer-events: none;
+              fill: #333;
+              transform: rotate(180deg);
+              transition: fill 0.25s ease;
+            }
+
+            &:hover,
+            &:focus-within {
+              .select-display {
+                color: #b09a6b;
+                border-bottom-color: #b09a6b;
+              }
+
+              .angle-icon {
+                fill: #b09a6b;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /*
+  -------------------------------------------------------------------
+  ---  ITEM GRID
+  -------------------------------------------------------------------
+  */
+  .rental-items-section {
+    padding: 2rem 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f7f7f7;
+
+    @media (max-width: 768px) {
+      padding: 1.5rem 1.5rem 3rem;
+    }
+
+    .loading-state,
+    .error-state,
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+      text-align: center;
+      min-height: 26rem;
+
+      p {
+        font-family: Montserrat, sans-serif;
+        font-size: 1rem;
+        color: #4a4a4a;
+        margin-bottom: 1rem;
+        max-width: 30rem;
+        line-height: 1.6;
+      }
+
+      .retry-button {
+        background-color: #2d2d2d;
+        color: #fff;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        padding: 0.95rem 1.85rem;
+        font-family: Montserrat, sans-serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          background-color 0.3s ease,
+          box-shadow 0.3s ease;
+        box-shadow: 0 12px 30px rgba(45, 45, 45, 0.12);
+        text-transform: uppercase;
+      }
+
+      .retry-button:hover {
+        background-color: #111;
+        transform: translateY(-1px);
+      }
+
+      .retry-button:focus-visible {
+        outline: 2px solid #f8e5d8;
+        outline-offset: 4px;
+      }
+    }
+
+    .rental-items-grid {
+      display: grid;
+      justify-content: center;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+      max-width: 60rem;
+      width: 100%;
+
+      @media (max-width: 1200px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      @media (max-width: 768px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem 1rem;
+      }
+
+      @media (max-width: 480px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem 0.75rem;
+      }
+
+      .rental-item {
+        // reset button element
+        appearance: none;
+        border: none;
+        background: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+        font-family: inherit;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+
+        &:hover:not(.sold-out) {
+          transform: translateY(-3px);
+        }
+
+        &.sold-out {
+          cursor: default;
+          opacity: 0.55;
+        }
+
+        .item-image-wrapper {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 3 / 4;
+          overflow: hidden;
+          background-color: #ececec;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+          }
+
+          .item-badges {
+            position: absolute;
+            top: 0.6rem;
+            left: 0.6rem;
+            display: flex;
+            // Wide cards keep both badges on one line with the cart count pinned
+            // right; once the card is too narrow for both, the cart count wraps
+            // beneath the availability badge instead of overflowing the card.
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.35rem;
+            width: calc(100% - 1.2rem);
+          }
+
+          .item-availability,
+          .in-cart-badge,
+          .sold-out-badge {
+            font-family: Montserrat, sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 0.3rem 0.55rem;
+            border-radius: 2px;
+            white-space: nowrap;
+          }
+
+          .item-availability {
+            background: rgba(255, 255, 255, 0.92);
+            color: #333;
+          }
+
+          .in-cart-badge {
+            background: #000;
+            color: #fff;
+          }
+
+          .sold-out-badge {
+            position: absolute;
+            top: 0.6rem;
+            left: 0.6rem;
+            background: #fff;
+            color: #333;
+          }
+        }
+
+        &:hover:not(.sold-out) .item-image-wrapper img {
+          transform: scale(1.05);
+        }
+
+        .item-info {
+          padding: 0.85rem 0;
+
+          .item-name {
+            font-family: "didot";
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 0 0 0.25rem 0;
+            color: #333;
+            line-height: 1.3;
+            letter-spacing: 0px;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          .item-price-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .item-price {
+              font-size: 0.75rem;
+              font-weight: 600;
+              color: #555;
+            }
+          }
+        }
+      }
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+
+      .pagination-button {
+        background-color: black;
+        border: 1px solid #ddd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        width: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:disabled {
+          opacity: 0.4;
+          cursor: not-allowed;
+        }
+
+        &:first-child {
+          transform: rotate(-180deg);
+        }
+
+        .angle-icon {
+          color: white;
+          transform: rotate(90deg);
+          height: 1rem;
+        }
+      }
+
+      .page-button {
+        background-color: transparent;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        min-width: 25px;
+        cursor: pointer;
+        color: rgb(164, 163, 163);
+        font-family: Montserrat, sans-serif;
+
+        &.current-page {
+          color: black;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  /*
+  -------------------------------------------------------------------
+  ---  GUIDELINES ("Good to know")
+  -------------------------------------------------------------------
+  Sits between the page content and the footer on both the date gate and
+  the browse view, so it reads as a closing note either way.
+  */
+  .rental-guidelines {
+    background: #fff;
+    border-top: 1px solid #ececec;
+    padding: 5rem 3rem;
+
+    .guidelines-inner {
+      max-width: 60rem;
+      margin: 0 auto;
+    }
+
+    .guidelines-head {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      text-align: center;
+      margin-bottom: 3.5rem;
+
+      .eyebrow {
+        font-family: Montserrat, sans-serif;
+        font-size: 0.65rem;
+        font-weight: 500;
+        letter-spacing: 2px;
+        color: #b09a6b;
+      }
+
+      h2 {
+        font-family: didot, serif;
+        font-size: 2.2rem;
+        font-weight: 500;
+        line-height: 1.15;
+        color: #111;
+      }
+    }
+
+    .guidelines-grid {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2.75rem 3.5rem;
+    }
+
+    .guideline {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      /* Hairline rule doubles as the column gutter marker. */
+      padding-left: 1.5rem;
+      border-left: 1px solid #ececec;
+
+      .guideline-index {
+        font-family: didot, serif;
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        color: #b09a6b;
+      }
+
+      h3 {
+        font-family: didot, serif;
+        font-size: 1.35rem;
+        font-weight: 500;
+        color: #111;
+      }
+
+      p {
+        font-family: Montserrat, sans-serif;
+        font-size: 0.85rem;
+        line-height: 1.65rem;
+        color: #555;
+
+        strong {
+          font-weight: 600;
+          color: #222;
+        }
+      }
+    }
+
+    .guidelines-footnote {
+      margin-top: 3.5rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid #ececec;
+      text-align: center;
+      font-family: Montserrat, sans-serif;
+      font-size: 0.78rem;
+      line-height: 1.5rem;
+      color: #888;
+
+      a {
+        color: #111;
+        text-decoration: none;
+        border-bottom: 1px solid #b09a6b;
+        padding-bottom: 1px;
+        transition: color 0.25s ease;
+
+        &:hover {
+          color: #b09a6b;
+        }
+      }
+    }
+
+    @media (max-width: 900px) {
+      padding: 4rem 2rem;
+
+      .guidelines-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2.25rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      padding: 3.5rem 1.5rem;
+
+      .guidelines-head {
+        margin-bottom: 2.5rem;
+
+        h2 {
+          font-size: 1.7rem;
+        }
+      }
+
+      .guidelines-footnote {
+        margin-top: 2.5rem;
+      }
+    }
+  }
+
+  /*
+  -------------------------------------------------------------------
+  ---  QUANTITY STEPPER (shared)
+  -------------------------------------------------------------------
+  */
+  .qty-stepper {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #d8d8d8;
+    border-radius: 3px;
+    overflow: hidden;
+
+    button {
+      background: #fff;
+      border: none;
+      width: 2.4rem;
+      height: 2.4rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+
+      &:hover:not(:disabled) {
+        background: #f0f0f0;
+      }
+
+      &:disabled {
+        color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+
+    .qty-value {
+      min-width: 2.4rem;
+      text-align: center;
+      font-family: Montserrat, sans-serif;
+      font-size: 0.9rem;
+    }
+
+    &.small {
+      button {
+        width: 1.9rem;
+        height: 1.9rem;
+        font-size: 0.95rem;
+      }
+
+      .qty-value {
+        min-width: 1.9rem;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+/*
+-------------------------------------------------------------------
+---  DETAIL QUICK-VIEW (rendered inside shared .overlay)
+-------------------------------------------------------------------
+*/
+.overlay.rental-detail-overlay {
+  .overlay-content {
+    width: 100%;
+    max-width: 58rem;
+  }
+
+  .rental-detail {
+    position: relative;
+    display: flex;
+    background: #fff;
+    max-height: 88vh;
+    overflow: hidden;
+
+    .detail-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 3;
+      background: rgba(255, 255, 255, 0.85);
+      border: none;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 0.85rem;
+        height: 0.85rem;
+        fill: #000;
+      }
+
+      &:hover {
+        background: #f0f0f0;
+      }
+    }
+
+    // There is no global border-box reset in this app (index.scss resets only
+    // margin/padding/font), so any explicit width here has to opt in — an
+    // otherwise-correct `width: 100%` plus side padding runs past the edge.
+    .detail-gallery,
+    .detail-info {
+      box-sizing: border-box;
+    }
+
+    .detail-gallery {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #fff;
+
+      // Fixed-ratio stage so every item's image occupies the same box no
+      // matter how tall the info column next to it runs. Photos are letter-
+      // boxed inside it rather than cropped, so nothing gets cut off.
+      .detail-main-image {
+        flex: 0 0 auto;
+        width: 100%;
+        aspect-ratio: 3 / 3;
+        // Keeps the stage inside the modal on short viewports; the box goes
+        // wider than 3:4 instead of being clipped by the modal's overflow.
+        max-height: calc(88vh - 5rem);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: #f2f2f2;
+
+        img {
+          max-width: 100%;
+          max-height: 100%;
+          width: auto;
+          height: auto;
+          object-fit: contain;
+        }
+      }
+
+      .detail-thumbs {
+        display: flex;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        background: #fff;
+        overflow-x: auto;
+
+        .detail-thumb {
+          flex: 0 0 auto;
+          width: 3.5rem;
+          height: 3.5rem;
+          border: 1px solid transparent;
+          padding: 0;
+          background: none;
+          cursor: pointer;
+          overflow: hidden;
+
+          &.active {
+            border-color: #000;
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+
+    .detail-info {
+      width: 50%;
+      padding: 3rem 2.5rem 2.5rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+
+      .detail-heading {
+        .detail-name {
+          text-align: left;
+          font-family: didot, serif;
+          font-size: 2rem;
+          font-weight: 500;
+          line-height: 1.15;
+          margin-bottom: 0.4rem;
+          overflow-wrap: break-word;
+        }
+
+        .detail-price {
+          font-family: "Cormorant Garamond", serif;
+          font-size: 1.2rem;
+          color: #b09a6b;
+        }
+      }
+
+      .detail-description {
+        font-family: Montserrat, sans-serif;
+        font-size: 0.8rem;
+        line-height: 1.5rem;
+        color: #555;
+        // Item copy is operator-entered; a pasted URL or model number
+        // shouldn't be able to push the column wide.
+        overflow-wrap: break-word;
+      }
+
+      .detail-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        border-top: 1px solid #eee;
+        padding-top: 1.25rem;
+
+        .meta-row {
+          display: flex;
+          justify-content: space-between;
+          gap: 1rem;
+          font-family: Montserrat, sans-serif;
+          font-size: 0.75rem;
+
+          dt {
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            flex: 0 0 auto;
+          }
+
+          dd {
+            color: #333;
+            text-align: right;
+            // A long dimensions/material string wraps instead of widening
+            // the row.
+            min-width: 0;
+            overflow-wrap: break-word;
+          }
+        }
+      }
+
+      .detail-availability {
+        font-family: Montserrat, sans-serif;
+        font-size: 0.72rem;
+        color: #777;
+
+        .already {
+          color: #b09a6b;
+        }
+      }
+
+      .detail-actions {
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .add-to-cart {
+          width: fit-content;
+          height: 2.5rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    // Mobile browsers report 100vh as the viewport with the URL bar *hidden*,
+    // so a 100vh modal is taller than what's actually on screen and the bottom
+    // of it (the add-to-cart button) sits below the fold. dvh tracks the real
+    // visible height; the vh line stays as the fallback for older browsers.
+    height: 100vh;
+    height: 100dvh;
+
+    .overlay-content {
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      max-height: 100%;
+    }
+
+    .rental-detail {
+      flex-direction: column;
+      height: 100%;
+      max-height: 100%;
+
+      .detail-close {
+        top: 0.75rem;
+        right: 0.75rem;
+      }
+
+      .detail-gallery {
+        width: 100%;
+        // Fixed block: the image keeps its size and the info column below
+        // absorbs whatever height is left.
+        flex: 0 0 auto;
+
+        // Full-width here, so a 3:4 stage would eat the screen — square it up
+        // and cap it so the details below always get the larger share.
+        .detail-main-image {
+          aspect-ratio: 1 / 1;
+          max-height: min(38vh, 20rem);
+          max-height: min(38dvh, 20rem);
+        }
+
+        .detail-thumbs {
+          gap: 0.4rem;
+          padding: 0.4rem;
+
+          .detail-thumb {
+            width: 2.75rem;
+            height: 2.75rem;
+          }
+        }
+      }
+
+      .detail-info {
+        width: 100%;
+        // Claims the leftover height and scrolls inside it. min-height: 0 is
+        // what actually permits the shrink — a flex item won't go below its
+        // content height without it, which is what pushed the modal past the
+        // bottom of the screen.
+        flex: 1 1 auto;
+        min-height: 0;
+        // Stops a flick past the end of the list from scrolling the page
+        // behind the modal (which also re-shows the URL bar and resizes the
+        // viewport mid-interaction).
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        padding: 1.5rem 1.25rem 0;
+        gap: 1rem;
+
+        .detail-heading {
+          // Leave room for the close button rather than running under it.
+          padding-right: 2.5rem;
+
+          .detail-name {
+            font-size: 1.5rem;
+          }
+
+          .detail-price {
+            font-size: 1.05rem;
+          }
+        }
+
+        .detail-meta {
+          padding-top: 1rem;
+        }
+
+        // Pinned to the bottom of the scroll area so adding to the cart never
+        // requires reading through the description first. Bled to full width
+        // past the column padding, and kept clear of the iOS home indicator.
+        .detail-actions {
+          position: sticky;
+          bottom: 0;
+          margin: auto -1.25rem 0;
+          padding: 0.9rem 1.25rem;
+          padding-bottom: max(0.9rem, env(safe-area-inset-bottom));
+          background: #fff;
+          border-top: 1px solid #eee;
+          gap: 0.75rem;
+          flex-wrap: nowrap;
+
+          .add-to-cart {
+            // Fills the row beside the stepper, but min-width: 0 lets it give
+            // way rather than push the row wide on the narrowest phones.
+            flex: 1 1 auto;
+            min-width: 0;
+            box-sizing: border-box;
+            padding: 0 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*
+-------------------------------------------------------------------
+---  RENTAL AGREEMENT PAGE (standalone, opens in a new tab — its own
+---  minimal chrome instead of the full site header/nav/footer, since
+---  the reader still has the original tab for using the app)
+-------------------------------------------------------------------
+*/
+.rental-agreement_page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fafafa;
+}
+
+.agreement-page-header {
+  display: flex;
+  align-items: center;
+  padding: 1.75rem 3rem;
+  border-bottom: 1px solid rgb(227, 227, 227);
+
+  .agreement-wordmark {
+    font-family: didot, serif;
+    font-size: 1.05rem;
+    letter-spacing: 3px;
+    color: #000;
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+.agreement-page-footer {
+  padding: 1.5rem 3rem;
+  border-top: 1px solid rgb(227, 227, 227);
+  text-align: center;
+
+  span {
+    font-family: Montserrat, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    color: #999;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+}
+
+.rental-agreement_route {
+  flex: 1;
+  width: 100%;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 5rem;
+  box-sizing: border-box;
+
+  .rental-agreement-back {
+    display: inline-block;
+    margin-bottom: 2rem;
+    background: none;
+    border: none;
+    font-family: Montserrat, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 2.5rem 1.25rem 3.5rem;
+  }
+}
+
+.rental-agreement {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #ececec;
+  padding: 3rem;
+  box-sizing: border-box;
+
+  .rental-agreement-title {
+    font-family: Montserrat, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.3;
+    max-width: none;
+    text-align: left;
+    color: #111;
+  }
+
+  .rental-agreement-version {
+    margin: 0.35rem 0 1.75rem;
+    font-family: Montserrat, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: left;
+    color: #b09a6b;
+  }
+
+  .rental-agreement-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 0.85rem;
+    line-height: 1.75;
+    color: #333;
+
+    p {
+      max-width: none;
+      text-align: left;
+      font-family: "inter", sans-serif;
+      line-height: 1.5;
+      font-size: 0.85rem;
+    }
+
+    strong {
+      color: #000;
+      font-weight: 600;
+      font-family: "inter", sans-serif;
+      line-height: 1.5;
+      font-size: 0.85rem;
+    }
+
+    h3 {
+      margin: 1.25rem 0 0.25rem;
+      max-width: none;
+      text-align: left;
+      letter-spacing: 0;
+      font-family: Montserrat, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #000;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid #ececec;
+    }
+
+    .rental-agreement-disclaimer {
+      margin-top: 0.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgb(227, 227, 227);
+      font-family: Montserrat, sans-serif;
+      font-size: 0.75rem;
+      line-height: 1.5;
+      color: #888;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem;
+
+    .rental-agreement-body {
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+  }
+}
+
+/*
+-------------------------------------------------------------------
+---  FLOATING CART BUTTON
+-------------------------------------------------------------------
+*/
+.cart-fab {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  .cart-fab-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    .cart-count {
+      font-family: Montserrat, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: #fff;
+      color: #000;
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .cart-fab-label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: Montserrat, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    line-height: 1.1;
+
+    em {
+      font-style: normal;
+      font-size: 0.65rem;
+      color: #bbb;
+      text-transform: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    right: 1rem;
+    bottom: 1rem;
+    padding: 0.75rem 1.1rem;
+  }
+}
+
+/*
+-------------------------------------------------------------------
+---  CART DRAWER (right panel on desktop, bottom sheet on mobile)
+-------------------------------------------------------------------
+*/
+.cart-drawer-root {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  pointer-events: none;
+  visibility: hidden;
+
+  .cart-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .cart-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    max-width: 600px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -6px 0 30px rgba(0, 0, 0, 0.15);
+  }
+
+  &.open {
+    pointer-events: auto;
+    visibility: visible;
+
+    .cart-backdrop {
+      opacity: 1;
+    }
+
+    .cart-panel {
+      transform: translateX(0);
+    }
+  }
+
+  .cart-header {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1.5rem 1.5rem 1.25rem;
+    border-bottom: 1px solid #eee;
+    box-sizing: border-box;
+    height: fit-content;
+
+    .cart-title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+
+      .eyebrow {
+        font-family: didot, serif;
+        font-size: 1.3rem;
+      }
+
+      .cart-dates {
+        font-family: Montserrat, sans-serif;
+        font-size: 0.62rem;
+        letter-spacing: 0.5px;
+        color: #999;
+        text-transform: uppercase;
+      }
+    }
+
+    .cart-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        fill: #000;
+      }
+    }
+  }
+
+  .cart-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.25rem 1.5rem;
+
+    &.inquiry {
+      padding-top: 1rem;
+    }
+
+    .cart-empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 3rem 1rem;
+      text-align: center;
+
+      p {
+        font-family: Montserrat, sans-serif;
+        font-size: 0.9rem;
+        color: #777;
+      }
+    }
+
+    .cart-lines {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+
+      .cart-line {
+        display: grid;
+        grid-template-columns: 4.5rem 1fr auto;
+        gap: 0.85rem;
+        align-items: start;
+
+        .line-thumb {
+          width: 4.5rem;
+          height: 5.5rem;
+          overflow: hidden;
+          background: #ececec;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .line-info {
+          display: flex;
+          flex-direction: column;
+          gap: 0.4rem;
+
+          .line-name {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: #222;
+          }
+
+          .line-price {
+            font-family: Montserrat, sans-serif;
+            font-size: 0.68rem;
+            color: #999;
+          }
+
+          .line-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 0.15rem;
+
+            .line-remove {
+              background: none;
+              border: none;
+              cursor: pointer;
+              font-family: Montserrat, sans-serif;
+              font-size: 0.62rem;
+              letter-spacing: 0.5px;
+              text-transform: uppercase;
+              color: #b00;
+              opacity: 0.7;
+
+              &:hover {
+                opacity: 1;
+              }
+            }
+          }
+        }
+
+        .line-subtotal {
+          font-family: Montserrat, sans-serif;
+          font-size: 0.8rem;
+          color: #333;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  .cart-footer {
+    border-top: 1px solid #eee;
+    padding: 1.25rem 1.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+
+    .cart-total {
+      display: flex;
+      flex-direction: column;
+      font-family: didot, serif;
+      line-height: 1.1;
+
+      .total-label {
+        font-size: 0.6rem;
+        letter-spacing: 0.5px;
+        color: #888;
+        text-transform: uppercase;
+      }
+
+      .total-amount {
+        font-size: 1.1rem;
+      }
+    }
+
+    .primary-button {
+      flex: 0 0 auto;
+      height: 2.5rem;
+
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+    .cart-panel {
+      max-width: 100%;
+      height: auto;
+      max-height: 90vh;
+      top: auto;
+      bottom: 0;
+      right: 0;
+      transform: translateY(100%);
+      border-radius: 14px 14px 0 0;
+      box-shadow: 0 -6px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    &.open .cart-panel {
+      transform: translateY(0);
+    }
+  }
+}
+
+/*
+-------------------------------------------------------------------
+---  INQUIRY FORM (inside the drawer)
+-------------------------------------------------------------------
+*/
+.rental-inquiry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .inquiry-back {
+    align-self: flex-start;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: Montserrat, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #666;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  .inquiry-intro {
+    font-family: Montserrat, sans-serif;
+    font-size: 0.72rem;
+    line-height: 1.15rem;
+    color: #777;
+  }
+
+  .input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 0;
+
+    .input-label {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 500;
+      font-size: 0.7rem;
+      letter-spacing: 0.5px;
+      color: #333;
+
+      span {
+        color: #b00;
+      }
+    }
+
+    input,
+    textarea {
+      border: none;
+      border-bottom: 1px solid black;
+      padding: 0.6rem 0.25rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 0;
+      background: transparent;
+      font-family: Montserrat, sans-serif;
+      color: #111;
+      transition: border-color 0.25s ease;
+
+      &:focus {
+        outline: none;
+        border-bottom-color: #b09a6b;
+      }
+
+      &::placeholder {
+        color: #999;
+        font-weight: 400;
+      }
+
+      &.invalid {
+        border-bottom: 1.5px solid #e53935;
+      }
+    }
+
+    textarea {
+      resize: none;
+      height: 5rem;
+    }
+
+    .input-error {
+      color: #e53935;
+      font-size: 0.7rem;
+    }
+  }
+
+  .agreement-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #ececec;
+
+    .agreement-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      cursor: pointer;
+
+      input[type="checkbox"] {
+        flex: 0 0 auto;
+        width: 1rem;
+        height: 1rem;
+        margin-top: 0.15rem;
+        accent-color: #000;
+        cursor: pointer;
+      }
+
+      span {
+        font-family: Montserrat, sans-serif;
+        font-size: 0.72rem;
+        line-height: 1.2rem;
+        color: #444;
+      }
+
+      .agreement-link {
+        background: none;
+        border: none;
+        padding: 0;
+        font: inherit;
+        color: #000;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        cursor: pointer;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: #b09a6b;
+        }
+      }
+    }
+  }
+
+  .inquiry-submit {
+    position: relative;
+    margin-top: 0.5rem;
+
+    button {
+      width: 100%;
+      height: 2.5rem;
+
+      span {
+        font-size: 14px;
+      }
+    }
+
+    .loader-wrapper {
+      display: flex;
+      position: relative;
+      width: 100%;
+      height: 2px;
+      background-color: rgb(205, 205, 205);
+      overflow: hidden;
+
+      .loader {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        animation: loading 2.5s ease-in-out infinite;
+      }
+    }
+  }
+}

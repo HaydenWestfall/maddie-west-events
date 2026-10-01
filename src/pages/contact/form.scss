@@ -72,6 +72,55 @@
       }
     }
 
+    /*
+    Trigger for the shared calendar popover — matched to the text inputs above
+    so the row reads as one set of fields. `position: relative` anchors the
+    popover, which positions itself against its wrapper.
+    */
+    .date-input {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+
+      .date-input-field {
+        width: 100%;
+        text-align: left;
+        background: none;
+        border: none;
+        border-bottom: 1px solid black;
+        border-radius: 0;
+        padding: 0.75rem 1rem;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #000;
+        cursor: pointer;
+        transition:
+          border-color 0.25s ease,
+          color 0.25s ease;
+
+        &:focus {
+          outline: none;
+        }
+
+        &.placeholder {
+          color: #e2e2e2;
+          font-weight: 300;
+        }
+
+        &:hover,
+        &.open {
+          border-bottom-color: #b09a6b;
+          color: #b09a6b;
+        }
+
+        &.invalid {
+          border-bottom: 1.5px solid #e53935;
+        }
+      }
+    }
+
     textarea {
       resize: none;
       border: none;
@@ -156,6 +205,11 @@ textarea.invalid {
         font-size: clamp(0.9rem, 2vw, 1.15rem);
         border-radius: 0;
         background-color: transparent;
+      }
+
+      .date-input .date-input-field {
+        font-size: clamp(0.9rem, 2vw, 1.15rem);
+        letter-spacing: 1px;
       }
 
       textarea {

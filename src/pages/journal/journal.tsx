@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { componentOnLoadAnimationDelay, TransitionState } from "../../shared/utility";
 import { useMWETransitionContext } from "../../shared/route-transition/TransitionProvider";
+import Seo from "../../seo/Seo";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -115,7 +116,9 @@ const JournalRoute: React.FC = () => {
 
   return (
     <main data-barba="wrapper">
+      <Seo route="/journal" />
       <div ref={journalContainer} data-barba="container" data-barba-namespace="journal" className="journal_route">
+        <h1 className="sr-only">Wedding Journal — Real Weddings by Maddie West Events</h1>
         <div className="section">
           <div className="journal-header-wrapper">
             <div ref={journalImagesContainer} id="journal-images-container" className="journal-images">
@@ -124,7 +127,8 @@ const JournalRoute: React.FC = () => {
                   ref={journal1}
                   id="journal-1"
                   className="journal-image image-1"
-                  src="/journal/journal_header_3.webp"
+                  src="/media/journal/journal_header_3.webp"
+                  alt="Real wedding moment coordinated by Maddie West Events"
                 />
               </div>
               <div className="cell">
@@ -132,7 +136,8 @@ const JournalRoute: React.FC = () => {
                   ref={journal2}
                   id="journal-2"
                   className="journal-image image-2"
-                  src="/journal/journal_header_1.webp"
+                  src="/media/journal/journal_header_1.webp"
+                  alt="Wedding ceremony detail from a Maddie West Events celebration"
                 />
               </div>
               <div className="cell">
@@ -140,7 +145,8 @@ const JournalRoute: React.FC = () => {
                   ref={journal3}
                   id="journal-3"
                   className="journal-image image-3"
-                  src="/journal/journal_header_2.webp"
+                  src="/media/journal/journal_header_2.webp"
+                  alt="Wedding reception styled by Maddie West Events"
                 />
               </div>
               <div className="cell">
@@ -148,7 +154,8 @@ const JournalRoute: React.FC = () => {
                   ref={journal4}
                   id="journal-4"
                   className="journal-image image-4"
-                  src="/journal/journal_header_4.webp"
+                  src="/media/journal/journal_header_4.webp"
+                  alt="Bride and groom on their wedding day with Maddie West Events"
                 />
               </div>
               <div className="cell">
@@ -156,7 +163,8 @@ const JournalRoute: React.FC = () => {
                   ref={journal5}
                   id="journal-5"
                   className="journal-image image-5"
-                  src="/journal/journal_header_5.webp"
+                  src="/media/journal/journal_header_5.webp"
+                  alt="Wedding floral and tablescape details by Maddie West Events"
                 />
               </div>
             </div>
@@ -199,9 +207,9 @@ const JournalRoute: React.FC = () => {
               thinking about how full of joy their day was.
             </p>
             <div className="images">
-              <img loading="lazy" id="journal-entry-1-1" src="/journal/journal_entry_1_1.webp" />
-              <img loading="lazy" id="journal-entry-1-2" src="/journal/journal_entry_1_2.webp" />
-              <img loading="lazy" id="journal-entry-1-3" src="/journal/journal_entry_1_3.webp" />
+              <img loading="lazy" id="journal-entry-1-1" src="/media/journal/journal_entry_1_1.webp" alt="Olivia and Michael's spring wedding coordinated by Maddie West Events" />
+              <img loading="lazy" id="journal-entry-1-2" src="/media/journal/journal_entry_1_2.webp" alt="Handmade signage and details at Olivia and Michael's wedding" />
+              <img loading="lazy" id="journal-entry-1-3" src="/media/journal/journal_entry_1_3.webp" alt="Florals and tablescape from Olivia and Michael's wedding" />
             </div>
           </div>
         </div>
@@ -222,9 +230,9 @@ const JournalRoute: React.FC = () => {
               beautiful start to a marriage that I know will have immeasurable depth.
             </p>
             <div className="images">
-              <img loading="lazy" id="journal-entry-2-1" src="/journal/journal_entry_2_1.webp" />
-              <img loading="lazy" id="journal-entry-2-2" src="/journal/journal_entry_2_2.webp" />
-              <img loading="lazy" id="journal-entry-2-3" src="/journal/journal_entry_2_3.webp" />
+              <img loading="lazy" id="journal-entry-2-1" src="/media/journal/journal_entry_2_1.webp" alt="Lauren and Sam exchanging personal vows at their spring wedding" />
+              <img loading="lazy" id="journal-entry-2-2" src="/media/journal/journal_entry_2_2.webp" alt="Lauren and Sam's wedding ceremony coordinated by Maddie West Events" />
+              <img loading="lazy" id="journal-entry-2-3" src="/media/journal/journal_entry_2_3.webp" alt="Candid moment from Lauren and Sam's wedding day" />
             </div>
           </div>
         </div>
@@ -248,9 +256,9 @@ const JournalRoute: React.FC = () => {
               this. I hope they never stop being real.
             </p>
             <div className="images">
-              <img loading="lazy" id="journal-entry-3-1" src="/journal/journal_entry_3_1.webp" />
-              <img loading="lazy" id="journal-entry-3-2" src="/journal/journal_entry_3_2.webp" />
-              <img loading="lazy" id="journal-entry-3-3" src="/journal/journal_entry_3_3.webp" />
+              <img loading="lazy" id="journal-entry-3-1" src="/media/journal/journal_entry_3_1.webp" alt="Julia and Cole's black-and-white themed wedding by Maddie West Events" />
+              <img loading="lazy" id="journal-entry-3-2" src="/media/journal/journal_entry_3_2.webp" alt="Greenery and details from Julia and Cole's wedding" />
+              <img loading="lazy" id="journal-entry-3-3" src="/media/journal/journal_entry_3_3.webp" alt="Julia and Cole celebrating on their wedding day" />
             </div>
           </div>
         </div>

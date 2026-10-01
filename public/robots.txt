@@ -1,0 +1,8 @@
+# Maddie West Events — robots.txt
+User-agent: *
+Allow: /
+
+# Transactional / legal acknowledgment page — not useful in search results.
+Disallow: /rentals/agreement
+
+Sitemap: https://maddiewestevents.com/sitemap.xml
